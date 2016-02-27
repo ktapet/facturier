@@ -1,0 +1,3 @@
+yaml_route_raspuns:
+    path:     /raspuns/htmlmvc
+    defaults: { _controller: AppBundle:Default:raspunsHtmlMvc }

@@ -52,9 +52,7 @@ class DefaultController extends Controller
         );
     }  
     
-   /**
-     * @Route("/raspuns/htmlmvc")
-     */
+
     public function raspunsHtmlMvcAction()
     {
         $number = rand(0, 100);
