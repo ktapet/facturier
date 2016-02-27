@@ -64,4 +64,23 @@ class DefaultController extends Controller
         
         return $res;
     }      
+    
+
+    public function flashMsgExAction($numar)
+    {
+        $data = array();
+        for ($i = 1; $i <= $numar; $i++) {
+            $data['numar_generat'.$i] = rand(0, 100);
+        }
+ 
+        $this->addFlash(
+            'notice',
+            'Sunt afisat numai in raspunul acesta!'
+        );
+        
+        return $this->render(
+            'Default/flashEx.html.twig',
+            array('res' => $data)
+        );
+    }      
 }
