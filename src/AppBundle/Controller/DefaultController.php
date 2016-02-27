@@ -36,7 +36,7 @@ class DefaultController extends Controller
     }    
     
     /**
-     * @Route("/raspuns/json/{numar}/{nr}")
+     * @Route("/raspuns/json/{numar}")
      */
     public function raspunsJsonAction($numar)
     {
