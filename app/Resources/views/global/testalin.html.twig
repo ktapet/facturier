@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+   {% block body %}
+Acesta este numarul generat: {{ number ~ var1 }}
+
+
+
+{{ dump(number) }}
+{% for k1,r1 in rez %}
+    {% for k2,r2 in r1 %}
+        <li>
+            {{k1~" "~k2~" "~r2 }}
+        </li>
+    {% endfor %}
+{% endfor %}
+   {% endblock %}
+
+
+
+
