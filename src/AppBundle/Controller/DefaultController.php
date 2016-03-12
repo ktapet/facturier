@@ -10,14 +10,18 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="index")
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-        ]);
+        /* * sa generam un array de test * */ 
+        for($i=0;$i<30;$i++){ 
+            for($j=0;$j<10;$j++){ 
+            $rez[$i][] ="text $i,$j"; 
+            } 
+        } 
+        return $this->render('default/index.html.twig', array( 'entities' => $rez, ));
+        
     }
     
     /**
@@ -53,7 +57,7 @@ class DefaultController extends Controller
     }  
     
 
-    public function raspunsHtmlMvcAction()
+    public function raspunsHtmlMvcAction(Request $request)
     {
         $number = rand(0, 100);
  
@@ -65,7 +69,10 @@ class DefaultController extends Controller
         return $res;
     }      
     
-
+    /**
+     * 
+     * @Route("/flas/{numar}", name="flas" )
+     */
     public function flashMsgExAction($numar)
     {
         $data = array();
@@ -82,5 +89,10 @@ class DefaultController extends Controller
             'Default/flashEx.html.twig',
             array('res' => $data)
         );
-    }      
+    }    
+    
+    
+    
+    
+    
 }

@@ -1,19 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    {# folosim o variabila kta_refresh, care daca este definita va reimprospata pagina dupa un interval de timp #}
+    {% if kta_refresh is defined %}
+    <meta http-equiv="refresh" content="{{ kta_refresh|e}}">
+    {% endif %} 
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <link rel="icon"  href="{{ asset('favicon.ico') }}" />
+    {% set name = 'Facturier' %} 
+    {% set mypath = 'img/logo_'~name~'.png' %}
+    {% if head_title is defined %}    
+        <title>{{name}} - {{ head_title }}</title>
+    {% else %}
+        <title>{{name}}</title>
+    {% endif %}
+ 
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />        
+        <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
         
-        {% for flash_message in app.session.flashbag.get('notice') %}
-            <div style="color:red">
-                {{ flash_message }}
+    {% endblock %}    
+ 
+  </head>
+ 
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">              
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('index') }}">
+                    <img class="logo-img" style="width:30px;" alt="{{name}}" src="{{ asset(mypath|lower) }}" />
+                    <span class="logo-text"></span>
+                </a>
             </div>
-        {% endfor %}        
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+ 
+            <div class="navbar-collapse collapse clear">
+                {% set d_links = {
+                                'Produse':'product',
+      
+                                
+                                }
+                %}
+                {% block dashboard_links %}
+                <ul class="nav navbar-nav navbar-left"> 
+                    {% for key,link in d_links %}
+                        <li><a href="{{ link }}">{{ key }}</a></li>
+                    {% endfor %}
+                    
+                </ul>
+                {% endblock %}
+                
+                {% block user_links %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Bloc linkuri utilizator</a></li>     
+                </ul>
+                {% endblock %}
+                
+            </div>
+        </div>
+    </div>
+ 
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+        {% block submenu %}
+          <ul class="nav nav-sidebar">
+            <li><a href="#">Lista produse</a></li>
+            <li><a href="#">Adauga produs nou</a></li>
+            <li><a href="#">SubLink3</a></li>
+            
+            
+            
+            
+          </ul>
+          {% endblock %}
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            {% block body %}{% endblock %}
+       </div>
+      </div>
+    </div>
+    {% block javascript %}
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/logis.js') }}"></script>        
+    <script type="text/javascript" src="{{ asset('jquery-ui-1.11.4/jquery-ui.js') }}"></script> 
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="{{ asset('js/html5shiv-printshiv.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/respond.min.js') }}"></script>
+    <![endif]-->
+    {% endblock %}    
+  
+ 
+</body>
 </html>

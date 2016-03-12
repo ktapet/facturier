@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 class GlobalController extends Controller{
@@ -24,40 +24,23 @@ class GlobalController extends Controller{
     }
     
     
-    public function flashMsgExAction($numar)
-    {
-        $data = array();
-        for ($i = 1; $i <= $numar; $i++) {
+    
+    
+    /**
+     * @Route("/for", name="for")
+     * 
+     */
+    public function forAction(){
+        
+        
+        
+       return  $this->render( 'base.html.twig' );
+       
+       
+      
+     }
+    
+   
             
-         for($i = 1; $i <=$numar; $i++){
-            $data['numar_generat'.$i] = rand(0, 100);
-            }
-            
-        }
- 
-        $this->addFlash(
-            'notice',
-            'Sunt afisat numai in raspunul acesta!'
-        );
-        
-        return $this->render(
-            'Default/flashEx.html.twig',
-            array('res' => $data)
-        );
-    }      
-    
-    
-    public function paramExAction($p1, $p2){
-        
-        
-        return $this->render('global/global.html.twig', [ 'p1'=>$p1, 'p2'=>$p2 ]);
-        
-        
-    }
-    
-    
-    
-    
-    
     
 }

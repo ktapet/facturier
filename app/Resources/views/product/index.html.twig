@@ -1,30 +1,29 @@
-{# app/Resources/views/default/index.html.twig #}
-{% extends 'base.html.twig' %}
- 
+{# app/Resources/views/product/index.html.twig #}
+{% extends "base.html.twig" %}
+
 {% block submenu %}  
     {{ parent() }}
     <h5>Bloc linkuri sablon copil</h5>
     <ul class="nav nav-sidebar">
-        <li><hr /></li>
+
     <li><a href="#">SubLink1</a></li>
     <li><a href="#">SubLink2</a></li>
     <li><a href="#">SubLink3</a></li>
     </ul>
 {% endblock %}  
-
 {% block body %}
 <h3>Exemplu - afisare date in tabel</h3>
 <div class="table-responsive">
     <table class="table table-hover records_list">
         <thead>
             <tr>
-            {% for val in entities[0] %}
+            {% for val in product[0] %}
                 <th>{{ val }}</th>
             {% endfor %}
             </tr>
         </thead>
         <tbody>
-            {% for entity in entities %}
+            {% for entity in product %}
             <tr>
                 {% for val in entity %}
                     <td>{{ val }}</td>
