@@ -3,15 +3,18 @@
 namespace AppBundle\Entity;
  
 use Doctrine\ORM\Mapping as ORM;
-
+ 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+ 
 /**
- * Feature
+ * Product
+ *@ORM\Entity
+ * @ORM\Table(name="product")
  * 
- * @ORM\Entity
- * @ORM\Table(name="feature")
+ * @UniqueEntity("nume")
  *  
  */
-class Feature
+class Product
 {
     /**
      * @var integer
@@ -23,28 +26,13 @@ class Feature
      */
     private $id;
     
-        
-    /**
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="features")
-     * 
-     */
-    private $products;
-    
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FeatureName")
+     * @ORM\Column(name="nume", type="string")
      * 
      */
-    private $name;     
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="value", type="string")
-     * 
-     */
-    private $value;
+    private $nume;     
     
     /**
      * @var \DateTime

@@ -5,13 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Feature
+ * DocType
  * 
  * @ORM\Entity
- * @ORM\Table(name="feature")
+ * @ORM\Table(name="doc_type")
  *  
  */
-class Feature
+class DocType
 {
     /**
      * @var integer
@@ -23,28 +23,19 @@ class Feature
      */
     private $id;
     
-        
-    /**
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="features")
-     * 
-     */
-    private $products;
-    
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FeatureName")
+     * @ORM\Column(name="name", type="string")
      * 
      */
     private $name;     
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="value", type="string")
-     * 
+    
+    /*
+     * @var integer
+     * @ORM\Column(name="direction", type="integer")
      */
-    private $value;
+    private $direction;
     
     /**
      * @var \DateTime

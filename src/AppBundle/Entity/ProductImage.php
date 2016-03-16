@@ -5,13 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Feature
+ * ProductImage
  * 
  * @ORM\Entity
- * @ORM\Table(name="feature")
+ * @ORM\Table(name="product_image")
  *  
  */
-class Feature
+class ProductImage
 {
     /**
      * @var integer
@@ -25,15 +25,14 @@ class Feature
     
         
     /**
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="features")
-     * 
+     * @ORM\ManyToMany(targetEntity="Product", inversedBy="images")
      */
     private $products;
     
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FeatureName")
+     * @ORM\Column(name="name", type="string")
      * 
      */
     private $name;     
@@ -41,10 +40,10 @@ class Feature
     /**
      * @var string
      *
-     * @ORM\Column(name="value", type="string")
+     * @ORM\Column(name="path", type="string")
      * 
      */
-    private $value;
+    private $path;
     
     /**
      * @var \DateTime
