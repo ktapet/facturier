@@ -1,48 +1,41 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Partner list</h1>
+    <h1>Lista clienti</h1>
 
         <div class="table-responsive">
             <table class="table table-hover records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Bank</th>
-                <th>Iban</th>
-                <th>Datcre</th>
-                <th>Datupd</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for partner in partners %}
-            <tr>
-                <td><a href="{{ path('partner_show', { 'id': partner.id }) }}">{{ partner.id }}</a></td>
-                <td>{{ partner.name }}</td>
-                <td>{{ partner.bank }}</td>
-                <td>{{ partner.iban }}</td>
-                <td>{% if partner.datCre %}{{ partner.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if partner.datUpd %}{{ partner.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('partner_show', { 'id': partner.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('partner_edit', { 'id': partner.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nume</th>
+                        <th>Datcre</th>
+                        <th>Datupd</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('client_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.nume }}</td>
+                        <td>{% if entity.datCre %}{{ entity.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if entity.datUpd %}{{ entity.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>
+                                 <a class="btn btn-sm btn-info" href="{{ path('client_show', { 'id': entity.id }) }}">
+                                <span class="glyphicon glyphicon-share"></span> Arata 
+                                </a>
+
+                                <a class="btn btn-sm btn-default" href="{{ path('client_edit', { 'id': entity.id }) }}">
+                                <span class="glyphicon glyphicon-edit"></span> Edit                                
+                                </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
-    <ul>
-        <li>
-            <a href="{{ path('partner_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+            <a class="btn btn-sm btn-success" href="{{ path('client_new') }}">
+                <span class="glyphicon glyphicon-plus-sign"></span> Adauga  
+            </a>
 {% endblock %}
