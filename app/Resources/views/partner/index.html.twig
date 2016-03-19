@@ -3,7 +3,8 @@
 {% block body %}
     <h1>Partner list</h1>
 
-    <table>
+        <div class="table-responsive">
+            <table class="table table-hover records_list">
         <thead>
             <tr>
                 <th>Id</th>
@@ -38,7 +39,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+        </div>
     <ul>
         <li>
             <a href="{{ path('partner_new') }}">Create a new entry</a>
