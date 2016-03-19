@@ -132,4 +132,76 @@ class FeatureName
     {
         return $this->bg;
     }
+
+    /**
+     * Set fnValue
+     *
+     * @param string $fnValue
+     *
+     * @return FeatureName
+     */
+    public function setFnValue($fnValue)
+    {
+        $this->fnValue = $fnValue;
+
+        return $this;
+    }
+
+    /**
+     * Get fnValue
+     *
+     * @return string
+     */
+    public function getFnValue()
+    {
+        return $this->fnValue;
+    }
+
+    /**
+     * Set datCre
+     *
+     * @param \DateTime $datCre
+     *
+     * @return FeatureName
+     */
+    public function setDatCre($datCre)
+    {
+        $this->datCre = $datCre;
+
+        return $this;
+    }
+
+    /**
+     * Get datCre
+     *
+     * @return \DateTime
+     */
+    public function getDatCre()
+    {
+        return $this->datCre;
+    }
+
+    /**
+     * Set datUpd
+     *
+     * @param \DateTime $datUpd
+     *
+     * @return FeatureName
+     */
+    public function setDatUpd($datUpd)
+    {
+        $this->datUpd = $datUpd;
+
+        return $this;
+    }
+
+    /**
+     * Get datUpd
+     *
+     * @return \DateTime
+     */
+    public function getDatUpd()
+    {
+        return $this->datUpd;
+    }
 }

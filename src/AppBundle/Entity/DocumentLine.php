@@ -76,4 +76,182 @@ class DocumentLine
     private $datUpd;    
 
   
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set quantity
+     *
+     * @param string $quantity
+     *
+     * @return DocumentLine
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Get quantity
+     *
+     * @return string
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Set salePrice
+     *
+     * @param string $salePrice
+     *
+     * @return DocumentLine
+     */
+    public function setSalePrice($salePrice)
+    {
+        $this->salePrice = $salePrice;
+
+        return $this;
+    }
+
+    /**
+     * Get salePrice
+     *
+     * @return string
+     */
+    public function getSalePrice()
+    {
+        return $this->salePrice;
+    }
+
+    /**
+     * Set datCre
+     *
+     * @param \DateTime $datCre
+     *
+     * @return DocumentLine
+     */
+    public function setDatCre($datCre)
+    {
+        $this->datCre = $datCre;
+
+        return $this;
+    }
+
+    /**
+     * Get datCre
+     *
+     * @return \DateTime
+     */
+    public function getDatCre()
+    {
+        return $this->datCre;
+    }
+
+    /**
+     * Set datUpd
+     *
+     * @param \DateTime $datUpd
+     *
+     * @return DocumentLine
+     */
+    public function setDatUpd($datUpd)
+    {
+        $this->datUpd = $datUpd;
+
+        return $this;
+    }
+
+    /**
+     * Get datUpd
+     *
+     * @return \DateTime
+     */
+    public function getDatUpd()
+    {
+        return $this->datUpd;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \AppBundle\Entity\Product $product
+     *
+     * @return DocumentLine
+     */
+    public function setProduct(\AppBundle\Entity\Product $product = null)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \AppBundle\Entity\Product
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * Set document
+     *
+     * @param \AppBundle\Entity\Document $document
+     *
+     * @return DocumentLine
+     */
+    public function setDocument(\AppBundle\Entity\Document $document = null)
+    {
+        $this->document = $document;
+
+        return $this;
+    }
+
+    /**
+     * Get document
+     *
+     * @return \AppBundle\Entity\Document
+     */
+    public function getDocument()
+    {
+        return $this->document;
+    }
+
+    /**
+     * Set vatRate
+     *
+     * @param \AppBundle\Entity\VatRate $vatRate
+     *
+     * @return DocumentLine
+     */
+    public function setVatRate(\AppBundle\Entity\VatRate $vatRate = null)
+    {
+        $this->vatRate = $vatRate;
+
+        return $this;
+    }
+
+    /**
+     * Get vatRate
+     *
+     * @return \AppBundle\Entity\VatRate
+     */
+    public function getVatRate()
+    {
+        return $this->vatRate;
+    }
 }
