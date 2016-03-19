@@ -5,3 +5,13 @@ yaml_route_raspuns:
 yaml_route_flasf:
     path:     /flash/{numar}
     defaults: { _controller: AppBundle:Default:flashMsgEx }
+    
+yaml_route_arrayno:
+    path:     /raspuns/numbers
+    defaults: { _controller: AppBundle:Global:arrayNumbers }
+    
+yaml_route_params:
+    path:     /params/{p1}/{p2}
+    defaults: { _controller: AppBundle:Global:params, p2: 3 }
+    requirements: 
+        p2: \d+
