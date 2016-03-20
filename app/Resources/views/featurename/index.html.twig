@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block submenu %}
+    <ul class="nav nav-sidebar">
+        <li>
+            <a href="{{ path('featurename_new') }}">Add new</a>
+        </li>        
+        <li>
+            <a href="{{ path('featurename_index') }}">List</a>
+        </li>
+
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>Feature Name List</h1>
+
+<div class="table-responsive">
+    <table class="table table-hover records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fnvalue</th>
+                <th>Datcre</th>
+                <th>Datupd</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for featureName in featureNames %}
+            <tr>
+                <td><a href="{{ path('featurename_show', { 'id': featureName.id }) }}">{{ featureName.id }}</a></td>
+                <td>{{ featureName.fnValue }}</td>
+                <td>{% if featureName.datCre %}{{ featureName.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if featureName.datUpd %}{{ featureName.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <a class="btn btn-sm btn-info" href="{{ path('featurename_show', { 'id': featureName.id }) }}">
+                        <span class="glyphicon glyphicon-share"></span> Show 
+                    </a>
+                    <a class="btn btn-sm btn-default" href="{{ path('featurename_edit', { 'id': featureName.id }) }}">
+                        <span class="glyphicon glyphicon-edit"></span> Edit                                
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
