@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  * 
  */
 class FeatureName
@@ -62,78 +63,6 @@ class FeatureName
     }
 
     /**
-     * Set en
-     *
-     * @param string $en
-     *
-     * @return FeatureName
-     */
-    public function setEn($en)
-    {
-        $this->en = $en;
-
-        return $this;
-    }
-
-    /**
-     * Get en
-     *
-     * @return string
-     */
-    public function getEn()
-    {
-        return $this->en;
-    }
-
-    /**
-     * Set ro
-     *
-     * @param string $ro
-     *
-     * @return FeatureName
-     */
-    public function setRo($ro)
-    {
-        $this->ro = $ro;
-
-        return $this;
-    }
-
-    /**
-     * Get ro
-     *
-     * @return string
-     */
-    public function getRo()
-    {
-        return $this->ro;
-    }
-
-    /**
-     * Set bg
-     *
-     * @param string $bg
-     *
-     * @return FeatureName
-     */
-    public function setBg($bg)
-    {
-        $this->bg = $bg;
-
-        return $this;
-    }
-
-    /**
-     * Get bg
-     *
-     * @return string
-     */
-    public function getBg()
-    {
-        return $this->bg;
-    }
-
-    /**
      * Set fnValue
      *
      * @param string $fnValue
@@ -159,14 +88,14 @@ class FeatureName
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      *
      * @return FeatureName
      */
-    public function setDatCre($datCre)
+    public function setDatCre()
     {
-        $this->datCre = $datCre;
+        $this->datCre = new \Datetime();
 
         return $this;
     }
@@ -183,14 +112,15 @@ class FeatureName
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param \DateTime $datUpd
      *
      * @return FeatureName
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
-        $this->datUpd = $datUpd;
+        $this->datUpd = new \DateTime();
 
         return $this;
     }

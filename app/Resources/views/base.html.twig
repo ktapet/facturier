@@ -47,16 +47,14 @@
  
             <div class="navbar-collapse collapse clear">
                 {% set d_links = {
-                                'MainLink  1':'link1',
-                'MainLink  2':'link2',
-                'MainLink  3':'link3'
+                                'Feature name':'featurename',
                                 
                                 }
                 %}
                 {% block dashboard_links %}
                 <ul class="nav navbar-nav navbar-left"> 
                     {% for key,link in d_links %}
-                        <li><a href="#">{{ key }}</a></li>
+                        <li><a href="{{ path(link~'_index') }}">{{ key }}</a></li>
                     {% endfor %}
                     
                 </ul>
