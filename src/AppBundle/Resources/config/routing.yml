@@ -1,3 +1,7 @@
+app_partner:
+    resource: "@AppBundle/Resources/config/routing/partner.yml"
+    prefix:   /partner
+
 app_featurename:
     resource: "@AppBundle/Resources/config/routing/featurename.yml"
     prefix:   /featurename    
