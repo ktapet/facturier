@@ -45,4 +45,86 @@ class FeatureName
      */
     private $datUpd;    
  
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     *
+     * @return FeatureName
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Set datCre
+     *
+     * @param \DateTime $datCre
+     *
+     * @return FeatureName
+     */
+    public function setDatCre($datCre)
+    {
+        $this->datCre = $datCre;
+
+        return $this;
+    }
+
+    /**
+     * Get datCre
+     *
+     * @return \DateTime
+     */
+    public function getDatCre()
+    {
+        return $this->datCre;
+    }
+
+    /**
+     * Set datUpd
+     *
+     * @param \DateTime $datUpd
+     *
+     * @return FeatureName
+     */
+    public function setDatUpd($datUpd)
+    {
+        $this->datUpd = $datUpd;
+
+        return $this;
+    }
+
+    /**
+     * Get datUpd
+     *
+     * @return \DateTime
+     */
+    public function getDatUpd()
+    {
+        return $this->datUpd;
+    }
 }

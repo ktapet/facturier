@@ -5,13 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * PaymentType
+ * DocStatus
  * 
  * @ORM\Entity
- * @ORM\Table(name="payment_type")
+ * @ORM\Table(name="doc_status")
  *  
  */
-class PaymentType
+class DocStatus
 {
     /**
      * @var integer
@@ -30,7 +30,8 @@ class PaymentType
      * 
      */
     private $name;     
- 
+
+    
     /**
      * @var \DateTime
      *
@@ -61,7 +62,7 @@ class PaymentType
      *
      * @param string $name
      *
-     * @return PaymentType
+     * @return DocStatus
      */
     public function setName($name)
     {
@@ -85,7 +86,7 @@ class PaymentType
      *
      * @param \DateTime $datCre
      *
-     * @return PaymentType
+     * @return DocStatus
      */
     public function setDatCre($datCre)
     {
@@ -109,7 +110,7 @@ class PaymentType
      *
      * @param \DateTime $datUpd
      *
-     * @return PaymentType
+     * @return DocStatus
      */
     public function setDatUpd($datUpd)
     {

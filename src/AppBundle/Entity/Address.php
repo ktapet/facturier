@@ -3,12 +3,12 @@
 namespace AppBundle\Entity;
  
 use Doctrine\ORM\Mapping as ORM;
- 
+
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  
 /**
  * Address
- *
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="address")
  * @ORM\Entity
  *  
@@ -278,14 +278,14 @@ class Address
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      *
      * @return Address
      */
     public function setDatCre($datCre)
     {
-        $this->datCre = $datCre;
+        $this->datCre = new \DateTime();
 
         return $this;
     }
@@ -302,14 +302,16 @@ class Address
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
+     * 
      * @param \DateTime $datUpd
      *
      * @return Address
      */
     public function setDatUpd($datUpd)
     {
-        $this->datUpd = $datUpd;
+        $this->datUpd = new \DateTime();
 
         return $this;
     }

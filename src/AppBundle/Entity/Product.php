@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * 
  * @ORM\Entity
  * @ORM\Table(name="product")
- * 
+ * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity("nume")
  *  
  */
@@ -137,14 +137,14 @@ class Product
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      *
      * @return Product
      */
     public function setDatCre($datCre)
     {
-        $this->datCre = $datCre;
+        $this->datCre = new \DateTime();
 
         return $this;
     }
@@ -161,14 +161,16 @@ class Product
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
+     * 
      * @param \DateTime $datUpd
      *
      * @return Product
      */
     public function setDatUpd($datUpd)
     {
-        $this->datUpd = $datUpd;
+        $this->datUpd = new \DateTime();
 
         return $this;
     }
@@ -181,5 +183,258 @@ class Product
     public function getDatUpd()
     {
         return $this->datUpd;
+    }
+    
+    /**
+     * 
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        return $this->reference;
+    }
+    
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->features = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->productWarehouses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set manufacturer
+     *
+     * @param string $manufacturer
+     *
+     * @return Product
+     */
+    public function setManufacturer($manufacturer)
+    {
+        $this->manufacturer = $manufacturer;
+
+        return $this;
+    }
+
+    /**
+     * Get manufacturer
+     *
+     * @return string
+     */
+    public function getManufacturer()
+    {
+        return $this->manufacturer;
+    }
+
+    /**
+     * Set reference
+     *
+     * @param string $reference
+     *
+     * @return Product
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Get reference
+     *
+     * @return string
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * Set salePrice
+     *
+     * @param float $salePrice
+     *
+     * @return Product
+     */
+    public function setSalePrice($salePrice)
+    {
+        $this->salePrice = $salePrice;
+
+        return $this;
+    }
+
+    /**
+     * Get salePrice
+     *
+     * @return float
+     */
+    public function getSalePrice()
+    {
+        return $this->salePrice;
+    }
+
+    /**
+     * Set ean
+     *
+     * @param string $ean
+     *
+     * @return Product
+     */
+    public function setEan($ean)
+    {
+        $this->ean = $ean;
+
+        return $this;
+    }
+
+    /**
+     * Get ean
+     *
+     * @return string
+     */
+    public function getEan()
+    {
+        return $this->ean;
+    }
+
+    /**
+     * Add category
+     *
+     * @param \AppBundle\Entity\Category $category
+     *
+     * @return Product
+     */
+    public function addCategory(\AppBundle\Entity\Category $category)
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \AppBundle\Entity\Category $category
+     */
+    public function removeCategory(\AppBundle\Entity\Category $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * Add feature
+     *
+     * @param \AppBundle\Entity\Feature $feature
+     *
+     * @return Product
+     */
+    public function addFeature(\AppBundle\Entity\Feature $feature)
+    {
+        $this->features[] = $feature;
+
+        return $this;
+    }
+
+    /**
+     * Remove feature
+     *
+     * @param \AppBundle\Entity\Feature $feature
+     */
+    public function removeFeature(\AppBundle\Entity\Feature $feature)
+    {
+        $this->features->removeElement($feature);
+    }
+
+    /**
+     * Get features
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFeatures()
+    {
+        return $this->features;
+    }
+
+    /**
+     * Add productWarehouse
+     *
+     * @param \AppBundle\Entity\ProductWarehouse $productWarehouse
+     *
+     * @return Product
+     */
+    public function addProductWarehouse(\AppBundle\Entity\ProductWarehouse $productWarehouse)
+    {
+        $this->productWarehouses[] = $productWarehouse;
+
+        return $this;
+    }
+
+    /**
+     * Remove productWarehouse
+     *
+     * @param \AppBundle\Entity\ProductWarehouse $productWarehouse
+     */
+    public function removeProductWarehouse(\AppBundle\Entity\ProductWarehouse $productWarehouse)
+    {
+        $this->productWarehouses->removeElement($productWarehouse);
+    }
+
+    /**
+     * Get productWarehouses
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProductWarehouses()
+    {
+        return $this->productWarehouses;
+    }
+
+    /**
+     * Add image
+     *
+     * @param \AppBundle\Entity\ProductImage $image
+     *
+     * @return Product
+     */
+    public function addImage(\AppBundle\Entity\ProductImage $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \AppBundle\Entity\ProductImage $image
+     */
+    public function removeImage(\AppBundle\Entity\ProductImage $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }

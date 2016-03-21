@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Partner edit</h1>
+
+    {{ form_start(edit_form) }}
+        {#{{ form_widget(edit_form) }}#}
+        <div class="row top-buffer">
+            <div class="form-group">
+                {{ form_label(edit_form.name, 'Name', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+                <div class="col-md-3 col-sm-4">
+                    {{ form_widget(edit_form.name, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                    {{ form_errors(edit_form.name) }}
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <div class="form-group">
+                {{ form_label(edit_form.bank, 'Bank', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+                <div class="col-md-3 col-sm-4">
+                    {{ form_widget(edit_form.bank, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                    {{ form_errors(edit_form.bank) }}
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <div class="form-group">
+                {{ form_label(edit_form.iban, 'Iban', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+                <div class="col-md-3 col-sm-4">
+                    {{ form_widget(edit_form.iban, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                    {{ form_errors(edit_form.iban) }}
+            </div>
+        </div>
+        <input type="submit" class="btn btn-warning" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('partner_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-danger" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
