@@ -258,7 +258,7 @@ class Address
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist()
      * @param \DateTime $datCre
      *
      * @return Address
@@ -282,7 +282,8 @@ class Address
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate()
+     * @ORM\PrePersist()
      * @param \DateTime $datUpd
      *
      * @return Address
