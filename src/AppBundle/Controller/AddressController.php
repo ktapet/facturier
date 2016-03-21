@@ -13,19 +13,11 @@ use AppBundle\Form\AddressType;
 
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-/**
- * Address controller.
- *
- * @Route("/address")
- */
+
 class AddressController extends Controller
 {
-    /**
-     * Lists all Address entities.
-     *
-     * @Route("/", name="address_index")
-     * @Method("GET")
-     */
+
+
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -37,12 +29,7 @@ class AddressController extends Controller
         ));
     }
 
-    /**
-     * Creates a new Address entity.
-     *
-     * @Route("/new", name="address_new")
-     * @Method({"GET", "POST"})
-     */
+
     public function newAction(Request $request)
     {
         $address = new Address();
@@ -65,12 +52,7 @@ class AddressController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a Address entity.
-     *
-     * @Route("/{id}", name="address_show")
-     * @Method("GET")
-     */
+
     public function showAction(Address $address)
     {
         $deleteForm = $this->createDeleteForm($address);
@@ -81,12 +63,7 @@ class AddressController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing Address entity.
-     *
-     * @Route("/{id}/edit", name="address_edit")
-     * @Method({"GET", "POST"})
-     */
+
     public function editAction(Request $request, Address $address)
     {
         $deleteForm = $this->createDeleteForm($address);
@@ -110,12 +87,7 @@ class AddressController extends Controller
         ));
     }
 
-    /**
-     * Deletes a Address entity.
-     *
-     * @Route("/{id}", name="address_delete")
-     * @Method("DELETE")
-     */
+
     public function deleteAction(Request $request, Address $address)
     {
         $form = $this->createDeleteForm($address);
