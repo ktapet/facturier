@@ -11,6 +11,7 @@ use AppBundle\Form\FeatureNameType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
  * FeatureName controller.
@@ -41,6 +42,15 @@ class FeatureNameController extends Controller
     {
         $featureName = new FeatureName();
         $form = $this->createForm('AppBundle\Form\FeatureNameType', $featureName);
+        /*
+         * @ktapet
+         * exemplu adaugare camp pe care sa nu-l ia in 
+         * in considerare sitemul de mapping
+         */
+        $form->add('agree', CheckboxType::class, array(
+            'required' => false,
+            'mapped' => false,
+        ));
         
         /*
          * @ktapet
