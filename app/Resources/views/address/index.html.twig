@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block submenu %}
+<ul class="nav nav-sidebar">
+    <li><a href="{{ path('address_new') }}">Add new</a></li>
+    <li><a href="{{ path('address_index') }}">List</a></li>
+</ul>
+{% endblock %}
+{% block body %}
+    <h1>Address list</h1>
+
+<div class="table-responsive">
+    <table class="table table-hover records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Alias</th>
+                <th>Street</th>
+                <th>No</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Datcre</th>
+                <th>Datupd</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for address in addresses %}
+            <tr>
+                <td><a href="{{ path('address_show', { 'id': address.id }) }}">{{ address.id }}</a></td>
+                <td>{{ address.alias }}</td>
+                <td>{{ address.street }}</td>
+                <td>{{ address.no }}</td>
+                <td>{{ address.city }}</td>
+                <td>{{ address.country }}</td>
+                <td>{{ address.email }}</td>
+                <td>{{ address.phone }}</td>
+                <td>{% if address.datCre %}{{ address.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if address.datUpd %}{{ address.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <a class="btn btn-sm btn-info" href="{{ path('address_show', { 'id': address.id }) }}">
+                        <span class="glyphicon glyphicon-share"></span> Show
+                    </a>
+
+                    <a class="btn btn-sm btn-default" href="{{ path('address_edit', { 'id': address.id }) }}">
+                        <span class="glyphicon glyphicon-edit"></span>Edit
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

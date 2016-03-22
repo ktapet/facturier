@@ -1,3 +1,23 @@
+app_warehouse:
+    resource: "@AppBundle/Resources/config/routing/warehouse.yml"
+    prefix:    /warehouse
+
+app_unitmeasure:
+    resource: "@AppBundle/Resources/config/routing/unitmeasure.yml"
+    prefix:   /unitmeasure
+
+app_partner:
+    resource: "@AppBundle/Resources/config/routing/partner.yml"
+    prefix:   /partner
+
+app_address:
+    resource: "@AppBundle/Resources/config/routing/address.yml"
+    prefix:   /address
+
+app_featurename:
+    resource: "@AppBundle/Resources/config/routing/featurename.yml"
+    prefix:   /featurename    
+
 yaml_route_raspuns:
     path:     /raspuns/htmlmvc
     defaults: { _controller: AppBundle:Default:raspunsHtmlMvc }

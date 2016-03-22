@@ -14,7 +14,11 @@
     <meta content="" name="author">
     <link rel="icon"  href="{{ asset('favicon.ico') }}" />
     {% set name = 'Facturier' %} 
+<<<<<<< HEAD
     {% set mypath = 'img/logo_'~name~'.png' %}
+=======
+    {% set mypath = 'images/logo_'~name~'.png' %}
+>>>>>>> 9717e311e57647e7024ad665475bb40f41b76fd2
     {% if head_title is defined %}    
         <title>{{name}} - {{ head_title }}</title>
     {% else %}
@@ -23,8 +27,13 @@
  
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />        
+<<<<<<< HEAD
         <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
         
+=======
+        <link rel="stylesheet" href="{{ asset('css/facturier.css') }}" />
+ 
+>>>>>>> 9717e311e57647e7024ad665475bb40f41b76fd2
     {% endblock %}    
  
   </head>
@@ -40,22 +49,39 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ path('index') }}">
+<<<<<<< HEAD
                     <img class="logo-img" style="width:30px;" alt="{{name}}" src="{{ asset(mypath|lower) }}" />
                     <span class="logo-text"></span>
+=======
+                    <img class="logo-img" alt="{{name}}" src="{{ asset(mypath|lower) }}" />
+                    <span class="logo-text">{{name}}</span>
+>>>>>>> 9717e311e57647e7024ad665475bb40f41b76fd2
                 </a>
             </div>
  
             <div class="navbar-collapse collapse clear">
                 {% set d_links = {
+<<<<<<< HEAD
                                 'Produse':'product',
       
                                 
+=======
+                                'Feature name':'featurename',
+                                'Address':'address',
+                                'Partner':'partner',
+                                'Unit Measure':'unitmeasure',
+                                'Warehouse':'warehouse',
+>>>>>>> 9717e311e57647e7024ad665475bb40f41b76fd2
                                 }
                 %}
                 {% block dashboard_links %}
                 <ul class="nav navbar-nav navbar-left"> 
                     {% for key,link in d_links %}
+<<<<<<< HEAD
                         <li><a href="{{ link }}">{{ key }}</a></li>
+=======
+                        <li><a href="{{ path(link~'_index') }}">{{ key }}</a></li>
+>>>>>>> 9717e311e57647e7024ad665475bb40f41b76fd2
                     {% endfor %}
                     
                 </ul>
@@ -74,6 +100,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
+<<<<<<< HEAD
         {% block submenu %}
           <ul class="nav nav-sidebar">
             <li><a href="#">Lista produse</a></li>
@@ -85,6 +112,17 @@
             
           </ul>
           {% endblock %}
+=======
+
+        {% block submenu %}
+        <ul class="nav nav-sidebar">
+            <li><a href="#">SubLink1</a></li>
+            <li><a href="#">SubLink2</a></li>
+            <li><a href="#">SubLink3</a></li>
+        </ul>
+        {% endblock %}
+
+>>>>>>> 9717e311e57647e7024ad665475bb40f41b76fd2
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             {% block body %}{% endblock %}
