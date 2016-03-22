@@ -110,7 +110,7 @@ class FeatureNameController extends Controller
             $em->persist($featureName);
             $em->flush();
 
-            return $this->redirectToRoute('featurename_edit', array('id' => $featureName->getId()));
+            return $this->redirectToRoute('featurename_show', array('id' => $featureName->getId()));
         }
 
         return $this->render('featurename/edit.html.twig', array(

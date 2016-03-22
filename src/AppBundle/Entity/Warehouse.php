@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table()
  * @ORM\Entity
  * @UniqueEntity("name")
- * 
+ * @ORM\HasLifecycleCallbacks()
  * 
  */
 class Warehouse
@@ -34,16 +34,15 @@ class Warehouse
      * 
      */
     private $name;      
-    
-    
-    /**
-     * @inheritDoc
-     */
-    public function __toString()
-    {
-        return $this->name;
-    }       
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string")
+     * 
+     */
+    private $address;      
+    
     /**
      * @var \DateTime
      *
@@ -56,8 +55,15 @@ class Warehouse
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
-    private $datUpd;    
+    private $datUpd;  
     
+    /**
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }  
 
     /**
      * Get id
@@ -94,15 +100,39 @@ class Warehouse
     }
 
     /**
-     * Set datCre
+     * Set address
      *
-     * @param \DateTime $datCre
+     * @param string address
      *
      * @return Warehouse
      */
-    public function setDatCre($datCre)
+    public function setAddress($address)
     {
-        $this->datCre = $datCre;
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+    
+    /**
+     * Set datCre
+     * @ORM\PrePersist
+     * @param \DateTime $datCre
+     *
+     * @return FeatureName
+     */
+    public function setDatCre()
+    {
+        $this->datCre = new \Datetime();
 
         return $this;
     }
@@ -119,14 +149,15 @@ class Warehouse
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param \DateTime $datUpd
      *
-     * @return Warehouse
+     * @return FeatureName
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
-        $this->datUpd = $datUpd;
+        $this->datUpd = new \DateTime();
 
         return $this;
     }
