@@ -6,9 +6,13 @@ app_featurename:
     resource: "@AppBundle/Resources/config/routing/featurename.yml"
     prefix:   /featurename    
 
-category:
+app_category:
     resource: "@AppBundle/Resources/config/routing/category.yml"
     prefix:   /category    
+    
+app_warehouse:
+    resource: "@AppBundle/Resources/config/routing/warehouse.yml"
+    prefix:   /warehouse    
 
 yaml_route_raspuns:
     path:     /raspuns/htmlmvc
