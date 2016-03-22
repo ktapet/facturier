@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table()
  * @ORM\Entity
  * @UniqueEntity("name")
- * 
+ * @ORM\HasLifecycleCallbacks()
  * 
  */
 class Warehouse
@@ -95,14 +95,14 @@ class Warehouse
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist()
      * @param \DateTime $datCre
      *
      * @return Warehouse
      */
-    public function setDatCre($datCre)
+    public function setDatCre()
     {
-        $this->datCre = $datCre;
+        $this->datCre = new \DateTime();
 
         return $this;
     }
@@ -119,14 +119,15 @@ class Warehouse
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate()
+     * @ORM\PrePersist()
      * @param \DateTime $datUpd
      *
      * @return Warehouse
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
-        $this->datUpd = $datUpd;
+        $this->datUpd = new \DateTime();
 
         return $this;
     }

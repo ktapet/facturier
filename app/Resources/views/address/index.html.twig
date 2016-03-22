@@ -1,18 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block submenu %}
-    <ul class="nav nav-sidebar">
-        <li>
-            <a href="{{ path('address_new') }}">Add new</a>
-        </li>
-        <li>
-            <a href="{{ path('address_index') }}">Back to address list</a>
-        </li>
-
-    </ul>
+<ul class="nav nav-sidebar">
+    <li><a href="{{ path('address_new') }}">Add new</a></li>
+    <li><a href="{{ path('address_index') }}">List</a></li>
+</ul>
 {% endblock %}
 {% block body %}
     <h1>Address list</h1>
+
 <div class="table-responsive">
     <table class="table table-hover records_list">
         <thead>
@@ -44,14 +40,13 @@
                 <td>{% if address.datCre %}{{ address.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if address.datUpd %}{{ address.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('address_show', { 'id': address.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('address_edit', { 'id': address.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a class="btn btn-sm btn-info" href="{{ path('address_show', { 'id': address.id }) }}">
+                        <span class="glyphicon glyphicon-share"></span> Show
+                    </a>
+
+                    <a class="btn btn-sm btn-default" href="{{ path('address_edit', { 'id': address.id }) }}">
+                        <span class="glyphicon glyphicon-edit"></span>Edit
+                    </a>
                 </td>
             </tr>
         {% endfor %}

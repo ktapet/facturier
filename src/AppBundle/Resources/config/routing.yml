@@ -1,3 +1,11 @@
+app_warehouse:
+    resource: "@AppBundle/Resources/config/routing/warehouse.yml"
+    prefix:    /warehouse
+
+app_unitmeasure:
+    resource: "@AppBundle/Resources/config/routing/unitmeasure.yml"
+    prefix:   /unitmeasure
+
 app_partner:
     resource: "@AppBundle/Resources/config/routing/partner.yml"
     prefix:   /partner

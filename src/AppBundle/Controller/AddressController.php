@@ -5,19 +5,23 @@ namespace AppBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-
 use AppBundle\Entity\Address;
 use AppBundle\Form\AddressType;
 
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-
+/**
+ * Address controller.
+ *
+ */
 class AddressController extends Controller
 {
 
-
+    /**
+     * Lists all Address entities.
+     *
+     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -29,13 +33,17 @@ class AddressController extends Controller
         ));
     }
 
-
+    /**
+     * Creates a new Address entity.
+     *
+     */
     public function newAction(Request $request)
     {
         $address = new Address();
         $form = $this->createForm('AppBundle\Form\AddressType', $address);
         /* Adaug aici butonul de submit */
-        $form->add('submit', SubmitType::class, ['label'=>'Trimite', 'attr'=>['class'=>'btn btn-primary']]);
+        $form->add('submit', SubmitType::class);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -52,7 +60,10 @@ class AddressController extends Controller
         ));
     }
 
-
+    /**
+     * Finds and displays a Addres entity.
+     *
+     */
     public function showAction(Address $address)
     {
         $deleteForm = $this->createDeleteForm($address);
@@ -63,13 +74,16 @@ class AddressController extends Controller
         ));
     }
 
-
+    /**
+     * Displays a form to edit an existing Address entity.
+     *
+     */
     public function editAction(Request $request, Address $address)
     {
         $deleteForm = $this->createDeleteForm($address);
         $editForm = $this->createForm('AppBundle\Form\AddressType', $address);
         /* Adaug aici butonul de submit */
-        $form->add('submit', SubmitType::class, ['label'=>'Trimite', 'attr'=>['class'=>'btn btn-primary']]);
+        $editForm->add('submit', SubmitType::class, ['label'=>'Trimite', 'attr'=>['class'=>'btn btn-primary']]);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -87,7 +101,10 @@ class AddressController extends Controller
         ));
     }
 
-
+    /**
+     * Deletes a Address entity.
+     *
+     */
     public function deleteAction(Request $request, Address $address)
     {
         $form = $this->createDeleteForm($address);

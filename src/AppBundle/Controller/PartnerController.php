@@ -35,6 +35,7 @@ class PartnerController extends Controller
 			'partners' => $partners,
 		));
 	}
+
 	/**
 	 * Creates a new Partner entity.
 	 *
@@ -59,6 +60,7 @@ class PartnerController extends Controller
 			'form' => $form->createView(),
 		));
 	}
+
 	/**
 	 * Finds and displays a Partner entity.
 	 *
@@ -71,6 +73,7 @@ class PartnerController extends Controller
 			'delete_form' => $deleteForm->createView(),
 		));
 	}
+
 	/**
 	 * Displays a form to edit an existing Partner entity.
 	 *
@@ -93,6 +96,7 @@ class PartnerController extends Controller
 			'delete_form' => $deleteForm->createView(),
 		));
 	}
+
 	/**
 	 * Deletes a Partner entity.
 	 *

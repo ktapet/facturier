@@ -16,6 +16,7 @@ class PartnerType extends AbstractType
 	{
 		$builder
 			->add('name')
+			->add('addresses')
 			->add('bank')
 			->add('iban')
 		;

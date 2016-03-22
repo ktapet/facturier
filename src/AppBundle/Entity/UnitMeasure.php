@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table()
  * @ORM\Entity
  * @UniqueEntity("name")
+ * @ORM\HasLifecycleCallbacks()
  */
 class UnitMeasure
 {
@@ -89,14 +90,14 @@ class UnitMeasure
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      *
      * @return UnitMeasure
      */
-    public function setDatCre($datCre)
+    public function setDatCre()
     {
-        $this->datCre = $datCre;
+        $this->datCre = new \DateTime();
 
         return $this;
     }
@@ -113,14 +114,15 @@ class UnitMeasure
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param \DateTime $datUpd
      *
      * @return UnitMeasure
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
-        $this->datUpd = $datUpd;
+        $this->datUpd = new \DateTime();
 
         return $this;
     }
