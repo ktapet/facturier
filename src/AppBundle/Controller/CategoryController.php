@@ -14,7 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * Category controller.
- *
+ * 
  */
 class CategoryController extends Controller
 {
@@ -41,13 +41,6 @@ class CategoryController extends Controller
     {
         $category = new Category();
         $form = $this->createForm('AppBundle\Form\CategoryType', $category);
-       
-        
-        /*
-         * @ktapet
-         * adaugam aici butonul de sumit
-         * vezi mai multe aici: http://symfony.com/doc/current/reference/forms/types/submit.html
-         */
         $form->add('submit', SubmitType::class);
         
         $form->handleRequest($request);
@@ -88,11 +81,6 @@ class CategoryController extends Controller
     {
         $deleteForm = $this->createDeleteForm($category);
         $editForm = $this->createForm('AppBundle\Form\CategoryType', $category);
-        /*
-         * @ktapet
-         * adaugam aici butonul de sumit
-         * vezi mai multe aici: http://symfony.com/doc/current/reference/forms/types/submit.html
-         */
         $editForm->add('submit', SubmitType::class);        
         $editForm->handleRequest($request);
 
@@ -138,18 +126,6 @@ class CategoryController extends Controller
      */
     private function createDeleteForm(Category $category)
     {
-        /*
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('category_delete', array('id' => $category->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-        */
-        /*
-         * @ktapet
-         * codul autogenerat este comentat mai sus
-         * vezi mai multe aici: http://symfony.com/doc/current/reference/forms/types/submit.html
-         */
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('category_delete', array('id' => $category->getId())))
             ->setMethod('DELETE')
