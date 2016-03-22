@@ -11,6 +11,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table()
  * @ORM\Entity
  * @UniqueEntity("name")
+ * @ORM\HasLifecycleCallbacks()
+ * 
  */
 class Category
 {
@@ -38,6 +40,7 @@ class Category
      */
     private $name;   
     
+    
     /**
      * @var \DateTime
      *
@@ -50,24 +53,13 @@ class Category
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
-    private $datUpd;    
+    private $datUpd;     
    
-    /**
-     * @inheritDoc
-     */
-    public function __toString()
-    {
-        return $this->name;
-    }       
+   public function __toString(){
+       return (string)$this->getEn();
+   }
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
+    
     /**
      * Get id
      *
@@ -104,14 +96,14 @@ class Category
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      *
-     * @return Category
+     * @return FeatureName
      */
-    public function setDatCre($datCre)
+    public function setDatCre()
     {
-        $this->datCre = $datCre;
+        $this->datCre = new \Datetime();
 
         return $this;
     }
@@ -128,14 +120,15 @@ class Category
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param \DateTime $datUpd
      *
-     * @return Category
+     * @return FeatureName
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
-        $this->datUpd = $datUpd;
+        $this->datUpd = new \DateTime();
 
         return $this;
     }
@@ -149,6 +142,7 @@ class Category
     {
         return $this->datUpd;
     }
+
 
     /**
      * Add product

@@ -2,6 +2,10 @@ app_featurename:
     resource: "@AppBundle/Resources/config/routing/featurename.yml"
     prefix:   /featurename    
 
+category:
+    resource: "@AppBundle/Resources/config/routing/category.yml"
+    prefix:   /category    
+
 yaml_route_raspuns:
     path:     /raspuns/htmlmvc
     defaults: { _controller: AppBundle:Default:raspunsHtmlMvc }
