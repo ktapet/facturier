@@ -1,3 +1,7 @@
+app_address:
+    resource: "@AppBundle/Resources/config/routing/address.yml"
+    prefix:   /address
+
 app_partner:
     resource: "@AppBundle/Resources/config/routing/partner.yml"
     prefix:   /partner

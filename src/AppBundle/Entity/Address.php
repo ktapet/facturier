@@ -327,4 +327,9 @@ class Address
     {
         return $this->partner;
     }
+
+    public function __toString()
+    {
+        return $this->alias;
+    }
 }
