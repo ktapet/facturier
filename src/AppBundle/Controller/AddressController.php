@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Partner;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -91,7 +92,7 @@ class AddressController extends Controller
             $em->persist($address);
             $em->flush();
 
-            return $this->redirectToRoute('address_edit', array('id' => $address->getId()));
+            return $this->redirectToRoute('address_show', array('id' => $address->getId()));
         }
 
         return $this->render('address/edit.html.twig', array(

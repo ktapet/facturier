@@ -88,7 +88,7 @@ class PartnerController extends Controller
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($partner);
 			$em->flush();
-			return $this->redirectToRoute('partner_edit', array('id' => $partner->getId()));
+			return $this->redirectToRoute('partner_show', array('id' => $partner->getId()));
 		}
 		return $this->render('partner/edit.html.twig', array(
 			'partner' => $partner,

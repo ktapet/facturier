@@ -86,7 +86,7 @@ class WarehouseController extends Controller
             $em->persist($warehouse);
             $em->flush();
 
-            return $this->redirectToRoute('warehouse_edit', array('id' => $warehouse->getId()));
+            return $this->redirectToRoute('warehouse_show', array('id' => $warehouse->getId()));
         }
 
         return $this->render('warehouse/edit.html.twig', array(

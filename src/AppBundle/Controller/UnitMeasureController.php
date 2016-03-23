@@ -86,7 +86,7 @@ class UnitMeasureController extends Controller
             $em->persist($unitMeasure);
             $em->flush();
 
-            return $this->redirectToRoute('unitmeasure_edit', array('id' => $unitMeasure->getId()));
+            return $this->redirectToRoute('unitmeasure_show', array('id' => $unitMeasure->getId()));
         }
 
         return $this->render('unitmeasure/edit.html.twig', array(

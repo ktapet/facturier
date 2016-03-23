@@ -3,17 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-<<<<<<< HEAD
- 
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
-
-
-
-class Product {
-    
-    
-=======
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -30,7 +19,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Product
 {
->>>>>>> 9717e311e57647e7024ad665475bb40f41b76fd2
+
     /**
      * @var integer
      *
@@ -39,66 +28,67 @@ class Product
      * @ORM\GeneratedValue(strategy="AUTO")
      * 
      */
-<<<<<<< HEAD
     private $id;
-    
-    private $unitMasure;
-    
-    
-    
-    private $categories;
-    
-    private $features;
 
-    private $productWarehouse;
-    
-    private $manufacturer;
-    
-    private $reference;
-    
-    private $salePrice;
-    
-    private $ean;
-    
-    private $datUpd;
-    
-    private $datCre;
-    
-    /**
-     *
-     * @ORM\OneToMany(targetEntity="feature", mapedBy="product")
-     */
-    private $product;
-    
-    
-    
-    
-=======
-    private $id;    
-    
     /**
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="UnitMeasure")
-     * 
-     */ 
-    private $unitMeasure;    
-    
+     *
+     */
+    private $unitMeasure;
+
     /**
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="products")
-     * 
+     *
      */
-    private $categories;    
-    
+    private $categories;
+
     /**
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="Feature", inversedBy="products")
-     * 
-     * 
+     *
+     *
      */
-    private $features;  
-    
+    private $features;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="ProductWarehouse", mappedBy="product")
+     *
+     *
+     */
+    private $productWarehouses;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="manufacturer", type="string", nullable=true)
+     */
+    private $manufacturer;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="reference", type="string")
+     */
+    private $reference;
+
+    /**
+     * @var decimal
+     *
+     * @ORM\Column(name="sale_price", type="decimal", precision=16, scale=6, nullable=true)
+     */
+    private $salePrice;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ean", type="string", nullable=true)
+     */
+    private $ean;
+
     /**
      * 
      * @ORM\ManyToMany(targetEntity="ProductImage", mappedBy="products")
@@ -106,43 +96,7 @@ class Product
      * 
      */
     private $images;      
-    
-    /**
-     * 
-     * @ORM\OneToMany(targetEntity="ProductWarehouse", mappedBy="product")
-     * 
-     * 
-     */
-    private $productWarehouses;       
-   
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="manufacturer", type="string", nullable=true)
-     */
-    private $manufacturer;     
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ean", type="string", nullable=true)
-     */
-    private $ean;  
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="reference", type="string")
-     */
-    private $reference;     
-    
-    /**
-     * @var decimal
-     *
-     * @ORM\Column(name="sale_price", type="decimal", precision=16, scale=6, nullable=true)
-     */
-    private $salePrice;    
-    
+
     /**
      * @var \DateTime
      * 
@@ -490,5 +444,5 @@ class Product
     {
         return $this->productWarehouses;
     }
->>>>>>> 9717e311e57647e7024ad665475bb40f41b76fd2
+
 }
