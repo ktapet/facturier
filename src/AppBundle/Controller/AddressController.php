@@ -29,8 +29,10 @@ class AddressController extends Controller
 
         $addresses = $em->getRepository('AppBundle:Address')->findAll();
 
+
         return $this->render('address/index.html.twig', array(
             'addresses' => $addresses,
+            
         ));
     }
 

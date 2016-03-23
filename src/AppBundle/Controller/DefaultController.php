@@ -22,9 +22,9 @@ class DefaultController extends Controller
             } 
         }
 
-        $translated = $this->get('translator')->trans('ghicit fără echivoc .');
 
-        return $this->render('default/index.html.twig', array( 'entities' => $rez, 'trans'=>$translated ));
+
+        return $this->render('default/index.html.twig', array( 'entities' => $rez ));
         
 
 
