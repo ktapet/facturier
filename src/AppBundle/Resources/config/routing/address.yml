@@ -20,5 +20,5 @@ address_edit:
 
 address_delete:
     path:     /{id}/delete
-    defaults: { _controller: "AppBundle:Category:delete" }
+    defaults: { _controller: "AppBundle:Address:delete" }
     methods:  DELETE
