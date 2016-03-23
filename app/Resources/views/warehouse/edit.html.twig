@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block submenu %}
+    <ul class="nav nav-sidebar">
+        <li>
+            <a href="{{ path('warehouse_new') }}">Add new</a>
+        </li>        
+        <li>
+            <a href="{{ path('warehouse_index') }}">List</a>
+        </li>
+
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>Warehouse Edit</h1>
+    {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'}}) }}
+    
+   <div class="form-group">
+        {{ form_label(edit_form.name, 'Warehouse name', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
+        <div class="col-md-3 col-sm-4">
+            {{ form_widget(edit_form.name, {'attr': {'class': 'form-control'}}) }}
+        </div>
+         {{ form_errors(edit_form.name) }}
+    </div>    
+   <div class="form-group">
+        {{ form_label(edit_form.address, 'Warehouse address', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
+        <div class="col-md-3 col-sm-4">
+            {{ form_widget(edit_form.address, {'attr': {'class': 'form-control'}}) }}
+        </div>
+         {{ form_errors(edit_form.address) }}
+    </div>    
+    <div class="form-group">
+        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+            {{ form_widget(edit_form.submit, { 'label': 'Save', 'attr': {'class': 'btn btn-sm btn-success'}}) }}
+        </div>
+    </div>
+    {{ form_end(edit_form) }}
+    
+    {{ form_start(delete_form, {'attr': {'class': 'form-horizontal'}}) }}
+    <div class="form-group">
+
+        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+           {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
+        </div>
+
+    </div> 
+    {{ form_end(delete_form) }}            
+{% endblock %}
