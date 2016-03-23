@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ProductController extends Controller
 {
     /**
-    * @Route("/product", name="product")
+    * @Route("/product", name="product_index")
     */
     public function indexAction(){
         

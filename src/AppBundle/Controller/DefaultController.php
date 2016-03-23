@@ -14,7 +14,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-<<<<<<< HEAD
+
         /* * sa generam un array de test * */ 
         for($i=0;$i<30;$i++){ 
             for($j=0;$j<10;$j++){ 
@@ -23,7 +23,7 @@ class DefaultController extends Controller
         } 
         return $this->render('default/index.html.twig', array( 'entities' => $rez, ));
         
-=======
+
         /*
          * sa generam un array de test
          * 
@@ -37,7 +37,7 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', array(
             'entities' => $rez,
         ));
->>>>>>> 9717e311e57647e7024ad665475bb40f41b76fd2
+
     }
     
     /**

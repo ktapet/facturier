@@ -1,6 +1,6 @@
 <?php
 
-<<<<<<< HEAD
+
 
 namespace AppBundle\Entity;
 
@@ -9,44 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
-/**
- *  Address
- * 
- * @ORM\Table(name="address")
- * @ORM\Entity
- * @UniqueEntity("nume")
- */
-class Address {
-    
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * 
-     */
-    private $id;
-    
-    /**
-     *
-     * @var string 
-     * 
-     * 
-     * @ORM\Column(name="alias", type="string")
-     */
-    private $alias;
-    
-    /**
-     *
-     * @var string
-     * 
-     * 
-=======
-namespace AppBundle\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Address
  * 
@@ -70,13 +32,11 @@ class Address
     private $alias;
 
     /**
->>>>>>> 9717e311e57647e7024ad665475bb40f41b76fd2
      * @ORM\Column(name="street", type="string")
      */
     private $street;
     
     /**
-<<<<<<< HEAD
      *
      * @var integer 
      * 
@@ -135,7 +95,7 @@ class Address
      * @var \DateTime 
      * 
      * 
-     * @ORM\Column(name="datUpd", type="datetime")
+     * @ORM\Column(name="dat_upd", type="datetime")
      */
     private $datUpd;
     
@@ -144,61 +104,11 @@ class Address
      * @var \DateTime  
      * 
      * 
-     * @ORM\Column(name="datCre", type="datetime")
-     */
-    private $datCre;
-    
-    
-    
-    
-    
-    
-=======
-     * @ORM\Column(name="no", type="string")
-     */
-    private $no;    
-    
-    /**
-     * @ORM\Column(name="city", type="string")
-     */
-    private $city;    
-    
-    /**
-     * @ORM\Column(name="country", type="string")
-     */
-    private $country;    
-    
-    /**
-     * @ORM\Column(name="email", type="string")
-     */
-    private $email;
-    
-    /**
-     * @ORM\Column(name="phone", type="string")
-     */
-    private $phone;    
-  
-    /**
-     * @var integer
-     *
-     * @ORM\ManyToOne(targetEntity="Partner", inversedBy="addresses")
-     *
-     */
-    private $partner;   
-    
-    /**
-     * @var \DateTime
-     *
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
+    
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dat_upd", type="datetime")
-     */
-    private $datUpd;  
 
 
     public function __toString()
@@ -458,5 +368,5 @@ class Address
     {
         return $this->partner;
     }
->>>>>>> 9717e311e57647e7024ad665475bb40f41b76fd2
+
 }
