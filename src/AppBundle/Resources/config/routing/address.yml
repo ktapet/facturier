@@ -1,0 +1,24 @@
+address_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Address:index" }
+    methods:  GET
+
+address_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Address:show" }
+    methods:  GET
+
+address_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Address:new" }
+    methods:  [GET, POST]
+
+address_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Address:edit" }
+    methods:  [GET, POST]
+
+category_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Category:delete" }
+    methods:  DELETE
