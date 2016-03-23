@@ -1,15 +1,17 @@
 <?php
 
 namespace AppBundle\Entity;
- 
-use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Document
  *
- * @ORM\Table(name="document")
+ * @ORM\Table()
  * @ORM\Entity
- *  
+ * @UniqueEntity("docNumber")
+ * @ORM\HasLifecycleCallbacks()
  */
 
 class Document
@@ -20,60 +22,78 @@ class Document
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * 
      */
-    private $id;
+    private $id;    
     
     /**
+     * @var integer
+     *
      * @ORM\ManyToOne(targetEntity="Partner")
-     * 
+     * @ORM\JoinColumn(name="partner_id", referencedColumnName="id")
      */
-    private $partner;
+    private $partner;  
     
     /**
+     * @var integer
+     *
      * @ORM\ManyToOne(targetEntity="DocType")
-     * 
+     * @ORM\JoinColumn(name="doctype_id", referencedColumnName="id")
      */
-    private $docType;
-    
-     /**
-     * @ORM\ManyToOne(targetEntity="DocStatus")
-     * 
-     */
-    private $docStatus;
+    private $docType;     
     
     /**
+     * @var integer
+     *
      * @ORM\ManyToOne(targetEntity="PaymentType")
-     * 
+     * @ORM\JoinColumn(name="paymenttype_id", referencedColumnName="id")
      */
-    private $paymentType;
+    private $paymentType;       
     
     /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;     
+    
+    /**
+     * @var integer
+     *
      * @ORM\OneToMany(targetEntity="DocumentLine", mappedBy="document")
      * 
      */
-    private $documentLines;
+    private $documentLines;  
     
-    /**
+     /**
      * @var string
-     * 
+     *
      * @ORM\Column(name="doc_number", type="string")
      */
-    private $docNumber;
-      
+    private $docNumber;   
+    
+    /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="DocStatus")
+     * 
+     */
+    private $docStatus;       
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
- 
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
-    private $datUpd; 
+    private $datUpd;    
+
     /**
      * Constructor
      */
@@ -213,30 +233,7 @@ class Document
     }
 
     /**
-     * Set docStatus
-     *
-     * @param \AppBundle\Entity\DocStatus $docStatus
-     *
-     * @return Document
-     */
-    public function setDocStatus(\AppBundle\Entity\DocStatus $docStatus = null)
-    {
-        $this->docStatus = $docStatus;
 
-        return $this;
-    }
-
-    /**
-     * Get docStatus
-     *
-     * @return \AppBundle\Entity\DocStatus
-     */
-    public function getDocStatus()
-    {
-        return $this->docStatus;
-    }
-
-    /**
      * Set paymentType
      *
      * @param \AppBundle\Entity\PaymentType $paymentType
@@ -246,7 +243,6 @@ class Document
     public function setPaymentType(\AppBundle\Entity\PaymentType $paymentType = null)
     {
         $this->paymentType = $paymentType;
-
         return $this;
     }
 
@@ -258,6 +254,29 @@ class Document
     public function getPaymentType()
     {
         return $this->paymentType;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Document
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**
@@ -292,5 +311,29 @@ class Document
     public function getDocumentLines()
     {
         return $this->documentLines;
+    }
+
+    /**
+     * Set docStatus
+     *
+     * @param \AppBundle\Entity\DocStatus $docStatus
+     *
+     * @return Document
+     */
+    public function setDocStatus(\AppBundle\Entity\DocStatus $docStatus = null)
+    {
+        $this->docStatus = $docStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get docStatus
+     *
+     * @return \AppBundle\Entity\DocStatus
+     */
+    public function getDocStatus()
+    {
+        return $this->docStatus;
     }
 }

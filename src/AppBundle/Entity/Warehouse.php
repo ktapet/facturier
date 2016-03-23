@@ -1,15 +1,18 @@
 <?php
-//@ORM\Entity 
+
 namespace AppBundle\Entity;
- 
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Warehouse
- * 
+ *
+ * @ORM\Table()
  * @ORM\Entity
- * @ORM\Table(name="warehouse")
- *  
+ * @UniqueEntity("name")
+ * @ORM\HasLifecycleCallbacks()
+ * 
  */
 class Warehouse
 {
@@ -21,7 +24,7 @@ class Warehouse
      * @ORM\GeneratedValue(strategy="AUTO")
      * 
      */
-    private $id;
+    private $id;    
     
     /**
      * @var string
@@ -29,15 +32,15 @@ class Warehouse
      * @ORM\Column(name="name", type="string")
      * 
      */
-    private $name; 
-    
+    private $name;      
+
     /**
      * @var string
      *
      * @ORM\Column(name="address", type="string")
      * 
      */
-    private $address;     
+    private $address;      
     
     /**
      * @var \DateTime
@@ -45,14 +48,21 @@ class Warehouse
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
- 
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
-    private $datUpd;    
- 
+    private $datUpd;  
+    
+    /**
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }  
 
     /**
      * Get id
@@ -91,7 +101,7 @@ class Warehouse
     /**
      * Set address
      *
-     * @param string $address
+     * @param string address
      *
      * @return Warehouse
      */
@@ -111,18 +121,17 @@ class Warehouse
     {
         return $this->address;
     }
-
+    
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      *
-     * @return Warehouse
+     * @return FeatureName
      */
-    public function setDatCre($datCre)
+    public function setDatCre()
     {
-        $this->datCre = $datCre;
-
+        $this->datCre = new \Datetime();
         return $this;
     }
 
@@ -138,14 +147,15 @@ class Warehouse
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param \DateTime $datUpd
      *
-     * @return Warehouse
+     * @return FeatureName
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
-        $this->datUpd = $datUpd;
+        $this->datUpd = new \DateTime();
 
         return $this;
     }
@@ -160,3 +170,4 @@ class Warehouse
         return $this->datUpd;
     }
 }
+

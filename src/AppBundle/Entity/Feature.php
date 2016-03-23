@@ -1,19 +1,22 @@
 <?php
-//@ORM\Entity 
+
 namespace AppBundle\Entity;
- 
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Feature
- * 
+ *
+ * @ORM\Table()
  * @ORM\Entity
- * @ORM\Table(name="feature")
- *  
+ * 
  */
 class Feature
 {
     /**
+     * 
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -21,28 +24,27 @@ class Feature
      * @ORM\GeneratedValue(strategy="AUTO")
      * 
      */
-    private $id;
+    private $id;       
     
-        
     /**
+     * 
      * @ORM\ManyToMany(targetEntity="Product", mappedBy="features")
      * 
      */
-    private $products;
+    private $products;         
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="FeatureName")
+     * @ORM\JoinColumn(name="name_id", referencedColumnName="id")
+     * 
+     */
+    private $name;   
     
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="FeatureName")
-     * 
-     */
-    private $name;     
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="value", type="string")
-     * 
+     * @ORM\Column(name="f_value", type="string", nullable=true)
      */
     private $value;
     
@@ -52,14 +54,22 @@ class Feature
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
- 
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
-    private $datUpd;    
- 
+    private $datUpd;     
+    
+    /**
+     * 
+     */
+    public function __toString()
+    {        
+        return $this->value;
+    }    
+
     /**
      * Constructor
      */

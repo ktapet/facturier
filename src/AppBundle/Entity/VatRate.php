@@ -1,15 +1,17 @@
 <?php
-//@ORM\Entity 
+
 namespace AppBundle\Entity;
- 
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * VatRate
- * 
+ *
+ * @ORM\Table()
  * @ORM\Entity
- * @ORM\Table(name="vat_rate")
- *  
+ * @UniqueEntity("code")
+ * 
  */
 class VatRate
 {
@@ -19,33 +21,29 @@ class VatRate
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * 
      */
-    private $id;
+    private $id;      
     
     /**
      * @var string
      *
-     * @ORM\Column(name="cod", type="string")
-     * 
+     * @ORM\Column(name="code", type="string")
      */
-    private $cod; 
+    private $code;    
     
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="string")
-     * 
      */
-    private $description; 
-
+    private $description;    
+    
     /**
-     * @var float
-     * 
-     * @ORM\Column(name="rate", type="float")
-     * 
+     * @var decimal
+     *
+     * @ORM\Column(name="rate", type="decimal", precision=16, scale=6)
      */
-    private $rate;
+    private $rate;       
     
     /**
      * @var \DateTime
@@ -53,14 +51,13 @@ class VatRate
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
- 
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
     private $datUpd;    
- 
 
     /**
      * Get id
@@ -73,27 +70,27 @@ class VatRate
     }
 
     /**
-     * Set cod
+     * Set code
      *
-     * @param string $cod
+     * @param string $code
      *
      * @return VatRate
      */
-    public function setCod($cod)
+    public function setCode($code)
     {
-        $this->cod = $cod;
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * Get cod
+     * Get code
      *
      * @return string
      */
-    public function getCod()
+    public function getCode()
     {
-        return $this->cod;
+        return $this->code;
     }
 
     /**
@@ -123,7 +120,7 @@ class VatRate
     /**
      * Set rate
      *
-     * @param float $rate
+     * @param string $rate
      *
      * @return VatRate
      */
@@ -137,7 +134,7 @@ class VatRate
     /**
      * Get rate
      *
-     * @return float
+     * @return string
      */
     public function getRate()
     {

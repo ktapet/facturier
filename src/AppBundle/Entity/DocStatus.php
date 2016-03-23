@@ -1,15 +1,17 @@
 <?php
-//@ORM\Entity 
+
 namespace AppBundle\Entity;
- 
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * DocStatus
- * 
+ *
+ * @ORM\Table()
  * @ORM\Entity
- * @ORM\Table(name="doc_status")
- *  
+ * @UniqueEntity("name")
+>>>>>>> ktapet-master
  */
 class DocStatus
 {
@@ -22,30 +24,36 @@ class DocStatus
      * 
      */
     private $id;
+
     
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string")
-     * 
      */
     private $name;     
 
-    
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
- 
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
     private $datUpd;    
- 
+    
+    /**
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }      
 
     /**
      * Get id

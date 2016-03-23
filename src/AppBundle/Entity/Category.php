@@ -1,15 +1,17 @@
 <?php
-//@ORM\Entity 
-namespace AppBundle\Entity;
- 
-use Doctrine\ORM\Mapping as ORM;
 
+//@ORM\Entity 
+
+namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * Category
- * 
+ *
+ * @ORM\Table()
  * @ORM\Entity
- * @ORM\Table(name="category")
- *  
+ * @UniqueEntity("name")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Category
 {
@@ -21,21 +23,23 @@ class Category
      * @ORM\GeneratedValue(strategy="AUTO")
      * 
      */
-    private $id;
+    private $id;    
+    
+    /**
+     * 
+     *
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="categories")
+     *
+     */
+    private $products;       
     
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string")
-     * 
      */
-    private $name;     
-    
-    /**
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="categories")
-     * 
-     */
-    private $products;
+    private $name;   
+
     
     /**
      * @var \DateTime
@@ -43,14 +47,22 @@ class Category
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
- 
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
     private $datUpd;    
- 
+   
+    /**
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }       
+
     /**
      * Constructor
      */
@@ -79,7 +91,6 @@ class Category
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -95,15 +106,15 @@ class Category
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      *
      * @return Category
      */
-    public function setDatCre($datCre)
-    {
-        $this->datCre = $datCre;
 
+    public function setDatCre()
+    {
+        $this->datCre = new \DateTime();
         return $this;
     }
 
@@ -119,15 +130,15 @@ class Category
 
     /**
      * Set datUpd
-     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
      * @param \DateTime $datUpd
      *
      * @return Category
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
-        $this->datUpd = $datUpd;
-
+        $this->datUpd = new \DateTime();
         return $this;
     }
 
@@ -151,7 +162,6 @@ class Category
     public function addProduct(\AppBundle\Entity\Product $product)
     {
         $this->products[] = $product;
-
         return $this;
     }
 
@@ -174,4 +184,6 @@ class Category
     {
         return $this->products;
     }
+
 }
+

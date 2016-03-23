@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block submenu %}
+    <ul class="nav nav-sidebar">
+        <li>
+            <a href="{{ path('warehouse_new') }}">Add new</a>
+        </li>        
+        <li>
+            <a href="{{ path('warehouse_index') }}">List</a>
+        </li>
+
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>List of warehouses</h1>
+
+<div class="table-responsive">
+    <table class="table table-hover records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Warehouse name</th>
+                <th>Warehouse address</th>
+                <th>Datcre</th>
+                <th>Datupd</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for warehouse in warehouses %}
+            <tr>
+                <td><a href="{{ path('warehouse_show', { 'id': warehouse.id }) }}">{{ warehouse.id }}</a></td>
+                <td>{{ warehouse.name }}</td>
+                <td>{{ warehouse.address }}</td>
+                <td>{% if warehouse.datCre %}{{ warehouse.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if warehouse.datUpd %}{{ warehouse.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <a class="btn btn-sm btn-info" href="{{ path('warehouse_show', { 'id': warehouse.id }) }}">
+                        <span class="glyphicon glyphicon-share"></span> Show 
+                    </a>
+                    <a class="btn btn-sm btn-default" href="{{ path('warehouse_edit', { 'id': warehouse.id }) }}">
+                        <span class="glyphicon glyphicon-edit"></span> Edit                                
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,19 +1,21 @@
 <?php
-//@ORM\Entity 
+
 namespace AppBundle\Entity;
- 
+
 use Doctrine\ORM\Mapping as ORM;
- 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
- 
+
 /**
  * Product
- * 
+ *
+ * @ORM\Table()
  * @ORM\Entity
- * @ORM\Table(name="product")
- * @ORM\HasLifecycleCallbacks()
- * @UniqueEntity("nume")
- *  
+ * 
+ * @UniqueEntity("reference")
+ * @UniqueEntity("ean")
+ * 
+ * 
  */
 class Product
 {
@@ -25,7 +27,7 @@ class Product
      * @ORM\GeneratedValue(strategy="AUTO")
      * 
      */
-    private $id;
+    private $id;    
     
     /**
      * @var string
@@ -33,73 +35,108 @@ class Product
      * @ORM\Column(name="nume", type="string")
      * 
      */
-    private $nume;     
+    private $nume; 
     
     /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="UnitMeasure")
+     * 
+     */ 
+    private $unitMeasure;    
+    
+    /**
+     * 
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="products")
+     * 
      */
-    private $categories;
+    private $categories;    
     
     /**
+     * 
      * @ORM\ManyToMany(targetEntity="Feature", inversedBy="products")
+     * 
+     * 
      */
-    private $features;
+    private $features;  
+    
+    /**
+     * 
+     * @ORM\ManyToMany(targetEntity="ProductImage", mappedBy="products")
+     * 
+     * 
+     */
+    private $images;      
     
     /**
      * 
      * @ORM\OneToMany(targetEntity="ProductWarehouse", mappedBy="product")
      * 
+     * 
      */
-    private $productWarehouses;  
+    private $productWarehouses;       
+   
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="manufacturer", type="string", nullable=true)
+     */
+    private $manufacturer;     
     
     /**
      * @var string
-     * 
-     * @ORM\Column(name="manufacturer", type="string")
+     *
+     * @ORM\Column(name="ean", type="string", nullable=true)
      */
-    private $manufacturer;
+    private $ean;  
     
     /**
      * @var string
-     * 
+     *
      * @ORM\Column(name="reference", type="string")
      */
-    private $reference;
+    private $reference;     
     
     /**
-     * @var float
-     * 
-     * @ORM\Column(name="sale_price", type="float")
+     * @var decimal
+     *
+     * @ORM\Column(name="sale_price", type="decimal", precision=16, scale=6, nullable=true)
      */
-    private $salePrice;
-    
-    /**
-     * @var string
-     * 
-     * @ORM\Column(name="ean", type="string")
-     */
-    private $ean;
-    
-    /**
-     * @ORM\ManyToMany(targetEntity="ProductImage", mappedBy="products")
-     * 
-     */
-    private $images;
+    private $salePrice;    
     
     /**
      * @var \DateTime
-     *
+     * 
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
- 
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
     private $datUpd;    
+    
+    /**
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        return $this->reference;
+    }    
+    
  
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+        $this->features = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->productWarehouses = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -121,10 +158,9 @@ class Product
     public function setNume($nume)
     {
         $this->nume = $nume;
-
         return $this;
     }
-
+    
     /**
      * Get nume
      *
@@ -134,78 +170,7 @@ class Product
     {
         return $this->nume;
     }
-
-    /**
-     * Set datCre
-     * @ORM\PrePersist
-     * @param \DateTime $datCre
-     *
-     * @return Product
-     */
-    public function setDatCre($datCre)
-    {
-        $this->datCre = new \DateTime();
-
-        return $this;
-    }
-
-    /**
-     * Get datCre
-     *
-     * @return \DateTime
-     */
-    public function getDatCre()
-    {
-        return $this->datCre;
-    }
-
-    /**
-     * Set datUpd
-     * @ORM\PreUpdate
-     * @ORM\PrePersist
-     * 
-     * @param \DateTime $datUpd
-     *
-     * @return Product
-     */
-    public function setDatUpd($datUpd)
-    {
-        $this->datUpd = new \DateTime();
-
-        return $this;
-    }
-
-    /**
-     * Get datUpd
-     *
-     * @return \DateTime
-     */
-    public function getDatUpd()
-    {
-        return $this->datUpd;
-    }
     
-    /**
-     * 
-     * @inheritDoc
-     */
-    public function __toString()
-    {
-        return $this->reference;
-    }
-    
-    
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->features = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->productWarehouses = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
     /**
      * Set manufacturer
      *
@@ -216,10 +181,9 @@ class Product
     public function setManufacturer($manufacturer)
     {
         $this->manufacturer = $manufacturer;
-
         return $this;
     }
-
+    
     /**
      * Get manufacturer
      *
@@ -228,6 +192,29 @@ class Product
     public function getManufacturer()
     {
         return $this->manufacturer;
+    }
+
+    /**
+     * Set ean
+     *
+     * @param string $ean
+     *
+     * @return Product
+     */
+    public function setEan($ean)
+    {
+        $this->ean = $ean;
+        return $this;
+    }
+
+    /**
+     * Get ean
+     *
+     * @return string
+     */
+    public function getEan()
+    {
+        return $this->ean;
     }
 
     /**
@@ -257,7 +244,7 @@ class Product
     /**
      * Set salePrice
      *
-     * @param float $salePrice
+     * @param string $salePrice
      *
      * @return Product
      */
@@ -271,7 +258,7 @@ class Product
     /**
      * Get salePrice
      *
-     * @return float
+     * @return string
      */
     public function getSalePrice()
     {
@@ -279,27 +266,75 @@ class Product
     }
 
     /**
-     * Set ean
+     * Set datCre
      *
-     * @param string $ean
+     * @param \DateTime $datCre
      *
      * @return Product
      */
-    public function setEan($ean)
+    public function setDatCre($datCre)
     {
-        $this->ean = $ean;
+        $this->datCre = $datCre;
 
         return $this;
     }
 
     /**
-     * Get ean
+     * Get datCre
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getEan()
+    public function getDatCre()
     {
-        return $this->ean;
+        return $this->datCre;
+    }
+
+    /**
+     * Set datUpd
+     *
+     * @param \DateTime $datUpd
+     *
+     * @return Product
+     */
+    public function setDatUpd($datUpd)
+    {
+        $this->datUpd = $datUpd;
+
+        return $this;
+    }
+
+    /**
+     * Get datUpd
+     *
+     * @return \DateTime
+     */
+    public function getDatUpd()
+    {
+        return $this->datUpd;
+    }
+
+    /**
+     * Set unitMeasure
+     *
+     * @param \AppBundle\Entity\UnitMeasure $unitMeasure
+     *
+     * @return Product
+     */
+    public function setUnitMeasure(\AppBundle\Entity\UnitMeasure $unitMeasure = null)
+    {
+        $this->unitMeasure = $unitMeasure;
+
+        return $this;
+    }
+
+    /**
+     * Get unitMeasure
+     *
+     * @return \AppBundle\Entity\UnitMeasure
+     */
+    public function getUnitMeasure()
+    {
+        return $this->unitMeasure;
     }
 
     /**
@@ -371,40 +406,6 @@ class Product
     }
 
     /**
-     * Add productWarehouse
-     *
-     * @param \AppBundle\Entity\ProductWarehouse $productWarehouse
-     *
-     * @return Product
-     */
-    public function addProductWarehouse(\AppBundle\Entity\ProductWarehouse $productWarehouse)
-    {
-        $this->productWarehouses[] = $productWarehouse;
-
-        return $this;
-    }
-
-    /**
-     * Remove productWarehouse
-     *
-     * @param \AppBundle\Entity\ProductWarehouse $productWarehouse
-     */
-    public function removeProductWarehouse(\AppBundle\Entity\ProductWarehouse $productWarehouse)
-    {
-        $this->productWarehouses->removeElement($productWarehouse);
-    }
-
-    /**
-     * Get productWarehouses
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProductWarehouses()
-    {
-        return $this->productWarehouses;
-    }
-
-    /**
      * Add image
      *
      * @param \AppBundle\Entity\ProductImage $image
@@ -436,5 +437,39 @@ class Product
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Add productWarehouse
+     *
+     * @param \AppBundle\Entity\ProductWarehouse $productWarehouse
+     *
+     * @return Product
+     */
+    public function addProductWarehouse(\AppBundle\Entity\ProductWarehouse $productWarehouse)
+    {
+        $this->productWarehouses[] = $productWarehouse;
+
+        return $this;
+    }
+
+    /**
+     * Remove productWarehouse
+     *
+     * @param \AppBundle\Entity\ProductWarehouse $productWarehouse
+     */
+    public function removeProductWarehouse(\AppBundle\Entity\ProductWarehouse $productWarehouse)
+    {
+        $this->productWarehouses->removeElement($productWarehouse);
+    }
+
+    /**
+     * Get productWarehouses
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProductWarehouses()
+    {
+        return $this->productWarehouses;
     }
 }

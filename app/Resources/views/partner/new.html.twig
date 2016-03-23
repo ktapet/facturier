@@ -1,5 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{% block submenu %}
+    <ul class="nav nav-sidebar">
+        <li>
+            <a href="{{ path('partner_new') }}">Add new</a>
+        </li>        
+        <li>
+            <a href="{{ path('partner_index') }}">List</a>
+        </li>
+    </ul>   
+{% endblock %}
+
 {% block body %}
     <h1>Partner creation</h1>
 
@@ -31,15 +42,16 @@
                     {{ form_errors(form.iban) }}
             </div>
         </div>
-    <ul>
+  
         <div class="row top-buffer">
-            <input type="submit" class="btn btn-info col-md-1 col-sm-2" value="Create" />
+            <div class="form-group">
+                <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+                    {{ form_widget(form.submit, { 'label': 'Create a new entry',
+                                                  'attr': {'class': 'btn btn-sm btn-success'}})}}
+                </div>
+            </div>       
         </div>
+   
     {{ form_end(form) }}
-    </ul>
-    <ul>
-        <li>
-            <a href="{{ path('partner_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}
+

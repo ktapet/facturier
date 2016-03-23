@@ -1,15 +1,17 @@
 <?php
-//@ORM\Entity 
+
 namespace AppBundle\Entity;
- 
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * ProductWarehouse
- * 
+ *
+ * @ORM\Table()
  * @ORM\Entity
- * @ORM\Table(name="product_warehouse")
  *  
+ * @ORM\HasLifecycleCallbacks()
  */
 class ProductWarehouse
 {
@@ -21,27 +23,34 @@ class ProductWarehouse
      * @ORM\GeneratedValue(strategy="AUTO")
      * 
      */
-    private $id;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Product", inversedBy="productWarehouses")
-     */
-    
-    private $product;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Warehouse")
-     */
-    
-    private $warehouse;
+    private $id;    
+      
     
     /**
      * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="productWarehouses")
      * 
-     * @ORM\Column(name="quantity", type="integer")
-     */
+     * 
+     */ 
+    private $product;   
     
-    private $quantity;
+    /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="Warehouse")
+     * @ORM\JoinColumn(name="warehouse_id", referencedColumnName="id")
+     * 
+     */ 
+    private $warehouse;   
+    
+    /**
+     * @var integer
+     *
+     *  @ORM\Column(name="quantity", type="integer")
+     * 
+     */ 
+    private $quantity;     
 
     /**
      * @var \DateTime
@@ -49,14 +58,21 @@ class ProductWarehouse
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
- 
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
     private $datUpd;    
- 
+        
+    /**
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        return $this->product;
+    }       
 
     /**
      * Get id

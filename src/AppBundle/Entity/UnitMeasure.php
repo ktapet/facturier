@@ -1,14 +1,18 @@
 <?php
-//@ORM\Entity 
+
 namespace AppBundle\Entity;
- 
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * UnitMeasure
  *
+ * @ORM\Table()
  * @ORM\Entity
- * @ORM\Table(name="unit_measure") 
+ * @UniqueEntity("name")
+ * @ORM\HasLifecycleCallbacks()
  */
 class UnitMeasure
 {
@@ -18,24 +22,16 @@ class UnitMeasure
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * 
      */
-    private $id;
+    private $id;      
     
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string")
-     * 
+     * @ORM\Column(name="name", type="string", nullable=false)
      */
-    private $name;   
-    
-    /**
-     * 
-     * @ORM\ManyToOne(targetEntity="Product")
-     * 
-     */
-    private $products; 
+    private $name;        
+
     
     /**
      * @var \DateTime
@@ -43,14 +39,21 @@ class UnitMeasure
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
- 
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
-    private $datUpd;    
- 
+    private $datUpd; 
+    
+    /**
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        return (string) $this->getName();
+    }   
 
     /**
      * Get id
@@ -88,15 +91,14 @@ class UnitMeasure
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      *
      * @return UnitMeasure
      */
     public function setDatCre($datCre)
     {
-        $this->datCre = $datCre;
-
+        $this->datCre = new \DateTime();
         return $this;
     }
 
@@ -112,15 +114,15 @@ class UnitMeasure
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param \DateTime $datUpd
      *
      * @return UnitMeasure
      */
     public function setDatUpd($datUpd)
     {
-        $this->datUpd = $datUpd;
-
+        $this->datUpd = new \DateTime();
         return $this;
     }
 
@@ -132,29 +134,5 @@ class UnitMeasure
     public function getDatUpd()
     {
         return $this->datUpd;
-    }
-
-    /**
-     * Set products
-     *
-     * @param \AppBundle\Entity\Product $products
-     *
-     * @return UnitMeasure
-     */
-    public function setProducts(\AppBundle\Entity\Product $products = null)
-    {
-        $this->products = $products;
-
-        return $this;
-    }
-
-    /**
-     * Get products
-     *
-     * @return \AppBundle\Entity\Product
-     */
-    public function getProducts()
-    {
-        return $this->products;
     }
 }

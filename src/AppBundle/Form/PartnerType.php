@@ -18,8 +18,6 @@ class PartnerType extends AbstractType
             ->add('name')
             ->add('bank')
             ->add('iban')
-            //->add('datCre', 'datetime')
-            //->add('datUpd', 'datetime')
         ;
     }
     

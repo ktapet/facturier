@@ -1,15 +1,16 @@
 <?php
-//@ORM\Entity 
+
 namespace AppBundle\Entity;
- 
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * DocType
- * 
+ *
+ * @ORM\Table()
  * @ORM\Entity
- * @ORM\Table(name="doc_type")
- *  
+ * @UniqueEntity("name")
  */
 class DocType
 {
@@ -21,21 +22,21 @@ class DocType
      * @ORM\GeneratedValue(strategy="AUTO")
      * 
      */
-    private $id;
+    private $id;      
     
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string")
-     * 
      */
-    private $name;     
+    private $name;      
     
-    /*
+    /**
      * @var integer
+     *
      * @ORM\Column(name="direction", type="integer")
      */
-    private $direction;
+    private $direction;        
     
     /**
      * @var \DateTime
@@ -43,14 +44,21 @@ class DocType
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
- 
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
     private $datUpd;    
- 
+    
+    /**
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }      
 
     /**
      * Get id
@@ -84,6 +92,30 @@ class DocType
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set direction
+     *
+     * @param integer $direction
+     *
+     * @return DocType
+     */
+    public function setDirection($direction)
+    {
+        $this->direction = $direction;
+
+        return $this;
+    }
+
+    /**
+     * Get direction
+     *
+     * @return integer
+     */
+    public function getDirection()
+    {
+        return $this->direction;
     }
 
     /**

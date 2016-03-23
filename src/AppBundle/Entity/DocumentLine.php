@@ -1,15 +1,15 @@
 <?php
-//@ORM\Entity 
+
 namespace AppBundle\Entity;
- 
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * DocumentLine
- * 
+ *
+ * @ORM\Table()
  * @ORM\Entity
- * @ORM\Table(name="document_line")
- *  
+ * @ORM\HasLifecycleCallbacks()
  */
 class DocumentLine
 {
@@ -19,41 +19,46 @@ class DocumentLine
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * 
      */
-    private $id;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Product")
-     * 
-     */
-    private $product;
+    private $id;    
     
     /**
      * @var integer
-     * 
-     * @ORM\Column(name="quantity", type="integer")
+     *
+     * @ORM\ManyToOne(targetEntity="Product")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
-    private $quantity;
+    private $product;       
     
     /**
-     * @var float
-     * @ORM\Column(name="sale_price", type="float")
+     * @var decimal
+     *
+     * @ORM\Column(name="quantity", type="decimal", precision=10, scale=2, nullable=true)
      */
-    private $salePrice;
+    private $quantity;      
     
     /**
-     * 
+     * @var decimal
+     *
+     * @ORM\Column(name="sale_price", type="decimal", precision=16, scale=6, nullable=true)
+     */
+    private $salePrice;     
+     
+    /**
+     * @var integer
+     *
      * @ORM\ManyToOne(targetEntity="Document", inversedBy="documentLines")
      * 
      */
-    private $document;
+    private $document;    
     
     /**
+     * @var integer
+     *
      * @ORM\ManyToOne(targetEntity="VatRate")
-     * 
+     * @ORM\JoinColumn(name="vatrate_id", referencedColumnName="id")
      */
-    private $vatRate;
+    private $vatRate;        
     
     /**
      * @var \DateTime
@@ -61,14 +66,13 @@ class DocumentLine
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
- 
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
-    private $datUpd;
-    
+    private $datUpd;    
 
     /**
      * Get id
@@ -83,7 +87,7 @@ class DocumentLine
     /**
      * Set quantity
      *
-     * @param integer $quantity
+     * @param string $quantity
      *
      * @return DocumentLine
      */
@@ -97,7 +101,7 @@ class DocumentLine
     /**
      * Get quantity
      *
-     * @return integer
+     * @return string
      */
     public function getQuantity()
     {
@@ -107,7 +111,7 @@ class DocumentLine
     /**
      * Set salePrice
      *
-     * @param float $salePrice
+     * @param string $salePrice
      *
      * @return DocumentLine
      */
@@ -121,7 +125,7 @@ class DocumentLine
     /**
      * Get salePrice
      *
-     * @return float
+     * @return string
      */
     public function getSalePrice()
     {

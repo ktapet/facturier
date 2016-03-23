@@ -1,16 +1,18 @@
 <?php
 
 namespace AppBundle\Entity;
- 
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Partner
- * @ORM\HasLifecycleCallbacks()
- * @ORM\Table(name="partner")
+ *
+ * @ORM\Table()
  * @ORM\Entity
+ * @UniqueEntity("name")
+ * @ORM\HasLifecycleCallbacks()
  * 
- *  
  */
 
 class Partner
@@ -21,54 +23,54 @@ class Partner
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * 
      */
-    private $id;
+    private $id;      
     
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string")
-     * 
      */
-    private $name;   
+    private $name;       
     
     /**
-     * 
+     * @var integer
+     *
      * @ORM\OneToMany(targetEntity="Address", mappedBy="partner")
-     * 
+     *
      */
-    private $addresses;   
+    private $addresses;     
     
     /**
      * @var string
      *
-     * @ORM\Column(name="bank", type="string")
+     * @ORM\Column(name="bank", type="string", nullable=true)
      * 
      */
-    private $bank; 
+    private $bank;    
     
     /**
      * @var string
      *
-     * @ORM\Column(name="iban", type="string")
+     * @ORM\Column(name="iban", type="string", nullable=true)
      * 
      */
-    private $iban; 
-  
+    private $iban;      
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
- 
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
-    private $datUpd; 
+    private $datUpd;    
+
     /**
      * Constructor
      */
@@ -166,10 +168,9 @@ class Partner
      *
      * @return Partner
      */
-    public function setDatCre($datCre)
+    public function setDatCre()
     {
         $this->datCre = new \DateTime();
-
         return $this;
     }
 
@@ -185,6 +186,7 @@ class Partner
 
     /**
      * Set datUpd
+     *
      * @ORM\PreUpdate
      * @ORM\PrePersist
      * 
@@ -192,7 +194,7 @@ class Partner
      *
      * @return Partner
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
         $this->datUpd = new \DateTime();
 
