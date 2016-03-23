@@ -18,7 +18,7 @@ address_edit:
     defaults: { _controller: "AppBundle:Address:edit" }
     methods:  [GET, POST]
 
-category_delete:
+address_delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:Category:delete" }
     methods:  DELETE
