@@ -25,6 +25,8 @@ class AddressController extends Controller
      */
     public function indexAction()
     {
+
+
         $em = $this->getDoctrine()->getManager();
 
         $addresses = $em->getRepository('AppBundle:Address')->findAll();
@@ -32,7 +34,7 @@ class AddressController extends Controller
 
         return $this->render('address/index.html.twig', array(
             'addresses' => $addresses,
-            
+
         ));
     }
 
