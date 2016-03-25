@@ -32,6 +32,15 @@
                     <td>{{ partner.iban }}</td>
                 </tr>
                 <tr>
+                    <th>Address</th>
+                    <td>
+                        {% for address in partner.addresses %}
+                            {{address}}
+                        {%endfor%}
+                    
+                    </td>
+                </tr>
+                <tr>
                     <th>Datcre</th>
                     <td>{% if partner.datCre %}{{ partner.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                 </tr>

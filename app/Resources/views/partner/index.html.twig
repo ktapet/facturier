@@ -18,6 +18,7 @@
                         <th>Name</th>
                         <th>Bank</th>
                         <th>Iban</th>
+                        <th>Addresses</th>
                         <th>Datcre</th>
                         <th>Datupd</th>
                         <th>Actions</th>
@@ -30,6 +31,10 @@
                         <td>{{ partner.name }}</td>
                         <td>{{ partner.bank }}</td>
                         <td>{{ partner.iban }}</td>
+                        {%for address in partner.addresses%}
+                            <td>{{address }}</td>
+                        {%endfor%}
+                        
                         <td>{% if partner.datCre %}{{ partner.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{% if partner.datUpd %}{{ partner.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>

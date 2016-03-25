@@ -46,6 +46,10 @@
                     <td>{{ address.phone }}</td>
                 </tr>
                 <tr>
+                    <th>Partner</th>
+                    <td>{{ address.partner }}</td>
+                </tr>
+                <tr>
                     <th>Datcre</th>
                     <td>{% if address.datCre %}{{ address.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                 </tr>
