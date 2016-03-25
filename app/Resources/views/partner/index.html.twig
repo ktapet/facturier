@@ -31,10 +31,12 @@
                         <td>{{ partner.name }}</td>
                         <td>{{ partner.bank }}</td>
                         <td>{{ partner.iban }}</td>
-                        {%for address in partner.addresses%}
-                            <td>{{address }}</td>
-                        {%endfor%}
-                        
+                        <td>
+                            {%for address in partner.addresses%}
+                                {{address }}
+                            {%endfor%}
+                        </td>
+                                               
                         <td>{% if partner.datCre %}{{ partner.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{% if partner.datUpd %}{{ partner.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>
