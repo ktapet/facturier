@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(name="address")
  * @ORM\Entity()
  * @UniqueEntity("alias")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Address
 {
@@ -256,14 +257,14 @@ class Address
     /**
      * Set datCre
      * @ORM\PrePersist
-     *
      * @param \DateTime $datCre
      *
      * @return Address
      */
-    public function setDatCre($datCre)
+    public function setDatCre()
     {
         $this->datCre = new \DateTime();
+
         return $this;
     }
 
@@ -279,16 +280,18 @@ class Address
 
     /**
      * Set datUpd
-     * @ORM\PreUpdate
+     * 
      * @ORM\PrePersist
+     * @ORM\PreUpdate
      * 
      * @param \DateTime $datUpd
      *
      * @return Address
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
         $this->datUpd = new \DateTime();
+
         return $this;
     }
 
@@ -324,5 +327,10 @@ class Address
     public function getPartner()
     {
         return $this->partner;
+    }
+
+    public function __toString()
+    {
+        return $this->alias;
     }
 }

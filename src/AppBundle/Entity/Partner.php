@@ -244,4 +244,9 @@ class Partner
     {
         return $this->addresses;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
