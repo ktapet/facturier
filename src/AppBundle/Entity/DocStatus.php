@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table()
  * @ORM\Entity
  * @UniqueEntity("name")
->>>>>>> ktapet-master
+ * @ORM\HasLifecycleCallbacks()
  */
 class DocStatus
 {
@@ -91,6 +91,7 @@ class DocStatus
 
     /**
      * Set datCre
+     * @ORM\PrePersist
      *
      * @param \DateTime $datCre
      *
@@ -98,7 +99,7 @@ class DocStatus
      */
     public function setDatCre($datCre)
     {
-        $this->datCre = $datCre;
+        $this->datCre = new \DateTime();
 
         return $this;
     }
@@ -115,14 +116,15 @@ class DocStatus
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param \DateTime $datUpd
      *
      * @return DocStatus
      */
     public function setDatUpd($datUpd)
     {
-        $this->datUpd = $datUpd;
+        $this->datUpd = new \DateTime();
 
         return $this;
     }
