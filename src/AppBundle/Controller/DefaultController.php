@@ -68,7 +68,7 @@ class DefaultController extends Controller
  
         $res = $this->render(
             'Default/raspunsHtml.html.twig',
-            array('number' => $number)
+            array('number' => $number,'var1' => '11111')
         );
         
         return $res;

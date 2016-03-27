@@ -29,3 +29,9 @@ yaml_route_raspuns:
 yaml_route_flasf:
     path:     /flash/{numar}
     defaults: { _controller: AppBundle:Default:flashMsgEx }
+
+yaml_route_doi_param:
+    path:     params/{p1}/{p2}
+    defaults: { _controller: AppBundle:Global:paramsEx, p2:1 }
+    requirements:
+     p2: \d+
