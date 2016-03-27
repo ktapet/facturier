@@ -10,6 +10,12 @@ use AppBundle\Form\UnitMeasureType;
 
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+
+
 /**
  * UnitMeasure controller.
  *
@@ -39,6 +45,10 @@ class UnitMeasureController extends Controller
     {
         $unitMeasure = new UnitMeasure();
         $form = $this->createForm('AppBundle\Form\UnitMeasureType', $unitMeasure);
+
+        /* @facturier
+         * adaug butonul de submit
+         */
         $form->add('submit', SubmitType::class);
         $form->handleRequest($request);
 

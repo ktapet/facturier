@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 app_warehouse:
     resource: "@AppBundle/Resources/config/routing/warehouse.yml"
     prefix:    /warehouse
@@ -5,18 +6,38 @@ app_warehouse:
 app_unitmeasure:
     resource: "@AppBundle/Resources/config/routing/unitmeasure.yml"
     prefix:   /unitmeasure
+=======
+app_address:
+    resource: "@AppBundle/Resources/config/routing/address.yml"
+    prefix:   /address
+>>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
 
 app_partner:
     resource: "@AppBundle/Resources/config/routing/partner.yml"
     prefix:   /partner
 
+<<<<<<< HEAD
 app_address:
     resource: "@AppBundle/Resources/config/routing/address.yml"
     prefix:   /address
 
+=======
+>>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
 app_featurename:
     resource: "@AppBundle/Resources/config/routing/featurename.yml"
     prefix:   /featurename    
+
+app_unitmeasure:
+    resource: "@AppBundle/Resources/config/routing/unitmeasure.yml"
+    prefix:   /unitmeasure   
+    
+app_category:
+    resource: "@AppBundle/Resources/config/routing/category.yml"
+    prefix:   /category    
+    
+app_warehouse:
+    resource: "@AppBundle/Resources/config/routing/warehouse.yml"
+    prefix:   /warehouse    
 
 yaml_route_raspuns:
     path:     /raspuns/htmlmvc

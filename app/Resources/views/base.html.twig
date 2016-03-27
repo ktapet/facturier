@@ -26,6 +26,7 @@
         <title>{{ name }}</title>
     {% endif %}
 
+
 {% block stylesheets %}
     {% stylesheets 'css/*' filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}"/>
@@ -70,6 +71,47 @@
             } %}
             {% block dashboard_links %}
                 <ul class="nav navbar-nav navbar-left">
+
+ 
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />        
+        <link rel="stylesheet" href="{{ asset('css/facturier.css') }}" />
+ 
+    {% endblock %}    
+ 
+  </head>
+ 
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">              
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('index') }}">
+                    <img class="logo-img" alt="{{name}}" src="{{ asset(mypath|lower) }}" />
+                    <span class="logo-text">{{name}}</span>
+                </a>
+            </div>
+ 
+            <div class="navbar-collapse collapse clear">
+                {% set d_links = {
+                                'Feature name':'featurename',
+                                'Categories':'category',
+                                'Partner':'partner',
+                                'Unit measure':'unitmeasure',
+                                'Warehouse':'warehouse',
+                                'Address':'address'
+
+
+                                }
+                %}
+                {% block dashboard_links %}
+                <ul class="nav navbar-nav navbar-left"> 
+
                     {% for key,link in d_links %}
 
                         <li><a href="{{ path(link~'_index') }}">{{ key }}</a></li>
@@ -92,6 +134,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
+
             {% block submenu %}
                 <ul class="nav nav-sidebar">
                     <li><a href="#">Lista produse</a></li>
@@ -101,6 +144,16 @@
             {% endblock %}
 
          </div>
+
+        {% block submenu %}
+          <ul class="nav nav-sidebar">
+            <li><a href="#">Sublink1</a></li>
+            <li><a href="#">SubLink2</a></li>
+            <li><a href="#">SubLink3</a></li>
+          </ul>
+          {% endblock %}
+        </div>
+
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             {% block body %}{% endblock %}
         </div>

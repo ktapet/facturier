@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class WarehouseType extends AbstractType
+class CategoryType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,12 +16,6 @@ class WarehouseType extends AbstractType
     {
         $builder
             ->add('name')
-<<<<<<< HEAD
-            //->add('datCre', 'datetime')
-            //->add('datUpd', 'datetime')
-=======
-            ->add('address')
->>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
         ;
     }
     
@@ -31,7 +25,7 @@ class WarehouseType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Warehouse'
+            'data_class' => 'AppBundle\Entity\Category'
         ));
     }
 }

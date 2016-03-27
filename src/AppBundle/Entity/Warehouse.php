@@ -34,16 +34,15 @@ class Warehouse
      * 
      */
     private $name;      
-    
-    
-    /**
-     * @inheritDoc
-     */
-    public function __toString()
-    {
-        return $this->name;
-    }       
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string")
+     * 
+     */
+    private $address;      
+    
     /**
      * @var \DateTime
      *
@@ -56,8 +55,15 @@ class Warehouse
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
-    private $datUpd;    
+    private $datUpd;  
     
+    /**
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }  
 
     /**
      * Get id
@@ -94,6 +100,7 @@ class Warehouse
     }
 
     /**
+<<<<<<< HEAD
      * Set datCre
      * @ORM\PrePersist()
      * @param \DateTime $datCre
@@ -103,6 +110,41 @@ class Warehouse
     public function setDatCre()
     {
         $this->datCre = new \DateTime();
+=======
+     * Set address
+     *
+     * @param string address
+     *
+     * @return Warehouse
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+    
+    /**
+     * Set datCre
+     * @ORM\PrePersist
+     * @param \DateTime $datCre
+     *
+     * @return FeatureName
+     */
+    public function setDatCre()
+    {
+        $this->datCre = new \Datetime();
+>>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
 
         return $this;
     }
@@ -119,11 +161,16 @@ class Warehouse
 
     /**
      * Set datUpd
+<<<<<<< HEAD
      * @ORM\PreUpdate()
      * @ORM\PrePersist()
+=======
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
+>>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
      * @param \DateTime $datUpd
      *
-     * @return Warehouse
+     * @return FeatureName
      */
     public function setDatUpd()
     {

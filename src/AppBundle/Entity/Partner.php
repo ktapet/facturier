@@ -254,4 +254,11 @@ class Partner
         return $this->addresses;
     }
 
+<<<<<<< HEAD
+=======
+    public function __toString()
+    {
+        return $this->name;
+    }
+>>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
 }

@@ -2,10 +2,14 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Partner;
+
+
+
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use AppBundle\Entity\Partner;
 use AppBundle\Entity\Address;
 use AppBundle\Form\AddressType;
 
@@ -26,10 +30,14 @@ class AddressController extends Controller
     public function indexAction()
     {
 
-
         $em = $this->getDoctrine()->getManager();
 
         $addresses = $em->getRepository('AppBundle:Address')->findAll();
+
+
+
+        return $this->render('address/index.html.twig', array(
+            'addresses' => $addresses,
 
 
         return $this->render('address/index.html.twig', array(
@@ -96,7 +104,11 @@ class AddressController extends Controller
             $em->persist($address);
             $em->flush();
 
-            return $this->redirectToRoute('address_show', array('id' => $address->getId()));
+
+
+
+            return $this->redirectToRoute('address_edit', array('id' => $address->getId()));
+
         }
 
         return $this->render('address/edit.html.twig', array(

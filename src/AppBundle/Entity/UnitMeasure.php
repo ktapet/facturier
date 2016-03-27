@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * UnitMeasure
@@ -27,7 +28,7 @@ class UnitMeasure
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string")
+     * @ORM\Column(name="name", type="string", nullable=false)
      */
     private $name;        
     
@@ -50,7 +51,7 @@ class UnitMeasure
      */
     public function __toString()
     {
-        return $this->name;
+        return (string) $this->getName();
     }   
 
 

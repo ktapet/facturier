@@ -162,5 +162,12 @@ body {
 }
 .navbar-brand > img {
     display: inline-block;
+<<<<<<< HEAD
 
+=======
+}
+
+.top-buffer { 
+    margin-top:20px; 
+>>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
 }

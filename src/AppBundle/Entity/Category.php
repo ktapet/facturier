@@ -1,16 +1,14 @@
 <?php
-
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
 /**
  * Category
  *
  * @ORM\Table()
  * @ORM\Entity
  * @UniqueEntity("name")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Category
 {
@@ -44,7 +42,6 @@ class Category
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
-
     /**
      * @var \DateTime
      *
@@ -59,7 +56,6 @@ class Category
     {
         return $this->name;
     }       
-
     /**
      * Constructor
      */
@@ -67,7 +63,6 @@ class Category
     {
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
     /**
      * Get id
      *
@@ -77,7 +72,6 @@ class Category
     {
         return $this->id;
     }
-
     /**
      * Set name
      *
@@ -88,10 +82,8 @@ class Category
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
-
     /**
      * Get name
      *
@@ -101,21 +93,18 @@ class Category
     {
         return $this->name;
     }
-
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      *
      * @return Category
      */
-    public function setDatCre($datCre)
+    public function setDatCre()
     {
-        $this->datCre = $datCre;
-
+        $this->datCre = new \DateTime();
         return $this;
     }
-
     /**
      * Get datCre
      *
@@ -125,21 +114,19 @@ class Category
     {
         return $this->datCre;
     }
-
     /**
      * Set datUpd
-     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
      * @param \DateTime $datUpd
      *
      * @return Category
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
-        $this->datUpd = $datUpd;
-
+        $this->datUpd = new \DateTime();
         return $this;
     }
-
     /**
      * Get datUpd
      *
@@ -149,7 +136,6 @@ class Category
     {
         return $this->datUpd;
     }
-
     /**
      * Add product
      *
@@ -160,10 +146,8 @@ class Category
     public function addProduct(\AppBundle\Entity\Product $product)
     {
         $this->products[] = $product;
-
         return $this;
     }
-
     /**
      * Remove product
      *
@@ -173,7 +157,6 @@ class Category
     {
         $this->products->removeElement($product);
     }
-
     /**
      * Get products
      *
