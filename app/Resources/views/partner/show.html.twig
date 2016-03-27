@@ -1,9 +1,19 @@
 {% extends 'base.html.twig' %}
 
+{% block submenu %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('partner_new') }}">Add new</a></li>        
+        <li><a href="{{ path('partner_index') }}">List</a></li>
+        <li><a href="{{ path('partner_edit', { 'id': partner.id }) }}">Edit</a></li>
+    </ul>
+{% endblock %}
+
 {% block body %}
     <h1>Partner</h1>
-
-    <table>
+    
+<div class="col-lg-4">
+    <div class="table-responsive">
+    <table class="table table-bordered table-hover record_properties">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -31,18 +41,15 @@
             </tr>
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('partner_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('partner_edit', { 'id': partner.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    </div>           
+    
+    {{ form_start(delete_form) }}
+        <div class="row top-buffer">
+            <div class="col-md-4 col-sm-4">
+               {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-danger'}}) }}
+            </div>
+        </div>  
+    {{ form_end(delete_form) }}
+</div>
+    
 {% endblock %}

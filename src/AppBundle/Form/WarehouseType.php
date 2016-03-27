@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PartnerType extends AbstractType
+class WarehouseType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,8 +16,7 @@ class PartnerType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('bank')
-            ->add('iban')
+            ->add('address')
         ;
     }
     
@@ -27,7 +26,7 @@ class PartnerType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Partner'
+            'data_class' => 'AppBundle\Entity\Warehouse'
         ));
     }
 }

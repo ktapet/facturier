@@ -75,7 +75,7 @@ class Document
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="DocStatus")
-     * @ORM\JoinColumn(name="docstatus_id", referencedColumnName="id")
+     * 
      */
     private $docStatus;       
     

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PartnerType extends AbstractType
+class AddressType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,9 +15,16 @@ class PartnerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('bank')
-            ->add('iban')
+            ->add('alias')
+            ->add('street')
+            ->add('no')
+            ->add('city')
+            ->add('country')
+            ->add('email')
+            ->add('phone')
+           // ->add('datCre', 'datetime')
+           // ->add('datUpd', 'datetime')
+            ->add('partner')
         ;
     }
     
@@ -27,7 +34,7 @@ class PartnerType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Partner'
+            'data_class' => 'AppBundle\Entity\Address'
         ));
     }
 }

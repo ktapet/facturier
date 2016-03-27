@@ -47,16 +47,20 @@
  
             <div class="navbar-collapse collapse clear">
                 {% set d_links = {
-                                'MainLink  1':'link1',
-                'MainLink  2':'link2',
-                'MainLink  3':'link3'
-                                
+                                'Feature name':'featurename',
+                                'Categories':'category',
+                                'Partner':'partner',
+                                'Unit measure':'unitmeasure',
+                                'Warehouse':'warehouse',
+                                'Address':'address'
+
+
                                 }
                 %}
                 {% block dashboard_links %}
                 <ul class="nav navbar-nav navbar-left"> 
                     {% for key,link in d_links %}
-                        <li><a href="#">{{ key }}</a></li>
+                        <li><a href="{{ path(link~'_index') }}">{{ key }}</a></li>
                     {% endfor %}
                     
                 </ul>
@@ -77,7 +81,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
         {% block submenu %}
           <ul class="nav nav-sidebar">
-            <li><a href="#">SubLink1</a></li>
+            <li><a href="#">Sublink1</a></li>
             <li><a href="#">SubLink2</a></li>
             <li><a href="#">SubLink3</a></li>
           </ul>

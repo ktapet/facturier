@@ -1,47 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Partner list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Bank</th>
-                <th>Iban</th>
-                <th>Datcre</th>
-                <th>Datupd</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for partner in partners %}
-            <tr>
-                <td><a href="{{ path('partner_show', { 'id': partner.id }) }}">{{ partner.id }}</a></td>
-                <td>{{ partner.name }}</td>
-                <td>{{ partner.bank }}</td>
-                <td>{{ partner.iban }}</td>
-                <td>{% if partner.datCre %}{{ partner.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if partner.datUpd %}{{ partner.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('partner_show', { 'id': partner.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('partner_edit', { 'id': partner.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('partner_new') }}">Create a new entry</a>
-        </li>
+{% block submenu %}
+    <ul class="nav nav-sidebar">
+      <li><a href="{{ path('partner_new') }}">Add new</a></li>
+      <li><a href="{{ path('partner_index') }}">List</a></li>
     </ul>
+{% endblock %}
+          
+{% block body %}
+    <h1>Partners list</h1>
+
+        <div class="table-responsive">
+            <table class="table table-hover records_list">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Bank</th>
+                        <th>Iban</th>
+                        <th>Datcre</th>
+                        <th>Datupd</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for partner in partners %}
+                    <tr>
+                        <td><a href="{{ path('partner_show', { 'id': partner.id }) }}">{{ partner.id }}</a></td>
+                        <td>{{ partner.name }}</td>
+                        <td>{{ partner.bank }}</td>
+                        <td>{{ partner.iban }}</td>
+                        <td>{% if partner.datCre %}{{ partner.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if partner.datUpd %}{{ partner.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>
+
+                        <a class="btn btn-sm btn-info" href="{{ path('partner_show', { 'id': partner.id }) }}">
+                            <span class="glyphicon glyphicon-share"></span> Show</a>
+
+                        <a class="btn btn-sm btn-default" href="{{ path('partner_edit', { 'id': partner.id }) }}">
+                            <span class="glyphicon glyphicon-edit"></span> Edit</a>
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+            
+
+            
 {% endblock %}
