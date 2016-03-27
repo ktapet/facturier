@@ -28,10 +28,11 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "symfony/assetic-bundle": "^2.7"
+        
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
-        "symfony/phpunit-bridge": "^2.7"
+		"symfony/phpunit-bridge": "3.0.x-dev"
     },
     "scripts": {
         "post-install-cmd": [

@@ -26,17 +26,17 @@
         <title>{{ name }}</title>
     {% endif %}
 
+{% block stylesheets %}
+    {% stylesheets 'css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
 
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
-
-        <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}"/>
+        {#<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}"/>#}
 
 
-        <link rel="stylesheet" href="{{ asset('css/facturier.css') }}"/>
+        {#<link rel="stylesheet" href="{{ asset('css/facturier.css') }}"/>#}
 
-    {% endblock %}
-
+    {% endstylesheets %}
+{% endblock %}
 </head>
 
 <body>
@@ -107,16 +107,22 @@
     </div>
 </div>
 {% block javascript %}
+    {% javascripts 'js/*'
+                    'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'
+                    'jquery-ui-1.11.4'
+    %}
     <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/logis.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('jquery-ui-1.11.4/jquery-ui.js') }}"></script>
+    {#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>#}
+    {#<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>#}
+    {#<script type="text/javascript" src="{{ asset('js/logis.js') }}"></script>#}
+    {#<script type="text/javascript" src="{{ asset('jquery-ui-1.11.4/jquery-ui.js') }}"></script>#}
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="{{ asset('js/html5shiv-printshiv.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/respond.min.js') }}"></script>
+    <!--<script type="text/javascript" src="{{ asset('js/html5shiv-printshiv.min.js') }}"></script>-->
+    {#<script type="text/javascript" src="{{ asset('js/respond.min.js') }}"></script>#}
     <![endif]-->
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 

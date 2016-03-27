@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
  * Base structure
  */
@@ -103,7 +102,7 @@ body {
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
-=======
+
 body {
     padding-top: 50px;
 }
@@ -163,5 +162,5 @@ body {
 }
 .navbar-brand > img {
     display: inline-block;
->>>>>>> 9717e311e57647e7024ad665475bb40f41b76fd2
+
 }
