@@ -3,10 +3,6 @@ address_index:
     defaults: { _controller: "AppBundle:Address:index" }
     methods:  GET
 
-<<<<<<< HEAD
-
-=======
->>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
 address_show:
     path:     /{id}/show
     defaults: { _controller: "AppBundle:Address:show" }
@@ -24,10 +20,7 @@ address_edit:
 
 address_delete:
     path:     /{id}/delete
-<<<<<<< HEAD
     defaults: { _controller: "AppBundle:Address:delete" }
     methods:  DELETE
-=======
-    defaults: { _controller: "AppBundle:Category:delete" }
-    methods:  DELETE
->>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
+
+

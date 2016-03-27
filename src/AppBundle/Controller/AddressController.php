@@ -36,8 +36,7 @@ class AddressController extends Controller
 
 
 
-        return $this->render('address/index.html.twig', array(
-            'addresses' => $addresses,
+
 
 
         return $this->render('address/index.html.twig', array(

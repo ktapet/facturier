@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\UnitMeasure;
 use AppBundle\Form\UnitMeasureType;
 
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
