@@ -5,7 +5,7 @@
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
     <parameter key="kernel.name">app</parameter>
-    <parameter key="kernel.cache_dir">C:\wamp64\www\facturier\var\cache\dev</parameter>
+    <parameter key="kernel.cache_dir">C:/wamp64/www/facturier/var/cache/dev</parameter>
     <parameter key="kernel.logs_dir">C:\wamp64\www\facturier\var\logs</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
@@ -60,7 +60,7 @@
     <parameter key="validator.translation_domain">validators</parameter>
     <parameter key="profiler_listener.only_exceptions">false</parameter>
     <parameter key="profiler_listener.only_master_requests">false</parameter>
-    <parameter key="profiler.storage.dsn">file:C:\wamp64\www\facturier\var\cache\dev/profiler</parameter>
+    <parameter key="profiler.storage.dsn">file:C:/wamp64/www/facturier/var/cache/dev/profiler</parameter>
     <parameter key="router.options.generator_class">Symfony\Component\Routing\Generator\UrlGenerator</parameter>
     <parameter key="router.options.generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</parameter>
     <parameter key="router.options.generator_dumper_class">Symfony\Component\Routing\Generator\Dumper\PhpGeneratorDumper</parameter>
@@ -72,12 +72,12 @@
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
-    <parameter key="router.resource">C:\wamp64\www\facturier\var\cache\dev/assetic/routing.yml</parameter>
+    <parameter key="router.resource">C:/wamp64/www/facturier/var/cache/dev/assetic/routing.yml</parameter>
     <parameter key="router.cache_class_prefix">appDev</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
-    <parameter key="debug.container.dump">C:\wamp64\www\facturier\var\cache\dev/appDevDebugProjectContainer.xml</parameter>
+    <parameter key="debug.container.dump">C:/wamp64/www/facturier/var/cache/dev/appDevDebugProjectContainer.xml</parameter>
     <parameter key="security.authentication.trust_resolver.anonymous_class">Symfony\Component\Security\Core\Authentication\Token\AnonymousToken</parameter>
     <parameter key="security.authentication.trust_resolver.rememberme_class">Symfony\Component\Security\Core\Authentication\Token\RememberMeToken</parameter>
     <parameter key="security.role_hierarchy.roles" type="collection"/>
@@ -171,7 +171,7 @@
     <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
-    <parameter key="swiftmailer.spool.default.memory.path">C:\wamp64\www\facturier\var\cache\dev/swiftmailer/spool/default</parameter>
+    <parameter key="swiftmailer.spool.default.memory.path">C:/wamp64/www/facturier/var/cache/dev/swiftmailer/spool/default</parameter>
     <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
     <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
     <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
@@ -289,7 +289,7 @@
     <parameter key="doctrine.orm.second_level_cache.cache_configuration.class">Doctrine\ORM\Cache\CacheConfiguration</parameter>
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">C:\wamp64\www\facturier\var\cache\dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">C:/wamp64/www/facturier/var/cache/dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="sensio_framework_extra.view.guesser.class">Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser</parameter>
     <parameter key="sensio_framework_extra.controller.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener</parameter>
@@ -315,7 +315,7 @@
     <parameter key="assetic.worker.cache_busting.class">Assetic\Factory\Worker\CacheBustingWorker</parameter>
     <parameter key="assetic.value_supplier.class">Symfony\Bundle\AsseticBundle\DefaultValueSupplier</parameter>
     <parameter key="assetic.node.paths" type="collection"/>
-    <parameter key="assetic.cache_dir">C:\wamp64\www\facturier\var\cache\dev/assetic</parameter>
+    <parameter key="assetic.cache_dir">C:/wamp64/www/facturier/var/cache/dev/assetic</parameter>
     <parameter key="assetic.bundles" type="collection">
       <parameter>FrameworkBundle</parameter>
       <parameter>SecurityBundle</parameter>
@@ -649,7 +649,7 @@
         </argument>
       </argument>
       <argument type="collection">
-        <argument key="cache_dir">C:\wamp64\www\facturier\var\cache\dev/translations</argument>
+        <argument key="cache_dir">C:/wamp64/www/facturier/var/cache/dev/translations</argument>
         <argument key="debug">true</argument>
       </argument>
       <argument type="collection"/>
@@ -1109,7 +1109,7 @@
     <service id="templating.filename_parser" class="Symfony\Bundle\FrameworkBundle\Templating\TemplateFilenameParser"/>
     <service id="templating.locator" class="Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator" public="false">
       <argument type="service" id="file_locator"/>
-      <argument>C:\wamp64\www\facturier\var\cache\dev</argument>
+      <argument>C:/wamp64/www/facturier/var/cache/dev</argument>
     </service>
     <service id="validator" class="Symfony\Component\Validator\Validator\ValidatorInterface">
       <factory service="validator.builder" method="getValidator"/>
@@ -1171,7 +1171,7 @@
       <tag name="monolog.logger" channel="profiler"/>
       <argument type="service">
         <service class="Symfony\Component\HttpKernel\Profiler\FileProfilerStorage" public="false">
-          <argument>file:C:\wamp64\www\facturier\var\cache\dev/profiler</argument>
+          <argument>file:C:/wamp64/www/facturier/var/cache/dev/profiler</argument>
         </service>
       </argument>
       <argument type="service" id="monolog.logger.profiler" on-invalid="null"/>
@@ -1567,7 +1567,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>56f83e71a616a9.72178781</argument>
+            <argument>56f84e91d2cb98.49804651</argument>
           </service>
         </argument>
       </argument>
@@ -1696,7 +1696,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>56f83e71a616a9.72178781</argument>
+            <argument>56f84e91d2cb98.49804651</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -1742,7 +1742,7 @@
           <argument>form_div_layout.html.twig</argument>
         </argument>
         <argument key="autoescape">filename</argument>
-        <argument key="cache">C:\wamp64\www\facturier\var\cache\dev/twig</argument>
+        <argument key="cache">C:/wamp64/www/facturier/var/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="paths" type="collection"/>
         <argument key="date" type="collection">
@@ -2146,7 +2146,7 @@
             </argument>
           </call>
           <call method="setProxyDir">
-            <argument>C:\wamp64\www\facturier\var\cache\dev/doctrine/orm/Proxies</argument>
+            <argument>C:/wamp64/www/facturier/var/cache/dev/doctrine/orm/Proxies</argument>
           </call>
           <call method="setProxyNamespace">
             <argument>Proxies</argument>
@@ -2250,7 +2250,7 @@
             </argument>
             <argument type="service">
               <service class="Assetic\Cache\ConfigCache" public="false">
-                <argument>C:\wamp64\www\facturier\var\cache\dev/assetic/config</argument>
+                <argument>C:/wamp64/www/facturier/var/cache/dev/assetic/config</argument>
               </service>
             </argument>
             <argument>true</argument>
@@ -2647,7 +2647,7 @@
       <argument type="service" id="assetic.asset_manager"/>
       <argument type="service">
         <service class="Assetic\Cache\FilesystemCache" public="false">
-          <argument>C:\wamp64\www\facturier\var\cache\dev/assetic/assets</argument>
+          <argument>C:/wamp64/www/facturier/var/cache/dev/assetic/assets</argument>
         </service>
       </argument>
       <argument>false</argument>
@@ -2889,7 +2889,7 @@
       <argument>true</argument>
     </service>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
-      <argument>C:\wamp64\www\facturier\var\cache\dev/sessions</argument>
+      <argument>C:/wamp64/www/facturier/var/cache/dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
@@ -2907,9 +2907,9 @@
     <service id="router" class="Symfony\Bundle\FrameworkBundle\Routing\Router">
       <tag name="monolog.logger" channel="router"/>
       <argument type="service" id="service_container"/>
-      <argument>C:\wamp64\www\facturier\var\cache\dev/assetic/routing.yml</argument>
+      <argument>C:/wamp64/www/facturier/var/cache/dev/assetic/routing.yml</argument>
       <argument type="collection">
-        <argument key="cache_dir">C:\wamp64\www\facturier\var\cache\dev</argument>
+        <argument key="cache_dir">C:/wamp64/www/facturier/var/cache/dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
         <argument key="generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
@@ -2934,7 +2934,7 @@
       </argument>
       <argument type="service">
         <service class="Doctrine\Common\Cache\FilesystemCache" public="false">
-          <argument>C:\wamp64\www\facturier\var\cache\dev/annotations</argument>
+          <argument>C:/wamp64/www/facturier/var/cache/dev/annotations</argument>
         </service>
       </argument>
       <argument>true</argument>

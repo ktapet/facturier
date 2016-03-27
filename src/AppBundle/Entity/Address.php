@@ -110,12 +110,6 @@ class Address
     
 
 
-
-    public function __toString()
-    {
-        return $this->getCity();
-    }
-
     /**
      * Get id
      *
