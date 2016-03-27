@@ -170,4 +170,3 @@ class Warehouse
         return $this->datUpd;
     }
 }
-

@@ -91,7 +91,7 @@ class PaymentType
      * Set datCre
      * @ORM\PrePersist
      * @param \DateTime $datCre
-     *
+     * @ORM\PrePersist
      * @return PaymentType
      */
     public function setDatCre($datCre)
@@ -99,6 +99,7 @@ class PaymentType
         $this->datCre = new \DateTime();
 
         return $this;
+
     }
 
     /**
@@ -116,7 +117,7 @@ class PaymentType
      * @ORM\PreUpdate
      * @ORM\PrePersist
      * @param \DateTime $datUpd
-     *
+     * @ORM\PrePersist
      * @return PaymentType
      */
     public function setDatUpd($datUpd)
