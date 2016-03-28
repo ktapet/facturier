@@ -59,7 +59,7 @@ class Address
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Partner", inversedBy="addresses")
-     *
+     * @ORM\JoinColumn(name="partner_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $partner;   
     
