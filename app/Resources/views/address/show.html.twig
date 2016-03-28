@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block submenu %}
 <ul class="nav nav-sidebar">
+    <li><a href="{{ path('address_new') }}">Add new</a></li>
     <li><a href="{{ path('address_index') }}">List</a></li>
     <li><a href="{{ path('address_edit', { 'id': address.id }) }}">Edit</a></li>
 </ul>
@@ -44,6 +45,10 @@
                 <tr>
                     <th>Phone</th>
                     <td>{{ address.phone }}</td>
+                </tr>
+                <tr>
+                    <th>Partner</th>
+                    <td>{{ address.partner }}</td>
                 </tr>
                 <tr>
                     <th>Datcre</th>

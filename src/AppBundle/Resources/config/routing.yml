@@ -5,7 +5,7 @@ app_address:
 app_partner:
     resource: "@AppBundle/Resources/config/routing/partner.yml"
     prefix:   /partner
-
+    
 app_featurename:
     resource: "@AppBundle/Resources/config/routing/featurename.yml"
     prefix:   /featurename    
@@ -21,7 +21,7 @@ app_category:
 app_warehouse:
     resource: "@AppBundle/Resources/config/routing/warehouse.yml"
     prefix:   /warehouse    
-
+    
 yaml_route_raspuns:
     path:     /raspuns/htmlmvc
     defaults: { _controller: AppBundle:Default:raspunsHtmlMvc }

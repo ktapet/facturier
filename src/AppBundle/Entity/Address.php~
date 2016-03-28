@@ -1,82 +1,102 @@
 <?php
 
 namespace AppBundle\Entity;
+ 
 use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+ 
 /**
  * Address
- * 
+ *
  * @ORM\Table(name="address")
- * @ORM\Entity()
- * @UniqueEntity("alias")
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\Entity
+ *  
  */
+
 class Address
 {
     /**
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id()
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
-     * @ORM\Column(name="alias", type="string", length=30)
-     */
-    private $alias;
-
-    /**
-     * @ORM\Column(name="street", type="string")
-     */
-    private $street;
-    
-    /**
-     * @ORM\Column(name="no", type="string")
-     */
-    private $no;    
-    
-    /**
-     * @ORM\Column(name="city", type="string")
-     */
-    private $city;    
-    
-    /**
-     * @ORM\Column(name="country", type="string")
-     */
-    private $country;    
-    
-    /**
-     * @ORM\Column(name="email", type="string")
-     */
-    private $email;
-    
-    /**
-     * @ORM\Column(name="phone", type="string")
-     */
-    private $phone;    
-  
-    /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Partner", inversedBy="addresses")
-     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * 
      */
-    private $partner;   
+    private $id;
     
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alias", type="string")
+     * 
+     */
+    private $alias;   
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="street", type="string")
+     * 
+     */
+    private $street;   
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="no", type="string")
+     * 
+     */
+    private $no;   
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string")
+     * 
+     */
+    private $city;   
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string")
+     * 
+     */
+    private $country;   
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string")
+     * 
+     */
+    private $phone;   
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string")
+     * 
+     */
+    private $email;   
+    
+     /**
+     * 
+     * @ORM\ManyToOne(targetEntity="Partner", inversedBy="addresses")
+     * 
+     */
+    private $partner;  
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
-
+ 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
+    private $datUpd; 
 
-    private $datUpd;  
 
     /**
      * Get id
@@ -209,29 +229,6 @@ class Address
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Address
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
      * Set phone
      *
      * @param string $phone
@@ -241,6 +238,7 @@ class Address
     public function setPhone($phone)
     {
         $this->phone = $phone;
+
         return $this;
     }
 
@@ -255,15 +253,39 @@ class Address
     }
 
     /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Address
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
      * Set datCre
-     * @ORM\PrePersist
+     *
      * @param \DateTime $datCre
      *
      * @return Address
      */
-    public function setDatCre()
+    public function setDatCre($datCre)
     {
-        $this->datCre = new \DateTime();
+        $this->datCre = $datCre;
 
         return $this;
     }
@@ -280,17 +302,14 @@ class Address
 
     /**
      * Set datUpd
-     * 
-     * @ORM\PrePersist
-     * @ORM\PreUpdate
-     * 
+     *
      * @param \DateTime $datUpd
      *
      * @return Address
      */
-    public function setDatUpd()
+    public function setDatUpd($datUpd)
     {
-        $this->datUpd = new \DateTime();
+        $this->datUpd = $datUpd;
 
         return $this;
     }
@@ -327,10 +346,5 @@ class Address
     public function getPartner()
     {
         return $this->partner;
-    }
-
-    public function __toString()
-    {
-        return $this->alias;
     }
 }

@@ -1,19 +1,16 @@
 <?php
-
+//@ORM\Entity 
 namespace AppBundle\Entity;
-
+ 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * DocStatus
+ * UnitMeasure
  *
- * @ORM\Table()
  * @ORM\Entity
- * @UniqueEntity("name")
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\Table(name="unit_measure") 
  */
-class DocStatus
+class UnitMeasure
 {
     /**
      * @var integer
@@ -24,36 +21,36 @@ class DocStatus
      * 
      */
     private $id;
-
     
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string")
+     * 
      */
-    private $name;     
-
+    private $name;   
+    
+    /**
+     * 
+     * @ORM\ManyToOne(targetEntity="Product")
+     * 
+     */
+    private $products; 
+    
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
-
+ 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
     private $datUpd;    
-    
-    /**
-     * @inheritDoc
-     */
-    public function __toString()
-    {
-        return $this->name;
-    }      
+ 
 
     /**
      * Get id
@@ -70,7 +67,7 @@ class DocStatus
      *
      * @param string $name
      *
-     * @return DocStatus
+     * @return UnitMeasure
      */
     public function setName($name)
     {
@@ -91,15 +88,14 @@ class DocStatus
 
     /**
      * Set datCre
-     * @ORM\PrePersist
      *
      * @param \DateTime $datCre
      *
-     * @return DocStatus
+     * @return UnitMeasure
      */
     public function setDatCre($datCre)
     {
-        $this->datCre = new \DateTime();
+        $this->datCre = $datCre;
 
         return $this;
     }
@@ -116,15 +112,14 @@ class DocStatus
 
     /**
      * Set datUpd
-     * @ORM\PreUpdate
-     * @ORM\PrePersist
+     *
      * @param \DateTime $datUpd
      *
-     * @return DocStatus
+     * @return UnitMeasure
      */
     public function setDatUpd($datUpd)
     {
-        $this->datUpd = new \DateTime();
+        $this->datUpd = $datUpd;
 
         return $this;
     }
@@ -137,5 +132,29 @@ class DocStatus
     public function getDatUpd()
     {
         return $this->datUpd;
+    }
+
+    /**
+     * Set products
+     *
+     * @param \AppBundle\Entity\Product $products
+     *
+     * @return UnitMeasure
+     */
+    public function setProducts(\AppBundle\Entity\Product $products = null)
+    {
+        $this->products = $products;
+
+        return $this;
+    }
+
+    /**
+     * Get products
+     *
+     * @return \AppBundle\Entity\Product
+     */
+    public function getProducts()
+    {
+        return $this->products;
     }
 }

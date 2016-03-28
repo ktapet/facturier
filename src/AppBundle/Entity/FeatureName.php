@@ -50,7 +50,6 @@ class FeatureName
    public function __toString(){
        return (string)$this->getEn();
    }
-   
 
     /**
      * Get id
@@ -72,7 +71,6 @@ class FeatureName
     public function setFnValue($fnValue)
     {
         $this->fnValue = $fnValue;
-
         return $this;
     }
 
@@ -96,7 +94,6 @@ class FeatureName
     public function setDatCre()
     {
         $this->datCre = new \Datetime();
-
         return $this;
     }
 
@@ -121,7 +118,6 @@ class FeatureName
     public function setDatUpd()
     {
         $this->datUpd = new \DateTime();
-
         return $this;
     }
 

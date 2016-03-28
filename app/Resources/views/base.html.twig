@@ -13,7 +13,9 @@
     <meta content="" name="description">
     <meta content="" name="author">
     <link rel="icon"  href="{{ asset('favicon.ico') }}" />
+
     {% set name = 'Facturier' %} 
+
     {% set mypath = 'images/logo_'~name~'.png' %}
     {% if head_title is defined %}    
         <title>{{name}} - {{ head_title }}</title>
@@ -41,7 +43,9 @@
                 </button>
                 <a class="navbar-brand" href="{{ path('index') }}">
                     <img class="logo-img" alt="{{name}}" src="{{ asset(mypath|lower) }}" />
-                    <span class="logo-text">{{name}}</span>
+
+                    {#<span class="logo-text">{{name}}</span>#}
+
                 </a>
             </div>
  
@@ -54,7 +58,6 @@
                                 'Warehouse':'warehouse',
                                 'Address':'address',
                                 'PaymentType':'paymenttype'
-
 
                                 }
                 %}
@@ -110,3 +113,4 @@
  
 </body>
 </html>
+

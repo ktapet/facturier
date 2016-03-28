@@ -30,7 +30,7 @@ class PaymentType
      * @ORM\Column(name="name", type="string")
      */
     private $name;        
-    
+
     /**
      * @var \DateTime
      *
@@ -52,8 +52,6 @@ class PaymentType
     {
         return $this->name;
     }       
-     
- 
 
     /**
      * Get id
@@ -91,7 +89,7 @@ class PaymentType
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      * @ORM\PrePersist
      * @return PaymentType
@@ -99,6 +97,7 @@ class PaymentType
     public function setDatCre($datCre)
     {
         $this->datCre = new \DateTime();
+
         return $this;
 
     }
@@ -115,7 +114,8 @@ class PaymentType
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param \DateTime $datUpd
      * @ORM\PrePersist
      * @return PaymentType
@@ -123,6 +123,7 @@ class PaymentType
     public function setDatUpd($datUpd)
     {
         $this->datUpd = new \DateTime();
+
         return $this;
     }
 
