@@ -1,17 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block submenu %}
     <ul class="nav nav-sidebar">
-<<<<<<< HEAD
-        <li><a href="{{ path('unitmeasure_new') }}">Add new</a></li>
-        <li><a href="{{ path('unitmeasure_index') }}">List</a></li>
-    </ul>
-{% endblock %}
-
-{% block body %}
-    <h1>UnitMeasure list</h1>
-
-<div class="table-responsive">
-=======
         <li><a href="{{ path('unitmeasure_new') }}">Add New</a></li>
         <li><a href="{{ path('unitmeasure_index') }}">List</a></li>
     </ul>
@@ -19,20 +8,15 @@
 {% block body %}
     <h1>Unit Measure list</h1>
 
->>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
     <table class="table table-hover records_list">
         <thead>
-            <tr>
-                <th>Id</th>
-<<<<<<< HEAD
-                <th>Name</th>
-=======
-                <th>Unit Measure</th>
->>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
-                <th>Datcre</th>
-                <th>Datupd</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Unit Measure</th>
+            <th>Datcre</th>
+            <th>Datupd</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for unitMeasure in unitMeasures %}
@@ -43,29 +27,14 @@
                 <td>{% if unitMeasure.datUpd %}{{ unitMeasure.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <a class="btn btn-sm btn-info" href="{{ path('unitmeasure_show', { 'id': unitMeasure.id }) }}">
-<<<<<<< HEAD
                         <span class="glyphicon glyphicon-share"></span> Show
                     </a>
-
                     <a class="btn btn-sm btn-default" href="{{ path('unitmeasure_edit', { 'id': unitMeasure.id }) }}">
-                        <span class="glyphicon glyphicon-edit"></span>Edit
-                    </a>
-                 </td>
-=======
-                        <span class="glyphicon glyphicon-share"></span> Show 
-                    </a>
-                    <a class="btn btn-sm btn-default" href="{{ path('unitmeasure_edit', { 'id': unitMeasure.id }) }}">
-                        <span class="glyphicon glyphicon-edit"></span> Edit                                
+                        <span class="glyphicon glyphicon-edit"></span> Edit
                     </a>
                 </td>
->>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
             </tr>
         {% endfor %}
         </tbody>
     </table>
-<<<<<<< HEAD
-</div>
-
-=======
->>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
 {% endblock %}

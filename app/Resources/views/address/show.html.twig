@@ -1,23 +1,18 @@
 {% extends 'base.html.twig' %}
-<<<<<<< HEAD
-{% set head_title = 'address show' %}
-
-=======
->>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
 {% block submenu %}
-<ul class="nav nav-sidebar">
-    <li><a href="{{ path('address_index') }}">List</a></li>
-    <li><a href="{{ path('address_edit', { 'id': address.id }) }}">Edit</a></li>
-</ul>
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('address_index') }}">List</a></li>
+        <li><a href="{{ path('address_edit', { 'id': address.id }) }}">Edit</a></li>
+    </ul>
 {% endblock %}
 
 {% block body %}
     <h1>Address</h1>
 
-<div class="col-lg-4">
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover record_properties">
-            <tbody>
+    <div class="col-lg-4">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover record_properties">
+                <tbody>
                 <tr>
                     <th>Id</th>
                     <td>{{ address.id }}</td>
@@ -58,23 +53,17 @@
                     <th>Datupd</th>
                     <td>{% if address.datUpd %}{{ address.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
                 </tr>
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+        </div>
 
-
-<<<<<<< HEAD
 
         <div class="form-group">
-=======
-    <div class="form-group">
->>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
-        {{ form_start(delete_form) }}
-        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
-            {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
+            {{ form_start(delete_form) }}
+            <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+                {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
+            </div>
+            {{ form_end(delete_form) }}
         </div>
-        {{ form_end(delete_form) }}
     </div>
-</div>
 {% endblock %}
-
