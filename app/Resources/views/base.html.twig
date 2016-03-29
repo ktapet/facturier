@@ -21,11 +21,13 @@
         <title>{{name}}</title>
     {% endif %}
 
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/facturier.css') }}" />
-
-    {% endblock %}
+    {#{% block stylesheets %}#}
+        {% stylesheets 'css/*' filter='cssrewrite' output="css/app.css" %}
+        {#<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />#}
+        {#<link rel="stylesheet" href="{{ asset('css/facturier.css') }}" />#}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {#{% endblock %}#}
 
 </head>
 
@@ -94,17 +96,22 @@
     </div>
 </div>
 {% block javascript %}
+    {% javascripts  'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'
+                    'js/*'
+                    'jquery-ui-1.11.4/*' output="js/app.js" %}
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/logis.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('jquery-ui-1.11.4/jquery-ui.js') }}"></script>
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="{{ asset('js/html5shiv-printshiv.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/respond.min.js') }}"></script>
-    <![endif]-->
+    {#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>#}
+    {#<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>#}
+    {#<script type="text/javascript" src="{{ asset('js/logis.js') }}"></script>#}
+    {#<script type="text/javascript" src="{{ asset('jquery-ui-1.11.4/jquery-ui.js') }}"></script>#}
+    {#<!--[if lt IE 9]>#}
+    {#<script type="text/javascript" src="{{ asset('js/html5shiv-printshiv.min.js') }}"></script>#}
+    {#<script type="text/javascript" src="{{ asset('js/respond.min.js') }}"></script>#}
+    {#<![endif]-->#}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 
