@@ -5,3 +5,6 @@ annotation_route:
 yaml_route:
     resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
+
+logout:
+    path: /logout

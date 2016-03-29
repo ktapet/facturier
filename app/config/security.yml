@@ -5,8 +5,19 @@ security:
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
             in_memory:
-                memory: ~
+                memory:
+                    users:
+                        casperice:
+                            password: $2y$12$rEZtKha2WZyBx.ChWlWxk.GkLsBTh4QCcQIOu1kXcHs7xpvvi9JXq
+                            roles: 'ROLE_ADMIN'
+                        casper:
+                            password: $2y$12$rEZtKha2WZyBx.ChWlWxk.GkLsBTh4QCcQIOu1kXcHs7xpvvi9JXq
+                            roles: 'ROLE_USER'
 
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -21,10 +32,19 @@ security:
 
             # activate different ways to authenticate
 
-            # http_basic: ~
+            http_basic: ~
             # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
 
+        secured_area:
+            pattern: ^/logout
+            http_basic: ~
+            logout:
+                path: /logout
+                target: /address
+
+    access_control:
+        - { path: ^/admin, roles: [ROLE_ADMIN, ROLE_USER]  }
 

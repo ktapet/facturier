@@ -78,6 +78,7 @@ class Address
      * 
      * 
      * @ORM\Column(name="email", type="string")
+     *
      */
     private $email;
     
