@@ -48,7 +48,9 @@
                 </tr>
                 <tr>
                     <th>Partner</th>
-                    <td>{{ address.partner }}</td>
+                    <td>
+                        <a href="{{ path('partner_show', { 'id': address.partner.id }) }}">{{ address.partner }}</a>
+                    </td>
                 </tr>
                 <tr>
                     <th>Datcre</th>

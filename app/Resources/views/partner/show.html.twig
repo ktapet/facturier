@@ -34,9 +34,9 @@
                 <tr>
                     <th>Address</th>
                     <td>
-                        {% for address in partner.addresses %}
-                            {{address}}
-                        {%endfor%} 
+                        {%for address in partner.addresses%}
+                                <a href="{{ path('address_show', { 'id': address.id }) }}">{{address }}</a>
+                            {%endfor%}
                     </td>
                 </tr>
                 <tr>

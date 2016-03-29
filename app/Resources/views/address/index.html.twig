@@ -38,7 +38,9 @@
                 <td>{{ address.country }}</td>
                 <td>{{ address.email }}</td>
                 <td>{{ address.phone }}</td>                
-                <td>{{ address.partner }}</td>
+                <td>
+                    <a href="{{ path('partner_show', { 'id': address.partner.id }) }}">{{ address.partner }}</a>                          
+                </td>
                 <td>{% if address.datCre %}{{ address.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if address.datUpd %}{{ address.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
