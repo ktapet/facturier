@@ -1,0 +1,88 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}   
+
+    <h3>Product editing</h3>
+
+{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    {{ form_errors(form) }}
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+                {{ form_label(form.nume, 'Nume', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_errors(form.nume) }}
+                <div class="col-lg-8">
+                    {{ form_widget(form.nume, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(form.unitMeasure, 'Unitate de masura', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_errors(form.unitMeasure) }}
+                <div class="col-lg-8">
+                    {{ form_widget(form.unitMeasure, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>     
+            <div class="form-group">
+                {{ form_label(form.manufacturer, 'Manufacturer', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_errors(form.manufacturer) }}
+                <div class="col-lg-8">
+                    {{ form_widget(form.manufacturer, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>  
+            <div class="form-group">
+                {{ form_label(form.ean, 'Ean', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_errors(form.ean) }}
+                <div class="col-lg-8">
+                    {{ form_widget(form.ean, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>              
+            <div class="form-group">
+                {{ form_label(form.reference, 'Reference', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_errors(form.reference) }}
+                <div class="col-lg-8">
+                    {{ form_widget(form.reference, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>              
+            <div class="form-group">
+                {{ form_label(form.salePrice, 'Sale price', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_errors(form.salePrice) }}
+                <div class="col-lg-8">
+                    {{ form_widget(form.salePrice, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>      
+            <div class="form-group">
+                {{ form_label(form.categories, 'Categories', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_errors(form.categories) }}
+                <div class="col-lg-8">
+                    {{ form_widget(form.categories, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>   
+        </div>   
+    </div>   
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+
+                <div class="wrap-playvideos">
+
+                    <h3>Product features</h3>
+                    <ul class="features" data-prototype="{{ form_widget(form.features.vars.prototype)|e }}">
+
+                        {% for feature in form.features %}
+                            <li>{{ form_widget(feature) }}</li>
+                        {% endfor %}
+                    </ul>
+                    <div style="clear:both;margin-bottom:10px "></div>
+                    <div class="form-group">
+                        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+                            {{ form_widget(form.submit, { 'label': 'Add', 'attr': {'class': 'btn btn-sm btn-success'}}) }}
+                        </div>
+                    </div>            
+                </div>
+            </div>
+        </div> 
+    </div>     
+
+{{ form_end(form) }} 
+
+{% endblock %}

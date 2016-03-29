@@ -54,7 +54,7 @@ class Product
     
     /**
      * 
-     * @ORM\ManyToMany(targetEntity="Feature", inversedBy="products")
+     * @ORM\ManyToMany(targetEntity="Feature", inversedBy="products", cascade={"persist"})
      * 
      * 
      */
@@ -132,10 +132,10 @@ class Product
      */
     public function __construct()
     {
+        $this->features = new ArrayCollection();
         $this->categories = new ArrayCollection();
-        $this->features = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->productWarehouses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->images = new ArrayCollection();
+        $this->productWarehouses = new ArrayCollection();
     }
 
     /**
@@ -381,7 +381,7 @@ class Product
      */
     public function addFeature(\AppBundle\Entity\Feature $feature)
     {
-        $this->features[] = $feature;
+        $this->features->add($feature);
 
         return $this;
     }
