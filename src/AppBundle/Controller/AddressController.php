@@ -131,7 +131,7 @@ class AddressController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('address_delete', array('id' => $address->getId())))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class, ['label'=>'Trimite', 'attr'=>['class'=>'btn btn-primary']])
+            ->add('submit', SubmitType::class, ['label'=>'Delete', 'attr'=>['class'=>'btn btn-primary']])
             ->getForm()
         ;
     }
