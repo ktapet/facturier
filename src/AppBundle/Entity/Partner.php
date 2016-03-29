@@ -37,7 +37,7 @@ class Partner
      * @var integer
      *
      * @ORM\OneToMany(targetEntity="Address", mappedBy="partner")
-     *
+     *  
      */
     private $addresses;     
     
