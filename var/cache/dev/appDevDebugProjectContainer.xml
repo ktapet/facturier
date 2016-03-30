@@ -15,8 +15,6 @@
       <parameter key="SwiftmailerBundle">Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle</parameter>
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
-      <parameter key="AsseticBundle">Symfony\Bundle\AsseticBundle\AsseticBundle</parameter>
-      <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
@@ -73,7 +71,7 @@
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
-    <parameter key="router.resource">C:\wamp64\www\facturier\var\cache\dev/assetic/routing.yml</parameter>
+    <parameter key="router.resource">C:\wamp64\www\facturier\app/config/routing_dev.yml</parameter>
     <parameter key="router.cache_class_prefix">appDev</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
@@ -309,101 +307,6 @@
     <parameter key="sensio_framework_extra.converter.doctrine.class">Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter</parameter>
     <parameter key="sensio_framework_extra.converter.datetime.class">Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DateTimeParamConverter</parameter>
     <parameter key="sensio_framework_extra.view.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\TemplateListener</parameter>
-    <parameter key="assetic.asset_factory.class">Symfony\Bundle\AsseticBundle\Factory\AssetFactory</parameter>
-    <parameter key="assetic.asset_manager.class">Assetic\Factory\LazyAssetManager</parameter>
-    <parameter key="assetic.asset_manager_cache_warmer.class">Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer</parameter>
-    <parameter key="assetic.cached_formula_loader.class">Assetic\Factory\Loader\CachedFormulaLoader</parameter>
-    <parameter key="assetic.config_cache.class">Assetic\Cache\ConfigCache</parameter>
-    <parameter key="assetic.config_loader.class">Symfony\Bundle\AsseticBundle\Factory\Loader\ConfigurationLoader</parameter>
-    <parameter key="assetic.config_resource.class">Symfony\Bundle\AsseticBundle\Factory\Resource\ConfigurationResource</parameter>
-    <parameter key="assetic.coalescing_directory_resource.class">Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource</parameter>
-    <parameter key="assetic.directory_resource.class">Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource</parameter>
-    <parameter key="assetic.filter_manager.class">Symfony\Bundle\AsseticBundle\FilterManager</parameter>
-    <parameter key="assetic.worker.ensure_filter.class">Assetic\Factory\Worker\EnsureFilterWorker</parameter>
-    <parameter key="assetic.worker.cache_busting.class">Assetic\Factory\Worker\CacheBustingWorker</parameter>
-    <parameter key="assetic.value_supplier.class">Symfony\Bundle\AsseticBundle\DefaultValueSupplier</parameter>
-    <parameter key="assetic.node.paths" type="collection"/>
-    <parameter key="assetic.cache_dir">C:\wamp64\www\facturier\var\cache\dev/assetic</parameter>
-    <parameter key="assetic.bundles" type="collection">
-      <parameter>FrameworkBundle</parameter>
-      <parameter>SecurityBundle</parameter>
-      <parameter>TwigBundle</parameter>
-      <parameter>MonologBundle</parameter>
-      <parameter>SwiftmailerBundle</parameter>
-      <parameter>DoctrineBundle</parameter>
-      <parameter>SensioFrameworkExtraBundle</parameter>
-      <parameter>AsseticBundle</parameter>
-      <parameter>FOSUserBundle</parameter>
-      <parameter>AppBundle</parameter>
-      <parameter>DebugBundle</parameter>
-      <parameter>WebProfilerBundle</parameter>
-      <parameter>SensioDistributionBundle</parameter>
-      <parameter>SensioGeneratorBundle</parameter>
-    </parameter>
-    <parameter key="assetic.twig_extension.class">Symfony\Bundle\AsseticBundle\Twig\AsseticExtension</parameter>
-    <parameter key="assetic.twig_formula_loader.class">Assetic\Extension\Twig\TwigFormulaLoader</parameter>
-    <parameter key="assetic.helper.dynamic.class">Symfony\Bundle\AsseticBundle\Templating\DynamicAsseticHelper</parameter>
-    <parameter key="assetic.helper.static.class">Symfony\Bundle\AsseticBundle\Templating\StaticAsseticHelper</parameter>
-    <parameter key="assetic.php_formula_loader.class">Symfony\Bundle\AsseticBundle\Factory\Loader\AsseticHelperFormulaLoader</parameter>
-    <parameter key="assetic.debug">true</parameter>
-    <parameter key="assetic.use_controller">true</parameter>
-    <parameter key="assetic.enable_profiler">false</parameter>
-    <parameter key="assetic.read_from">C:\wamp64\www\facturier\app/../web</parameter>
-    <parameter key="assetic.write_to">C:\wamp64\www\facturier\app/../web</parameter>
-    <parameter key="assetic.variables" type="collection"/>
-    <parameter key="assetic.java.bin">C:\ProgramData\Oracle\Java\javapath\java.EXE</parameter>
-    <parameter key="assetic.node.bin">/usr/bin/node</parameter>
-    <parameter key="assetic.ruby.bin">/usr/bin/ruby</parameter>
-    <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
-    <parameter key="assetic.reactjsx.bin">/usr/bin/jsx</parameter>
-    <parameter key="assetic.filter.cssrewrite.class">Assetic\Filter\CssRewriteFilter</parameter>
-    <parameter key="assetic.twig_extension.functions" type="collection"/>
-    <parameter key="assetic.controller.class">Symfony\Bundle\AsseticBundle\Controller\AsseticController</parameter>
-    <parameter key="assetic.routing_loader.class">Symfony\Bundle\AsseticBundle\Routing\AsseticLoader</parameter>
-    <parameter key="assetic.cache.class">Assetic\Cache\FilesystemCache</parameter>
-    <parameter key="assetic.use_controller_worker.class">Symfony\Bundle\AsseticBundle\Factory\Worker\UseControllerWorker</parameter>
-    <parameter key="assetic.request_listener.class">Symfony\Bundle\AsseticBundle\EventListener\RequestListener</parameter>
-    <parameter key="fos_user.backend_type_orm">true</parameter>
-    <parameter key="fos_user.security.interactive_login_listener.class">FOS\UserBundle\EventListener\LastLoginListener</parameter>
-    <parameter key="fos_user.security.login_manager.class">FOS\UserBundle\Security\LoginManager</parameter>
-    <parameter key="fos_user.resetting.email.template">FOSUserBundle:Resetting:email.txt.twig</parameter>
-    <parameter key="fos_user.registration.confirmation.template">FOSUserBundle:Registration:email.txt.twig</parameter>
-    <parameter key="fos_user.storage">orm</parameter>
-    <parameter key="fos_user.firewall_name">main</parameter>
-    <parameter key="fos_user.model_manager_name">null</parameter>
-    <parameter key="fos_user.model.user.class">AppBundle\Entity\User</parameter>
-    <parameter key="fos_user.profile.form.type">FOS\UserBundle\Form\Type\ProfileFormType</parameter>
-    <parameter key="fos_user.profile.form.name">fos_user_profile_form</parameter>
-    <parameter key="fos_user.profile.form.validation_groups" type="collection">
-      <parameter>Profile</parameter>
-      <parameter>Default</parameter>
-    </parameter>
-    <parameter key="fos_user.registration.confirmation.from_email" type="collection">
-      <parameter key="webmaster@example.com">webmaster</parameter>
-    </parameter>
-    <parameter key="fos_user.registration.confirmation.enabled">false</parameter>
-    <parameter key="fos_user.registration.form.type">FOS\UserBundle\Form\Type\RegistrationFormType</parameter>
-    <parameter key="fos_user.registration.form.name">fos_user_registration_form</parameter>
-    <parameter key="fos_user.registration.form.validation_groups" type="collection">
-      <parameter>Registration</parameter>
-      <parameter>Default</parameter>
-    </parameter>
-    <parameter key="fos_user.change_password.form.type">FOS\UserBundle\Form\Type\ChangePasswordFormType</parameter>
-    <parameter key="fos_user.change_password.form.name">fos_user_change_password_form</parameter>
-    <parameter key="fos_user.change_password.form.validation_groups" type="collection">
-      <parameter>ChangePassword</parameter>
-      <parameter>Default</parameter>
-    </parameter>
-    <parameter key="fos_user.resetting.email.from_email" type="collection">
-      <parameter key="webmaster@example.com">webmaster</parameter>
-    </parameter>
-    <parameter key="fos_user.resetting.token_ttl">86400</parameter>
-    <parameter key="fos_user.resetting.form.type">FOS\UserBundle\Form\Type\ResettingFormType</parameter>
-    <parameter key="fos_user.resetting.form.name">fos_user_resetting_form</parameter>
-    <parameter key="fos_user.resetting.form.validation_groups" type="collection">
-      <parameter>ResetPassword</parameter>
-      <parameter>Default</parameter>
-    </parameter>
     <parameter key="web_profiler.debug_toolbar.position">bottom</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
@@ -515,12 +418,6 @@
               </service>
             </argument>
             <argument type="service" id="templating.locator"/>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer" public="false">
-            <tag name="kernel.cache_warmer" priority="10"/>
-            <argument type="service" id="service_container"/>
           </service>
         </argument>
         <argument type="service" id="kernel.class_cache.cache_warmer"/>
@@ -960,11 +857,6 @@
               <argument key="Symfony\Component\Form\Extension\Core\Type\ResetType">form.type.reset</argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\CurrencyType">form.type.currency</argument>
               <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType">form.type.entity</argument>
-              <argument key="FOS\UserBundle\Form\Type\UsernameFormType">fos_user.username_form_type</argument>
-              <argument key="FOS\UserBundle\Form\Type\ProfileFormType">fos_user.profile.form.type</argument>
-              <argument key="FOS\UserBundle\Form\Type\RegistrationFormType">fos_user.registration.form.type</argument>
-              <argument key="FOS\UserBundle\Form\Type\ChangePasswordFormType">fos_user.change_password.form.type</argument>
-              <argument key="FOS\UserBundle\Form\Type\ResettingFormType">fos_user.resetting.form.type</argument>
             </argument>
             <argument type="collection">
               <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="collection">
@@ -1195,7 +1087,6 @@
       <call method="addXmlMappings">
         <argument type="collection">
           <argument>C:\wamp64\www\facturier\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/config/validation.xml</argument>
-          <argument>C:\wamp64\www\facturier\vendor\friendsofsymfony\user-bundle\Resources\config\validation.xml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">
@@ -1207,16 +1098,7 @@
       <call method="addObjectInitializers">
         <argument type="collection">
           <argument type="service" id="doctrine.orm.validator_initializer"/>
-          <argument type="service">
-            <service class="FOS\UserBundle\Validator\Initializer" public="false">
-              <tag name="validator.initializer"/>
-              <argument type="service" id="fos_user.user_manager"/>
-            </service>
-          </argument>
         </argument>
-      </call>
-      <call method="addXmlMapping">
-        <argument>C:\wamp64\www\facturier\vendor\friendsofsymfony\user-bundle\DependencyInjection\Compiler/../../Resources/config/storage-validation/orm.xml</argument>
       </call>
       <factory class="Symfony\Component\Validator\Validation" method="createValidatorBuilder"/>
     </service>
@@ -1453,15 +1335,6 @@
               </service>
             </argument>
           </call>
-          <call method="addLoader">
-            <argument type="service">
-              <service class="Symfony\Bundle\AsseticBundle\Routing\AsseticLoader" public="false">
-                <tag name="routing.loader"/>
-                <argument type="service" id="assetic.asset_manager"/>
-                <argument type="collection"/>
-              </service>
-            </argument>
-          </call>
         </service>
       </argument>
     </service>
@@ -1506,14 +1379,6 @@
         <argument type="collection">
           <argument>data_collector.router</argument>
           <argument>onKernelController</argument>
-        </argument>
-        <argument>0</argument>
-      </call>
-      <call method="addListenerService">
-        <argument>kernel.request</argument>
-        <argument type="collection">
-          <argument>assetic.request_listener</argument>
-          <argument>onKernelRequest</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -1602,22 +1467,6 @@
         <argument>Sensio\Bundle\FrameworkExtraBundle\EventListener\SecurityListener</argument>
       </call>
       <call method="addSubscriberService">
-        <argument>fos_user.security.interactive_login_listener</argument>
-        <argument>FOS\UserBundle\EventListener\LastLoginListener</argument>
-      </call>
-      <call method="addSubscriberService">
-        <argument>fos_user.listener.authentication</argument>
-        <argument>FOS\UserBundle\EventListener\AuthenticationListener</argument>
-      </call>
-      <call method="addSubscriberService">
-        <argument>fos_user.listener.flash</argument>
-        <argument>FOS\UserBundle\EventListener\FlashListener</argument>
-      </call>
-      <call method="addSubscriberService">
-        <argument>fos_user.listener.resetting</argument>
-        <argument>FOS\UserBundle\EventListener\ResettingListener</argument>
-      </call>
-      <call method="addSubscriberService">
         <argument>debug.dump_listener</argument>
         <argument>Symfony\Component\HttpKernel\EventListener\DumpListener</argument>
       </call>
@@ -1657,7 +1506,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>56faf83d190765.86612132</argument>
+            <argument>56fbb37a7b6c88.53558973</argument>
           </service>
         </argument>
         <argument type="service">
@@ -1665,15 +1514,6 @@
             <argument type="service" id="security.user.provider.concrete.in_memory"/>
             <argument type="service" id="security.user_checker.default"/>
             <argument>secured_area</argument>
-            <argument type="service" id="security.encoder_factory"/>
-            <argument>true</argument>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider" public="false">
-            <argument type="service" id="fos_user.user_provider.username"/>
-            <argument type="service" id="security.user_checker.default"/>
-            <argument>main</argument>
             <argument type="service" id="security.encoder_factory"/>
             <argument>true</argument>
           </service>
@@ -1687,9 +1527,6 @@
     <service id="security.authentication.trust_resolver" class="Symfony\Component\Security\Core\Authentication\AuthenticationTrustResolver" public="false">
       <argument>Symfony\Component\Security\Core\Authentication\Token\AnonymousToken</argument>
       <argument>Symfony\Component\Security\Core\Authentication\Token\RememberMeToken</argument>
-    </service>
-    <service id="security.authentication.session_strategy" class="Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy" public="false">
-      <argument>migrate</argument>
     </service>
     <service id="security.authentication_utils" class="Symfony\Component\Security\Http\Authentication\AuthenticationUtils">
       <argument type="service" id="request_stack"/>
@@ -1751,11 +1588,6 @@
             <argument key="security.firewall.map.context.secured_area" type="service">
               <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
                 <argument>^/logout</argument>
-              </service>
-            </argument>
-            <argument key="security.firewall.map.context.main" type="service">
-              <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                <argument>^/</argument>
               </service>
             </argument>
           </argument>
@@ -1867,7 +1699,6 @@
             <argument type="service" id="security.token_storage"/>
             <argument type="collection">
               <argument type="service" id="security.user.provider.concrete.in_memory"/>
-              <argument type="service" id="fos_user.user_provider.username"/>
             </argument>
             <argument>default</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -1890,7 +1721,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>56faf83d190765.86612132</argument>
+            <argument>56fbb37a7b6c88.53558973</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -1923,7 +1754,6 @@
             <argument type="service" id="security.token_storage"/>
             <argument type="collection">
               <argument type="service" id="security.user.provider.concrete.in_memory"/>
-              <argument type="service" id="fos_user.user_provider.username"/>
             </argument>
             <argument>secured_area</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -1976,101 +1806,6 @@
           <argument type="service">
             <service class="Symfony\Component\Security\Http\EntryPoint\BasicAuthenticationEntryPoint" public="false">
               <argument>Secured Area</argument>
-            </service>
-          </argument>
-          <argument>null</argument>
-          <argument>null</argument>
-          <argument type="service" id="monolog.logger.security" on-invalid="null"/>
-          <argument>false</argument>
-        </service>
-      </argument>
-    </service>
-    <service id="security.firewall.map.context.main" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
-      <argument type="collection">
-        <argument type="service" id="security.channel_listener"/>
-        <argument type="service">
-          <service class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
-            <argument type="service" id="security.token_storage"/>
-            <argument type="collection">
-              <argument type="service" id="security.user.provider.concrete.in_memory"/>
-              <argument type="service" id="fos_user.user_provider.username"/>
-            </argument>
-            <argument>main</argument>
-            <argument type="service" id="monolog.logger.security" on-invalid="null"/>
-            <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
-          </service>
-        </argument>
-        <argument type="service">
-          <service class="Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener" public="false">
-            <tag name="security.remember_me_aware" id="main" provider="security.user.provider.concrete.fos_userbundle"/>
-            <argument type="service" id="security.token_storage"/>
-            <argument type="service" id="security.authentication.manager"/>
-            <argument type="service" id="security.authentication.session_strategy"/>
-            <argument type="service" id="security.http_utils"/>
-            <argument>main</argument>
-            <argument type="service">
-              <service class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler" public="false">
-                <argument type="service" id="security.http_utils"/>
-                <argument type="collection"/>
-                <call method="setOptions">
-                  <argument type="collection">
-                    <argument key="always_use_default_target_path">false</argument>
-                    <argument key="default_target_path">/</argument>
-                    <argument key="login_path">/login</argument>
-                    <argument key="target_path_parameter">_target_path</argument>
-                    <argument key="use_referer">false</argument>
-                  </argument>
-                </call>
-                <call method="setProviderKey">
-                  <argument>main</argument>
-                </call>
-              </service>
-            </argument>
-            <argument type="service">
-              <service class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler" public="false">
-                <argument type="service" id="http_kernel"/>
-                <argument type="service" id="security.http_utils"/>
-                <argument type="collection"/>
-                <argument type="service" id="monolog.logger.security" on-invalid="null"/>
-                <call method="setOptions">
-                  <argument type="collection">
-                    <argument key="login_path">/login</argument>
-                    <argument key="failure_path">null</argument>
-                    <argument key="failure_forward">false</argument>
-                    <argument key="failure_path_parameter">_failure_path</argument>
-                  </argument>
-                </call>
-              </service>
-            </argument>
-            <argument type="collection">
-              <argument key="check_path">/login_check</argument>
-              <argument key="use_forward">false</argument>
-              <argument key="require_previous_session">true</argument>
-              <argument key="username_parameter">_username</argument>
-              <argument key="password_parameter">_password</argument>
-              <argument key="csrf_parameter">_csrf_token</argument>
-              <argument key="csrf_token_id">authenticate</argument>
-              <argument key="post_only">true</argument>
-            </argument>
-            <argument type="service" id="monolog.logger.security" on-invalid="null"/>
-            <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
-            <argument type="service" id="security.csrf.token_manager"/>
-          </service>
-        </argument>
-        <argument type="service" id="security.access_listener"/>
-      </argument>
-      <argument type="service">
-        <service class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
-          <argument type="service" id="security.token_storage"/>
-          <argument type="service" id="security.authentication.trust_resolver"/>
-          <argument type="service" id="security.http_utils"/>
-          <argument>main</argument>
-          <argument type="service">
-            <service class="Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint" public="false">
-              <argument type="service" id="http_kernel"/>
-              <argument type="service" id="security.http_utils"/>
-              <argument>/login</argument>
-              <argument>false</argument>
             </service>
           </argument>
           <argument>null</argument>
@@ -2238,39 +1973,6 @@
       </call>
       <call method="addExtension">
         <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Twig\AsseticExtension" public="false">
-            <tag name="twig.extension"/>
-            <tag name="assetic.templating.twig"/>
-            <argument type="service" id="assetic.asset_factory"/>
-            <argument type="service" id="templating.name_parser"/>
-            <argument>true</argument>
-            <argument type="collection"/>
-            <argument type="collection">
-              <argument>FrameworkBundle</argument>
-              <argument>SecurityBundle</argument>
-              <argument>TwigBundle</argument>
-              <argument>MonologBundle</argument>
-              <argument>SwiftmailerBundle</argument>
-              <argument>DoctrineBundle</argument>
-              <argument>SensioFrameworkExtraBundle</argument>
-              <argument>AsseticBundle</argument>
-              <argument>FOSUserBundle</argument>
-              <argument>AppBundle</argument>
-              <argument>DebugBundle</argument>
-              <argument>WebProfilerBundle</argument>
-              <argument>SensioDistributionBundle</argument>
-              <argument>SensioGeneratorBundle</argument>
-            </argument>
-            <argument type="service">
-              <service class="Symfony\Bundle\AsseticBundle\DefaultValueSupplier" public="false">
-                <argument type="service" id="service_container"/>
-              </service>
-            </argument>
-          </service>
-        </argument>
-      </call>
-      <call method="addExtension">
-        <argument type="service">
           <service class="Symfony\Bridge\Twig\Extension\DumpExtension" public="false">
             <tag name="twig.extension"/>
             <argument type="service" id="var_dumper.cloner"/>
@@ -2409,14 +2111,6 @@
       <argument type="service">
         <service class="Symfony\Bridge\Doctrine\ContainerAwareEventManager" public="false">
           <argument type="service" id="service_container"/>
-          <call method="addEventSubscriber">
-            <argument type="service">
-              <service class="FOS\UserBundle\Doctrine\UserListener" public="false">
-                <tag name="doctrine.event_subscriber"/>
-                <argument type="service" id="service_container"/>
-              </service>
-            </argument>
-          </call>
           <call method="addEventListener">
             <argument type="collection">
               <argument>loadClassMetadata</argument>
@@ -2498,21 +2192,6 @@
                     </service>
                   </argument>
                   <argument>AppBundle\Entity</argument>
-                </call>
-                <call method="addDriver">
-                  <argument type="service">
-                    <service class="Doctrine\ORM\Mapping\Driver\XmlDriver">
-                      <argument type="service">
-                        <service class="Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator">
-                          <argument type="collection">
-                            <argument key="C:\wamp64\www\facturier\vendor\friendsofsymfony\user-bundle\Resources\config\doctrine-mapping">FOS\UserBundle\Model</argument>
-                          </argument>
-                          <argument>.orm.xml</argument>
-                        </service>
-                      </argument>
-                    </service>
-                  </argument>
-                  <argument>FOS\UserBundle\Model</argument>
                 </call>
               </service>
             </argument>
@@ -2598,553 +2277,6 @@
       <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
       <argument type="service" id="security.token_storage" on-invalid="null"/>
       <argument type="service" id="security.authorization_checker" on-invalid="null"/>
-    </service>
-    <service id="assetic.filter_manager" class="Symfony\Bundle\AsseticBundle\FilterManager">
-      <argument type="service" id="service_container"/>
-      <argument type="collection">
-        <argument key="cssrewrite">assetic.filter.cssrewrite</argument>
-      </argument>
-    </service>
-    <service id="assetic.asset_manager" class="Assetic\Factory\LazyAssetManager">
-      <argument type="service" id="assetic.asset_factory"/>
-      <argument type="collection">
-        <argument key="twig" type="service">
-          <service class="Assetic\Factory\Loader\CachedFormulaLoader" public="false">
-            <tag name="assetic.formula_loader" alias="twig"/>
-            <tag name="assetic.templating.twig"/>
-            <argument type="service">
-              <service class="Assetic\Extension\Twig\TwigFormulaLoader" public="false">
-                <tag name="assetic.templating.twig"/>
-                <tag name="monolog.logger" channel="assetic"/>
-                <argument type="service" id="twig"/>
-                <argument type="service" id="monolog.logger.assetic" on-invalid="ignore"/>
-              </service>
-            </argument>
-            <argument type="service">
-              <service class="Assetic\Cache\ConfigCache" public="false">
-                <argument>C:\wamp64\www\facturier\var\cache\dev/assetic/config</argument>
-              </service>
-            </argument>
-            <argument>true</argument>
-          </service>
-        </argument>
-      </argument>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>FrameworkBundle</argument>
-                  <argument>C:\wamp64\www\facturier\app/Resources/FrameworkBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>FrameworkBundle</argument>
-                  <argument>C:\wamp64\www\facturier\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>SecurityBundle</argument>
-                  <argument>C:\wamp64\www\facturier\app/Resources/SecurityBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>SecurityBundle</argument>
-                  <argument>C:\wamp64\www\facturier\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>TwigBundle</argument>
-                  <argument>C:\wamp64\www\facturier\app/Resources/TwigBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>TwigBundle</argument>
-                  <argument>C:\wamp64\www\facturier\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>MonologBundle</argument>
-                  <argument>C:\wamp64\www\facturier\app/Resources/MonologBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>MonologBundle</argument>
-                  <argument>C:\wamp64\www\facturier\vendor\symfony\monolog-bundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>SwiftmailerBundle</argument>
-                  <argument>C:\wamp64\www\facturier\app/Resources/SwiftmailerBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>SwiftmailerBundle</argument>
-                  <argument>C:\wamp64\www\facturier\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>DoctrineBundle</argument>
-                  <argument>C:\wamp64\www\facturier\app/Resources/DoctrineBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>DoctrineBundle</argument>
-                  <argument>C:\wamp64\www\facturier\vendor\doctrine\doctrine-bundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>SensioFrameworkExtraBundle</argument>
-                  <argument>C:\wamp64\www\facturier\app/Resources/SensioFrameworkExtraBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>SensioFrameworkExtraBundle</argument>
-                  <argument>C:\wamp64\www\facturier\vendor\sensio\framework-extra-bundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>AsseticBundle</argument>
-                  <argument>C:\wamp64\www\facturier\app/Resources/AsseticBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>AsseticBundle</argument>
-                  <argument>C:\wamp64\www\facturier\vendor\symfony\assetic-bundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>FOSUserBundle</argument>
-                  <argument>C:\wamp64\www\facturier\app/Resources/FOSUserBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>FOSUserBundle</argument>
-                  <argument>C:\wamp64\www\facturier\vendor\friendsofsymfony\user-bundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>AppBundle</argument>
-                  <argument>C:\wamp64\www\facturier\app/Resources/AppBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>AppBundle</argument>
-                  <argument>C:\wamp64\www\facturier\src\AppBundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>DebugBundle</argument>
-                  <argument>C:\wamp64\www\facturier\app/Resources/DebugBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>DebugBundle</argument>
-                  <argument>C:\wamp64\www\facturier\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>WebProfilerBundle</argument>
-                  <argument>C:\wamp64\www\facturier\app/Resources/WebProfilerBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>WebProfilerBundle</argument>
-                  <argument>C:\wamp64\www\facturier\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>SensioDistributionBundle</argument>
-                  <argument>C:\wamp64\www\facturier\app/Resources/SensioDistributionBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>SensioDistributionBundle</argument>
-                  <argument>C:\wamp64\www\facturier\vendor\sensio\distribution-bundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>SensioGeneratorBundle</argument>
-                  <argument>C:\wamp64\www\facturier\app/Resources/SensioGeneratorBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>SensioGeneratorBundle</argument>
-                  <argument>C:\wamp64\www\facturier\vendor\sensio\generator-bundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="service" id="templating.loader"/>
-            <argument></argument>
-            <argument>C:\wamp64\www\facturier\app/Resources/views</argument>
-            <argument>/\.[^.]+\.twig$/</argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-    </service>
-    <service id="assetic.asset_factory" class="Symfony\Bundle\AsseticBundle\Factory\AssetFactory" public="false">
-      <argument type="service" id="kernel"/>
-      <argument type="service" id="service_container"/>
-      <argument type="service">
-        <service class="Symfony\Component\DependencyInjection\ParameterBag\ParameterBag" public="false">
-          <factory service="service_container" method="getParameterBag"/>
-        </service>
-      </argument>
-      <argument>C:\wamp64\www\facturier\app/../web</argument>
-      <argument>true</argument>
-      <call method="addWorker">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Worker\UseControllerWorker" public="false">
-            <tag name="assetic.factory_worker"/>
-          </service>
-        </argument>
-      </call>
-    </service>
-    <service id="assetic.filter.cssrewrite" class="Assetic\Filter\CssRewriteFilter">
-      <tag name="assetic.filter" alias="cssrewrite"/>
-    </service>
-    <service id="assetic.controller" class="Symfony\Bundle\AsseticBundle\Controller\AsseticController">
-      <argument type="service" id="assetic.asset_manager"/>
-      <argument type="service">
-        <service class="Assetic\Cache\FilesystemCache" public="false">
-          <argument>C:\wamp64\www\facturier\var\cache\dev/assetic/assets</argument>
-        </service>
-      </argument>
-      <argument>false</argument>
-      <argument type="service" id="profiler" on-invalid="null"/>
-    </service>
-    <service id="assetic.request_listener" class="Symfony\Bundle\AsseticBundle\EventListener\RequestListener">
-      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
-    </service>
-    <service id="fos_user.security.interactive_login_listener" class="FOS\UserBundle\EventListener\LastLoginListener">
-      <tag name="kernel.event_subscriber"/>
-      <argument type="service" id="fos_user.user_manager"/>
-    </service>
-    <service id="fos_user.security.login_manager" class="FOS\UserBundle\Security\LoginManager">
-      <argument type="service" id="security.token_storage"/>
-      <argument type="service" id="security.user_checker.default"/>
-      <argument type="service" id="security.authentication.session_strategy"/>
-      <argument type="service" id="service_container"/>
-    </service>
-    <service id="fos_user.user_provider.username" class="FOS\UserBundle\Security\UserProvider" public="false">
-      <argument type="service" id="fos_user.user_manager"/>
-    </service>
-    <service id="fos_user.util.user_manipulator" class="FOS\UserBundle\Util\UserManipulator">
-      <argument type="service" id="fos_user.user_manager"/>
-    </service>
-    <service id="fos_user.listener.authentication" class="FOS\UserBundle\EventListener\AuthenticationListener">
-      <tag name="kernel.event_subscriber"/>
-      <argument type="service" id="fos_user.security.login_manager"/>
-      <argument>main</argument>
-    </service>
-    <service id="fos_user.listener.flash" class="FOS\UserBundle\EventListener\FlashListener">
-      <tag name="kernel.event_subscriber"/>
-      <argument type="service" id="session"/>
-      <argument type="service" id="translator"/>
-    </service>
-    <service id="fos_user.username_form_type" class="FOS\UserBundle\Form\Type\UsernameFormType">
-      <tag name="form.type" alias="fos_user_username"/>
-      <argument type="service">
-        <service class="FOS\UserBundle\Form\DataTransformer\UserToUsernameTransformer" public="false">
-          <argument type="service" id="fos_user.user_manager"/>
-        </service>
-      </argument>
-    </service>
-    <service id="fos_user.profile.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
-      <argument type="service" id="form.factory"/>
-      <argument>fos_user_profile_form</argument>
-      <argument>FOS\UserBundle\Form\Type\ProfileFormType</argument>
-      <argument type="collection">
-        <argument>Profile</argument>
-        <argument>Default</argument>
-      </argument>
-    </service>
-    <service id="fos_user.profile.form.type" class="FOS\UserBundle\Form\Type\ProfileFormType">
-      <tag name="form.type" alias="fos_user_profile"/>
-      <argument>AppBundle\Entity\User</argument>
-    </service>
-    <service id="fos_user.registration.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
-      <argument type="service" id="form.factory"/>
-      <argument>fos_user_registration_form</argument>
-      <argument>FOS\UserBundle\Form\Type\RegistrationFormType</argument>
-      <argument type="collection">
-        <argument>Registration</argument>
-        <argument>Default</argument>
-      </argument>
-    </service>
-    <service id="fos_user.registration.form.type" class="FOS\UserBundle\Form\Type\RegistrationFormType">
-      <tag name="form.type" alias="fos_user_registration"/>
-      <argument>AppBundle\Entity\User</argument>
-    </service>
-    <service id="fos_user.change_password.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
-      <argument type="service" id="form.factory"/>
-      <argument>fos_user_change_password_form</argument>
-      <argument>FOS\UserBundle\Form\Type\ChangePasswordFormType</argument>
-      <argument type="collection">
-        <argument>ChangePassword</argument>
-        <argument>Default</argument>
-      </argument>
-    </service>
-    <service id="fos_user.change_password.form.type" class="FOS\UserBundle\Form\Type\ChangePasswordFormType">
-      <tag name="form.type" alias="fos_user_change_password"/>
-      <argument>AppBundle\Entity\User</argument>
-    </service>
-    <service id="fos_user.resetting.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
-      <argument type="service" id="form.factory"/>
-      <argument>fos_user_resetting_form</argument>
-      <argument>FOS\UserBundle\Form\Type\ResettingFormType</argument>
-      <argument type="collection">
-        <argument>ResetPassword</argument>
-        <argument>Default</argument>
-      </argument>
-    </service>
-    <service id="fos_user.resetting.form.type" class="FOS\UserBundle\Form\Type\ResettingFormType">
-      <tag name="form.type" alias="fos_user_resetting"/>
-      <argument>AppBundle\Entity\User</argument>
-    </service>
-    <service id="fos_user.listener.resetting" class="FOS\UserBundle\EventListener\ResettingListener">
-      <tag name="kernel.event_subscriber"/>
-      <argument type="service" id="router"/>
-      <argument>86400</argument>
     </service>
     <service id="data_collector.dump" class="Symfony\Component\HttpKernel\DataCollector\DumpDataCollector">
       <tag name="data_collector" id="dump" template="@Debug/Profiler/dump.html.twig" priority="240"/>
@@ -3362,18 +2494,6 @@
         <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
-    <service id="monolog.logger.assetic" class="Symfony\Bridge\Monolog\Logger">
-      <argument>assetic</argument>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.console"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.main"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
-    </service>
     <service id="monolog.handler.debug" class="Symfony\Bridge\Monolog\Handler\DebugHandler">
       <argument>100</argument>
       <argument>true</argument>
@@ -3397,7 +2517,7 @@
     <service id="router" class="Symfony\Bundle\FrameworkBundle\Routing\Router">
       <tag name="monolog.logger" channel="router"/>
       <argument type="service" id="service_container"/>
-      <argument>C:\wamp64\www\facturier\var\cache\dev/assetic/routing.yml</argument>
+      <argument>C:\wamp64\www\facturier\app/config/routing_dev.yml</argument>
       <argument type="collection">
         <argument key="cache_dir">C:\wamp64\www\facturier\var\cache\dev</argument>
         <argument key="debug">true</argument>
@@ -3410,7 +2530,6 @@
         <argument key="matcher_dumper_class">Symfony\Component\Routing\Matcher\Dumper\PhpMatcherDumper</argument>
         <argument key="matcher_cache_class">appDevUrlMatcher</argument>
         <argument key="strict_requirements">true</argument>
-        <argument key="resource_type">yaml</argument>
       </argument>
       <argument type="service" id="router.request_context" on-invalid="ignore"/>
       <argument type="service" id="monolog.logger.router" on-invalid="ignore"/>
@@ -3435,12 +2554,6 @@
           <argument key="class">Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder</argument>
           <argument key="arguments" type="collection">
             <argument>12</argument>
-          </argument>
-        </argument>
-        <argument key="FOS\UserBundle\Model\UserInterface" type="collection">
-          <argument key="class">Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder</argument>
-          <argument key="arguments" type="collection">
-            <argument>13</argument>
           </argument>
         </argument>
       </argument>
@@ -3472,10 +2585,6 @@
       <call method="addPath">
         <argument>C:\wamp64\www\facturier\vendor\doctrine\doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
-      </call>
-      <call method="addPath">
-        <argument>C:\wamp64\www\facturier\vendor\friendsofsymfony\user-bundle/Resources/views</argument>
-        <argument>FOSUser</argument>
       </call>
       <call method="addPath">
         <argument>C:\wamp64\www\facturier\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
@@ -3564,43 +2673,9 @@
         <argument>null</argument>
       </call>
     </service>
-    <service id="fos_user.mailer" class="FOS\UserBundle\Mailer\Mailer">
-      <argument type="service" id="swiftmailer.mailer.default"/>
-      <argument type="service" id="router"/>
-      <argument type="service" id="templating"/>
-      <argument type="collection">
-        <argument key="confirmation.template">FOSUserBundle:Registration:email.txt.twig</argument>
-        <argument key="resetting.template">FOSUserBundle:Resetting:email.txt.twig</argument>
-        <argument key="from_email" type="collection">
-          <argument key="confirmation" type="collection">
-            <argument key="webmaster@example.com">webmaster</argument>
-          </argument>
-          <argument key="resetting" type="collection">
-            <argument key="webmaster@example.com">webmaster</argument>
-          </argument>
-        </argument>
-      </argument>
-    </service>
-    <service id="fos_user.util.email_canonicalizer" class="FOS\UserBundle\Util\Canonicalizer"/>
-    <service id="fos_user.util.token_generator" class="FOS\UserBundle\Util\TokenGenerator">
-      <argument type="service" id="logger" on-invalid="ignore"/>
-    </service>
-    <service id="fos_user.user_manager" class="FOS\UserBundle\Doctrine\UserManager">
-      <argument type="service" id="security.encoder_factory"/>
-      <argument type="service" id="fos_user.util.email_canonicalizer"/>
-      <argument type="service" id="fos_user.util.email_canonicalizer"/>
-      <argument type="service">
-        <service class="Doctrine\Common\Persistence\ObjectManager" public="false">
-          <argument>null</argument>
-          <factory service="doctrine" method="getManager"/>
-        </service>
-      </argument>
-      <argument>AppBundle\Entity\User</argument>
-    </service>
     <service id="session.storage" alias="session.storage.native"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher"/>
     <service id="security.user_checker.secured_area" alias="security.user_checker.default"/>
-    <service id="security.user_checker.main" alias="security.user_checker.default"/>
     <service id="swiftmailer.spool" alias="swiftmailer.mailer.default.spool"/>
     <service id="swiftmailer.transport.real" alias="swiftmailer.mailer.default.transport.real"/>
     <service id="swiftmailer.plugin.messagelogger" alias="swiftmailer.mailer.default.plugin.messagelogger"/>
@@ -3612,7 +2687,6 @@
     <service id="doctrine.orm.default_metadata_cache" alias="doctrine_cache.providers.doctrine.orm.default_metadata_cache"/>
     <service id="doctrine.orm.default_result_cache" alias="doctrine_cache.providers.doctrine.orm.default_result_cache"/>
     <service id="doctrine.orm.default_query_cache" alias="doctrine_cache.providers.doctrine.orm.default_query_cache"/>
-    <service id="fos_user.util.username_canonicalizer" alias="fos_user.util.email_canonicalizer"/>
     <service id="console.command.sensiolabs_security_command_securitycheckercommand" alias="sensio_distribution.security_checker.command"/>
   </services>
 </container>

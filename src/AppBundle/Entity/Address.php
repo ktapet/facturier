@@ -86,7 +86,7 @@ class Address
      *
      * @var integer
      * 
-     * @ORM\ManyToOne(targetEntity="Partner", inversedBy="addresses") 
+     * @ORM\ManyToOne(targetEntity="Partner", inversedBy="addresses", onDelete="SET NULL")
      * 
      */
     private $partner;

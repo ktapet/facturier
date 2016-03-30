@@ -68,16 +68,16 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-    
-# Assetic Configuration
-assetic:
-    debug:          '%kernel.debug%'
-    use_controller: '%kernel.debug%'
-    filters:
-        cssrewrite: ~
 
-# FOSUserBundle Configuration
-fos_user:
-    db_driver: orm
-    firewall_name: main
-    user_class: AppBundle\Entity\User
+# Assetic Configuration
+#assetic:
+#    debug:          '%kernel.debug%'
+#    use_controller: '%kernel.debug%'
+#    filters:
+#        cssrewrite: ~
+#
+## FOSUserBundle Configuration
+#fos_user:
+#    db_driver: orm
+#    firewall_name: main
+#    user_class: AppBundle\Entity\User
