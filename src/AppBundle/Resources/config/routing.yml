@@ -1,3 +1,11 @@
+app_doctype:
+    resource: "@AppBundle/Resources/config/routing/doctype.yml"
+    prefix:   /doctype
+
+app_docstatus:
+    resource: "@AppBundle/Resources/config/routing/docstatus.yml"
+    prefix:   /docstatus
+
 app_address:
     resource: "@AppBundle/Resources/config/routing/address.yml"
     prefix:   /address
