@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block submenu %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('docstatus_new') }}">Add new</a></li>
+        <li><a href="{{ path('docstatus_index') }}">List</a></li>
+        <li><a href="{{ path('docstatus_edit', { 'id': docStatus.id }) }}">Edit</a></li>
+    </ul>
+{% endblock %}
+
+{% block body %}
+    <h1>DocStatus</h1>
+
+<div class="col-lg-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ docStatus.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ docStatus.name }}</td>
+            </tr>
+            <tr>
+                <th>Datcre</th>
+                <td>{% if docStatus.datCre %}{{ docStatus.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datupd</th>
+                <td>{% if docStatus.datUpd %}{{ docStatus.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+    <div class="form-group">
+        {{ form_start(delete_form) }}
+        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+            {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
+        </div>
+        {{ form_end(delete_form) }}
+    </div>
+</div>
+{% endblock %}
