@@ -49,7 +49,7 @@
                 <tr>
                     <th>Partner</th>
                     <td>
-                        <a href="{{ path('partner_show', { 'id': address.partner.id }) }}">{{ address.partner }}</a>
+                        <a href="{% if address.partner.id is defined %} {{ path('partner_show', { 'id': address.partner.id }) }} {% endif %}">{{ address.partner }}</a>
                     </td>
                 </tr>
                 <tr>
