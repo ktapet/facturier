@@ -3,12 +3,14 @@
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Address
  * 
  * @ORM\Table(name="address")
  * @ORM\Entity()
- * @UniqueEntity("alias")
+ * @UniqueEntity(fields="alias", message="Alias already taken")
  * @ORM\HasLifecycleCallbacks()
  */
 class Address
@@ -42,11 +44,14 @@ class Address
     
     /**
      * @ORM\Column(name="country", type="string")
+     * @Assert\Country()
      */
     private $country;    
     
     /**
      * @ORM\Column(name="email", type="string")
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
     
@@ -67,6 +72,7 @@ class Address
      * @var \DateTime
      *
      * @ORM\Column(name="dat_cre", type="datetime")
+     * @Assert\DateTime()
      */
     private $datCre;
 
@@ -74,6 +80,7 @@ class Address
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
+     * @Assert\DateTime()
      */
 
     private $datUpd;  
