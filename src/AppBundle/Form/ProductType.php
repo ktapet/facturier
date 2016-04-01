@@ -32,6 +32,12 @@ class ProductType extends AbstractType
                     'by_reference' => false,
                     'allow_delete' => true,
                 ))
+            ->add('images', CollectionType::class, array(
+                    'entry_type' => ProductImageType::class,
+                    'allow_add'    => true,
+                    'by_reference' => false,
+                    'allow_delete' => true,
+                ))                
 
         ;
     }

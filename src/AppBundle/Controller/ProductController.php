@@ -47,7 +47,9 @@ class ProductController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
             $em->persist($product);
+            
             $em->flush();
 
             return $this->redirectToRoute('product_show', array('id' => $product->getId()));
@@ -84,9 +86,25 @@ class ProductController extends Controller
         $editForm = $this->createForm('AppBundle\Form\ProductType', $product);
         $editForm->add('submit', SubmitType::class);
         $editForm->handleRequest($request);
+        
+        $origImages = new ArrayCollection();
+        
+        // Create an ArrayCollection of the current Tag objects in the database
+        foreach ($product->getImages() as $image) {
+           $origImages->add($image);
+        }           
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            // remove the relationship between the tag and the Task
+            foreach ($origImages as $image) {
+                if (false === $product->getImages()->contains($image)) {
+
+                    $em->remove($image);
+                }
+            }
+            
             $em->persist($product);
             $em->flush();
 
@@ -110,6 +128,13 @@ class ProductController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            // Create an ArrayCollection of the current Tag objects in the database
+            if($product->getImages()){
+                foreach ($product->getImages() as $image) {
+                    $em->remove($image);
+                }   
+            }
+          
             $em->remove($product);
             $em->flush();
         }

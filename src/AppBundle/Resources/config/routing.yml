@@ -53,3 +53,7 @@ yaml_route_raspuns:
 yaml_route_flasf:
     path:     /flash/{numar}
     defaults: { _controller: AppBundle:Default:flashMsgEx }
+    
+app_productimage:
+    resource: "@AppBundle/Resources/config/routing/productimage.yml"
+    prefix:   /productimage    

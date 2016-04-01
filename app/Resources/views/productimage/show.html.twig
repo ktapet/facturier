@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ProductImage</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ productImage.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ productImage.name }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ productImage.path }}</td>
+            </tr>
+            <tr>
+                <th>Datcre</th>
+                <td>{% if productImage.datCre %}{{ productImage.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datupd</th>
+                <td>{% if productImage.datUpd %}{{ productImage.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('productimage_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('productimage_edit', { 'id': productImage.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
