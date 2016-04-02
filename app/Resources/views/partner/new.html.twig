@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block submenu %}
+    <ul class="nav nav-sidebar">
+        <li>
+            <a href="{{ path('partner_new') }}">Add new</a>
+        </li>        
+        <li>
+            <a href="{{ path('partner_index') }}">List</a>
+        </li>
+    </ul>   
+{% endblock %}
+
+{% block body %}
+    <h1>Partner creation</h1>
+
+    {{ form_start(form) }}
+        <div class="row top-buffer">
+            <div class="form-group">
+                {{ form_label(form.name, 'Name', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+                <div class="col-md-3 col-sm-4">
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                    {{ form_errors(form.name) }}
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <div class="form-group">
+                {{ form_label(form.bank, 'Bank', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+                <div class="col-md-3 col-sm-4">
+                    {{ form_widget(form.bank, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                    {{ form_errors(form.bank) }}
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <div class="form-group">
+                {{ form_label(form.iban, 'Iban', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+                <div class="col-md-3 col-sm-4">
+                    {{ form_widget(form.iban, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                    {{ form_errors(form.iban) }}
+            </div>
+        </div>
+  
+        <div class="row top-buffer">
+            <div class="form-group">
+                <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+                    {{ form_widget(form.submit, { 'label': 'Create a new entry',
+                                                  'attr': {'class': 'btn btn-sm btn-success'}})}}
+                </div>
+            </div>       
+        </div>
+   
+    {{ form_end(form) }}
+{% endblock %}
+

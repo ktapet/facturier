@@ -1,3 +1,35 @@
+app_doctype:
+    resource: "@AppBundle/Resources/config/routing/doctype.yml"
+    prefix:   /doctype
+
+app_docstatus:
+    resource: "@AppBundle/Resources/config/routing/docstatus.yml"
+    prefix:   /docstatus
+
+app_address:
+    resource: "@AppBundle/Resources/config/routing/address.yml"
+    prefix:   /address
+
+app_partner:
+    resource: "@AppBundle/Resources/config/routing/partner.yml"
+    prefix:   /partner
+    
+app_featurename:
+    resource: "@AppBundle/Resources/config/routing/featurename.yml"
+    prefix:   /featurename    
+
+app_unitmeasure:
+    resource: "@AppBundle/Resources/config/routing/unitmeasure.yml"
+    prefix:   /unitmeasure   
+    
+app_category:
+    resource: "@AppBundle/Resources/config/routing/category.yml"
+    prefix:   /category    
+    
+app_warehouse:
+    resource: "@AppBundle/Resources/config/routing/warehouse.yml"
+    prefix:   /warehouse    
+    
 yaml_route_raspuns:
     path:     /raspuns/htmlmvc
     defaults: { _controller: AppBundle:Default:raspunsHtmlMvc }
@@ -5,13 +37,3 @@ yaml_route_raspuns:
 yaml_route_flasf:
     path:     /flash/{numar}
     defaults: { _controller: AppBundle:Default:flashMsgEx }
-    
-yaml_route_arrayno:
-    path:     /raspuns/numbers
-    defaults: { _controller: AppBundle:Global:arrayNumbers }
-    
-yaml_route_params:
-    path:     /params/{p1}/{p2}
-    defaults: { _controller: AppBundle:Global:params, p2: 3 }
-    requirements: 
-        p2: \d+

@@ -1,33 +1,37 @@
 {# app/Resources/views/default/index.html.twig #}
 {% extends 'base.html.twig' %}
-{% block submenu2 %}
+
+{% block submenu %}
     {{parent()}}
-
-        <li><a href="#">SubLink4</a></li>
-        <li><a href="#">SubLink5</a></li>
-        <li><a href="#">SubLink6</a></li>
-
+    <h5>Bloc linkuri sablon copil</h5>
+    <ul class="nav nav-sidebar">
+        <li><a href="#">SubLinkIndex1</a></li>
+        <li><a href="#">SubLinkIndex2</a></li>
+        <li><a href="#">SubLinkIndex3</a></li>
+        <li><a href="#">SubLinkIndex4</a></li>
+    </ul>
 {% endblock %}
+
 {% block body %}
-    <h3>Exemplu - afisare date in tabel</h3>
-    <div class="table-responsive">
-        <table class="table table-hover records_list">
-            <thead>
-                <tr>
-                    {% for val in entities[0] %}
-                        <th>{{ val }}</th>
-                        {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                {% for entity in entities %}
-                    <tr>
-                        {% for val in entity %}
-                            <td>{{ val }}</td>
-                        {% endfor %}
-                    </tr>
+<h3>Exemplu - afisare date in tabel</h3>
+<div class="table-responsive">
+    <table class="table table-hover records_list">
+        <thead>
+            <tr>
+            {% for val in entities[0] %}
+                <th>{{ val }}</th>
+            {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for entity in entities %}
+            <tr>
+                {% for val in entity %}
+                    <td>{{ val }}</td>
                 {% endfor %}
-            </tbody>
-        </table>
-    </div>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

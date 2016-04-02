@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * UnitMeasure
@@ -11,6 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table()
  * @ORM\Entity
  * @UniqueEntity("name")
+ * @ORM\HasLifecycleCallbacks()
  */
 class UnitMeasure
 {
@@ -26,9 +28,10 @@ class UnitMeasure
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string")
+     * @ORM\Column(name="name", type="string", nullable=false)
      */
     private $name;        
+
     
     /**
      * @var \DateTime
@@ -49,9 +52,8 @@ class UnitMeasure
      */
     public function __toString()
     {
-        return $this->name;
+        return (string) $this->getName();
     }   
-
 
     /**
      * Get id
@@ -89,15 +91,14 @@ class UnitMeasure
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      *
      * @return UnitMeasure
      */
     public function setDatCre($datCre)
     {
-        $this->datCre = $datCre;
-
+        $this->datCre = new \DateTime();
         return $this;
     }
 
@@ -113,15 +114,15 @@ class UnitMeasure
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param \DateTime $datUpd
      *
      * @return UnitMeasure
      */
     public function setDatUpd($datUpd)
     {
-        $this->datUpd = $datUpd;
-
+        $this->datUpd = new \DateTime();
         return $this;
     }
 

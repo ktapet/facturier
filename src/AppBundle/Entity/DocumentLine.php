@@ -60,7 +60,6 @@ class DocumentLine
      */
     private $vatRate;        
     
-    
     /**
      * @var \DateTime
      *
@@ -74,8 +73,6 @@ class DocumentLine
      * @ORM\Column(name="dat_upd", type="datetime")
      */
     private $datUpd;    
-
-  
 
     /**
      * Get id
@@ -137,14 +134,14 @@ class DocumentLine
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      *
      * @return DocumentLine
      */
     public function setDatCre($datCre)
     {
-        $this->datCre = $datCre;
+        $this->datCre = new \DateTime();
 
         return $this;
     }
@@ -161,14 +158,15 @@ class DocumentLine
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param \DateTime $datUpd
      *
      * @return DocumentLine
      */
     public function setDatUpd($datUpd)
     {
-        $this->datUpd = $datUpd;
+        $this->datUpd = new \DateTime();
 
         return $this;
     }
