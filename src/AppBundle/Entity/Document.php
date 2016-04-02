@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity("docNumber")
  * @ORM\HasLifecycleCallbacks()
  */
+
 class Document
 {
     /**
@@ -78,7 +79,7 @@ class Document
      * 
      */
     private $docStatus;       
-    
+
     /**
      * @var \DateTime
      *
@@ -93,7 +94,6 @@ class Document
      */
     private $datUpd;    
 
- 
     /**
      * Constructor
      */
@@ -138,14 +138,14 @@ class Document
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      *
      * @return Document
      */
     public function setDatCre($datCre)
     {
-        $this->datCre = $datCre;
+        $this->datCre = new \DateTime();
 
         return $this;
     }
@@ -162,14 +162,15 @@ class Document
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param \DateTime $datUpd
      *
      * @return Document
      */
     public function setDatUpd($datUpd)
     {
-        $this->datUpd = $datUpd;
+        $this->datUpd = new \DateTime();
 
         return $this;
     }
@@ -233,6 +234,7 @@ class Document
     }
 
     /**
+
      * Set paymentType
      *
      * @param \AppBundle\Entity\PaymentType $paymentType
@@ -242,7 +244,6 @@ class Document
     public function setPaymentType(\AppBundle\Entity\PaymentType $paymentType = null)
     {
         $this->paymentType = $paymentType;
-
         return $this;
     }
 
@@ -266,7 +267,6 @@ class Document
     public function setUser(\AppBundle\Entity\User $user = null)
     {
         $this->user = $user;
-
         return $this;
     }
 

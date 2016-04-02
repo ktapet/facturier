@@ -14,6 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\HasLifecycleCallbacks()
  * 
  */
+
 class Partner
 {
     /**
@@ -36,7 +37,7 @@ class Partner
      * @var integer
      *
      * @ORM\OneToMany(targetEntity="Address", mappedBy="partner")
-     *
+     *  
      */
     private $addresses;     
     
@@ -55,7 +56,7 @@ class Partner
      * 
      */
     private $iban;      
-    
+
     /**
      * @var \DateTime
      *
@@ -170,7 +171,6 @@ class Partner
     public function setDatCre()
     {
         $this->datCre = new \DateTime();
-
         return $this;
     }
 

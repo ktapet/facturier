@@ -14,7 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * 
  * @UniqueEntity("reference")
  * @UniqueEntity("ean")
- * 
+ * @ORM\HasLifecycleCallbacks()
  * 
  */
 class Product
@@ -28,6 +28,14 @@ class Product
      * 
      */
     private $id;    
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nume", type="string")
+     * 
+     */
+    private $nume; 
     
     /**
      * @var integer
@@ -141,6 +149,29 @@ class Product
     }
 
     /**
+     * Set nume
+     *
+     * @param string $nume
+     *
+     * @return Product
+     */
+    public function setNume($nume)
+    {
+        $this->nume = $nume;
+        return $this;
+    }
+    
+    /**
+     * Get nume
+     *
+     * @return string
+     */
+    public function getNume()
+    {
+        return $this->nume;
+    }
+    
+    /**
      * Set manufacturer
      *
      * @param string $manufacturer
@@ -150,10 +181,9 @@ class Product
     public function setManufacturer($manufacturer)
     {
         $this->manufacturer = $manufacturer;
-
         return $this;
     }
-
+    
     /**
      * Get manufacturer
      *
@@ -174,7 +204,6 @@ class Product
     public function setEan($ean)
     {
         $this->ean = $ean;
-
         return $this;
     }
 
@@ -238,14 +267,14 @@ class Product
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      *
      * @return Product
      */
     public function setDatCre($datCre)
     {
-        $this->datCre = $datCre;
+        $this->datCre = new \DateTime();
 
         return $this;
     }
@@ -262,14 +291,15 @@ class Product
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param \DateTime $datUpd
      *
      * @return Product
      */
     public function setDatUpd($datUpd)
     {
-        $this->datUpd = $datUpd;
+        $this->datUpd = new \DateTime();
 
         return $this;
     }

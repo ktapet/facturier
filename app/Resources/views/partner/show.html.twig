@@ -13,34 +13,42 @@
     
 <div class="col-lg-4">
     <div class="table-responsive">
-    <table class="table table-bordered table-hover record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ partner.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ partner.name }}</td>
-            </tr>
-            <tr>
-                <th>Bank</th>
-                <td>{{ partner.bank }}</td>
-            </tr>
-            <tr>
-                <th>Iban</th>
-                <td>{{ partner.iban }}</td>
-            </tr>
-            <tr>
-                <th>Datcre</th>
-                <td>{% if partner.datCre %}{{ partner.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Datupd</th>
-                <td>{% if partner.datUpd %}{{ partner.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table table-bordered table-hover record_properties">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ partner.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ partner.name }}</td>
+                </tr>
+                <tr>
+                    <th>Bank</th>
+                    <td>{{ partner.bank }}</td>
+                </tr>
+                <tr>
+                    <th>Iban</th>
+                    <td>{{ partner.iban }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>
+                        {%for address in partner.addresses%}
+                                <a href="{{ path('address_show', { 'id': address.id }) }}">{{address }}</a>
+                            {%endfor%}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Datcre</th>
+                    <td>{% if partner.datCre %}{{ partner.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Datupd</th>
+                    <td>{% if partner.datUpd %}{{ partner.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>           
     
     {{ form_start(delete_form) }}
@@ -51,5 +59,5 @@
         </div>  
     {{ form_end(delete_form) }}
 </div>
-    
+
 {% endblock %}

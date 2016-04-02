@@ -25,7 +25,6 @@ class Warehouse
      * 
      */
     private $id;    
-      
     
     /**
      * @var string
@@ -133,7 +132,6 @@ class Warehouse
     public function setDatCre()
     {
         $this->datCre = new \Datetime();
-
         return $this;
     }
 

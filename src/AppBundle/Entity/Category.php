@@ -1,4 +1,7 @@
 <?php
+
+//@ORM\Entity 
+
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -18,6 +21,7 @@ class Category
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * 
      */
     private $id;    
     
@@ -35,6 +39,7 @@ class Category
      * @ORM\Column(name="name", type="string")
      */
     private $name;   
+
     
     /**
      * @var \DateTime
@@ -42,6 +47,7 @@ class Category
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
+
     /**
      * @var \DateTime
      *
@@ -56,6 +62,7 @@ class Category
     {
         return $this->name;
     }       
+
     /**
      * Constructor
      */
@@ -63,6 +70,7 @@ class Category
     {
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
     /**
      * Get id
      *
@@ -72,6 +80,7 @@ class Category
     {
         return $this->id;
     }
+
     /**
      * Set name
      *
@@ -84,6 +93,7 @@ class Category
         $this->name = $name;
         return $this;
     }
+
     /**
      * Get name
      *
@@ -93,6 +103,7 @@ class Category
     {
         return $this->name;
     }
+
     /**
      * Set datCre
      * @ORM\PrePersist
@@ -100,11 +111,13 @@ class Category
      *
      * @return Category
      */
+
     public function setDatCre()
     {
         $this->datCre = new \DateTime();
         return $this;
     }
+
     /**
      * Get datCre
      *
@@ -114,6 +127,7 @@ class Category
     {
         return $this->datCre;
     }
+
     /**
      * Set datUpd
      * @ORM\PrePersist
@@ -127,6 +141,7 @@ class Category
         $this->datUpd = new \DateTime();
         return $this;
     }
+
     /**
      * Get datUpd
      *
@@ -136,6 +151,7 @@ class Category
     {
         return $this->datUpd;
     }
+
     /**
      * Add product
      *
@@ -148,6 +164,7 @@ class Category
         $this->products[] = $product;
         return $this;
     }
+
     /**
      * Remove product
      *
@@ -157,6 +174,7 @@ class Category
     {
         $this->products->removeElement($product);
     }
+
     /**
      * Get products
      *
@@ -166,4 +184,6 @@ class Category
     {
         return $this->products;
     }
+
 }
+
