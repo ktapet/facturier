@@ -4,9 +4,5 @@
  * and open the template in the editor.
  */
 
-$("#doc_type_direction").attr({
-  min: -1,
-  max: 1
-});
 
 
