@@ -51,7 +51,7 @@ class ProductWarehouse
      * 
      */ 
     private $quantity;     
-    
+
     /**
      * @var \DateTime
      *
@@ -73,8 +73,6 @@ class ProductWarehouse
     {
         return $this->product;
     }       
-
-
 
     /**
      * Get id
@@ -112,14 +110,14 @@ class ProductWarehouse
 
     /**
      * Set datCre
-     *
+     * @ORM\PrePersist
      * @param \DateTime $datCre
      *
      * @return ProductWarehouse
      */
     public function setDatCre($datCre)
     {
-        $this->datCre = $datCre;
+        $this->datCre = new \DateTime();
 
         return $this;
     }
@@ -136,14 +134,15 @@ class ProductWarehouse
 
     /**
      * Set datUpd
-     *
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
      * @param \DateTime $datUpd
      *
      * @return ProductWarehouse
      */
     public function setDatUpd($datUpd)
     {
-        $this->datUpd = $datUpd;
+        $this->datUpd = new \DateTime();
 
         return $this;
     }

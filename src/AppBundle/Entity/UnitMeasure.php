@@ -31,6 +31,7 @@ class UnitMeasure
      * @ORM\Column(name="name", type="string", nullable=false)
      */
     private $name;        
+
     
     /**
      * @var \DateTime
@@ -53,7 +54,6 @@ class UnitMeasure
     {
         return (string) $this->getName();
     }   
-
 
     /**
      * Get id
@@ -99,7 +99,6 @@ class UnitMeasure
     public function setDatCre()
     {
         $this->datCre = new \DateTime();
-
         return $this;
     }
 
@@ -124,7 +123,6 @@ class UnitMeasure
     public function setDatUpd()
     {
         $this->datUpd = new \DateTime();
-
         return $this;
     }
 

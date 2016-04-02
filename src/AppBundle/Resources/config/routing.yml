@@ -1,3 +1,4 @@
+
 app_warehouse:
     resource: "@AppBundle/Resources/config/routing/warehouse.yml"
     prefix:    /warehouse
@@ -6,37 +7,30 @@ app_unitmeasure:
     resource: "@AppBundle/Resources/config/routing/unitmeasure.yml"
     prefix:   /unitmeasure
 
+app_doctype:
+    resource: "@AppBundle/Resources/config/routing/doctype.yml"
+    prefix:   /doctype
+
+app_docstatus:
+    resource: "@AppBundle/Resources/config/routing/docstatus.yml"
+    prefix:   /docstatus
+
 app_address:
     resource: "@AppBundle/Resources/config/routing/address.yml"
     prefix:   /address
-
 
 app_partner:
     resource: "@AppBundle/Resources/config/routing/partner.yml"
     prefix:   /partner
 
-
-app_address:
-    resource: "@AppBundle/Resources/config/routing/address.yml"
-    prefix:   /address
-
-
 app_featurename:
     resource: "@AppBundle/Resources/config/routing/featurename.yml"
-    prefix:   /featurename    
-
-app_unitmeasure:
-    resource: "@AppBundle/Resources/config/routing/unitmeasure.yml"
-    prefix:   /unitmeasure   
+    prefix:   /featurename
     
 app_category:
     resource: "@AppBundle/Resources/config/routing/category.yml"
-    prefix:   /category    
+    prefix:   /category
     
-app_warehouse:
-    resource: "@AppBundle/Resources/config/routing/warehouse.yml"
-    prefix:   /warehouse    
-
 yaml_route_raspuns:
     path:     /raspuns/htmlmvc
     defaults: { _controller: AppBundle:Default:raspunsHtmlMvc }

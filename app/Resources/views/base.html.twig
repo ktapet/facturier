@@ -13,7 +13,11 @@
     <meta content="" name="description">
     <meta content="" name="author">
     <link rel="icon"  href="{{ asset('favicon.ico') }}" />
-    {% set name = 'Facturier' %}
+
+
+    {% set name = 'Facturier' %} 
+
+
     {% set mypath = 'images/logo_'~name~'.png' %}
     {% if head_title is defined %}
         <title>{{name}} - {{ head_title }}</title>
@@ -21,44 +25,49 @@
         <title>{{name}}</title>
     {% endif %}
 
-    {#{% block stylesheets %}#}
-        {% stylesheets 'css/*' filter='cssrewrite' output="css/app.css" %}
-        {#<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />#}
-        {#<link rel="stylesheet" href="{{ asset('css/facturier.css') }}" />#}
-            <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
-    {#{% endblock %}#}
+
+    {% block stylesheets %}
+        {#{% stylesheets 'css/*' filter='cssrewrite' output="css/app.css" %}#}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/facturier.css') }}" />
+            {#<link rel="stylesheet" href="{{ asset_url }}" />#}
+        {#{% endstylesheets %}#}
+    {% endblock %}
 
 </head>
 
-<body>
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Menu</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ path('index') }}">
-                <img class="logo-img" alt="{{name}}" src="{{ asset(mypath|lower) }}" />
-                <span class="logo-text">{{name}}</span>
-            </a>
-        </div>
+ 
+  <body>
+      {#TEST#}
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">              
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('index') }}">
+                    <img class="logo-img" alt="{{name}}" src="{{ asset(mypath|lower) }}" />
 
-        <div class="navbar-collapse collapse clear">
-            {% set d_links = {
-            'Feature name':'featurename',
-            'Categories':'category',
-            'Partner':'partner',
-            'Unit measure':'unitmeasure',
-            'Warehouse':'warehouse',
-            'Address':'address',
-            'PaymentType':'paymenttype'
+                    {#<span class="logo-text">{{name}}</span>#}
 
-
-            }
+                </a>
+            </div>
+ 
+            <div class="navbar-collapse collapse clear">
+                {% set d_links = {
+                                'Feature name':'featurename',
+                                'Categories':'category',
+                                'Partner':'partner',
+                                'Unit measure':'unitmeasure',
+                                'Warehouse':'warehouse',
+                                'Address':'address',
+                                'PaymentType':'paymenttype',
+                                'DocStatus':'docstatus',
+                                'DocType':'doctype'
+                }
             %}
             {% block dashboard_links %}
                 <ul class="nav navbar-nav navbar-left">
@@ -96,24 +105,28 @@
     </div>
 </div>
 {% block javascript %}
-    {% javascripts  'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'
-                    'js/*'
-                    'jquery-ui-1.11.4/*' output="js/app.js" %}
+    {#{% javascripts  'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'#}
+                    {#'js/*'#}
+                    {#'jquery-ui-1.11.4/*' output="js/app.js" %}#}
+
+
+    {#<script src="{{ asset_url }}"></script>#}
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    {#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>#}
-    {#<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>#}
-    {#<script type="text/javascript" src="{{ asset('js/logis.js') }}"></script>#}
-    {#<script type="text/javascript" src="{{ asset('jquery-ui-1.11.4/jquery-ui.js') }}"></script>#}
-    {#<!--[if lt IE 9]>#}
-    {#<script type="text/javascript" src="{{ asset('js/html5shiv-printshiv.min.js') }}"></script>#}
-    {#<script type="text/javascript" src="{{ asset('js/respond.min.js') }}"></script>#}
-    {#<![endif]-->#}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/logis.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('jquery-ui-1.11.4/jquery-ui.js') }}"></script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="{{ asset('js/html5shiv-printshiv.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/respond.min.js') }}"></script>
+    <![endif]-->
+
+    {#{% endjavascripts %}#}
 {% endblock %}
 
 
 </body>
 </html>
+

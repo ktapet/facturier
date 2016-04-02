@@ -1,4 +1,13 @@
 /*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Mar 12, 2016, 1:24:53 PM
+    Author     : Ramona PC
+*/
+/*
  * Base structure
  */
 
@@ -31,7 +40,7 @@ body {
 
 /* Hide for mobile, show later */
 .sidebar {
-  display: none;
+  /*display: none;*/
 }
 @media (min-width: 768px) {
   .sidebar {
@@ -102,72 +111,15 @@ body {
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
-
-body {
-    padding-top: 50px;
-}
-.sub-header {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-.navbar-fixed-top {
-    border: 0 none;
 }
 
-@media (min-width: 768px) {
-.sidebar {
-    background-color: #f5f5f5;
-    border-right: 1px solid #eee;
-    bottom: 0;
-    display: block;
-    left: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: 20px;
-    position: fixed;
-    top: 51px;
-    z-index: 1000;
-}
-}
-.nav-sidebar {
-    margin-bottom: 20px;
-    margin-left: -20px;
-    margin-right: -21px;
-}
-.nav-sidebar > li > a {
-    padding-left: 20px;
-    padding-right: 20px;
-}
-.nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus {
-    background-color: #428bca;
-    color: #fff;
-}
-.main {
-    padding: 20px;
-}
-@media (min-width: 768px) {
-.main {
-    padding-left: 40px;
-    padding-right: 40px;
-}
-}
-.main .page-header {
-    margin-top: 0;
-}
-
-.logo-img {
-    height: 20px;
-    margin: -3px 4px 0 0;
-    width: 37px;
-}
 .navbar-brand > img {
-    display: inline-block;
-<<<<<<< HEAD
-
-=======
+  display: block;
+  width: auto;
+  height: 28px;
 }
 
-.top-buffer { 
-    margin-top:20px; 
->>>>>>> bf4ca8984c468291ebb783d7b8f8da54eb41aead
+.top-buffer {
+  margin-top:20px;
+
 }

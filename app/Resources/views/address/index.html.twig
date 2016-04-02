@@ -24,6 +24,7 @@
                 <th>Country</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <th>Partner</th>
                 <th>Datcre</th>
                 <th>Datupd</th>
                 <th>Actions</th>
@@ -39,7 +40,10 @@
                 <td>{{ address.city }}</td>
                 <td>{{ address.country }}</td>
                 <td>{{ address.email }}</td>
-                <td>{{ address.phone }}</td>
+                <td>{{ address.phone }}</td>                
+                <td>
+                    <a href="{% if address.partner.id is defined %} {{ path('partner_show', { 'id': address.partner.id }) }} {% endif %}">{{ address.partner }}</a>                          
+                </td>
                 <td>{% if address.datCre %}{{ address.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if address.datUpd %}{{ address.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>

@@ -1,20 +1,14 @@
 <?php
-
-
-
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
- 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Address
- * 
+ *
  * @ORM\Table(name="address")
  * @ORM\Entity()
- * @UniqueEntity("alias")
+ * @UniqueEntity(fields="alias", message="Alias already taken")
  * @ORM\HasLifecycleCallbacks()
  */
 class Address
@@ -25,92 +19,65 @@ class Address
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @ORM\Column(name="alias", type="string", length=30)
      */
     private $alias;
-
     /**
      * @ORM\Column(name="street", type="string")
      */
     private $street;
-    
+
     /**
-     *
-     * @var integer 
-     * 
-     * 
-     * @ORM\Column(name="no", type="integer")
+     * @ORM\Column(name="no", type="string")
      */
     private $no;
-    
+
     /**
-     *
-     * @var string 
-     * 
-     * 
      * @ORM\Column(name="city", type="string")
      */
     private $city;
-    
+
     /**
-     *
-     * @var string 
-     * 
-     * 
      * @ORM\Column(name="country", type="string")
+     * @Assert\Country()
      */
     private $country;
-    
+
     /**
-     *
-     * @var string 
-     * 
-     * 
+     * @ORM\Column(name="email", type="string")
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     */
+    private $email;
+
+    /**
      * @ORM\Column(name="phone", type="string")
      */
     private $phone;
-    
+
     /**
-     *
-     * @var string 
-     * 
-     * 
-     * @ORM\Column(name="email", type="string")
-     *
-     */
-    private $email;
-    
-    /**
-     *
      * @var integer
-     * 
-     * @ORM\ManyToOne(targetEntity="Partner", inversedBy="addresses", onDelete="SET NULL")
-     * 
+     *
+     * @ORM\ManyToOne(targetEntity="Partner", inversedBy="addresses")
+     * @ORM\JoinColumn(name="partner_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $partner;
-    
+
     /**
+     * @var \DateTime
      *
-     * @var \DateTime 
-     * 
-     * 
-     * @ORM\Column(name="dat_upd", type="datetime")
-     */
-    private $datUpd;
-    
-    /**
-     *
-     * @var \DateTime  
-     * 
-     * 
      * @ORM\Column(name="dat_cre", type="datetime")
+     * @Assert\DateTime()
      */
     private $datCre;
-    
-
-
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dat_upd", type="datetime")
+     * @Assert\DateTime()
+     */
+    private $datUpd;
     /**
      * Get id
      *
@@ -120,7 +87,6 @@ class Address
     {
         return $this->id;
     }
-
     /**
      * Set alias
      *
@@ -131,10 +97,8 @@ class Address
     public function setAlias($alias)
     {
         $this->alias = $alias;
-
         return $this;
     }
-
     /**
      * Get alias
      *
@@ -144,7 +108,6 @@ class Address
     {
         return $this->alias;
     }
-
     /**
      * Set street
      *
@@ -155,10 +118,8 @@ class Address
     public function setStreet($street)
     {
         $this->street = $street;
-
         return $this;
     }
-
     /**
      * Get street
      *
@@ -168,7 +129,6 @@ class Address
     {
         return $this->street;
     }
-
     /**
      * Set no
      *
@@ -179,10 +139,8 @@ class Address
     public function setNo($no)
     {
         $this->no = $no;
-
         return $this;
     }
-
     /**
      * Get no
      *
@@ -192,7 +150,6 @@ class Address
     {
         return $this->no;
     }
-
     /**
      * Set city
      *
@@ -203,10 +160,8 @@ class Address
     public function setCity($city)
     {
         $this->city = $city;
-
         return $this;
     }
-
     /**
      * Get city
      *
@@ -216,7 +171,6 @@ class Address
     {
         return $this->city;
     }
-
     /**
      * Set country
      *
@@ -227,10 +181,8 @@ class Address
     public function setCountry($country)
     {
         $this->country = $country;
-
         return $this;
     }
-
     /**
      * Get country
      *
@@ -240,7 +192,6 @@ class Address
     {
         return $this->country;
     }
-
     /**
      * Set email
      *
@@ -251,10 +202,8 @@ class Address
     public function setEmail($email)
     {
         $this->email = $email;
-
         return $this;
     }
-
     /**
      * Get email
      *
@@ -264,7 +213,6 @@ class Address
     {
         return $this->email;
     }
-
     /**
      * Set phone
      *
@@ -275,10 +223,8 @@ class Address
     public function setPhone($phone)
     {
         $this->phone = $phone;
-
         return $this;
     }
-
     /**
      * Get phone
      *
@@ -288,21 +234,18 @@ class Address
     {
         return $this->phone;
     }
-
     /**
      * Set datCre
      * @ORM\PrePersist
      * @param \DateTime $datCre
      *
-     * @return Partner
+     * @return Address
      */
     public function setDatCre()
     {
         $this->datCre = new \DateTime();
-
         return $this;
     }
-
     /**
      * Get datCre
      *
@@ -312,24 +255,21 @@ class Address
     {
         return $this->datCre;
     }
-
     /**
      * Set datUpd
      *
-     * @ORM\PreUpdate
      * @ORM\PrePersist
+     * @ORM\PreUpdate
      *
      * @param \DateTime $datUpd
      *
-     * @return Partner
+     * @return Address
      */
     public function setDatUpd()
     {
         $this->datUpd = new \DateTime();
-
         return $this;
     }
-
     /**
      * Get datUpd
      *
@@ -339,7 +279,6 @@ class Address
     {
         return $this->datUpd;
     }
-
     /**
      * Set partner
      *
@@ -350,10 +289,8 @@ class Address
     public function setPartner(\AppBundle\Entity\Partner $partner = null)
     {
         $this->partner = $partner;
-
         return $this;
     }
-
     /**
      * Get partner
      *
@@ -363,11 +300,8 @@ class Address
     {
         return $this->partner;
     }
-
-
     public function __toString()
     {
         return $this->alias;
     }
-
 }

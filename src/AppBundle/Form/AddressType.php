@@ -1,10 +1,9 @@
 <?php
 namespace AppBundle\Form;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 class AddressType extends AbstractType
 {
     /**
@@ -23,8 +22,11 @@ class AddressType extends AbstractType
             ->add('phone')
             // ->add('datCre', 'datetime')
             // ->add('datUpd', 'datetime')
-            ->add('partner')
-        ;
+            ->add('partner', EntityType::class, array(
+                'class' => 'AppBundle:Partner',
+                'placeholder' => 'Choose a partner',
+            ));
+
     }
 
     /**
@@ -33,10 +35,7 @@ class AddressType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Address',
-            'csrf_protection' => true,
-            'csrf_field_name' => '_token',
-            'csrf_token_id' => 'task_item',
+            'data_class' => 'AppBundle\Entity\Address'
         ));
     }
 }
