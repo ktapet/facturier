@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block submenu %}
+    <ul class="nav nav-sidebar">
+        <li>
+            <a href="{{ path('warehouse_new') }}">Add new</a>
+        </li>        
+        <li>
+            <a href="{{ path('warehouse_index') }}">List</a>
+        </li>
+    </ul>   
+{% endblock %}
+ 
+{% block body %}
+    <h1>Warehouse Creation</h1>
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    
+   <div class="form-group">
+        {{ form_label(form.name, 'Warehouse name', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
+        <div class="col-md-3 col-sm-4">
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        </div>
+         {{ form_errors(form.name) }}
+    </div>  
+   <div class="form-group">
+        {{ form_label(form.address, 'Warehouse address', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
+        <div class="col-md-3 col-sm-4">
+            {{ form_widget(form.address, {'attr': {'class': 'form-control'}}) }}
+        </div>
+         {{ form_errors(form.address) }}
+    </div>  
+
+    <div class="form-group">
+        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+            {{ form_widget(form.submit, { 'label': 'Add', 'attr': {'class': 'btn btn-sm btn-success'}}) }}
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
