@@ -28,8 +28,16 @@ app_category:
     
 app_warehouse:
     resource: "@AppBundle/Resources/config/routing/warehouse.yml"
-    prefix:   /warehouse    
+    prefix:   /warehouse 
     
+app_product:
+        resource: "@AppBundle/Resources/config/routing/product.yml"
+        prefix:   /product
+        
+app_feature:
+        resource: "@AppBundle/Resources/config/routing/feature.yml"
+        prefix:   /feature
+  
 yaml_route_raspuns:
     path:     /raspuns/htmlmvc
     defaults: { _controller: AppBundle:Default:raspunsHtmlMvc }
@@ -37,3 +45,5 @@ yaml_route_raspuns:
 yaml_route_flasf:
     path:     /flash/{numar}
     defaults: { _controller: AppBundle:Default:flashMsgEx }
+    
+
