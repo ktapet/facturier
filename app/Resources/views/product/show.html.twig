@@ -1,56 +1,63 @@
 {% extends 'base.html.twig' %}
 
+{% block submenu %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('product_new') }}">Add new</a></li>        
+        <li><a href="{{ path('product_index') }}">List</a></li>
+        <li><a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a></li>
+    </ul>
+{% endblock %}
+
 {% block body %}
     <h1>Product</h1>
+    <div class="col-lg-4">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover record_properties">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ product.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nume</th>
+                        <td>{{ product.nume }}</td>
+                    </tr>
+                    <tr>
+                        <th>Manufacturer</th>
+                        <td>{{ product.manufacturer }}</td>
+                    </tr>
+                    <tr>
+                        <th>Ean</th>
+                        <td>{{ product.ean }}</td>
+                    </tr>
+                    <tr>
+                        <th>Reference</th>
+                        <td>{{ product.reference }}</td>
+                    </tr>
+                    <tr>
+                        <th>Saleprice</th>
+                        <td>{{ product.salePrice }}</td>
+                    </tr>
+                    <tr>
+                        <th>Datcre</th>
+                        <td>{% if product.datCre %}{{ product.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Datupd</th>
+                        <td>{% if product.datUpd %}{{ product.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+                    
+    {{ form_start(delete_form) }}
+        <div class="row top-buffer">
+            <div class="col-md-4 col-sm-4">
+                <input type="submit" value="Delete" class="btn btn-danger">
+            </div>
+        </div>  
+    {{ form_end(delete_form) }}
+                    
+    </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ product.id }}</td>
-            </tr>
-            <tr>
-                <th>Nume</th>
-                <td>{{ product.nume }}</td>
-            </tr>
-            <tr>
-                <th>Manufacturer</th>
-                <td>{{ product.manufacturer }}</td>
-            </tr>
-            <tr>
-                <th>Ean</th>
-                <td>{{ product.ean }}</td>
-            </tr>
-            <tr>
-                <th>Reference</th>
-                <td>{{ product.reference }}</td>
-            </tr>
-            <tr>
-                <th>Saleprice</th>
-                <td>{{ product.salePrice }}</td>
-            </tr>
-            <tr>
-                <th>Datcre</th>
-                <td>{% if product.datCre %}{{ product.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Datupd</th>
-                <td>{% if product.datUpd %}{{ product.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('product_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}

@@ -1,4 +1,16 @@
 {% extends '::base.html.twig' %}
+
+{% block submenu %}
+    <ul class="nav nav-sidebar">
+        <li>
+            <a href="{{ path('product_new') }}">Add new</a>
+        </li>        
+        <li>
+            <a href="{{ path('product_index') }}">List</a>
+        </li>
+    </ul>   
+{% endblock %}
+
 {% block body -%}   
 
     <h3>Product creation</h3>
