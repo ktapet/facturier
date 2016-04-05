@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 class ProductImageType extends AbstractType
 {
     /**
@@ -16,10 +18,8 @@ class ProductImageType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('path')
-            ->add('datCre', 'datetime')
-            ->add('datUpd', 'datetime')
-            ->add('products')
+            //->add('path')
+            ->add('file',FileType::class)
         ;
     }
     
@@ -32,4 +32,13 @@ class ProductImageType extends AbstractType
             'data_class' => 'AppBundle\Entity\ProductImage'
         ));
     }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return 'productimage';
+    }        
+
 }

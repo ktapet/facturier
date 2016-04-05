@@ -54,15 +54,14 @@ class Product
     
     /**
      * 
-     * @ORM\ManyToMany(targetEntity="Feature", inversedBy="products", cascade="persist")
-     * 
+     * @ORM\ManyToMany(targetEntity="Feature", inversedBy="products", cascade={"persist"})
      * 
      */
     private $features;  
     
     /**
      * 
-     * @ORM\ManyToMany(targetEntity="ProductImage", mappedBy="products")
+     * @ORM\OneToMany(targetEntity="ProductImage", mappedBy="product", cascade={"persist"}))
      * 
      * 
      */
@@ -132,10 +131,10 @@ class Product
      */
     public function __construct()
     {
+        $this->features = new ArrayCollection();
         $this->categories = new ArrayCollection();
-        $this->features = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->productWarehouses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->images = new ArrayCollection();
+        $this->productWarehouses = new ArrayCollection();
     }
 
     /**
@@ -415,9 +414,11 @@ class Product
      */
     public function addImage(\AppBundle\Entity\ProductImage $image)
     {
-        $this->images[] = $image;
+        
+        $image->setProduct($this);
+        
+        $this->images->add($image);
 
-        return $this;
     }
 
     /**

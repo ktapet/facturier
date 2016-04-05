@@ -30,21 +30,22 @@ class ProductType extends AbstractType
                     return $er->createQueryBuilder('c')
                         ->orderBy('c.name', 'ASC');
                 },
-                'multiple' => 'true',
-                'expanded' => 'false'
+
+                'multiple' => true,
+                'expanded' => false,
             ))
-           ->add('features', CollectionType::class, array(
+            ->add('features', CollectionType::class, array(
                     'entry_type' => FeatureType::class,
                     'allow_add'    => true,
                     'by_reference' => false,
                     'allow_delete' => true,
                 ))
-//            ->add('images', CollectionType::class, array(
-//                    'entry_type' => ProductImageType::class,
-//                    'allow_add'    => true,
-//                    'by_reference' => false,
-//                    'allow_delete' => true,
-//                ))  
+            ->add('images', CollectionType::class, array(
+                    'entry_type' => ProductImageType::class,
+                    'allow_add'    => true,
+                    'by_reference' => false,
+                    'allow_delete' => true,
+                ))                
         ;
     }
     

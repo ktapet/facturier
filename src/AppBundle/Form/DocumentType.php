@@ -5,8 +5,10 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+//use AppBundle\Form\DocumentLineType;
 
-class FeatureType extends AbstractType
+class DocumentType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,11 +17,18 @@ class FeatureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('value')
-          //  ->add('datCre', 'datetime')
+            ->add('docNumber')
+            //->add('datCre', 'datetime')
             //->add('datUpd', 'datetime')
-            //->add('products')
-            ->add('name')
+            ->add('partner')
+            ->add('docType')
+            ->add('paymentType')
+            //->add('user')
+            ->add('docStatus')
+            ->add('documentLines', CollectionType::class, array(
+            'entry_type' => DocumentLineType::class,
+            'allow_add'    => true,
+        ))                
         ;
     }
     
@@ -29,17 +38,7 @@ class FeatureType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Feature'
+            'data_class' => 'AppBundle\Entity\Document'
         ));
     }
-
-    
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'feature';
-    }    
-
 }

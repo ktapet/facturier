@@ -92,5 +92,3 @@ $(document).ready(function(){
     //////// end of code used to Embed a Collection of Forms Playlists emdeb with Playvideos
 
 });    
-
-

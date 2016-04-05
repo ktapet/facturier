@@ -7,8 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Entity\Product;
 use AppBundle\Form\ProductType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
@@ -45,7 +45,9 @@ class ProductController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($product);
+
             $em->flush();
 
             return $this->redirectToRoute('product_show', array('id' => $product->getId()));
@@ -77,13 +79,30 @@ class ProductController extends Controller
      */
     public function editAction(Request $request, Product $product)
     {
-        $deleteForm = $this->createDeleteForm($product);
+    
+        //$deleteForm = $this->createDeleteForm($product);
         $editForm = $this->createForm('AppBundle\Form\ProductType', $product);
         $editForm->add('submit', SubmitType::class);
         $editForm->handleRequest($request);
+        
+        $origImages = new ArrayCollection();
+        
+        // Create an ArrayCollection of the current Tag objects in the database
+        foreach ($product->getImages() as $image) {
+           $origImages->add($image);
+        }           
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            // remove the relationship between the tag and the Task
+            foreach ($origImages as $image) {
+                if (false === $product->getImages()->contains($image)) {
+
+                    $em->remove($image);
+                }
+            }
+            
             $em->persist($product);
             $em->flush();
 
@@ -92,8 +111,8 @@ class ProductController extends Controller
 
         return $this->render('product/edit.html.twig', array(
             'product' => $product,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'form' => $editForm->createView(),
+
         ));
     }
 
@@ -108,6 +127,13 @@ class ProductController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            // Create an ArrayCollection of the current Tag objects in the database
+            if($product->getImages()){
+                foreach ($product->getImages() as $image) {
+                    $em->remove($image);
+                }   
+            }
+
             $em->remove($product);
             $em->flush();
         }
