@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class DocTypeType extends AbstractType
 {
@@ -16,7 +17,13 @@ class DocTypeType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('direction')
+            ->add('direction', ChoiceType::class, array(
+                'choices'  => array(
+                    'Out' => -1,
+                    'In' => 1,
+                    
+                ),
+            ))
             //->add('datCre', 'datetime')
             //->add('datUpd', 'datetime')
         ;

@@ -5,6 +5,9 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
 
 class ProductType extends AbstractType
 {
@@ -21,9 +24,27 @@ class ProductType extends AbstractType
             ->add('reference')
             ->add('salePrice')
             ->add('unitMeasure')
-            ->add('categories')
-//            ->add('features')
-//            ->add('images')
+            ->add('categories', EntityType::class, array(
+                'class' => 'AppBundle:Category',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.name', 'ASC');
+                },
+                'multiple' => 'true',
+                'expanded' => 'false'
+            ))
+           ->add('features', CollectionType::class, array(
+                    'entry_type' => FeatureType::class,
+                    'allow_add'    => true,
+                    'by_reference' => false,
+                    'allow_delete' => true,
+                ))
+//            ->add('images', CollectionType::class, array(
+//                    'entry_type' => ProductImageType::class,
+//                    'allow_add'    => true,
+//                    'by_reference' => false,
+//                    'allow_delete' => true,
+//                ))  
         ;
     }
     

@@ -34,6 +34,11 @@ app_product:
         resource: "@AppBundle/Resources/config/routing/product.yml"
         prefix:   /product
         
+app_productimage:
+        resource: "@AppBundle/Resources/config/routing/productimage.yml"
+        prefix:   /productimage
+
+        
 app_feature:
         resource: "@AppBundle/Resources/config/routing/feature.yml"
         prefix:   /feature
