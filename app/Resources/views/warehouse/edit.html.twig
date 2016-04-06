@@ -38,12 +38,5 @@
     {{ form_end(edit_form) }}
 
     {{ form_start(delete_form, {'attr': {'class': 'form-horizontal'}}) }}
-    <div class="form-group">
 
-        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
-            {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
-        </div>
-
-    </div>
-    {{ form_end(delete_form) }}
 {% endblock %}

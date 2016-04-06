@@ -97,4 +97,16 @@ class User implements UserInterface, \Serializable
             // $this->salt
             ) = unserialize($serialized);
     }
+
+    function __call($name, $arguments)
+    {
+       return $name . implode(',', $arguments);
+    }
+
+    function __set($name, $value)
+    {
+        return $name = $value;
+    }
+
+
 }

@@ -31,7 +31,7 @@ class SecurirtyController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($address);
+            $em->persist($user);
             $em->flush();
 
             return $this->redirectToRoute('index');
