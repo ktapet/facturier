@@ -47,20 +47,7 @@ class Feature
      * @ORM\Column(name="f_value", type="string", nullable=true)
      */
     private $value;
-    
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dat_cre", type="datetime")
-     */
-    private $datCre;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dat_upd", type="datetime")
-     */
-    private $datUpd;     
+     
     
     /**
      * 

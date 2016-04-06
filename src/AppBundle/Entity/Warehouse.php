@@ -1,10 +1,7 @@
 <?php
-
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
 /**
  * Warehouse
  *
@@ -12,7 +9,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity
  * @UniqueEntity("name")
  * @ORM\HasLifecycleCallbacks()
- * 
+ *
  */
 class Warehouse
 {
@@ -22,48 +19,45 @@ class Warehouse
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * 
-     */
-    private $id;    
-    
-    /**
-     * @var string
      *
-     * @ORM\Column(name="name", type="string")
-     * 
      */
-    private $name;      
+    private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string")
-     * 
+     * @ORM\Column(name="name", type="string")
+     *
      */
-    private $address;      
-    
+    private $name;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string")
+     *
+     */
+    private $address;
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
-    private $datUpd;  
-    
+    private $datUpd;
+
     /**
      * @inheritDoc
      */
     public function __toString()
     {
         return $this->name;
-    }  
-
+    }
     /**
      * Get id
      *
@@ -73,7 +67,6 @@ class Warehouse
     {
         return $this->id;
     }
-
     /**
      * Set name
      *
@@ -84,10 +77,8 @@ class Warehouse
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
-
     /**
      * Get name
      *
@@ -97,7 +88,6 @@ class Warehouse
     {
         return $this->name;
     }
-
     /**
      * Set address
      *
@@ -108,10 +98,8 @@ class Warehouse
     public function setAddress($address)
     {
         $this->address = $address;
-
         return $this;
     }
-
     /**
      * Get address
      *
@@ -121,7 +109,7 @@ class Warehouse
     {
         return $this->address;
     }
-    
+
     /**
      * Set datCre
      * @ORM\PrePersist
@@ -134,7 +122,6 @@ class Warehouse
         $this->datCre = new \Datetime();
         return $this;
     }
-
     /**
      * Get datCre
      *
@@ -144,7 +131,6 @@ class Warehouse
     {
         return $this->datCre;
     }
-
     /**
      * Set datUpd
      * @ORM\PreUpdate
@@ -156,10 +142,8 @@ class Warehouse
     public function setDatUpd()
     {
         $this->datUpd = new \DateTime();
-
         return $this;
     }
-
     /**
      * Get datUpd
      *

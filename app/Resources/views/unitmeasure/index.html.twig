@@ -10,13 +10,13 @@
 
     <table class="table table-hover records_list">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Unit Measure</th>
-                <th>Datcre</th>
-                <th>Datupd</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Unit Measure</th>
+            <th>Datcre</th>
+            <th>Datupd</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for unitMeasure in unitMeasures %}
@@ -27,10 +27,10 @@
                 <td>{% if unitMeasure.datUpd %}{{ unitMeasure.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <a class="btn btn-sm btn-info" href="{{ path('unitmeasure_show', { 'id': unitMeasure.id }) }}">
-                        <span class="glyphicon glyphicon-share"></span> Show 
+                        <span class="glyphicon glyphicon-share"></span> Show
                     </a>
                     <a class="btn btn-sm btn-default" href="{{ path('unitmeasure_edit', { 'id': unitMeasure.id }) }}">
-                        <span class="glyphicon glyphicon-edit"></span> Edit                                
+                        <span class="glyphicon glyphicon-edit"></span> Edit
                     </a>
                 </td>
             </tr>

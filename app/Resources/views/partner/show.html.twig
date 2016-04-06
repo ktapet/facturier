@@ -2,7 +2,7 @@
 
 {% block submenu %}
     <ul class="nav nav-sidebar">
-        <li><a href="{{ path('partner_new') }}">Add new</a></li>        
+        <li><a href="{{ path('partner_new') }}">Add new</a></li>
         <li><a href="{{ path('partner_index') }}">List</a></li>
         <li><a href="{{ path('partner_edit', { 'id': partner.id }) }}">Edit</a></li>
     </ul>
@@ -10,11 +10,11 @@
 
 {% block body %}
     <h1>Partner</h1>
-    
-<div class="col-lg-4">
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover record_properties">
-            <tbody>
+
+    <div class="col-lg-4">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover record_properties">
+                <tbody>
                 <tr>
                     <th>Id</th>
                     <td>{{ partner.id }}</td>
@@ -35,8 +35,8 @@
                     <th>Address</th>
                     <td>
                         {%for address in partner.addresses%}
-                                <a href="{{ path('address_show', { 'id': address.id }) }}">{{address }}</a>
-                            {%endfor%}
+                            <a href="{{ path('address_show', { 'id': address.id }) }}">{{address }}</a>
+                        {%endfor%}
                     </td>
                 </tr>
                 <tr>
@@ -47,17 +47,17 @@
                     <th>Datupd</th>
                     <td>{% if partner.datUpd %}{{ partner.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
                 </tr>
-            </tbody>
-        </table>
-    </div>           
-    
-    {{ form_start(delete_form) }}
+                </tbody>
+            </table>
+        </div>
+
+        {{ form_start(delete_form) }}
         <div class="row top-buffer">
             <div class="col-md-4 col-sm-4">
-               {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-danger'}}) }}
+                {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-danger'}}) }}
             </div>
-        </div>  
-    {{ form_end(delete_form) }}
-</div>
+        </div>
+        {{ form_end(delete_form) }}
+    </div>
 
 {% endblock %}

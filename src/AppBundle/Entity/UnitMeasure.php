@@ -96,7 +96,7 @@ class UnitMeasure
      *
      * @return UnitMeasure
      */
-    public function setDatCre($datCre)
+    public function setDatCre()
     {
         $this->datCre = new \DateTime();
         return $this;
@@ -120,7 +120,7 @@ class UnitMeasure
      *
      * @return UnitMeasure
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
         $this->datUpd = new \DateTime();
         return $this;

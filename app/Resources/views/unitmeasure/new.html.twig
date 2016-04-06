@@ -3,24 +3,24 @@
     <ul class="nav nav-sidebar">
         <li>
             <a href="{{ path('unitmeasure_new') }}">Add new</a>
-        </li>        
+        </li>
         <li>
             <a href="{{ path('unitmeasure_index') }}">List</a>
         </li>
-    </ul>   
+    </ul>
 {% endblock %}
 {% block body %}
     <h1>UnitMeasure creation</h1>
 
     {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-   <div class="form-group">
+    <div class="form-group">
         {{ form_label(form.name, 'Unit measure', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
-       
-            <div class="col-md-3 col-sm-4">
-                {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
-            </div>
-         {{ form_errors(form.name) }}
-    </div>  
+
+        <div class="col-md-3 col-sm-4">
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        {{ form_errors(form.name) }}
+    </div>
 
     <div class="form-group">
         <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">

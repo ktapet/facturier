@@ -1,17 +1,16 @@
 <?php
-
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * ProductImage
  *
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
- * 
+ *
  */
 class ProductImage
 {
@@ -21,59 +20,155 @@ class ProductImage
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * 
+     *
      */
-    private $id;    
-
+    private $id;
     /**
-     * 
-     * @ORM\ManyToMany(targetEntity="Product", inversedBy="images")
-     * 
+     *
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="images",cascade={"persist"})
+     *
      */
-    private $products;    
-   
+    private $product;
+
+
+    private $temp;
+
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", nullable=true)
      */
-    private $name;     
-    
+    private $name;
+
     /**
-     * @var string
-     *
-     * @ORM\Column(name="path", type="string", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $path;  
-        
+    public $path;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    private $file;
+
+
     /**
      * @var \DateTime
-     * 
+     *
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
-    private $datUpd;    
-    
+    private $datUpd;
+
     /**
      * @inheritDoc
      */
     public function __toString()
     {
-        return $this->reference;
-    }    
- 
+        return $this->name;
+    }
+
     /**
-     * Constructor
+     * Sets file.
+     *
+     * @param UploadedFile $file
      */
-    public function __construct()
+    public function setFile(UploadedFile $file = null)
     {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->file = $file;
+        // check if we have an old image path
+        if (isset($this->path)) {
+            // store the old name to delete after the update
+            $this->temp = $this->path;
+            $this->path = null;
+        } else {
+            $this->path = 'initial';
+        }
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->getFile()) {
+            // do whatever you want to generate a unique name
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this->path = $filename.'.'.$this->getFile()->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->getFile()) {
+            return;
+        }
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this->getFile()->move($this->getUploadRootDir(), $this->path);
+        // check if we have an old image
+        if (isset($this->temp)) {
+            // delete the old image
+            unlink($this->getUploadRootDir().'/'.$this->temp);
+            // clear the temp image path
+            $this->temp = null;
+        }
+        $this->file = null;
+    }
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        $file = $this->getAbsolutePath();
+        if ($file) {
+            unlink($file);
+        }
+    }
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadRootDir().'/'.$this->path;
+    }
+    public function getWebPath()
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadDir().'/'.$this->path;
+    }
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        $rrr = __DIR__;
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/images';
     }
 
     /**
@@ -85,7 +180,6 @@ class ProductImage
     {
         return $this->id;
     }
-
     /**
      * Set name
      *
@@ -96,10 +190,8 @@ class ProductImage
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
-
     /**
      * Get name
      *
@@ -109,31 +201,6 @@ class ProductImage
     {
         return $this->name;
     }
-
-    /**
-     * Set path
-     *
-     * @param string $path
-     *
-     * @return ProductImage
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-
-        return $this;
-    }
-
-    /**
-     * Get path
-     *
-     * @return string
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
     /**
      * Set datCre
      * @ORM\PrePersist
@@ -144,10 +211,8 @@ class ProductImage
     public function setDatCre($datCre)
     {
         $this->datCre = new \DateTime();
-
         return $this;
     }
-
     /**
      * Get datCre
      *
@@ -157,7 +222,6 @@ class ProductImage
     {
         return $this->datCre;
     }
-
     /**
      * Set datUpd
      * @ORM\PreUpdate
@@ -169,10 +233,8 @@ class ProductImage
     public function setDatUpd($datUpd)
     {
         $this->datUpd = new \DateTime();
-
         return $this;
     }
-
     /**
      * Get datUpd
      *
@@ -182,38 +244,26 @@ class ProductImage
     {
         return $this->datUpd;
     }
+    /**
+     * Get product
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
 
     /**
-     * Add product
+     * Set product
      *
      * @param \AppBundle\Entity\Product $product
      *
      * @return ProductImage
      */
-    public function addProduct(\AppBundle\Entity\Product $product)
+    public function setProduct(\AppBundle\Entity\Product $product = null)
     {
-        $this->products[] = $product;
-
+        $this->product = $product;
         return $this;
-    }
-
-    /**
-     * Remove product
-     *
-     * @param \AppBundle\Entity\Product $product
-     */
-    public function removeProduct(\AppBundle\Entity\Product $product)
-    {
-        $this->products->removeElement($product);
-    }
-
-    /**
-     * Get products
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProducts()
-    {
-        return $this->products;
     }
 }

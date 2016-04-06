@@ -4,7 +4,7 @@
     <ul class="nav nav-sidebar">
         <li>
             <a href="{{ path('partner_new') }}">Add new</a>
-        </li>        
+        </li>
         <li>
             <a href="{{ path('partner_index') }}">List</a>
         </li>
@@ -16,39 +16,39 @@
     <h1>Partner edit</h1>
 
     {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'}}) }}
-        <div class="row top-buffer">
-            <div class="form-group">
-                {{ form_label(edit_form.name, 'Name', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
-                <div class="col-md-3 col-sm-4">
-                    {{ form_widget(edit_form.name, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                    {{ form_errors(edit_form.name) }}
+    <div class="row top-buffer">
+        <div class="form-group">
+            {{ form_label(edit_form.name, 'Name', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+            <div class="col-md-3 col-sm-4">
+                {{ form_widget(edit_form.name, {'attr': {'class': 'form-control'}}) }}
             </div>
+            {{ form_errors(edit_form.name) }}
         </div>
-        <div class="row top-buffer">
-            <div class="form-group">
-                {{ form_label(edit_form.bank, 'Bank', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
-                <div class="col-md-3 col-sm-4">
-                    {{ form_widget(edit_form.bank, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                    {{ form_errors(edit_form.bank) }}
+    </div>
+    <div class="row top-buffer">
+        <div class="form-group">
+            {{ form_label(edit_form.bank, 'Bank', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+            <div class="col-md-3 col-sm-4">
+                {{ form_widget(edit_form.bank, {'attr': {'class': 'form-control'}}) }}
             </div>
+            {{ form_errors(edit_form.bank) }}
         </div>
-        <div class="row top-buffer">
-            <div class="form-group">
-                {{ form_label(edit_form.iban, 'Iban', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
-                <div class="col-md-3 col-sm-4">
-                    {{ form_widget(edit_form.iban, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                    {{ form_errors(edit_form.iban) }}
+    </div>
+    <div class="row top-buffer">
+        <div class="form-group">
+            {{ form_label(edit_form.iban, 'Iban', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+            <div class="col-md-3 col-sm-4">
+                {{ form_widget(edit_form.iban, {'attr': {'class': 'form-control'}}) }}
             </div>
+            {{ form_errors(edit_form.iban) }}
         </div>
+    </div>
 
-        <div class="row top-buffer">
-            <div class="col-md-4 col-sm-4">
-               {{ form_widget(edit_form.submit, { 'label': 'Edit', 'attr': {'class': 'btn btn-warning col-sm-4 col-xs-6'}}) }}
-            </div>
+    <div class="row top-buffer">
+        <div class="col-md-4 col-sm-4">
+            {{ form_widget(edit_form.submit, { 'label': 'Edit', 'attr': {'class': 'btn btn-warning col-sm-4 col-xs-6'}}) }}
         </div>
+    </div>
     {{ form_end(edit_form) }}
 
     {{ form_start(delete_form) }}
@@ -60,5 +60,3 @@
     {{ form_end(delete_form) }}
 
 {% endblock %}
-
-

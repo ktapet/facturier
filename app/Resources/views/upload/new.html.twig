@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+{{ form_start(form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
+
+    <div class="form-group">
+        {{ form_label(form, 'Name', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+
+        <div class="col-md-3 col-sm-4">
+            {{ form_widget(form, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        {{ form_errors(form) }}
+    </div>
+
+    {{ form_end(form) }}
+<br /><br /><br /><br /><br /><br /><br />
+
+
+{% endblock %}

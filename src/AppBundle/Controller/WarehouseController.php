@@ -8,17 +8,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Warehouse;
 use AppBundle\Form\WarehouseType;
 
+
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * Warehouse controller.
- * 
+ *
+ *
  */
 class WarehouseController extends Controller
 {
     /**
+     * Lists all Warehouse entities.
      * Lists all Warehouses entities.
      *
      */
@@ -29,7 +33,9 @@ class WarehouseController extends Controller
         $warehouses = $em->getRepository('AppBundle:Warehouse')->findAll();
 
         return $this->render('warehouse/index.html.twig', array(
-            'warehouses' => $warehouses
+
+            'warehouses' => $warehouses,
+
         ));
     }
 
@@ -42,7 +48,7 @@ class WarehouseController extends Controller
         $warehouse = new Warehouse();
         $form = $this->createForm('AppBundle\Form\WarehouseType', $warehouse);
         $form->add('submit', SubmitType::class);
-        
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -60,7 +66,7 @@ class WarehouseController extends Controller
     }
 
     /**
-     * Finds and displays a warehouse entity.
+     * Finds and displays a Warehouse entity.
      *
      */
     public function showAction(Warehouse $warehouse)
@@ -81,7 +87,9 @@ class WarehouseController extends Controller
     {
         $deleteForm = $this->createDeleteForm($warehouse);
         $editForm = $this->createForm('AppBundle\Form\WarehouseType', $warehouse);
-        $editForm->add('submit', SubmitType::class);        
+
+        $editForm->add('submit', SubmitType::class);
+
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -131,6 +139,8 @@ class WarehouseController extends Controller
             ->setMethod('DELETE')
             ->add('submit', SubmitType::class)
             ->getForm()
-        ;        
+
+        ;
+
     }
 }

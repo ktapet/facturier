@@ -1,21 +1,18 @@
 <?php
-
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
 /**
  * Product
  *
  * @ORM\Table()
  * @ORM\Entity
- * 
+ *
  * @UniqueEntity("reference")
  * @UniqueEntity("ean")
  * @ORM\HasLifecycleCallbacks()
- * 
+ *
  */
 class Product
 {
@@ -25,119 +22,116 @@ class Product
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * 
+     *
      */
-    private $id;    
-    
+    private $id;
+
     /**
      * @var string
      *
      * @ORM\Column(name="nume", type="string")
-     * 
+     *
      */
-    private $nume; 
-    
+    private $nume;
+
     /**
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="UnitMeasure")
-     * 
-     */ 
-    private $unitMeasure;    
-    
+     *
+     */
+    private $unitMeasure;
+
     /**
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="products")
-     * 
+     *
      */
-    private $categories;    
-    
+    private $categories;
+
     /**
-     * 
-     * @ORM\ManyToMany(targetEntity="Feature", inversedBy="products")
-     * 
-     * 
+     *
+     * @ORM\ManyToMany(targetEntity="Feature", inversedBy="products", cascade={"persist"})
+     *
      */
-    private $features;  
-    
+    private $features;
+
     /**
-     * 
-     * @ORM\ManyToMany(targetEntity="ProductImage", mappedBy="products")
-     * 
-     * 
+     *
+     * @ORM\OneToMany(targetEntity="ProductImage", mappedBy="product", cascade={"persist"}))
+     *
+     *
      */
-    private $images;      
-    
+    private $images;
+
     /**
-     * 
+     *
      * @ORM\OneToMany(targetEntity="ProductWarehouse", mappedBy="product")
-     * 
-     * 
+     *
+     *
      */
-    private $productWarehouses;       
-   
+    private $productWarehouses;
+
     /**
      * @var string
      *
      * @ORM\Column(name="manufacturer", type="string", nullable=true)
      */
-    private $manufacturer;     
-    
+    private $manufacturer;
+
     /**
      * @var string
      *
      * @ORM\Column(name="ean", type="string", nullable=true)
      */
-    private $ean;  
-    
+    private $ean;
+
     /**
      * @var string
      *
      * @ORM\Column(name="reference", type="string")
      */
-    private $reference;     
-    
+    private $reference;
+
     /**
      * @var decimal
      *
      * @ORM\Column(name="sale_price", type="decimal", precision=16, scale=6, nullable=true)
      */
-    private $salePrice;    
-    
+    private $salePrice;
+
     /**
      * @var \DateTime
-     * 
+     *
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
-    private $datUpd;    
-    
+    private $datUpd;
+
     /**
      * @inheritDoc
      */
     public function __toString()
     {
         return $this->reference;
-    }    
-    
- 
+    }
+
+
     /**
      * Constructor
      */
     public function __construct()
     {
+        $this->features = new ArrayCollection();
         $this->categories = new ArrayCollection();
-        $this->features = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->productWarehouses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->images = new ArrayCollection();
+        $this->productWarehouses = new ArrayCollection();
     }
-
     /**
      * Get id
      *
@@ -147,7 +141,6 @@ class Product
     {
         return $this->id;
     }
-
     /**
      * Set nume
      *
@@ -160,7 +153,7 @@ class Product
         $this->nume = $nume;
         return $this;
     }
-    
+
     /**
      * Get nume
      *
@@ -170,7 +163,7 @@ class Product
     {
         return $this->nume;
     }
-    
+
     /**
      * Set manufacturer
      *
@@ -183,7 +176,7 @@ class Product
         $this->manufacturer = $manufacturer;
         return $this;
     }
-    
+
     /**
      * Get manufacturer
      *
@@ -193,7 +186,6 @@ class Product
     {
         return $this->manufacturer;
     }
-
     /**
      * Set ean
      *
@@ -206,7 +198,6 @@ class Product
         $this->ean = $ean;
         return $this;
     }
-
     /**
      * Get ean
      *
@@ -216,7 +207,6 @@ class Product
     {
         return $this->ean;
     }
-
     /**
      * Set reference
      *
@@ -227,10 +217,8 @@ class Product
     public function setReference($reference)
     {
         $this->reference = $reference;
-
         return $this;
     }
-
     /**
      * Get reference
      *
@@ -240,7 +228,6 @@ class Product
     {
         return $this->reference;
     }
-
     /**
      * Set salePrice
      *
@@ -251,10 +238,8 @@ class Product
     public function setSalePrice($salePrice)
     {
         $this->salePrice = $salePrice;
-
         return $this;
     }
-
     /**
      * Get salePrice
      *
@@ -264,7 +249,6 @@ class Product
     {
         return $this->salePrice;
     }
-
     /**
      * Set datCre
      * @ORM\PrePersist
@@ -275,10 +259,8 @@ class Product
     public function setDatCre($datCre)
     {
         $this->datCre = new \DateTime();
-
         return $this;
     }
-
     /**
      * Get datCre
      *
@@ -288,7 +270,6 @@ class Product
     {
         return $this->datCre;
     }
-
     /**
      * Set datUpd
      * @ORM\PreUpdate
@@ -300,10 +281,8 @@ class Product
     public function setDatUpd($datUpd)
     {
         $this->datUpd = new \DateTime();
-
         return $this;
     }
-
     /**
      * Get datUpd
      *
@@ -313,7 +292,6 @@ class Product
     {
         return $this->datUpd;
     }
-
     /**
      * Set unitMeasure
      *
@@ -324,10 +302,8 @@ class Product
     public function setUnitMeasure(\AppBundle\Entity\UnitMeasure $unitMeasure = null)
     {
         $this->unitMeasure = $unitMeasure;
-
         return $this;
     }
-
     /**
      * Get unitMeasure
      *
@@ -337,7 +313,6 @@ class Product
     {
         return $this->unitMeasure;
     }
-
     /**
      * Add category
      *
@@ -348,10 +323,8 @@ class Product
     public function addCategory(\AppBundle\Entity\Category $category)
     {
         $this->categories[] = $category;
-
         return $this;
     }
-
     /**
      * Remove category
      *
@@ -361,7 +334,6 @@ class Product
     {
         $this->categories->removeElement($category);
     }
-
     /**
      * Get categories
      *
@@ -371,7 +343,6 @@ class Product
     {
         return $this->categories;
     }
-
     /**
      * Add feature
      *
@@ -381,11 +352,9 @@ class Product
      */
     public function addFeature(\AppBundle\Entity\Feature $feature)
     {
-        $this->features[] = $feature;
-
+        $this->features->add($feature);
         return $this;
     }
-
     /**
      * Remove feature
      *
@@ -395,7 +364,6 @@ class Product
     {
         $this->features->removeElement($feature);
     }
-
     /**
      * Get features
      *
@@ -405,7 +373,6 @@ class Product
     {
         return $this->features;
     }
-
     /**
      * Add image
      *
@@ -415,11 +382,11 @@ class Product
      */
     public function addImage(\AppBundle\Entity\ProductImage $image)
     {
-        $this->images[] = $image;
 
-        return $this;
+        $image->setProduct($this);
+
+        $this->images->add($image);
     }
-
     /**
      * Remove image
      *
@@ -429,7 +396,6 @@ class Product
     {
         $this->images->removeElement($image);
     }
-
     /**
      * Get images
      *
@@ -439,7 +405,6 @@ class Product
     {
         return $this->images;
     }
-
     /**
      * Add productWarehouse
      *
@@ -450,10 +415,8 @@ class Product
     public function addProductWarehouse(\AppBundle\Entity\ProductWarehouse $productWarehouse)
     {
         $this->productWarehouses[] = $productWarehouse;
-
         return $this;
     }
-
     /**
      * Remove productWarehouse
      *
@@ -463,7 +426,6 @@ class Product
     {
         $this->productWarehouses->removeElement($productWarehouse);
     }
-
     /**
      * Get productWarehouses
      *

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Feature list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Value</th>
+                <th>Datcre</th>
+                <th>Datupd</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for feature in features %}
+            <tr>
+                <td><a href="{{ path('feature_show', { 'id': feature.id }) }}">{{ feature.id }}</a></td>
+                <td>{{ feature.value }}</td>
+                <td>{% if feature.datCre %}{{ feature.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if feature.datUpd %}{{ feature.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('feature_show', { 'id': feature.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('feature_edit', { 'id': feature.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('feature_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

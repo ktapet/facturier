@@ -13,25 +13,25 @@
 {% endblock %}
 
 {% block body %}
-<h3>Exemplu - afisare date in tabel</h3>
-<div class="table-responsive">
-    <table class="table table-hover records_list">
-        <thead>
+    <h3>Exemplu - afisare date in tabel</h3>
+    <div class="table-responsive">
+        <table class="table table-hover records_list">
+            <thead>
             <tr>
-            {% for val in entities[0] %}
-                <th>{{ val }}</th>
-            {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for entity in entities %}
-            <tr>
-                {% for val in entity %}
-                    <td>{{ val }}</td>
+                {% for val in entities[0] %}
+                    <th>{{ val }}</th>
                 {% endfor %}
             </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    {% for val in entity %}
+                        <td>{{ val }}</td>
+                    {% endfor %}
+                </tr>
             {% endfor %}
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

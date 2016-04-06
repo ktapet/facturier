@@ -1,12 +1,9 @@
 <?php
-
 namespace AppBundle\Form;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
 class AddressType extends AbstractType
 {
     /**
@@ -23,15 +20,15 @@ class AddressType extends AbstractType
             ->add('country')
             ->add('email')
             ->add('phone')
-           // ->add('datCre', 'datetime')
-           // ->add('datUpd', 'datetime')
+            // ->add('datCre', 'datetime')
+            // ->add('datUpd', 'datetime')
             ->add('partner', EntityType::class, array(
                 'class' => 'AppBundle:Partner',
                 'placeholder' => 'Choose a partner',
             ));
-        
+
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

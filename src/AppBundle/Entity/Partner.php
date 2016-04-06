@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -17,12 +19,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 class Partner
 {
+
     /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
      */
     private $id;      
     
@@ -77,6 +81,11 @@ class Partner
     public function __construct()
     {
         $this->addresses = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 
     /**
@@ -245,8 +254,7 @@ class Partner
         return $this->addresses;
     }
 
-    public function __toString()
-    {
-        return $this->name;
-    }
+
+
+
 }
