@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>CsvFiles</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ csvFile.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ csvFile.name }}</td>
+            </tr>
+            <tr>
+                <th>Tip</th>
+                <td>{{ csvFile.tip }}</td>
+            </tr>
+            <tr>
+                <th>Isused</th>
+                <td>{% if csvFile.isUsed %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datcre</th>
+                <td>{% if csvFile.datCre %}{{ csvFile.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('csvfiles_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('csvfiles_edit', { 'id': csvFile.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

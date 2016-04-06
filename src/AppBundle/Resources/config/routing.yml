@@ -64,5 +64,10 @@ yaml_route_flasf:
 
 app_productimage:
     resource: "@AppBundle/Resources/config/routing/productimage.yml"
-    prefix:   /productimage    
+    prefix:   /productimage   
+    
+app_csvfiles:
+        resource: "@AppBundle/Resources/config/routing/csvfiles.yml"
+        prefix:   /csvfiles
+
 

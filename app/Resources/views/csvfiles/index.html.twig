@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>CsvFiles list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Tip</th>
+                <th>Isused</th>
+                <th>Datcre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for csvFile in csvFiles %}
+            <tr>
+                <td><a href="{{ path('csvfiles_show', { 'id': csvFile.id }) }}">{{ csvFile.id }}</a></td>
+                <td>{{ csvFile.name }}</td>
+                <td>{{ csvFile.tip }}</td>
+                <td>{% if csvFile.isUsed %}Yes{% else %}No{% endif %}</td>
+                <td>{% if csvFile.datCre %}{{ csvFile.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('csvfiles_show', { 'id': csvFile.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('csvfiles_edit', { 'id': csvFile.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('csvfiles_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
