@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,7 +16,10 @@ class WarehouseType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('address')
+            ->add('address', EntityType::class, array(
+                'class'=> 'AppBundle:Address',
+                'placeholder'=>'Choose a address'
+            ))
         ;
     }
 

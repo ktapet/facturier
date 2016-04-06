@@ -47,7 +47,7 @@ class DocumentLine
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Document", inversedBy="documentLines")
+     * @ORM\ManyToOne(targetEntity="Document", inversedBy="documentLines",cascade={"persist"})
      * 
      */
     private $document;    

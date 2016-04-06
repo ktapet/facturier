@@ -1,37 +1,51 @@
-{# app/Resources/views/product/index.html.twig #}
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
-{% block submenu %}  
-    {{ parent() }}
-    <h5>Bloc linkuri sablon copil</h5>
-    <ul class="nav nav-sidebar">
-
-    <li><a href="#">SubLink1</a></li>
-    <li><a href="#">SubLink2</a></li>
-    <li><a href="#">SubLink3</a></li>
-    </ul>
-{% endblock %}  
 {% block body %}
-<h3>Exemplu - afisare date in tabel</h3>
-<div class="table-responsive">
-    <table class="table table-hover records_list">
+    <h1>Product list</h1>
+
+    <table>
         <thead>
-            <tr>
-            {% for val in product[0] %}
-                <th>{{ val }}</th>
-            {% endfor %}
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Nume</th>
+            <th>Manufacturer</th>
+            <th>Ean</th>
+            <th>Reference</th>
+            <th>Saleprice</th>
+            <th>Datcre</th>
+            <th>Datupd</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
-            {% for entity in product %}
+        {% for product in products %}
             <tr>
-                {% for val in entity %}
-                    <td>{{ val }}</td>
-                {% endfor %}
+                <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                <td>{{ product.nume }}</td>
+                <td>{{ product.manufacturer }}</td>
+                <td>{{ product.ean }}</td>
+                <td>{{ product.reference }}</td>
+                <td>{{ product.salePrice }}</td>
+                <td>{% if product.datCre %}{{ product.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if product.datUpd %}{{ product.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('product_edit', { 'id': product.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
             </tr>
-            {% endfor %}
+        {% endfor %}
         </tbody>
     </table>
-</div>
-          
+
+    <ul>
+        <li>
+            <a href="{{ path('product_new') }}">Create a new entry</a>
+        </li>
+    </ul>
 {% endblock %}
