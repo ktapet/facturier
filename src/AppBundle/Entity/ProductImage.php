@@ -29,7 +29,7 @@ class ProductImage
 
     /**
      * 
-     * @ORM\ManyToOne(targetEntity="Product", inversedBy="images",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="images")
      * 
      */
     private $product;    
@@ -86,9 +86,9 @@ class ProductImage
     {
         $this->file = $file;
         // check if we have an old image path
-        if (isset($this->path)) {
+        if (is_file($this->getAbsolutePath())) {
             // store the old name to delete after the update
-            $this->temp = $this->path;
+            $this->temp = $this->getAbsolutePath();
             $this->path = null;
         } else {
             $this->path = 'initial';
@@ -103,8 +103,8 @@ class ProductImage
     {
         if (null !== $this->getFile()) {
             // do whatever you want to generate a unique name
-            $filename = sha1(uniqid(mt_rand(), true));
-            $this->path = $filename.'.'.$this->getFile()->guessExtension();
+            $this->path = $this->getFile()->guessExtension();
+
         }
     }
     
@@ -118,31 +118,43 @@ class ProductImage
             return;
         }
 
-        // if there is an error when moving the file, an exception will
-        // be automatically thrown by move(). This will properly prevent
-        // the entity from being persisted to the database on error
-        $this->getFile()->move($this->getUploadRootDir(), $this->path);
-
         // check if we have an old image
         if (isset($this->temp)) {
             // delete the old image
-            unlink($this->getUploadRootDir().'/'.$this->temp);
+            unlink($this->temp);
             // clear the temp image path
             $this->temp = null;
         }
-        $this->file = null;
+
+        // you must throw an exception here if the file cannot be moved
+        // so that the entity is not persisted to the database
+        // which the UploadedFile move() method does
+        $this->getFile()->move(
+            $this->getUploadRootDir(),
+            $this->id.'.'.$this->getFile()->guessExtension()
+        );
+
+        $this->setFile(null);
     }
+    
+    /**
+     * @ORM\PreRemove()
+     */
+    public function storeFilenameForRemove()
+    {
+        $this->temp = $this->getAbsolutePath();
+    }    
 
     /**
      * @ORM\PostRemove()
      */
     public function removeUpload()
     {
-        $file = $this->getAbsolutePath();
-        if ($file) {
-            unlink($file);
+        if (isset($this->temp)) {
+            unlink($this->temp);
         }
-    }    
+    }
+ 
 
     /**
      * Get file.
@@ -158,7 +170,7 @@ class ProductImage
     {
         return null === $this->path
             ? null
-            : $this->getUploadRootDir().'/'.$this->path;
+            : $this->getUploadRootDir().'/'.$this->id.'.'.$this->path;
     }
 
     public function getWebPath()
@@ -172,7 +184,6 @@ class ProductImage
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        $rrr = __DIR__;
         return __DIR__.'/../../../web/'.$this->getUploadDir();
     }
 
