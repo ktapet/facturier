@@ -81,18 +81,18 @@ class ProductController extends Controller
      */
     public function editAction(Request $request, Product $product)
     {
+        $origImages = new ArrayCollection();
+        
+        // Create an ArrayCollection of the current Tag objects in the database
+        foreach ($product->getImages() as $image) {
+           $origImages->add($image);
+        }     
     
         //$deleteForm = $this->createDeleteForm($product);
         $editForm = $this->createForm('AppBundle\Form\ProductType', $product);
         $editForm->add('submit', SubmitType::class);
         $editForm->handleRequest($request);
         
-        $origImages = new ArrayCollection();
-        
-        // Create an ArrayCollection of the current Tag objects in the database
-        foreach ($product->getImages() as $image) {
-           $origImages->add($image);
-        }           
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
