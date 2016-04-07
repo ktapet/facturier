@@ -1,7 +1,12 @@
 annotation_route:
     resource: "@AppBundle/Controller/"
     type:     annotation
+    
 
 yaml_route:
     resource: "@AppBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /member
+    
+# app/config/routing.yml
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"    
