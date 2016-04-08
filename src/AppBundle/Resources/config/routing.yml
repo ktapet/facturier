@@ -56,4 +56,8 @@ yaml_route_flasf:
     
 app_productimage:
     resource: "@AppBundle/Resources/config/routing/productimage.yml"
-    prefix:   /productimage    
+    prefix:   /productimage 
+    
+app_vatrate:
+        resource: "@AppBundle/Resources/config/routing/vatrate.yml"
+        prefix:   /vatrate

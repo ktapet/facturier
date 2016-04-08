@@ -1,0 +1,43 @@
+{% extends 'product/product_layout.html.twig' %}
+
+{% block body %}
+    <h1>VatRate list</h1>
+<div class="table-responsive">
+    <table class="table table-hover records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Description</th>
+                <th>Rate</th>
+                <th>Datcre</th>
+                <th>Datupd</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vatRate in vatRates %}
+            <tr>
+                <td><a href="{{ path('vatrate_show', { 'id': vatRate.id }) }}">{{ vatRate.id }}</a></td>
+                <td>{{ vatRate.code }}</td>
+                <td>{{ vatRate.description }}</td>
+                <td>{{ vatRate.rate }}</td>
+                <td>{% if vatRate.datCre %}{{ vatRate.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if vatRate.datUpd %}{{ vatRate.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+
+                    <a class="btn btn-sm btn-info" href="{{ path('vatrate_show', { 'id': vatRate.id }) }}">
+                        <span class="glyphicon glyphicon-share"></span> Show</a>
+
+                    <a class="btn btn-sm btn-default" href="{{ path('vatrate_edit', { 'id': vatRate.id }) }}">
+                        <span class="glyphicon glyphicon-edit"></span> Edit </a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <a href="{{ path('vatrate_new') }}" class="btn btn-success">Create a new entry</a>
+
+{% endblock %}

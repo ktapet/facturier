@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{# setam linkurile #}
+{% set part_links = {
+        'Address':'address'
+    }
+%}
+{# afisam linkurile #}
+{% block submenu %}
+    <ul class="nav navbar-nav navbar-left">
+        {% for key,link in part_links %}
+            <div class="row top-buffer">
+                <li><a href="{{ path(link~'_index') }}">{{ key }}</a></li>
+            </div>
+        {% endfor %}                       
+    </ul>
+{% endblock %}
+{# blocul body urmeaza a fi rescris in subpagini(de exmeplu in app\Resources\views\product\edit.html.twig) #}
+{% block body %}{% endblock %}

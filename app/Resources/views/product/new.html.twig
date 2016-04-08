@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'product/product_layout.html.twig' %}
 
 {% block body -%}   
 
@@ -101,5 +101,6 @@
        </div>
 
 {{ form_end(form) }} 
+<a href="{{ path('product_index') }}">Back to the list</a>
 
 {% endblock %}

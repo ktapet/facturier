@@ -1,14 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block submenu %}
-    <ul class="nav nav-sidebar">
-        <li>
-            <a href="{{ path('unitmeasure_new') }}">Add new</a>
-        </li>        
-        <li>
-            <a href="{{ path('unitmeasure_index') }}">List</a>
-        </li>
-    </ul>   
-{% endblock %}
+
 {% block body %}
     <h1>UnitMeasure creation</h1>
 
@@ -28,4 +19,5 @@
         </div>
     </div>
     {{ form_end(form) }}
+     <a href="{{ path('unitmeasure_index') }}">Back to the list</a>
 {% endblock %}

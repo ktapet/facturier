@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'document/document_layout.html.twig' %}
 
 {% block body %}
 
@@ -54,9 +54,9 @@
                 <li>{{ form_widget(doc) }}</li>
             {% endfor %}
         </ul>
-        <input type="submit" value="Create" />
+        <input type="submit" class="btn btn-success" value="Create" />
     {{ form_end(form) }}
-
+<a href="{{ path('document_index') }}">Back to the list</a>
     {# ... #}
 
 {% endblock %}

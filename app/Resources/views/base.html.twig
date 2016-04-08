@@ -51,18 +51,11 @@
             </div>
  
             <div class="navbar-collapse collapse clear">
-                {% set d_links = {
-                                'Feature name':'featurename',
-                                'Categories':'category',
-                                'Partner':'partner',
-                                'Unit measure':'unitmeasure',
-                                'Warehouse':'warehouse',
-                                'Address':'address',
-                                'PaymentType':'paymenttype',
+                {% set d_links = {  
+                                'Partners':'partner',
                                 'Documents':'document',
                                 'Products':'product',
-                                'DocStatus':'docstatus',
-                                'DocType':'doctype',
+                                
                                 }
                 %}
                 {% block dashboard_links %}
@@ -83,17 +76,15 @@
             </div>
         </div>
     </div>
- 
+                
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
+          
         {% block submenu %}
-          <ul class="nav nav-sidebar">
-            <li><a href="#">Sublink1</a></li>
-            <li><a href="#">SubLink2</a></li>
-            <li><a href="#">SubLink3</a></li>
-          </ul>
-          {% endblock %}
+
+        {% endblock %}
+        
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             {% block body %}{% endblock %}
