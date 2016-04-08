@@ -35,6 +35,7 @@ class ProductType extends AbstractType
             ))
             ->add('features', CollectionType::class, array(
                     'entry_type' => FeatureType::class,
+                    'label' => false,
                     'allow_add'    => true,
                     'by_reference' => false,
                     'allow_delete' => true,
@@ -42,6 +43,7 @@ class ProductType extends AbstractType
             ->add('images', CollectionType::class, array(
                     'entry_type' => ProductImageType::class,
                     'allow_add'    => true,
+                    'label' => false,
                     'by_reference' => false,
                     'allow_delete' => true,
                 ))                
