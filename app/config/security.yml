@@ -36,8 +36,8 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/.*/delete, role: ROLE_DELETE }        
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/.*/delete, role: ROLE_DELETE }
         - { path: ^/profile/edit, role: ROLE_MEMBER }
         - { path: ^/.*/edit, role: ROLE_EDIT }
         - { path: ^/member/, role: ROLE_MEMBER }      
