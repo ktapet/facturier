@@ -1,14 +1,4 @@
-{% extends 'base.html.twig' %}
-{% block submenu %}
-    <ul class="nav nav-sidebar">
-        <li>
-            <a href="{{ path('category_new') }}">Add new</a>
-        </li>        
-        <li>
-            <a href="{{ path('category_index') }}">List</a>
-        </li>
-    </ul>   
-{% endblock %}
+{% extends 'product/product_layout.html.twig' %}
  
 {% block body %}
     <h1>Category Creation</h1>
@@ -30,4 +20,5 @@
         </div>
     </div>
     {{ form_end(form) }}
+    <a href="{{ path('category_index') }}">Back to the list</a>
 {% endblock %}

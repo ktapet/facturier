@@ -1,12 +1,4 @@
-{% extends 'base.html.twig' %}
-{% block submenu %}
-    <ul class="nav nav-sidebar">
-        <li><a href="{{ path('doctype_new') }}">Add new</a></li>
-        <li><a href="{{ path('doctype_index') }}">List</a></li>
-        <li><a href="{{ path('doctype_edit', { 'id': docType.id }) }}">Edit</a></li>
-    </ul>
-{% endblock %}
-
+{% extends 'document/document_layout.html.twig' %}
 {% block body %}
     <h1>DocType</h1>
 
@@ -43,6 +35,9 @@
             {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
         </div>
         {{ form_end(delete_form) }}
+        
     </div>
+        
 </div>
+        <a href="{{ path('doctype_index') }}">Back to the list</a>
 {% endblock %}

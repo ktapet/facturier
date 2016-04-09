@@ -1,10 +1,4 @@
-{% extends 'base.html.twig' %}
-{% block submenu %}
-    <ul class="nav nav-sidebar">
-        <li><a href="{{ path('doctype_new') }}">Add new</a></li>
-        <li><a href="{{ path('doctype_index') }}">List</a></li>
-    </ul>
-{% endblock %}
+{% extends 'document/document_layout.html.twig' %}
 
 {% block body %}
     <h1>DocType list</h1>
@@ -42,5 +36,6 @@
         {% endfor %}
         </tbody>
     </table>
+        <a href="{{ path('doctype_new') }}" class="btn btn-success">Create a new entry</a>
 <div>
 {% endblock %}

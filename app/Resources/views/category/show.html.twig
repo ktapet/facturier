@@ -1,19 +1,4 @@
-{% extends 'base.html.twig' %}
-
-{% block submenu %}
-    <ul class="nav nav-sidebar">
-        <li>
-            <a href="{{ path('category_new') }}">Add new</a>
-        </li>        
-        <li>
-            <a href="{{ path('category_index') }}">List</a>
-        </li>
-        <li>
-            <a href="{{ path('category_edit', { 'id': category.id }) }}">Edit</a>
-        </li>
-
-    </ul>
-{% endblock %}
+{% extends 'product/product_layout.html.twig' %}
 
 {% block body %}
     <h1>Category Name</h1>
@@ -48,7 +33,9 @@
            {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
         </div>
         {{ form_end(delete_form) }}
-    </div>        
+    </div>  
 </div>            
-
+    <div class="row top-buffer">
+        <a href="{{ path('category_index') }}">Back to the list</a>
+    </div>
 {% endblock %}
