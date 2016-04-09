@@ -1,15 +1,4 @@
-{% extends 'base.html.twig' %}
-
-{% block submenu %}
-    <ul class="nav nav-sidebar">
-        <li>
-            <a href="{{ path('partner_new') }}">Add new</a>
-        </li>        
-        <li>
-            <a href="{{ path('partner_index') }}">List</a>
-        </li>
-    </ul>   
-{% endblock %}
+{% extends 'partner/partner_layout.html.twig' %}
 
 {% block body %}
     <h1>Partner creation</h1>
@@ -46,12 +35,13 @@
         <div class="row top-buffer">
             <div class="form-group">
                 <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
-                    {{ form_widget(form.submit, { 'label': 'Create a new entry',
+                    {{ form_widget(form.submit, { 'label': 'Create',
                                                   'attr': {'class': 'btn btn-sm btn-success'}})}}
                 </div>
             </div>       
         </div>
    
     {{ form_end(form) }}
+    <a href="{{ path('partner_index') }}">Back to the list</a>
 {% endblock %}
 

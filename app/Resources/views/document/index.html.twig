@@ -1,0 +1,36 @@
+{% extends 'document/document_layout.html.twig' %}
+{% block body %}
+    <h1>Document list</h1>
+        <div class="table-responsive">
+            <table class="table table-hover records_list">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Docnumber</th>
+                        <th>Datcre</th>
+                        <th>Datupd</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for document in documents %}
+                    <tr>
+                        <td><a href="{{ path('document_show', { 'id': document.id }) }}">{{ document.id }}</a></td>
+                        <td>{{ document.docNumber }}</td>
+                        <td>{% if document.datCre %}{{ document.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if document.datUpd %}{{ document.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>
+                            <a class="btn btn-sm btn-info" href="{{ path('document_show', { 'id': document.id }) }}">
+                                <span class="glyphicon glyphicon-share"></span> Show</a>                               
+                            <a class="btn btn-sm btn-default" href="{{ path('document_edit', { 'id': document.id }) }}">
+                                <span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('document_new') }}" class="btn btn-success">Create a new entry</a>
+        </div>
+
+{% endblock %}

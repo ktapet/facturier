@@ -1,20 +1,4 @@
-{% extends 'base.html.twig' %}
-
-{% block submenu %}
-    <ul class="nav nav-sidebar">
-        <li>
-            <a href="{{ path('featurename_new') }}">Add new</a>
-        </li>        
-        <li>
-            <a href="{{ path('featurename_index') }}">List</a>
-        </li>
-        <li>
-            <a href="{{ path('featurename_edit', { 'id': featureName.id }) }}">Edit</a>
-        </li>
-
-    </ul>
-{% endblock %}
-
+{% extends 'product/product_layout.html.twig' %}
 {% block body %}
     <h1>Feature Name</h1>
 
@@ -49,6 +33,7 @@
         </div>
         {{ form_end(delete_form) }}
     </div>        
-</div>            
+</div> 
+    <a href="{{ path('featurename_index') }}">Back to the list</a>
 
 {% endblock %}

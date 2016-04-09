@@ -1,0 +1,24 @@
+documentline_index:
+    path:     /
+    defaults: { _controller: "AppBundle:DocumentLine:index" }
+    methods:  GET
+
+documentline_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:DocumentLine:show" }
+    methods:  GET
+
+documentline_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:DocumentLine:new" }
+    methods:  [GET, POST]
+
+documentline_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:DocumentLine:edit" }
+    methods:  [GET, POST]
+
+documentline_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:DocumentLine:delete" }
+    methods:  DELETE

@@ -1,10 +1,4 @@
-{% extends 'base.html.twig' %}
-{% block submenu %}
-    <ul class="nav nav-sidebar">
-        <li><a href="{{ path('docstatus_new') }}">Add new</a></li>
-        <li><a href="{{ path('docstatus_index') }}">List</a></li>
-    </ul>
-{% endblock %}
+{% extends 'document/document_layout.html.twig' %}
 
 {% block body %}
     <h1>DocStatus list</h1>
@@ -40,6 +34,7 @@
         {% endfor %}
         </tbody>
     </table>
+        <a href="{{ path('docstatus_new') }}" class="btn btn-success">Create a new entry</a>
 </div>
 
 {% endblock %}

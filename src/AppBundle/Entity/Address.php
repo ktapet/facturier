@@ -51,7 +51,10 @@ class Address
     /**
      * @ORM\Column(name="email", type="string")
      * @Assert\NotBlank()
-     * @Assert\Email()
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
     private $email;
     

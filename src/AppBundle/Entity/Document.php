@@ -60,7 +60,7 @@ class Document
     /**
      * @var integer
      *
-     * @ORM\OneToMany(targetEntity="DocumentLine", mappedBy="document")
+     * @ORM\OneToMany(targetEntity="DocumentLine", mappedBy="document",cascade={"persist"})
      * 
      */
     private $documentLines;  

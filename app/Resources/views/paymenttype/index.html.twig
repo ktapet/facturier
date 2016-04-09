@@ -1,15 +1,5 @@
-{% extends 'base.html.twig' %}
-{% block submenu %}
-    <ul class="nav nav-sidebar">
-        <li>
-            <a href="{{ path('paymenttype_new') }}">Add new</a>
-        </li>
-        <li>
-            <a href="{{ path('paymenttype_index') }}">List</a>
-        </li>
+{% extends 'document/document_layout.html.twig' %}
 
-    </ul>
-{% endblock %}
 {% block body %}
     <h1>List of PaymentType</h1>
 
@@ -43,5 +33,6 @@
             {% endfor %}
             </tbody>
         </table>
+            <a href="{{ path('paymenttype_new') }}" class="btn btn-success">Create a new entry</a>
     </div>
 {% endblock %}

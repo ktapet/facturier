@@ -1,0 +1,21 @@
+{%- block form_widget_simple -%}
+    {%- set type = type|default('text') -%}
+    {% if type == 'file' %}
+        <span class="btn btn-default btn-file">
+           <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        </span>  
+    {% else %}
+        <input onkeyup="processInputs(this.value, this.id)" size="3" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    {% endif %}
+{%- endblock form_widget_simple -%}
+
+{% block button_widget -%}
+    {% if label is empty -%}
+        {% set label = name|humanize %}
+    {%- endif -%}
+
+        <div class="col-md-6 col-sm-4">
+            <button class="btn btn-sm btn-success" type="{{ type|default('button') }}" {{ block('button_attributes') }}>{{ label|trans({}, translation_domain) }}</button>
+        </div>
+
+{%- endblock button_widget %}

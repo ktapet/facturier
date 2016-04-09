@@ -1,16 +1,4 @@
-{% extends 'base.html.twig' %}
-
-{% block submenu %}
-    <ul class="nav nav-sidebar">
-        <li>
-            <a href="{{ path('partner_new') }}">Add new</a>
-        </li>        
-        <li>
-            <a href="{{ path('partner_index') }}">List</a>
-        </li>
-
-    </ul>
-{% endblock %}
+{% extends 'partner/partner_layout.html.twig' %}
 
 {% block body %}
     <h1>Partner edit</h1>
@@ -58,7 +46,7 @@
         </div>
     </div>
     {{ form_end(delete_form) }}
-
+<a href="{{ path('partner_index') }}">Back to the list</a>
 {% endblock %}
 
 
