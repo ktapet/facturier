@@ -1,0 +1,71 @@
+{% extends 'document/document_layout.html.twig' %}
+
+{% block body %}
+
+    <h1>Document editing</h1>
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    
+   <div class="form-group">
+        {{ form_label(form.docNumber, 'Document number', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
+        <div class="col-md-3 col-sm-4">
+            {{ form_widget(form.docNumber, {'attr': {'class': 'form-control'}}) }}
+        </div>
+         {{ form_errors(form.docNumber) }}
+    </div>  
+   <div class="form-group">
+        {{ form_label(form.partner, 'Partner', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
+        <div class="col-md-3 col-sm-4">
+            {{ form_widget(form.partner, {'attr': {'class': 'form-control'}}) }}
+        </div>
+         {{ form_errors(form.partner) }}
+    </div>  
+   <div class="form-group">
+        {{ form_label(form.docType, 'Document type', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
+        <div class="col-md-3 col-sm-4">
+            {{ form_widget(form.docType, {'attr': {'class': 'form-control'}}) }}
+        </div>
+         {{ form_errors(form.docType) }}
+    </div>    
+   <div class="form-group">
+        {{ form_label(form.paymentType, 'Payment type', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
+        <div class="col-md-3 col-sm-4">
+            {{ form_widget(form.paymentType, {'attr': {'class': 'form-control'}}) }}
+        </div>
+         {{ form_errors(form.paymentType) }}
+    </div>      
+    <div class="form-group">
+        {{ form_label(form.docStatus, 'Document status', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
+        <div class="col-md-3 col-sm-4">
+            {{ form_widget(form.docStatus, {'attr': {'class': 'form-control'}}) }}
+        </div>
+         {{ form_errors(form.docStatus) }}
+    </div>      
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+                <div class="wrap-playvideos">
+                    <h3>Document Lines</h3>
+                    <ul class="documentLines" data-prototype="{{ form_widget(form.documentLines.vars.prototype)|e }}">
+                        {# iterate over each existing tag and render its only field: name #}
+                        {% for doc in form.documentLines %}
+                            <li>{{ form_widget(doc) }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div> 
+    </div>  
+        <input type="submit" class="btn btn-success" value="Save" />
+    {{ form_end(form) }}
+<a href="{{ path('document_index') }}">Back to the list</a>
+    {# ... #}
+
+{% endblock %}
+
+

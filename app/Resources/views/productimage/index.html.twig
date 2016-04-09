@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ProductImage list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Path</th>
+                <th>Datcre</th>
+                <th>Datupd</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for productImage in productImages %}
+            <tr>
+                <td><a href="{{ path('productimage_show', { 'id': productImage.id }) }}">{{ productImage.id }}</a></td>
+                <td>{{ productImage.name }}</td>
+                <td>{{ productImage.path }}</td>
+                <td>{% if productImage.datCre %}{{ productImage.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if productImage.datUpd %}{{ productImage.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('productimage_show', { 'id': productImage.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('productimage_edit', { 'id': productImage.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('productimage_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

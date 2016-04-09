@@ -48,7 +48,7 @@ class FeatureName
     private $datUpd;     
    
    public function __toString(){
-       return (string)$this->getEn();
+       return $this->fnValue;
    }
 
     /**
