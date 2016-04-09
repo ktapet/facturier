@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{#<table class="table table-responsive">#}
+    {#<tr>
+        <th>Id</th>
+        <th>User</th>
+        <th>Role</th>
+    </tr>#}
+    {%   for entitie in entities %}
+        {#<tr>#}
+        {#<td>{{ entitie.id }}</td>#}
+        {#<td>{{ entitie. }}</td>#}
+        {#<td>{{ entitie }}</td>#}
+        {#</tr>#}
+        {{ entitie }}
+    {% endfor %}
+{#</table>#}
+{% endblock %}

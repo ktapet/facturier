@@ -1,0 +1,40 @@
+{% extends 'document/document_layout.html.twig' %}
+
+{% block body %}
+    <h1>PaymentType</h1>
+
+    <div class="col-lg-4">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover record_properties">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ paymenttype.id }}</td>
+                </tr>
+                <tr>
+                    <th>Payment Type</th>
+                    <td>{{ paymenttype.name }}</td>
+                </tr>
+                <tr>
+                    <th>Creation date</th>
+                    <td>{% if paymenttype.datCre %}{{ paymenttype.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Update date</th>
+                    <td>{% if paymenttype.datUpd %}{{ paymenttype.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-group">
+            {{ form_start(delete_form) }}
+            <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+                {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
+            </div>
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+        <a href="{{ path('paymenttype_index') }}">Back to the list</a>
+
+{% endblock %}

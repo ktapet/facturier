@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>UnitMeasure creation</h1>
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+   <div class="form-group">
+        {{ form_label(form.name, 'Unit measure', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
+            <div class="col-md-3 col-sm-4">
+                {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            </div>
+         {{ form_errors(form.name) }}
+    </div>  
+
+    <div class="form-group">
+        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+            {{ form_widget(form.submit, { 'label': 'Add', 'attr': {'class': 'btn btn-sm btn-success'}}) }}
+        </div>
+    </div>
+    {{ form_end(form) }}
+     <a href="{{ path('unitmeasure_index') }}">Back to the list</a>
+{% endblock %}

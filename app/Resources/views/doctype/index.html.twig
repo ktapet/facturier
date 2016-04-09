@@ -1,0 +1,41 @@
+{% extends 'document/document_layout.html.twig' %}
+
+{% block body %}
+    <h1>DocType list</h1>
+
+<div class="table-responsive">
+    <table class="table table-hover records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Direction</th>
+                <th>Datcre</th>
+                <th>Datupd</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for docType in docTypes %}
+            <tr>
+                <td><a href="{{ path('doctype_show', { 'id': docType.id }) }}">{{ docType.id }}</a></td>
+                <td>{{ docType.name }}</td>
+                <td>{{ docType.direction }}</td>
+                <td>{% if docType.datCre %}{{ docType.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if docType.datUpd %}{{ docType.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <a class="btn btn-sm btn-info" href="{{ path('doctype_show', { 'id': docType.id }) }}">
+                        <span class="glyphicon glyphicon-share"></span> Show
+                    </a>
+
+                    <a class="btn btn-sm btn-default" href="{{ path('doctype_edit', { 'id': docType.id }) }}">
+                        <span class="glyphicon glyphicon-edit"></span>Edit
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <a href="{{ path('doctype_new') }}" class="btn btn-success">Create a new entry</a>
+<div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'product/product_layout.html.twig' %}
+
+{% block body %}
+    <h1>Category Name</h1>
+
+<div class="col-lg-4">
+    <div class="table-responsive">   
+        <table class="table table-bordered table-hover record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th>Category name value</th>
+                <td>{{ category.name }}</td>
+            </tr>
+            <tr>
+                <th>Creation date</th>
+                <td>{% if category.datCre %}{{ category.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Update date</th>
+                <td>{% if category.datUpd %}{{ category.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div class="form-group">
+        {{ form_start(delete_form) }}
+        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+           {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
+        </div>
+        {{ form_end(delete_form) }}
+    </div>  
+</div>            
+    <div class="row top-buffer">
+        <a href="{{ path('category_index') }}">Back to the list</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'document/document_layout.html.twig' %}
+
+{% block body %}
+    <h1>DocType creation</h1>
+
+    {{ form_start(form, { 'attr': { 'role':'form', 'class':'form-horizontal' } }) }}
+
+    <div class="form-group">
+        {{ form_label(form.name, 'Name', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+
+        <div class="col-md-3 col-sm-4">
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        {{ form_errors(form.name) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.direction, 'Direction', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+
+        <div class="col-md-3 col-sm-4">
+            {{ form_widget(form.direction, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        {{ form_errors(form.direction) }}
+    </div>
+    <div class="form-group">
+        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+            {{ form_widget(form.submit, { 'label': 'Save', 'attr': {'class': 'btn btn-sm btn-success'}}) }}
+        </div>
+    </div>
+    {{ form_end(form) }}
+        <a href="{{ path('doctype_index') }}">Back to the list</a>
+
+{% endblock %}

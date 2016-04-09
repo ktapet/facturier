@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{# setam linkurile #}
+{% set doc_links = {
+        'PaymentType':'paymenttype',
+        'DocStatus':'docstatus',
+        'DocType':'doctype',
+    }
+%}
+{# afisam linkurile #}
+{% block submenu %}
+    <ul class="nav nav-sidebar">
+        {% for key,link in doc_links %}
+
+                <li><a href="{{ path(link~'_index') }}">{{ key }}</a></li>
+
+        {% endfor %}                       
+    </ul>
+{% endblock %}
+{# blocul body urmeaza a fi rescris in subpagini(de exmeplu in app\Resources\views\product\edit.html.twig) #}
+{% block body %}{% endblock %}
