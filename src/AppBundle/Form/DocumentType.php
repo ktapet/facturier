@@ -29,6 +29,8 @@ class DocumentType extends AbstractType
             'entry_type' => DocumentLineType::class,
             'allow_add' => true,
             'label' => false,
+            'by_reference' => false,
+            'allow_delete' => true,
         ))                
         ;
     }

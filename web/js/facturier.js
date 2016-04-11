@@ -1,5 +1,6 @@
 var $collectionHolder;
 var $collectionHolder_image;
+var $collectionHolder_documentLine;
 
 // setup an "adauga o proba" link
 var $addTagLink = $('<a href="#" class="btn btn-sm btn-default add_tag_link">Add feature</a>');

@@ -15,6 +15,14 @@
                     <td>{{ document.docNumber }}</td>
                 </tr>
                 <tr>
+                    <th>Document lines</th>
+                    <td>{% for documentLine in document.documentLines %}
+                        <p>{{documentLine.quantity}}</p>
+                        {%endfor%}
+                    
+                    </td>
+                </tr>
+                <tr>
                     <th>Datcre</th>
                     <td>{% if document.datCre %}{{ document.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                 </tr>
