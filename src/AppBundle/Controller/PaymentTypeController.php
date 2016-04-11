@@ -50,7 +50,12 @@ class PaymentTypeController extends Controller
 
         $paymentType = new PaymentType();
         $form = $this->createForm('AppBundle\Form\PaymentTypeType', $paymentType);
-        $form->add('submit', SubmitType::class);
+        $form->add('submit', SubmitType::class, array(
+            'label'=>'Create',
+            'attr'=>array(
+                'class'=>'btn btn-primary'
+            )
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -93,7 +98,12 @@ class PaymentTypeController extends Controller
     {
         $deleteForm = $this->createDeleteForm($paymentType);
         $editForm = $this->createForm('AppBundle\Form\PaymentTypeType', $paymentType);
-        $editForm->add('submit', SubmitType::class);
+        $editForm->add('submit', SubmitType::class, array(
+            'label'=>'Edit',
+            'attr'=>array(
+                'class'=>'btn btn-success'
+            )
+        ));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -143,7 +153,12 @@ class PaymentTypeController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('paymenttype_delete', array('id' => $paymentType->getId())))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, array(
+                'label'=>'Delete',
+                'attr'=>array(
+                    'class'=>'btn btn-danger'
+                )
+            ))
             ->getForm()
         ;
     }

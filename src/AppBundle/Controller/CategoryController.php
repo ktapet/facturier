@@ -25,11 +25,14 @@ class CategoryController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $mapping = $this->getDoctrine()->getManager()->getClassMetadata('AppBundle:Category');
+        $columns = $mapping->getFieldNames();
 
         $categories = $em->getRepository('AppBundle:Category')->findAll();
 
         return $this->render('category/index.html.twig', array(
             'categories' => $categories,
+            'columns'    => $columns,
         ));
     }
 
@@ -41,7 +44,12 @@ class CategoryController extends Controller
     {
         $category = new Category();
         $form = $this->createForm('AppBundle\Form\CategoryType', $category);
-        $form->add('submit', SubmitType::class);
+        $form->add('submit', SubmitType::class, array(
+            'label'=>'Create',
+            'attr'=> array(
+                'class'=>'btn btn-primary',
+            )
+        ));
         
         $form->handleRequest($request);
 
@@ -81,7 +89,12 @@ class CategoryController extends Controller
     {
         $deleteForm = $this->createDeleteForm($category);
         $editForm = $this->createForm('AppBundle\Form\CategoryType', $category);
-        $editForm->add('submit', SubmitType::class);        
+        $editForm->add('submit', SubmitType::class, array(
+            'label'=>'Save',
+            'attr'=>[
+                'class'=>'btn btn-succes'
+            ]
+        ));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -129,7 +142,12 @@ class CategoryController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('category_delete', array('id' => $category->getId())))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, array(
+                'label'=>'Delete',
+                'attr'=>array(
+                    'class'=>'btn btn-danger'
+                )
+            ))
             ->getForm()
         ;        
     }

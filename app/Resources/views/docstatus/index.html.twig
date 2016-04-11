@@ -1,5 +1,13 @@
 {% extends 'document/document_layout.html.twig' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('docstatus_new') }}">Add new</a></li>
+        <li><a href="{{ path('docstatus_index') }}">List</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>DocStatus list</h1>
 
@@ -7,10 +15,9 @@
     <table class="table table-hover records_list">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Datcre</th>
-                <th>Datupd</th>
+                {% for column in columns %}
+                <th>{{ column|capitalize }}</th>
+                {% endfor %}
                 <th>Actions</th>
             </tr>
         </thead>
@@ -34,7 +41,7 @@
         {% endfor %}
         </tbody>
     </table>
-        <a href="{{ path('docstatus_new') }}" class="btn btn-success">Create a new entry</a>
+
 </div>
 
 {% endblock %}

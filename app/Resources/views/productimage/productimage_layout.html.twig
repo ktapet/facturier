@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{# setam linkurile #}
+{% set p_links = {
+'Feature name':'featurename',
+'Categories':'category',
+'Vat rates':'vatrate',
+'Unit measure':'unitmeasure',
+'Warehouses':'warehouse',
+}
+%}
+{# afisam linkurile #}
+{% block submenu %}
+
+    <ul class="nav nav-sidebar">
+        {% for key,link in p_links %}
+
+            <li><a href="{{ path(link~'_index') }}">{{ key }}</a></li>
+
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}
+{# blocul body urmeaza a fi rescris in subpagini(de exmeplu in app\Resources\views\product\edit.html.twig) #}
+{% block body %}{% endblock %}

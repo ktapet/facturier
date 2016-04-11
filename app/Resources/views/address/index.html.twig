@@ -1,4 +1,13 @@
 {% extends 'partner/partner_layout.html.twig' %}
+
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('address_new') }}">Add new</a></li>
+        <li><a href="{{ path('address_index') }}">List</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>Address list</h1>
 
@@ -49,7 +58,6 @@
         {% endfor %}
         </tbody>
     </table>
-        <a href="{{ path('address_new') }}" class="btn btn-success">Create a new entry</a>
 </div>
 
 {% endblock %}

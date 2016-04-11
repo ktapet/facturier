@@ -1,9 +1,17 @@
 {% extends 'partner/partner_layout.html.twig' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('partner_new') }}">Add new</a></li>
+        <li><a href="{{ path('partner_index') }}">List</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>Partner creation</h1>
 
-    {{ form_start(form) }}
+    {{ form_start(form, {'attr': {'role':'form', 'class': 'form-horizontal'}}) }}
         <div class="row top-buffer">
             <div class="form-group">
                 {{ form_label(form.name, 'Name', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
@@ -36,12 +44,12 @@
             <div class="form-group">
                 <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
                     {{ form_widget(form.submit, { 'label': 'Create',
-                                                  'attr': {'class': 'btn btn-sm btn-success'}})}}
+                                                  'attr': {'class': 'btn btn-primary'}})}}
                 </div>
             </div>       
         </div>
    
     {{ form_end(form) }}
-    <a href="{{ path('partner_index') }}">Back to the list</a>
+
 {% endblock %}
 

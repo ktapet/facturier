@@ -1,14 +1,23 @@
 {% extends 'document/document_layout.html.twig' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('document_new') }}">Add new</a></li>
+        <li><a href="{{ path('document_index') }}">List</a></li>
+        <li><a href="{{ path('document_edit', {'id':document}) }}">Edit</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
 
     <h1>Document editing</h1>
 
-    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    {{ form_start(form, {'attr': {'role':'form', 'class': 'form-horizontal'}}) }}
     
    <div class="form-group">
         {{ form_label(form.docNumber, 'Document number', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
-       
+
         <div class="col-md-3 col-sm-4">
             {{ form_widget(form.docNumber, {'attr': {'class': 'form-control'}}) }}
         </div>
@@ -63,7 +72,7 @@
     </div>  
         <input type="submit" class="btn btn-success" value="Save" />
     {{ form_end(form) }}
-<a href="{{ path('document_index') }}">Back to the list</a>
+
     {# ... #}
 
 {% endblock %}

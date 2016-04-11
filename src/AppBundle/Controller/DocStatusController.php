@@ -23,11 +23,14 @@ class DocStatusController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $mapping = $this->getDoctrine()->getManager()->getClassMetadata('AppBundle:DocStatus');
+        $columns = $mapping->getFieldNames();
 
         $docStatuses = $em->getRepository('AppBundle:DocStatus')->findAll();
 
         return $this->render('docstatus/index.html.twig', array(
             'docStatuses' => $docStatuses,
+            'columns'     => $columns,
         ));
     }
 
@@ -39,7 +42,12 @@ class DocStatusController extends Controller
     {
         $docStatus = new DocStatus();
         $form = $this->createForm('AppBundle\Form\DocStatusType', $docStatus);
-        $form->add('submit', SubmitType::class);
+        $form->add('submit', SubmitType::class, array(
+            'label'=>'Create',
+            'attr'=>array(
+                'class'=>'btn btn-primary'
+            )
+        ));
 
         $form->handleRequest($request);
 
@@ -79,7 +87,12 @@ class DocStatusController extends Controller
     {
         $deleteForm = $this->createDeleteForm($docStatus);
         $editForm = $this->createForm('AppBundle\Form\DocStatusType', $docStatus);
-        $editForm->add('submit', SubmitType::class, ['label'=>'Trimite', 'attr'=>['class'=>'btn btn-primary']]);
+        $editForm->add('submit', SubmitType::class, [
+            'label'=>'Save',
+            'attr'=>[
+                'class'=>'btn btn-succes'
+                ]
+        ]);
 
         $editForm->handleRequest($request);
 
@@ -128,7 +141,12 @@ class DocStatusController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('docstatus_delete', array('id' => $docStatus->getId())))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class, ['label'=>'Trimite', 'attr'=>['class'=>'btn btn-primary']])
+            ->add('submit', SubmitType::class, [
+                'label'=>'Delete',
+                'attr'=>[
+                    'class'=>'btn btn-danger'
+                ]
+            ])
             ->getForm()
         ;
     }

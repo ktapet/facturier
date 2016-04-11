@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -23,7 +24,18 @@ class ProductType extends AbstractType
             ->add('ean')
             ->add('reference')
             ->add('salePrice')
-            ->add('unitMeasure')
+            ->add('unitMeasure', EntityType::class, array(
+                'class'=> 'AppBundle\Entity\UnitMeasure',
+                'query_builder'=> function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.name', 'ASC');
+                },
+                'multiple'=>false,
+                'expanded'=>false,
+                'placeholder'=>'Select Unit measure'
+
+
+            ))
             ->add('categories', EntityType::class, array(
                 'class' => 'AppBundle:Category',
                 'query_builder' => function (EntityRepository $er) {

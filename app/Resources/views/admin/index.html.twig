@@ -1,19 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{#<table class="table table-responsive">#}
-    {#<tr>
-        <th>Id</th>
-        <th>User</th>
-        <th>Role</th>
-    </tr>#}
-    {%   for entitie in entities %}
-        {#<tr>#}
-        {#<td>{{ entitie.id }}</td>#}
-        {#<td>{{ entitie. }}</td>#}
-        {#<td>{{ entitie }}</td>#}
-        {#</tr>#}
-        {{ entitie }}
+    <h1>Admin</h1>
+<table class="table table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>User</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entitie in entities %}
+        <tr>
+            <td>{{ entitie.id }}</td>
+            <td>{{ entitie.username }}</td>
+            <td>
+                {% for role in entitie.roles %}
+                    {{ role|replace({'ROLE_':' '}) }}
+                {% endfor %}
+            </td>
+        </tr>
     {% endfor %}
-{#</table>#}
+    </tbody>
+</table>
 {% endblock %}

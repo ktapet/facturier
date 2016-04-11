@@ -1,5 +1,14 @@
 {% extends 'document/document_layout.html.twig' %}
+{% form_theme delete_form ':Form:fields.html.twig' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('docstatus_new') }}">Add new</a></li>
+        <li><a href="{{ path('docstatus_index') }}">List</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>DocStatus</h1>
 
@@ -27,13 +36,11 @@
     </table>
 </div>
         {{ form_start(delete_form) }}
-        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
-            {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
-        </div>
+
+            {{ form_widget(delete_form) }}
+
         {{ form_end(delete_form) }}
 
-    <div class="row top-buffer">
-        <a href="{{ path('docstatus_index') }}">Back to the list</a>
-    </div>
+
 </div>
 {% endblock %}

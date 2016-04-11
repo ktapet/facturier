@@ -25,11 +25,14 @@ class AddressController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $mapping = $this->getDoctrine()->getManager()->getClassMetadata('AppBundle:Address');
+        $columns = $mapping->getFieldNames();
 
         $addresses = $em->getRepository('AppBundle:Address')->findAll();
 
         return $this->render('address/index.html.twig', array(
             'addresses' => $addresses,
+            'columns'   => $columns,
         ));
     }
 
@@ -42,7 +45,12 @@ class AddressController extends Controller
         $address = new Address();
         $form = $this->createForm('AppBundle\Form\AddressType', $address);
         /* Adaug aici butonul de submit */
-        $form->add('submit', SubmitType::class);
+        $form->add('submit', SubmitType::class, array(
+            'label'=>'Create',
+            'attr'=>array(
+                'class'=>'btn btn-primary'
+            )
+        ));
 
         $form->handleRequest($request);
 
@@ -83,7 +91,12 @@ class AddressController extends Controller
         $deleteForm = $this->createDeleteForm($address);
         $editForm = $this->createForm('AppBundle\Form\AddressType', $address);
         /* Adaug aici butonul de submit */
-        $editForm->add('submit', SubmitType::class, ['label'=>'Trimite', 'attr'=>['class'=>'btn btn-primary']]);
+        $editForm->add('submit', SubmitType::class, [
+            'label'=>'Save',
+            'attr'=>[
+                'class'=>'btn btn-succes'
+            ]
+        ]);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -131,7 +144,7 @@ class AddressController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('address_delete', array('id' => $address->getId())))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class, ['label'=>'Delete', 'attr'=>['class'=>'btn btn-primary']])
+            ->add('submit', SubmitType::class, ['label'=>'Delete', 'attr'=>['class'=>'btn btn-danger']])
             ->getForm()
         ;
     }

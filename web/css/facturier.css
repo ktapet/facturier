@@ -123,4 +123,16 @@ body {
     margin-top:20px; 
 
 }
+hr{
+  border: 1px solid #0f0f0f;
+  width: 120%;
+  margin-left: -20px;
 
+}
+ul{
+  list-style: none;
+}
+
+button{
+  margin-bottom: 2px !important;
+}

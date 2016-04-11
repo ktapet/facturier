@@ -1,5 +1,14 @@
 {% extends 'product/product_layout.html.twig' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('product_new') }}">Add new</a></li>
+        <li><a href="{{ path('product_index') }}">List</a></li>
+        <li><a href="{{ path('product_edit', {'id':product.id}) }}">Edit</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>Product</h1>
 <div class="col-lg-4">
@@ -22,7 +31,9 @@
                     <th>Images</th>
                     <td>
                         {% for image in product.images %}
-                            <img src="{{ asset(image.getWebPath) }}" class="img-responsive" alt="{{ asset(image.name) }}" width="150" />
+                            <a href="{{ asset(image.getWebPath) }}">
+                                <img src="{{ asset(image.getWebPath) }}" class="img-responsive" alt="{{ image.getName }}" width="150" />
+                            </a>
                         {% endfor %}
                     </td>
                 </tr>
@@ -57,8 +68,6 @@
             </div>
         </div> 
     {{ form_end(delete_form) }}
-    <div class="row top-buffer">
-        <a href="{{ path('product_index') }}">Back to the list</a>
-    </div>
+
 </div>
 {% endblock %}

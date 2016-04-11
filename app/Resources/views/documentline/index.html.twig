@@ -1,9 +1,18 @@
 {% extends 'base.html.twig' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('documentline_new') }}">Add new</a></li>
+        <li><a href="{{ path('documentline_index') }}">List</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>DocumentLine list</h1>
 
-    <table>
+<div class="table-responsive">
+    <table class="table table-hover records_list">
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,23 +32,19 @@
                 <td>{% if documentLine.datCre %}{{ documentLine.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if documentLine.datUpd %}{{ documentLine.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('documentline_show', { 'id': documentLine.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('documentline_edit', { 'id': documentLine.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a class="btn btn-sm btn-info" href="{{ path('documentline_show', { 'id': documentLine.id }) }}">
+                        <span class="glyphicon glyphicon-share"></span> Show
+                    </a>
+
+                    <a class="btn btn-sm btn-default" href="{{ path('documentline_edit', { 'id': documentLine.id }) }}">
+                        <span class="glyphicon glyphicon-edit"></span>Edit
+                    </a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('documentline_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+
+</div>
 {% endblock %}

@@ -1,16 +1,21 @@
 {% extends 'base.html.twig' %}
-
+{% form_theme form ':Form:fields.html.twig' %}
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('feature_new') }}">Add new</a></li>
+        <li><a href="{{ path('feature_index') }}">List</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>Feature creation</h1>
 
-    {{ form_start(form) }}
+    {{ form_start(form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
+
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('feature_index') }}">Back to the list</a>
-        </li>
-    </ul>
+
 {% endblock %}

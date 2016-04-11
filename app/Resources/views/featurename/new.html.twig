@@ -1,31 +1,21 @@
 {% extends 'product/product_layout.html.twig' %}
+{% form_theme form ':Form:fields.html.twig' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('featurename_new') }}">Add new</a></li>
+        <li><a href="{{ path('featurename_index') }}">List</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>Feature Name Creation</h1>
 
-    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-    
-   <div class="form-group">
-        {{ form_label(form.fnValue, 'Feature name', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
-       
-        <div class="col-md-3 col-sm-4">
-            {{ form_widget(form.fnValue, {'attr': {'class': 'form-control'}}) }}
-        </div>
-         {{ form_errors(form.fnValue) }}
-    </div>  
-   <div class="form-group">
-        {{ form_label(form.agree, 'Doresc sa fiu anuntat cand se modifica aceasta entitate?', {'label_attr': {'class': 'col-md-3 control-label'}}) }}
-       
-        <div class="col-md-1">
-            {{ form_widget(form.agree, {'attr': {'class': 'form-control'}}) }}
-        </div>
-         {{ form_errors(form.agree) }}
-    </div>       
-    <div class="form-group">
-        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
-            {{ form_widget(form.submit, { 'label': 'Add', 'attr': {'class': 'btn btn-sm btn-success'}}) }}
-        </div>
-    </div>
+    {{ form_start(form, {'attr': {'role':'form' ,'class': 'form-horizontal'}}) }}
+
+            {{ form_widget(form) }}
+
     {{ form_end(form) }}
-    <a href="{{ path('featurename_index') }}">Back to the list</a>
+
 {% endblock %}

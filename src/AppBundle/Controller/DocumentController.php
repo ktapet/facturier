@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Entity\Document;
 use AppBundle\Form\DocumentType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * Document controller.
@@ -37,6 +38,12 @@ class DocumentController extends Controller
     {
         $document = new Document();
         $form = $this->createForm('AppBundle\Form\DocumentType', $document);
+        $form->add('submit', SubmitType::class, array(
+            'label'=>'Create',
+            'attr'=>array(
+                'class'=>'btn btn-primary',
+            )
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -75,6 +82,12 @@ class DocumentController extends Controller
     {
         $deleteForm = $this->createDeleteForm($document);
         $editForm = $this->createForm('AppBundle\Form\DocumentType', $document);
+        $editForm->add('submit', SubmitType::class, [
+            'label'=>'Save',
+            'attr'=>[
+                'class'=>'btn btn-succes'
+            ]
+        ]);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

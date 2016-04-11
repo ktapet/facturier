@@ -1,4 +1,13 @@
 {% extends 'document/document_layout.html.twig' %}
+
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('document_new') }}">Add new</a></li>
+        <li><a href="{{ path('document_index') }}">List</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>Document list</h1>
         <div class="table-responsive">
@@ -6,7 +15,7 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Docnumber</th>
+                        <th>Document number</th>
                         <th>Datcre</th>
                         <th>Datupd</th>
                         <th>Actions</th>
@@ -30,7 +39,7 @@
                 </tbody>
             </table>
 
-            <a href="{{ path('document_new') }}" class="btn btn-success">Create a new entry</a>
+
         </div>
 
 {% endblock %}

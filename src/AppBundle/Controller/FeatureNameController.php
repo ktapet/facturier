@@ -51,13 +51,19 @@ class FeatureNameController extends Controller
             'required' => false,
             'mapped' => false,
         ));
-        
+        $form->add('submit', SubmitType::class, array(
+            'label'=>'Create',
+            'attr'=>array(
+                'class'=>'btn btn-primary'
+            )
+        ));
+
         /*
          * @ktapet
          * adaugam aici butonul de sumit
          * vezi mai multe aici: http://symfony.com/doc/current/reference/forms/types/submit.html
          */
-        $form->add('submit', SubmitType::class);
+
         
         $form->handleRequest($request);
 
@@ -102,7 +108,12 @@ class FeatureNameController extends Controller
          * adaugam aici butonul de sumit
          * vezi mai multe aici: http://symfony.com/doc/current/reference/forms/types/submit.html
          */
-        $editForm->add('submit', SubmitType::class);        
+        $editForm->add('submit', SubmitType::class, array(
+            'label'=>'Save',
+            'attr'=>array(
+                'class'=>'btn btn-success',
+            )
+        ));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -162,7 +173,12 @@ class FeatureNameController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('featurename_delete', array('id' => $featureName->getId())))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, array(
+                'label'=>'Delete',
+                'attr'=>array(
+                    'class'=>'btn btn-danger'
+                )
+            ))
             ->getForm()
         ;        
     }

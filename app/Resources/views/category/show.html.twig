@@ -1,5 +1,14 @@
 {% extends 'product/product_layout.html.twig' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('category_new') }}">Add new</a></li>
+        <li><a href="{{ path('category_index') }}">List</a></li>
+        <li><a href="{{ path('category_edit', {'id':category.id}) }}">Edit</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>Category Name</h1>
 
@@ -35,7 +44,5 @@
         {{ form_end(delete_form) }}
     </div>  
 </div>            
-    <div class="row top-buffer">
-        <a href="{{ path('category_index') }}">Back to the list</a>
-    </div>
+
 {% endblock %}

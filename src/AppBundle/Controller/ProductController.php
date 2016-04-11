@@ -27,10 +27,15 @@ class ProductController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        /* numele coloanelor din baza de date */
+        $mapping = $this->getDoctrine()->getManager()->getClassMetadata('AppBundle:Product');
+        $columns = $mapping->getFieldNames();
+
         $products = $em->getRepository('AppBundle:Product')->findAll();
 
         return $this->render('product/index.html.twig', array(
             'products' => $products,
+            'columns'  => $columns,
         ));
     }
 
@@ -42,7 +47,12 @@ class ProductController extends Controller
     {
         $product = new Product();
         $form = $this->createForm('AppBundle\Form\ProductType', $product);
-        $form->add('submit', SubmitType::class);
+        $form->add('submit', SubmitType::class, array(
+            'label'=>'Create',
+            'attr'=>array(
+                'class'=>'btn btn-primary',
+            ),
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

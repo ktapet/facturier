@@ -1,5 +1,14 @@
 {% extends 'product/product_layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('product_new') }}">Add new</a></li>
+        <li><a href="{{ path('product_index') }}">List</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>Product list</h1>
 
@@ -7,14 +16,9 @@
             <table class="table table-hover records_list">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Nume</th>
-                        <th>Manufacturer</th>
-                        <th>Ean</th>
-                        <th>Reference</th>
-                        <th>Saleprice</th>
-                        <th>Datcre</th>
-                        <th>Datupd</th>
+                        {% for column in columns %}
+                            <th>{{ column|capitalize }}</th>
+                        {% endfor %}
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -40,7 +44,11 @@
                 {% endfor %}
                 </tbody>
             </table>
-            <a href="{{ path('product_new') }}" class="btn btn-success">Create a new entry</a>
+
         </div>
+
+
+
+
 
 {% endblock %}
