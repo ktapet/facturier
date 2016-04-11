@@ -6,7 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Entity\Document;
-use AppBundle\Form\DocumentType;
+
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * Document controller.
@@ -37,6 +38,7 @@ class DocumentController extends Controller
     {
         $document = new Document();
         $form = $this->createForm('AppBundle\Form\DocumentType', $document);
+        $form->add('submit', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

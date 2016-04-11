@@ -45,16 +45,33 @@
             {{ form_widget(form.docStatus, {'attr': {'class': 'form-control'}}) }}
         </div>
          {{ form_errors(form.docStatus) }}
-    </div>      
+    </div> 
+    
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
 
-        <h3>Document Lines</h3>
-        <ul class="documentLines" data-prototype="{{ form_widget(form.documentLines.vars.prototype)|e }}">
-            {# iterate over each existing tag and render its only field: name #}
-            {% for doc in form.documentLines %}
-                <li>{{ form_widget(doc) }}</li>
-            {% endfor %}
-        </ul>
-        <input type="submit" class="btn btn-success" value="Create" />
+                <div class="wrap-playvideos">
+
+                    <h3>Document Lines</h3>
+                    <ul class="documentLines" data-prototype="{{ form_widget(form.documentLines.vars.prototype)|e }}">
+                        {% for doc in form.documentLines %}
+                            <li>{{ form_widget(doc) }}</li>
+                        {% endfor %}
+                    </ul>         
+                </div>
+            </div>
+        </div> 
+    </div>  
+       <div class="row">
+            <div class="col-lg-4">                 
+                <div class="form-group">
+                            <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+                                {{ form_widget(form.submit, { 'label': 'Add', 'attr': {'class': 'btn btn-sm btn-success'}}) }}
+                            </div>
+                </div>                       
+            </div>
+       </div>
     {{ form_end(form) }}
 <a href="{{ path('document_index') }}">Back to the list</a>
     {# ... #}

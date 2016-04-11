@@ -99,7 +99,7 @@ class Document
      */
     public function __construct()
     {
-        $this->documentLines = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->documentLines = new ArrayCollection();
     }
 
     /**
@@ -289,9 +289,9 @@ class Document
      */
     public function addDocumentLine(\AppBundle\Entity\DocumentLine $documentLine)
     {
-        $this->documentLines[] = $documentLine;
-
-        return $this;
+        $documentLine->setDocument($this);
+        
+        $this->images->add($documentLine);
     }
 
     /**

@@ -28,7 +28,9 @@ class DocumentType extends AbstractType
             ->add('documentLines', CollectionType::class, array(
             'entry_type' => DocumentLineType::class,
             'allow_add'    => true,
-            'label' => false
+            'label' => false,
+            'by_reference' => false,
+            'allow_delete' => true,
         ))                
         ;
     }
