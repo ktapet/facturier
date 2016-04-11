@@ -25,7 +25,7 @@ class DocumentType extends AbstractType
             ->add('paymentType')
             //->add('user')
             ->add('docStatus')
-            ->add('documentlines', CollectionType::class, array(
+            ->add('documentLines', CollectionType::class, array(
             'entry_type' => DocumentLineType::class,
             'allow_add' => true,
             'label' => false,
