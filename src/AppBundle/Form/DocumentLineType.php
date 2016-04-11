@@ -34,12 +34,5 @@ class DocumentLineType extends AbstractType
             'data_class' => 'AppBundle\Entity\DocumentLine'
         ));
     }
-    
-        /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'documentline';
-    } 
+     
 }

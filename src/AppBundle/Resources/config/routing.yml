@@ -18,11 +18,11 @@ app_address:
     resource: "@AppBundle/Resources/config/routing/address.yml"
     prefix:   /address
     
-app_document:
+app_documentline:
     resource: "@AppBundle/Resources/config/routing/documentline.yml"
     prefix:   /documentline   
     
-app_documentline:
+app_document:
     resource: "@AppBundle/Resources/config/routing/document.yml"
     prefix:   /document   
     

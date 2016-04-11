@@ -46,7 +46,7 @@
         </div>
          {{ form_errors(form.docStatus) }}
     </div> 
-    
+   
     <div class="row">
         <div class="col-lg-4">
             <div class="form-group">
@@ -54,9 +54,9 @@
                 <div class="wrap-playvideos">
 
                     <h3>Document Lines</h3>
-                    <ul class="documentLines" data-prototype="{{ form_widget(form.documentLines.vars.prototype)|e }}">
-                        {% for doc in form.documentLines %}
-                            <li>{{ form_widget(doc) }}</li>
+                    <ul class="documentlines" data-prototype="{{ form_widget(form.documentLines.vars.prototype)|e }}">
+                        {% for doc in form.documentlines %}
+                            <li>{{ form_row(form.doc) }}</li>
                         {% endfor %}
                     </ul>         
                 </div>

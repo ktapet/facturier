@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-//use AppBundle\Form\DocumentLineType;
+use AppBundle\Form\DocumentLineType;
 
 class DocumentType extends AbstractType
 {
@@ -25,12 +25,10 @@ class DocumentType extends AbstractType
             ->add('paymentType')
             //->add('user')
             ->add('docStatus')
-            ->add('documentLines', CollectionType::class, array(
+            ->add('documentlines', CollectionType::class, array(
             'entry_type' => DocumentLineType::class,
-            'allow_add'    => true,
+            'allow_add' => true,
             'label' => false,
-            'by_reference' => false,
-            'allow_delete' => true,
         ))                
         ;
     }

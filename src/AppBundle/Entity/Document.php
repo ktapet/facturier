@@ -289,9 +289,9 @@ class Document
      */
     public function addDocumentLine(\AppBundle\Entity\DocumentLine $documentLine)
     {
-        $documentLine->setDocument($this);
+        $this->documentLines[] = $documentLine;
         
-        $this->images->add($documentLine);
+        return $this;
     }
 
     /**
