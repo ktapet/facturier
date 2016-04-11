@@ -1,6 +1,7 @@
 annotation_route:
     resource: "@AppBundle/Controller/"
     type:     annotation
+    
 
 yaml_route:
     resource: "@AppBundle/Resources/config/routing.yml"
@@ -12,3 +13,4 @@ fos_user:
 admin:
     path: /admin
     defaults: { _controller: "AppBundle:Admin:index" }
+

@@ -40,4 +40,5 @@ security:
         - { path: ^/.*/delete, role: ROLE_DELETE }
         - { path: ^/profile/edit, role: ROLE_MEMBER }
         - { path: ^/.*/edit, role: ROLE_EDIT }
-        - { path: ^/member/, role: ROLE_MEMBER }   
+        - { path: ^/member/, role: ROLE_MEMBER }      
+
