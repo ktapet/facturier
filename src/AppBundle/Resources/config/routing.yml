@@ -61,3 +61,5 @@ app_productimage:
 app_vatrate:
         resource: "@AppBundle/Resources/config/routing/vatrate.yml"
         prefix:   /vatrate
+        
+

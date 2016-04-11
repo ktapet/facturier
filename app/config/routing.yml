@@ -4,4 +4,11 @@ annotation_route:
 
 yaml_route:
     resource: "@AppBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /member
+    
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    
+admin:
+    path: /admin
+    defaults: { _controller: "AppBundle:Admin:index" }

@@ -1,12 +1,20 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
 
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    role_hierarchy:
+        ROLE_SUPER_ADMIN:   ROLE_ADMIN        
+        ROLE_ADMIN:         [ROLE_SUPERUSER]
+        ROLE_SUPERUSER:     [ROLE_EDIT,ROLE_DELETE]
+        ROLE_EDIT:          [ROLE_MEMBER]
+        ROLE_MEMBER:        [ROLE_FEATURENAME,ROLE_PRODUCT,ROLE_UNITMEASURE,ROLE_DOCUMENT,ROLE_WAREHOUSE,ROLE_PRODUCTWAREHOUSE,ROLE_CATEGORY,ROLE_PARTNER,ROLE_PAYMENTTYPE,ROLE_DOCTYPE,ROLE_VATRATE,ROLE_USER]
+        
     providers:
-        in_memory:
-            memory: ~
-
+        fos_userbundle:
+            id: fos_user.user_provider.username
+            
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
@@ -14,11 +22,22 @@ security:
             security: false
 
         main:
-            anonymous: ~
-            # activate different ways to authenticate
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                # if you are using Symfony < 2.8, use the following config instead:
+                # csrf_provider: form.csrf_provider
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            logout:       true
+            anonymous:    true
+            
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/.*/delete, role: ROLE_DELETE }
+        - { path: ^/profile/edit, role: ROLE_MEMBER }
+        - { path: ^/.*/edit, role: ROLE_EDIT }
+        - { path: ^/member/, role: ROLE_MEMBER }   
