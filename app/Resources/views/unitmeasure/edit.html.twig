@@ -1,14 +1,4 @@
-{% extends 'base.html.twig' %}
-{% block submenu %}
-    <ul class="nav nav-sidebar">
-        <li>
-            <a href="{{ path('unitmeasure_new') }}">Add new</a>
-        </li>        
-        <li>
-            <a href="{{ path('unitmeasure_index') }}">List</a>
-        </li>
-    </ul>
-{% endblock %}
+{% extends 'product/product_layout.html.twig' %}
 {% block body %}
     <h1>Unit Measure Edit</h1>
     {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'}}) }}
@@ -36,5 +26,6 @@
         </div>
 
     </div> 
-    {{ form_end(delete_form) }}            
+    {{ form_end(delete_form) }}
+     <a href="{{ path('unitmeasure_index') }}">Back to the list</a>
 {% endblock %}

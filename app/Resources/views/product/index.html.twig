@@ -1,51 +1,46 @@
-{% extends 'base.html.twig' %}
+{% extends 'product/product_layout.html.twig' %}
 
 {% block body %}
     <h1>Product list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nume</th>
-                <th>Manufacturer</th>
-                <th>Ean</th>
-                <th>Reference</th>
-                <th>Saleprice</th>
-                <th>Datcre</th>
-                <th>Datupd</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
-                <td>{{ product.nume }}</td>
-                <td>{{ product.manufacturer }}</td>
-                <td>{{ product.ean }}</td>
-                <td>{{ product.reference }}</td>
-                <td>{{ product.salePrice }}</td>
-                <td>{% if product.datCre %}{{ product.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if product.datUpd %}{{ product.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('product_edit', { 'id': product.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="table-responsive">
+            <table class="table table-hover records_list">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nume</th>
+                        <th>Manufacturer</th>
+                        <th>Ean</th>
+                        <th>Reference</th>
+                        <th>Saleprice</th>
+                        <th>Datcre</th>
+                        <th>Datupd</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                        <td>{{ product.nume }}</td>
+                        <td>{{ product.manufacturer }}</td>
+                        <td>{{ product.ean }}</td>
+                        <td>{{ product.reference }}</td>
+                        <td>{{ product.salePrice }}</td>
+                        <td>{% if product.datCre %}{{ product.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if product.datUpd %}{{ product.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>
+                            <a class="btn btn-sm btn-info" href="{{ path('product_show', { 'id': product.id }) }}">
+                            <span class="glyphicon glyphicon-share"></span> Show</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('product_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                            <a class="btn btn-sm btn-default" href="{{ path('product_edit', { 'id': product.id }) }}">
+                                <span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ path('product_new') }}" class="btn btn-success">Create a new entry</a>
+        </div>
+
 {% endblock %}

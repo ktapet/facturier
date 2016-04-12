@@ -95,11 +95,19 @@ class Document
     private $datUpd;    
 
     /**
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        return $this->docNumber;
+    }
+    
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->documentLines = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->documentLines = new ArrayCollection();
     }
 
     /**
@@ -289,9 +297,10 @@ class Document
      */
     public function addDocumentLine(\AppBundle\Entity\DocumentLine $documentLine)
     {
-        $this->documentLines[] = $documentLine;
+        $documentLine->setDocument($this);
+        
+        $this->documentLines->add($documentLine);
 
-        return $this;
     }
 
     /**

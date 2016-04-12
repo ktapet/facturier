@@ -6,7 +6,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Entity\Document;
-use AppBundle\Form\DocumentType;
+use Doctrine\Common\Collections\ArrayCollection;
+
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * Document controller.
@@ -37,6 +39,7 @@ class DocumentController extends Controller
     {
         $document = new Document();
         $form = $this->createForm('AppBundle\Form\DocumentType', $document);
+        $form->add('submit', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -73,12 +76,25 @@ class DocumentController extends Controller
      */
     public function editAction(Request $request, Document $document)
     {
+        $origDocumentLines = new ArrayCollection();
+        
+        // Create an ArrayCollection of the current Tag objects in the database
+        foreach ($document->getDocumentLines() as $documentLine) {
+           $origDocumentLines->add($documentLine);
+        } 
+        
         $deleteForm = $this->createDeleteForm($document);
         $editForm = $this->createForm('AppBundle\Form\DocumentType', $document);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            foreach ($origDocumentLines as $documentLine) {
+                if (false === $document->getDocumentLines()->contains($documentLine)) {
+
+                    $em->remove($documentLine);
+                }
+            }
             $em->persist($document);
             $em->flush();
 

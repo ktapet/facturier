@@ -1,15 +1,5 @@
-{% extends 'base.html.twig' %}
-{% block submenu %}
-    <ul class="nav nav-sidebar">
-        <li>
-            <a href="{{ path('paymenttype_new') }}">Add new</a>
-        </li>
-        <li>
-            <a href="{{ path('paymenttype_index') }}">List</a>
-        </li>
+{% extends 'document/document_layout.html.twig' %}
 
-    </ul>
-{% endblock %}
 {% block body %}
     <h1>PaymentType Edit</h1>
     {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'}}) }}
@@ -38,4 +28,5 @@
 
     </div>
     {{ form_end(delete_form) }}
+    <a href="{{ path('paymenttype_index') }}">Back to the list</a>
 {% endblock %}

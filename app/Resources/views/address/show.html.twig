@@ -1,11 +1,4 @@
-{% extends 'base.html.twig' %}
-{% block submenu %}
-<ul class="nav nav-sidebar">
-    <li><a href="{{ path('address_new') }}">Add new</a></li>
-    <li><a href="{{ path('address_index') }}">List</a></li>
-    <li><a href="{{ path('address_edit', { 'id': address.id }) }}">Edit</a></li>
-</ul>
-{% endblock %}
+{% extends 'partner/partner_layout.html.twig' %}
 
 {% block body %}
     <h1>Address</h1>
@@ -63,15 +56,14 @@
             </tbody>
         </table>
     </div>
-
-
-    <div class="form-group">
-        {{ form_start(delete_form) }}
+                
+    {{ form_start(delete_form) }}
         <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
             {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
         </div>
-        {{ form_end(delete_form) }}
-    </div>
+    {{ form_end(delete_form) }}
 </div>
+    <a href="{{ path('address_index') }}">Back to the list</a>
+   
 {% endblock %}
 

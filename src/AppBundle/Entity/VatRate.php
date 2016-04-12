@@ -59,6 +59,11 @@ class VatRate
      */
     private $datUpd;    
 
+    public function __toString()
+    {
+        return $this->rate;
+    }
+    
     /**
      * Get id
      *

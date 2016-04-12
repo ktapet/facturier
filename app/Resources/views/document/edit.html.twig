@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'document/document_layout.html.twig' %}
 
 {% block body %}
 
@@ -46,17 +46,24 @@
         </div>
          {{ form_errors(form.docStatus) }}
     </div>      
-
-        <h3>Document Lines</h3>
-        <ul class="documentLines" data-prototype="{{ form_widget(form.documentLines.vars.prototype)|e }}">
-            {# iterate over each existing tag and render its only field: name #}
-            {% for doc in form.documentLines %}
-                <li>{{ form_widget(doc) }}</li>
-            {% endfor %}
-        </ul>
-        <input type="submit" value="Create" />
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+                <div class="wrap-playvideos">
+                    <h3>Document Lines</h3>
+                    <ul class="documentLines" data-prototype="{{ form_widget(form.documentLines.vars.prototype)|e }}">
+                        {# iterate over each existing tag and render its only field: name #}
+                        {% for doc in form.documentLines %}
+                            <li>{{ form_widget(doc) }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div> 
+    </div>  
+        <input type="submit" class="btn btn-success" value="Save" />
     {{ form_end(form) }}
-
+<a href="{{ path('document_index') }}">Back to the list</a>
     {# ... #}
 
 {% endblock %}
