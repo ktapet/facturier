@@ -3,9 +3,9 @@ var $collectionHolder_image;
 var $collectionHolder_documentLine;
 
 // setup an "adauga o proba" link
-var $addTagLink = $('<a href="#" class="btn btn-sm btn-default add_tag_link">Add feature</a>');
-var $addTagLink_image = $('<a href="#" class="btn btn-sm btn-default add_tag_link">Add image</a>');
-var $addTagLink_documentLine = $('<a href="#" class="btn btn-sm btn-default add_tag_link">Add document line</a>');
+var $addTagLink = $('<a href="#" class="btn btn-sm btn-default add_tag_link  top-buffer">Add feature</a>');
+var $addTagLink_image = $('<a href="#" class="btn btn-sm btn-default add_tag_link  top-buffer">Add image</a>');
+var $addTagLink_documentLine = $('<a href="#" class="btn btn-sm btn-default add_tag_link  top-buffer">Add document line</a>');
 var $newLinkLi = $('<li class="kta_feature"></li>').append($addTagLink);
 var $newLinkLi_image = $('<li class="kta_image"></li>').append($addTagLink_image);
 var $newLinkLi_documentLine = $('<li class="kta_documentLine"></li>').append($addTagLink_documentLine);
@@ -33,7 +33,7 @@ function addTagForm($collectionHolder, $newLinkLi) {
 }
 
 function addTagFormDeleteLink($tagFormLi) {
-    var $removeFormA = $('<a href="#" class="btn btn-sm btn-danger">Sterge</a>');
+    var $removeFormA = $('<a href="#" class="btn btn-sm btn-danger top-buffer">Sterge</a>');
     $tagFormLi.append($removeFormA);
 
     $removeFormA.on('click', function(e) {

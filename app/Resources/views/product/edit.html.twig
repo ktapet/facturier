@@ -1,4 +1,5 @@
 {% extends 'product/product_layout.html.twig' %}
+
 {% block body -%}   
 
     <h3>Product editing</h3>
@@ -100,6 +101,6 @@
        </div>
 
 {{ form_end(form) }} 
-<a href="{{ path('product_index') }}">Back to the list</a>
+<a href="{{ path('product_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
 
 {% endblock %}

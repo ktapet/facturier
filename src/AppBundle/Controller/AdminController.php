@@ -23,9 +23,6 @@ class AdminController extends Controller
         )); 
     }
     
-    public function editAction(Request $request,$id){
-        $em = $this->getDoctrine()->getManager();
-    }
-    
+
    
 }
