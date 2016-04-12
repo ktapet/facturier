@@ -124,3 +124,8 @@ body {
 
 }
 
+.form-group ul li{
+    list-style-type: none;
+    color: red;
+}
+

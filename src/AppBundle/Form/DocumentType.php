@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-//use AppBundle\Form\DocumentLineType;
+use AppBundle\Form\DocumentLineType;
 
 class DocumentType extends AbstractType
 {
@@ -27,8 +27,10 @@ class DocumentType extends AbstractType
             ->add('docStatus')
             ->add('documentLines', CollectionType::class, array(
             'entry_type' => DocumentLineType::class,
-            'allow_add'    => true,
-            'label' => false
+            'allow_add' => true,
+            'label' => false,
+            'by_reference' => false,
+            'allow_delete' => true,
         ))                
         ;
     }

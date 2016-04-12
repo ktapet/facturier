@@ -19,6 +19,14 @@
                     <td>{{ product.manufacturer }}</td>
                 </tr>
                 <tr>
+                    <th>Images</th>
+                    <td>{% for image in product.images %}
+                        <img src="{{asset(image.getWebPath)}}" class="img-responsive thumbnail" width="150" height="150" alt="{{image.name}}"/>
+                        {%endfor%}
+                    
+                    </td>
+                </tr>
+                <tr>
                     <th>Ean</th>
                     <td>{{ product.ean }}</td>
                 </tr>

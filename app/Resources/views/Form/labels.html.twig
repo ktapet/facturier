@@ -7,7 +7,10 @@
         {%- endif -%}
         {% if required -%}
             {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+<<<<<<< HEAD
             {% set label_attr = label_attr|merge({'for': id}) %}
+=======
+>>>>>>> fe8bb239cbacd48a6daf89cce2522df47778dc59
         {%- endif -%}
         {% if label is empty -%}
             {%- if label_format is not empty -%}

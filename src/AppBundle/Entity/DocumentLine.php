@@ -75,6 +75,14 @@ class DocumentLine
     private $datUpd;    
 
     /**
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        return $this->quantity;
+    } 
+    
+    /**
      * Get id
      *
      * @return integer
