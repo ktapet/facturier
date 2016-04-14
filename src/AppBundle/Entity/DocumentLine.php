@@ -79,13 +79,7 @@ class DocumentLine
         return $this->document;
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function __toString()
-    {
-        return $this->quantity;
-    } 
+
     
     /**
      * Get id

@@ -14,7 +14,7 @@
         <li><a href="{{ path('unitmeasure_edit', {'id':unitMeasure.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
     </ul>
 {% endblock %}
->>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
+
 {% block body %}
     <h1>Unit Measure Edit</h1>
     {{ form_start(edit_form, {'attr': {'role':'form' ,'class': 'form-horizontal'}}) }}
@@ -23,10 +23,5 @@
 
     {{ form_end(edit_form) }}
 
-<<<<<<< HEAD
-    </div> 
-    {{ form_end(delete_form) }}
-     <a href="{{ path('unitmeasure_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
-=======
->>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
+
 {% endblock %}

@@ -19,17 +19,5 @@
 
     {{ form_end(edit_form) }}
 
-<<<<<<< HEAD
-    {{ form_start(delete_form, {'attr': {'class': 'form-horizontal'}}) }}
-    <div class="form-group">
 
-        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
-            {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
-        </div>
-
-    </div>
-    {{ form_end(delete_form) }}
-    <a href="{{ path('paymenttype_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
-=======
->>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
 {% endblock %}

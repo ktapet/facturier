@@ -162,7 +162,7 @@ class Document
      *
      * @return Document
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
         $this->datUpd = new \DateTime();
         return $this;
@@ -269,16 +269,10 @@ class Document
      */
     public function addDocumentLine(\AppBundle\Entity\DocumentLine $documentLine)
     {
-        $documentLine->setDocument($this);
-<<<<<<< HEAD
         
         $this->documentLines->add($documentLine);
 
-    }
-=======
-
         $this->documentLines->add($documentLine);
->>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
 
     }
     /**

@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 {% extends 'product/product_layout.html.twig' %}
-=======
-{% extends 'base.html.twig' %}
 {% form_theme form ':Form:fields.html.twig' %}
 {% trans_default_domain 'AppBundle' %}
->>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
+
 
 {% block submenu %}
     {{  parent() }}
@@ -22,9 +19,5 @@
                 {{ form_widget(form) }}
 
     {{ form_end(form) }}
-<<<<<<< HEAD
-     <a href="{{ path('unitmeasure_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
-=======
 
->>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
 {% endblock %}

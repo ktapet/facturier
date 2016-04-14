@@ -44,14 +44,8 @@
     </table>
 </div>
 
-            {{ form_start(delete_form) }}
+            {{ form_start(delete_form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
                 {{ form_widget(delete_form) }}
             {{ form_end(delete_form) }}
-<<<<<<< HEAD
-    <div class="row top-buffer">
-        <a href="{{ path('vatrate_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
-    </div>
-=======
 
->>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
 {% endblock %}

@@ -13,7 +13,7 @@
 {% endblock %}
 {% block body %}
     <h1>Product</h1>
-<div class="col-lg-4">
+<div class="col-lg-5">
     <div class="table-responsive">
         <table class="table table-bordered table-hover record_properties">
             <tbody>
@@ -30,17 +30,6 @@
                     <td>{{ product.manufacturer }}</td>
                 </tr>
                 <tr>
-<<<<<<< HEAD
-                    <th>Images</th>
-                    <td>{% for image in product.images %}
-                        <img src="{{asset(image.getWebPath)}}" class="img-responsive thumbnail" width="150" height="150" alt="{{image.name}}"/>
-                        {%endfor%}
-                    
-                    </td>
-                </tr>
-                <tr>
-                    <th>Ean</th>
-=======
                     <th>{% trans %}Images{% endtrans %}</th>
                     <td>
                         {% for image in product.images %}
@@ -52,7 +41,6 @@
                 </tr>
                 <tr>
                     <th>{% trans %}Ean{% endtrans %}</th>
->>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
                     <td>{{ product.ean }}</td>
                 </tr>
                 <tr>
@@ -78,12 +66,6 @@
     {{ form_start(delete_form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
        {{ form_widget(delete_form) }}
     {{ form_end(delete_form) }}
-<<<<<<< HEAD
-    <div class="row top-buffer">
-        <a href="{{ path('product_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
-    </div>
-=======
 
->>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
 </div>
 {% endblock %}

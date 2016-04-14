@@ -8,11 +8,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-<<<<<<< HEAD
-use AppBundle\Form\DocumentLineType;
-=======
 
->>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
+
+
+
+
 
 class DocumentType extends AbstractType
 {
@@ -50,20 +50,14 @@ class DocumentType extends AbstractType
                 'placeholder'=>'Choose a document status',
             ))
             ->add('documentLines', CollectionType::class, array(
-<<<<<<< HEAD
-            'entry_type' => DocumentLineType::class,
-            'allow_add' => true,
-            'label' => false,
-            'by_reference' => false,
-            'allow_delete' => true,
-=======
                 'entry_type'   => DocumentLineType::class,
                 'allow_add'    => true,
+                'allow_delete' => true,
                 'label'        => false,
                 'by_reference' => false,
                 'translation_domain'=>'AppBundle',
 
->>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
+
         ))                
         ;
     }

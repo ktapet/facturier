@@ -2,11 +2,11 @@
 {% form_theme form ':Form:fields.html.twig' %}
 
 <h1>{% trans %}Edit account{% endtrans %}</h1>
-<div class="row">
+
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit form-horizontal', 'role':'form' } }) }}
+
     {{ form_widget(form) }}
-    <div class="form-group">
+    <div class="col-xs-offset-2">
         <input type="submit" class="btn btn-success" value="{{ 'profile.edit.submit'|trans }}" />
     </div>
 {{ form_end(form) }}
-</div>

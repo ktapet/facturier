@@ -12,10 +12,10 @@
 {% endblock %}
 {% block body %}
     <h1>Document</h1>
-<div class="col-lg-5">
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover record_properties">
-            <tbody>
+    <div class="col-lg-5">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover record_properties">
+                <tbody>
                 <tr>
                     <th>{% trans %}Id{% endtrans %}</th>
                     <td>{{ document.id }}</td>
@@ -25,20 +25,9 @@
                     <td>{{ document.docNumber }}</td>
                 </tr>
                 <tr>
-<<<<<<< HEAD
-                    <th>Document lines</th>
-                    <td>{% for documentLine in document.documentLines %}
-                        <p>{{documentLine.quantity}}</p>
-                        {%endfor%}
-                    
-                    </td>
-                </tr>
-                <tr>
-                    <th>Datcre</th>
-=======
                     <th>{% trans %}Quantity{% endtrans %}</th>
                     {% for doc in document.documentLines %}
-                    <td>{{ doc.quantity }}</td>
+                        <td>{{ doc.quantity }}</td>
                     {% endfor %}
                 </tr>
                 <tr>
@@ -61,25 +50,18 @@
                 </tr>
                 <tr>
                     <th>{% trans %}Datcre{% endtrans %}</th>
->>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
                     <td>{% if document.datCre %}{{ document.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                 </tr>
                 <tr>
                     <th>{% trans %}Datupd{% endtrans %}</th>
                     <td>{% if document.datUpd %}{{ document.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
                 </tr>
-            </tbody>
-        </table>
-    </div>
-    {{ form_start(delete_form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
+                </tbody>
+            </table>
+        </div>
+        {{ form_start(delete_form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
         {{ form_widget(delete_form) }}
-    {{ form_end(delete_form) }}
-<<<<<<< HEAD
-    <div class="row top-buffer">
-        <a href="{{ path('document_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
-    </div>
-=======
+        {{ form_end(delete_form) }}
 
->>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
-</div>
+    </div>
 {% endblock %}
