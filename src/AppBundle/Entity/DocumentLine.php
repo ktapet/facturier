@@ -74,6 +74,11 @@ class DocumentLine
      */
     private $datUpd;    
 
+    public function __toString()
+    {
+        return $this->document;
+    }
+
     /**
      * Get id
      *

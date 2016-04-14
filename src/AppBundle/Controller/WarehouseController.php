@@ -41,7 +41,13 @@ class WarehouseController extends Controller
     {
         $warehouse = new Warehouse();
         $form = $this->createForm('AppBundle\Form\WarehouseType', $warehouse);
-        $form->add('submit', SubmitType::class);
+        $form->add('submit', SubmitType::class, array(
+            'label'=>'Create',
+            'attr'=>array(
+                'class'=>'btn btn-primary'
+            ),
+            'translation_domain'=>'AppBundle',
+        ));
         
         $form->handleRequest($request);
 
@@ -81,7 +87,13 @@ class WarehouseController extends Controller
     {
         $deleteForm = $this->createDeleteForm($warehouse);
         $editForm = $this->createForm('AppBundle\Form\WarehouseType', $warehouse);
-        $editForm->add('submit', SubmitType::class);        
+        $editForm->add('submit', SubmitType::class, array(
+            'label'=>'Edit',
+            'attr'=>array(
+                'class'=>'btn btn-success',
+            ),
+            'translation_domain'=>'AppBundle',
+        ));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -129,7 +141,13 @@ class WarehouseController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('warehouse_delete', array('id' => $warehouse->getId())))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, array(
+                'label'=>'Delete',
+                'attr'=>array(
+                    'class'=>'btn btn-danger'
+                ),
+                'translation_domain'=>'AppBundle',
+            ))
             ->getForm()
         ;        
     }

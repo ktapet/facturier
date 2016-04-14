@@ -42,7 +42,8 @@ class DocumentLineController extends Controller
             'label'=>'Create',
             'attr'=>[
                 'class'=>'btn btn-primary'
-            ]
+            ],
+            'translation_domain'=>'AppBundle',
         ]);
         $form->handleRequest($request);
 
@@ -86,7 +87,8 @@ class DocumentLineController extends Controller
             'label'=>'Save',
             'attr'=>[
                 'class'=>'btn btn-success'
-            ]
+            ],
+            'translation_domain'=>'AppBundle',
         ]);
         $editForm->handleRequest($request);
 
@@ -95,7 +97,7 @@ class DocumentLineController extends Controller
             $em->persist($documentLine);
             $em->flush();
 
-            return $this->redirectToRoute('documentline_edit', array('id' => $documentLine->getId()));
+            return $this->redirectToRoute('documentline_show', array('id' => $documentLine->getId()));
         }
 
         return $this->render('documentline/edit.html.twig', array(
@@ -139,7 +141,8 @@ class DocumentLineController extends Controller
                 'label'=>'Delete',
                 'attr'=>[
                     'class'=>'btn btn-danger'
-                ]
+                ],
+                'translation_domain'=>'AppBundle',
             ])
             ->getForm()
         ;

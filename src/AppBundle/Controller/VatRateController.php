@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Entity\VatRate;
 use AppBundle\Form\VatRateType;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * VatRate controller.
  *
@@ -37,6 +37,13 @@ class VatRateController extends Controller
     {
         $vatRate = new VatRate();
         $form = $this->createForm('AppBundle\Form\VatRateType', $vatRate);
+        $form->add('submit', SubmitType::class, array(
+            'label'=>'Create',
+            'attr'=>array(
+                'class'=>'btn btn-primary'
+            ),
+            'translation_domain'=>'AppBundle',
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -75,6 +82,13 @@ class VatRateController extends Controller
     {
         $deleteForm = $this->createDeleteForm($vatRate);
         $editForm = $this->createForm('AppBundle\Form\VatRateType', $vatRate);
+        $editForm->add('submit', SubmitType::class, array(
+            'label'=>'Edit',
+            'attr'=>array(
+                'class'=>'btn btn-success'
+            ),
+            'translation_domain'=>'AppBundle',
+        ));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -82,7 +96,7 @@ class VatRateController extends Controller
             $em->persist($vatRate);
             $em->flush();
 
-            return $this->redirectToRoute('vatrate_edit', array('id' => $vatRate->getId()));
+            return $this->redirectToRoute('vatrate_show', array('id' => $vatRate->getId()));
         }
 
         return $this->render('vatrate/edit.html.twig', array(
@@ -122,6 +136,13 @@ class VatRateController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('vatrate_delete', array('id' => $vatRate->getId())))
             ->setMethod('DELETE')
+            ->add('submit', SubmitType::class, array(
+                'label'=>'Delete',
+                'attr'=>array(
+                    'class'=>'btn btn-danger'
+                ),
+                'translation_domain'=>'AppBundle',
+            ))
             ->getForm()
         ;
     }

@@ -5,8 +5,8 @@
     {{ parent() }}
     <hr />
     <ul class="nav nav-sidebar">
-        <li><a href="{{ path('product_new') }}">Add new</a></li>
-        <li><a href="{{ path('product_index') }}">List</a></li>
+        <li><a href="{{ path('product_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('product_index') }}">{% trans %}List{% endtrans %}</a></li>
     </ul>
 {% endblock %}
 {% block body %}
@@ -17,9 +17,9 @@
                 <thead>
                     <tr>
                         {% for column in columns %}
-                            <th>{{ column|capitalize }}</th>
+                            <th>{{ column|trans|capitalize }}</th>
                         {% endfor %}
-                        <th>Actions</th>
+                        <th>{% trans %}Actions{% endtrans %}</th>
                     </tr>
                 </thead>
                 <tbody>

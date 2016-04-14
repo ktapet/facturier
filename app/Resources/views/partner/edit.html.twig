@@ -1,52 +1,23 @@
 {% extends 'partner/partner_layout.html.twig' %}
-{% form_theme delete_form ':Form:fields.html.twig' %}
+{% form_theme edit_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
 {% block submenu %}
     {{ parent() }}
     <hr />
     <ul class="nav nav-sidebar">
-        <li><a href="{{ path('partner_new') }}">Add new</a></li>
-        <li><a href="{{ path('partner_index') }}">List</a></li>
-        <li><a href="{{ path('partner_index', {'id':partner.id}) }}">Edit</a></li>
+        <li><a href="{{ path('partner_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('partner_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('partner_index', {'id':partner.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
     </ul>
 {% endblock %}
 {% block body %}
     <h1>Partner edit</h1>
 
     {{ form_start(edit_form, {'attr': {'role':'form', 'class': 'form-horizontal'}}) }}
-        <div class="row top-buffer">
-            <div class="form-group">
-                {{ form_label(edit_form.name, 'Name', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
-                <div class="col-md-3 col-sm-4">
-                    {{ form_widget(edit_form.name, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                    {{ form_errors(edit_form.name) }}
-            </div>
-        </div>
-        <div class="row top-buffer">
-            <div class="form-group">
-                {{ form_label(edit_form.bank, 'Bank', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
-                <div class="col-md-3 col-sm-4">
-                    {{ form_widget(edit_form.bank, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                    {{ form_errors(edit_form.bank) }}
-            </div>
-        </div>
-        <div class="row top-buffer">
-            <div class="form-group">
-                {{ form_label(edit_form.iban, 'Iban', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
-                <div class="col-md-3 col-sm-4">
-                    {{ form_widget(edit_form.iban, {'attr': {'class': 'form-control'}}) }}
-                </div>
-                    {{ form_errors(edit_form.iban) }}
-            </div>
-        </div>
 
-        <div class="row top-buffer">
-            <div class="col-md-4 col-sm-4">
-               {{ form_widget(edit_form.submit, { 'label': 'Edit', 'attr': {'class': 'btn btn-success'}}) }}
-            </div>
-        </div>
+        {{ form_widget(edit_form) }}
+
     {{ form_end(edit_form) }}
 
 

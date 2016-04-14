@@ -43,7 +43,8 @@ class PartnerController extends Controller
             'label'=>'Create',
             'attr'=>array(
                 'class'=>'btn btn-primary',
-            )
+            ),
+            'translation_domain'=>'AppBundle',
         ));
         $form->handleRequest($request);
               
@@ -87,10 +88,9 @@ class PartnerController extends Controller
         $editForm->add('submit', SubmitType::class, array(
             'label'=>'Save',
             'attr'=>array(
-                'class'=>array(
                     'class'=>'btn btn-success'
-                )
-            )
+                ),
+            'translation_domain'=>'AppBundle',
         ));
         $editForm->handleRequest($request);
 
@@ -144,7 +144,8 @@ class PartnerController extends Controller
                 'label'=>'Delete',
                 'attr'=>array(
                     'class'=>'btn btn-danger'
-                )
+                ),
+                'translation_domain'=>'AppBundle',
             ))
             ->getForm()
         ;

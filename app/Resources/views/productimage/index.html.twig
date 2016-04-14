@@ -1,11 +1,12 @@
 {% extends 'productimage/productimage_layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
 {% block submenu %}
     {{ parent() }}
     <hr />
     <ul class="nav nav-sidebar">
-        <li><a href="{{ path('productimage_new') }}">Add new</a></li>
-        <li><a href="{{ path('productimage_index') }}">List</a></li>
+        <li><a href="{{ path('productimage_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('productimage_index') }}">{% trans %}List{% endtrans %}</a></li>
     </ul>
 {% endblock %}
 {% block body %}
@@ -16,9 +17,9 @@
         <thead>
             <tr>
                 {% for column in columns %}
-                <th>{{ column|capitalize }}</th>
+                <th>{{ column|trans }}</th>
                 {% endfor %}
-                <th>Actions</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
         </thead>
         <tbody>

@@ -21,7 +21,8 @@ class DocTypeType extends AbstractType
                 'choices'=>array(
                     '1' => 1,
                     '-1'=> -1
-                )
+                ),
+                'translation_domain'=>'AppBundle'
             ))
             //->add('datCre', 'datetime')
             //->add('datUpd', 'datetime')

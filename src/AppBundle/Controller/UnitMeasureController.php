@@ -45,7 +45,13 @@ class UnitMeasureController extends Controller
         /* @facturier
          * adaug butonul de submit
          */
-        $form->add('submit', SubmitType::class);
+        $form->add('submit', SubmitType::class, array(
+            'label'=>'Create',
+            'attr'=>array(
+                'class'=>'btn btn-primary'
+            ),
+            'translation_domain'=>'AppBundle',
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -84,7 +90,13 @@ class UnitMeasureController extends Controller
     {
         $deleteForm = $this->createDeleteForm($unitMeasure);
         $editForm = $this->createForm('AppBundle\Form\UnitMeasureType', $unitMeasure);
-        $editForm->add('submit', SubmitType::class);
+        $editForm->add('submit', SubmitType::class, array(
+            'label'=>'Edit',
+            'attr'=>array(
+                'class'=>'btn btn-success'
+            ),
+            'translation_domain'=>'AppBundle',
+        ));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -132,7 +144,13 @@ class UnitMeasureController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('unitmeasure_delete', array('id' => $unitMeasure->getId())))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, array(
+                'label'=>'Delete',
+                'attr'=>array(
+                    'class'=>'btn btn-danger'
+                ),
+                'translation_domain'=>'AppBundle',
+            ))
             ->getForm()
         ;
     }

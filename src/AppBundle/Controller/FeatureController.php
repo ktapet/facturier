@@ -42,7 +42,8 @@ class FeatureController extends Controller
             'label'=>'Create',
             'attr'=>array(
                 'class'=>'btn btn-primary'
-            )
+            ),
+            'translation_domain'=>'AppBundle',
         ));
 
         $form->handleRequest($request);
@@ -87,7 +88,8 @@ class FeatureController extends Controller
             'label'=>'Save',
             'attr'=>array(
                 'class'=>'btn btn-success'
-            )
+            ),
+            'translation_domain'=>'AppBundle',
         ));
         $editForm->handleRequest($request);
 
@@ -96,7 +98,7 @@ class FeatureController extends Controller
             $em->persist($feature);
             $em->flush();
 
-            return $this->redirectToRoute('feature_edit', array('id' => $feature->getId()));
+            return $this->redirectToRoute('feature_show', array('id' => $feature->getId()));
         }
 
         return $this->render('feature/edit.html.twig', array(
@@ -140,7 +142,8 @@ class FeatureController extends Controller
                 'label'=>'Delete',
                 'attr'=>array(
                     'class'=>'btn btn-danger'
-                )
+                ),
+                'translation_domain'=>'AppBundle',
             ))
             ->getForm()
         ;

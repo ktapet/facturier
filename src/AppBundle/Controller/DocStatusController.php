@@ -46,7 +46,8 @@ class DocStatusController extends Controller
             'label'=>'Create',
             'attr'=>array(
                 'class'=>'btn btn-primary'
-            )
+            ),
+            'translation_domain'=>'AppBundle'
         ));
 
         $form->handleRequest($request);
@@ -90,8 +91,9 @@ class DocStatusController extends Controller
         $editForm->add('submit', SubmitType::class, [
             'label'=>'Save',
             'attr'=>[
-                'class'=>'btn btn-succes'
-                ]
+                'class'=>'btn btn-success'
+                ],
+            'translation_domain'=>'AppBundle'
         ]);
 
         $editForm->handleRequest($request);
@@ -145,7 +147,8 @@ class DocStatusController extends Controller
                 'label'=>'Delete',
                 'attr'=>[
                     'class'=>'btn btn-danger'
-                ]
+                ],
+                'translation_domain'=>'AppBundle'
             ])
             ->getForm()
         ;

@@ -10,11 +10,10 @@ class AdminController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('AppBundle:User')->findAll();
 
         return $this->render('admin/index.html.twig', array(
-            'entities' => $entities
+            'entities' => $entities,
         ));
     }
 

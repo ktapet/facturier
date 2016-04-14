@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+
 /**
  * Product
  *
@@ -271,7 +272,7 @@ class Product
      *
      * @return Product
      */
-    public function setDatCre($datCre)
+    public function setDatCre()
     {
         $this->datCre = new \DateTime();
 
@@ -296,7 +297,7 @@ class Product
      *
      * @return Product
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
         $this->datUpd = new \DateTime();
 

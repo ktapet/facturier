@@ -47,6 +47,7 @@ class ProductImageController extends Controller
             'attr'=>array(
                 'class'=>'btn btn-primary'
             ),
+            'translation_domain'=>'AppBundle',
         ));
         $form->handleRequest($request);
 
@@ -91,6 +92,7 @@ class ProductImageController extends Controller
             'attr'=>array(
                 'class'=>'btn btn-primary',
             ),
+            'translation_domain'=>'AppBundle',
         ));
 
         $editForm->handleRequest($request);
@@ -100,7 +102,7 @@ class ProductImageController extends Controller
             $em->persist($productImage);
             $em->flush();
 
-            return $this->redirectToRoute('productimage_edit', array('id' => $productImage->getId()));
+            return $this->redirectToRoute('productimage_show', array('id' => $productImage->getId()));
         }
 
         return $this->render('productimage/edit.html.twig', array(
@@ -145,6 +147,7 @@ class ProductImageController extends Controller
                 'attr'=>[
                     'class'=>'btn btn-danger'
                 ],
+                'translation_domain'=>'AppBundle',
             ])
             ->getForm()
         ;

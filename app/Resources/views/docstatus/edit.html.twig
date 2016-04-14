@@ -1,14 +1,15 @@
 {% extends 'document/document_layout.html.twig' %}
 {% form_theme edit_form ':Form:fields.html.twig' %}
 {% form_theme delete_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
 {% block submenu %}
     {{ parent() }}
     <hr />
     <ul class="nav nav-sidebar">
-        <li><a href="{{ path('docstatus_new') }}">Add new</a></li>
-        <li><a href="{{ path('docstatus_index') }}">List</a></li>
-        <li><a href="{{ path('docstatus_edit', {'id':docStatus.id}) }}">Edit</a></li>
+        <li><a href="{{ path('docstatus_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('docstatus_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('docstatus_edit', {'id':docStatus.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
     </ul>
 {% endblock %}
 {% block body %}
@@ -20,11 +21,6 @@
 
     {{ form_end(edit_form) }}
 
-    {{ form_start(delete_form, { 'attr': { 'role':'form', 'class':'form-horizontal' }}) }}
-
-            {{ form_widget(delete_form) }}
-
-    {{ form_end(delete_form) }}
 
 
 {% endblock %}

@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
 {# setam linkurile #}
 {% set part_links = {
-        'Address':'address'
+        'Addresses':'address'
     }
 %}
 {# afisam linkurile #}
@@ -9,7 +11,7 @@
     <ul class="nav nav-sidebar">
         {% for key,link in part_links %}
 
-                <li><a href="{{ path(link~'_index') }}">{{ key }}</a></li>
+                <li><a href="{{ path(link~'_index') }}">{{ key|trans }}</a></li>
 
         {% endfor %}                       
     </ul>

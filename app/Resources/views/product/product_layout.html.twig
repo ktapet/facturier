@@ -1,4 +1,6 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
 {# setam linkurile #}
 {% set p_links = {
         'Feature name':'featurename',
@@ -6,6 +8,7 @@
         'Vat rates':'vatrate',
         'Unit measure':'unitmeasure',
         'Warehouses':'warehouse',
+        'Product warehouse':'productwarehouse'
     }
 %}
 {# afisam linkurile #}
@@ -14,7 +17,7 @@
         <ul class="nav nav-sidebar">
         {% for key,link in p_links %}
 
-                <li><a href="{{ path(link~'_index') }}">{{ key }}</a></li>
+                <li><a href="{{ path(link~'_index') }}">{{ key|trans }}</a></li>
 
         {% endfor %}                       
         </ul>

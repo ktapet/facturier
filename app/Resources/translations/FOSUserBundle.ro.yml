@@ -66,3 +66,10 @@ form:
     new_password: 'Parola nouă'
     new_password_confirmation: 'Verificare parolă'
 
+Username: Nume utilizator
+Current_password: Parola
+Change password: Schimbă parola
+First: Noua parolă
+Second: Reintroduce-ți parola
+Account details: Detalii cont
+Edit account: Editează contul

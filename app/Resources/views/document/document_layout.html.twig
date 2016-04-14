@@ -1,4 +1,6 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
 {# setam linkurile #}
 {% set doc_links = {
         'PaymentType':'paymenttype',
@@ -11,7 +13,7 @@
     <ul class="nav nav-sidebar">
         {% for key,link in doc_links %}
 
-                <li><a href="{{ path(link~'_index') }}">{{ key }}</a></li>
+                <li><a href="{{ path(link~'_index') }}">{{ key|trans }}</a></li>
 
         {% endfor %}                       
     </ul>

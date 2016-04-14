@@ -136,3 +136,11 @@ ul{
 button{
   margin-bottom: 2px !important;
 }
+
+
+[for^=document_documentLines],
+[for^=product_features],
+[for^=product_images]
+{
+  margin-left: -20px !important;
+}

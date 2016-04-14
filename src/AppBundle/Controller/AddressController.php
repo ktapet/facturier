@@ -49,7 +49,8 @@ class AddressController extends Controller
             'label'=>'Create',
             'attr'=>array(
                 'class'=>'btn btn-primary'
-            )
+            ),
+            'translation_domain'=>'AppBundle',
         ));
 
         $form->handleRequest($request);
@@ -94,8 +95,9 @@ class AddressController extends Controller
         $editForm->add('submit', SubmitType::class, [
             'label'=>'Save',
             'attr'=>[
-                'class'=>'btn btn-succes'
-            ]
+                'class'=>'btn btn-success'
+            ],
+            'translation_domain'=>'AppBundle',
         ]);
         $editForm->handleRequest($request);
 
@@ -144,7 +146,13 @@ class AddressController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('address_delete', array('id' => $address->getId())))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class, ['label'=>'Delete', 'attr'=>['class'=>'btn btn-danger']])
+            ->add('submit', SubmitType::class, [
+                'label'=>'Delete',
+                'attr'=>[
+                    'class'=>'btn btn-danger'
+                ],
+                'translation_domain'=>'AppBundle'
+            ])
             ->getForm()
         ;
     }

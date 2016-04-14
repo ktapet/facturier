@@ -48,7 +48,8 @@ class CategoryController extends Controller
             'label'=>'Create',
             'attr'=> array(
                 'class'=>'btn btn-primary',
-            )
+            ),
+            'translation_domain'=>'AppBundle'
         ));
         
         $form->handleRequest($request);
@@ -92,8 +93,9 @@ class CategoryController extends Controller
         $editForm->add('submit', SubmitType::class, array(
             'label'=>'Save',
             'attr'=>[
-                'class'=>'btn btn-succes'
-            ]
+                'class'=>'btn btn-success'
+            ],
+            'translation_domain'=>'AppBundle'
         ));
         $editForm->handleRequest($request);
 
@@ -146,7 +148,8 @@ class CategoryController extends Controller
                 'label'=>'Delete',
                 'attr'=>array(
                     'class'=>'btn btn-danger'
-                )
+                ),
+                'translation_domain'=>'AppBundle'
             ))
             ->getForm()
         ;        

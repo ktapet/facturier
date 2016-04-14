@@ -1,12 +1,14 @@
 {% extends 'document/document_layout.html.twig' %}
+{% form_theme form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
 {% block submenu %}
     {{ parent() }}
     <hr />
     <ul class="nav nav-sidebar">
-        <li><a href="{{ path('document_new') }}">Add new</a></li>
-        <li><a href="{{ path('document_index') }}">List</a></li>
-        <li><a href="{{ path('document_edit', {'id':document}) }}">Edit</a></li>
+        <li><a href="{{ path('document_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('document_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('document_edit', {'id':document.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
     </ul>
 {% endblock %}
 {% block body %}
@@ -16,7 +18,7 @@
     {{ form_start(form, {'attr': {'role':'form', 'class': 'form-horizontal'}}) }}
     
    <div class="form-group">
-        {{ form_label(form.docNumber, 'Document number', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+        {{ form_label(form.docNumber, 'Document number', {'label_attr': {'class': 'col-md-2 col-sm-2 control-label'}}) }}
 
         <div class="col-md-3 col-sm-4">
             {{ form_widget(form.docNumber, {'attr': {'class': 'form-control'}}) }}
@@ -24,7 +26,7 @@
          {{ form_errors(form.docNumber) }}
     </div>  
    <div class="form-group">
-        {{ form_label(form.partner, 'Partner', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+        {{ form_label(form.partner, 'Partner', {'label_attr': {'class': 'col-md-2 col-sm-2 control-label'}}) }}
        
         <div class="col-md-3 col-sm-4">
             {{ form_widget(form.partner, {'attr': {'class': 'form-control'}}) }}
@@ -32,7 +34,7 @@
          {{ form_errors(form.partner) }}
     </div>  
    <div class="form-group">
-        {{ form_label(form.docType, 'Document type', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+        {{ form_label(form.docType, 'Document type', {'label_attr': {'class': 'col-md-2 col-sm-2 control-label'}}) }}
        
         <div class="col-md-3 col-sm-4">
             {{ form_widget(form.docType, {'attr': {'class': 'form-control'}}) }}
@@ -40,7 +42,7 @@
          {{ form_errors(form.docType) }}
     </div>    
    <div class="form-group">
-        {{ form_label(form.paymentType, 'Payment type', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+        {{ form_label(form.paymentType, 'Payment type', {'label_attr': {'class': 'col-md-2 col-sm-2 control-label'}}) }}
        
         <div class="col-md-3 col-sm-4">
             {{ form_widget(form.paymentType, {'attr': {'class': 'form-control'}}) }}
@@ -48,7 +50,7 @@
          {{ form_errors(form.paymentType) }}
     </div>      
     <div class="form-group">
-        {{ form_label(form.docStatus, 'Document status', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+        {{ form_label(form.docStatus, 'Document status', {'label_attr': {'class': 'col-md-2 col-sm-2 control-label'}}) }}
        
         <div class="col-md-3 col-sm-4">
             {{ form_widget(form.docStatus, {'attr': {'class': 'form-control'}}) }}
@@ -56,7 +58,7 @@
          {{ form_errors(form.docStatus) }}
     </div>      
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-12">
             <div class="form-group">
                 <div class="wrap-playvideos">
                     <h3>Document Lines</h3>

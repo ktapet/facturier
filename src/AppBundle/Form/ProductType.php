@@ -1,9 +1,10 @@
 <?php
 
+
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -19,45 +20,58 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nume')
-            ->add('manufacturer')
-            ->add('ean')
-            ->add('reference')
-            ->add('salePrice')
+            ->add('nume', TextType::class, array(
+                'translation_domain'=>'AppBundle',
+            ))
+            ->add('manufacturer', TextType::class, array(
+                'translation_domain'=>'AppBundle',
+            ))
+            ->add('ean', TextType::class, array(
+                'translation_domain'=>'AppBundle',
+            ))
+            ->add('reference', TextType::class, array(
+                'translation_domain'=>'AppBundle',
+            ))
+            ->add('salePrice', TextType::class, array(
+                'translation_domain'=>'AppBundle',
+            ))
             ->add('unitMeasure', EntityType::class, array(
-                'class'=> 'AppBundle\Entity\UnitMeasure',
+                'class'        => 'AppBundle\Entity\UnitMeasure',
                 'query_builder'=> function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->orderBy('u.name', 'ASC');
                 },
-                'multiple'=>false,
-                'expanded'=>false,
-                'placeholder'=>'Select Unit measure'
-
-
+                'multiple'     =>false,
+                'expanded'     =>false,
+                'placeholder'  =>'Choose Unit measure',
+                'translation_domain'=>'AppBundle',
+                'choice_translation_domain'=>'AppBundle',
             ))
             ->add('categories', EntityType::class, array(
-                'class' => 'AppBundle:Category',
+                'class'         => 'AppBundle:Category',
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('c')
                         ->orderBy('c.name', 'ASC');
                 },
-                'multiple' => true,
-                'expanded' => false,
+                'multiple'       => true,
+                'expanded'       => false,
+                'translation_domain'=>'AppBundle',
             ))
             ->add('features', CollectionType::class, array(
-                    'entry_type' => FeatureType::class,
-                    'label' => false,
+                    'entry_type'   => FeatureType::class,
+                    'label'        => false,
                     'allow_add'    => true,
                     'by_reference' => false,
                     'allow_delete' => true,
+                    'translation_domain'=>'AppBundle',
                 ))
             ->add('images', CollectionType::class, array(
-                    'entry_type' => ProductImageType::class,
+                    'entry_type'   => ProductImageType::class,
                     'allow_add'    => true,
-                    'label' => false,
                     'by_reference' => false,
                     'allow_delete' => true,
+                    'label'        => false,
+                    'translation_domain'=>'AppBundle',
                 ))                
 
         ;

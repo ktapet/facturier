@@ -50,12 +50,14 @@ class FeatureNameController extends Controller
         $form->add('agree', CheckboxType::class, array(
             'required' => false,
             'mapped' => false,
+            'translation_domain'=>'AppBundle',
         ));
         $form->add('submit', SubmitType::class, array(
             'label'=>'Create',
             'attr'=>array(
                 'class'=>'btn btn-primary'
-            )
+            ),
+            'translation_domain'=>'AppBundle',
         ));
 
         /*
@@ -112,7 +114,8 @@ class FeatureNameController extends Controller
             'label'=>'Save',
             'attr'=>array(
                 'class'=>'btn btn-success',
-            )
+            ),
+            'translation_domain'=>'AppBundle',
         ));
         $editForm->handleRequest($request);
 
@@ -177,7 +180,8 @@ class FeatureNameController extends Controller
                 'label'=>'Delete',
                 'attr'=>array(
                     'class'=>'btn btn-danger'
-                )
+                ),
+                'translation_domain'=>'AppBundle',
             ))
             ->getForm()
         ;        
