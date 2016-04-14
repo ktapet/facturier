@@ -3,9 +3,9 @@ var $collectionHolder_image;
 var $collectionHolder_documentLine;
 
 // setup an "adauga o proba" link
-var $addTagLink = $('<a href="#" class="btn btn-sm btn-default add_tag_link">Add feature</a>');
-var $addTagLink_image = $('<a href="#" class="btn btn-sm btn-default add_tag_link">Add image</a>');
-var $addTagLink_documentLine = $('<a href="#" class="btn btn-sm btn-default add_tag_link">Add document line</a>');
+var $addTagLink = $('<a href="#" class="btn btn-default add_tag_link">Adaugă proprietate</a>');
+var $addTagLink_image = $('<a href="#" class="btn btn-default add_tag_link">Adaugă imagine</a>');
+var $addTagLink_documentLine = $('<a href="#" class="btn btn-default add_tag_link">Adaugă o linie documentului</a>');
 
 var $newLinkLi = $('<li class="kta_feature"></li>').append($addTagLink);
 var $newLinkLi_image = $('<li class="kta_image"></li>').append($addTagLink_image);
@@ -34,7 +34,7 @@ function addTagForm($collectionHolder, $newLinkLi) {
 }
 
 function addTagFormDeleteLink($tagFormLi) {
-    var $removeFormA = $('<a href="#" class="btn btn-sm btn-danger top-buffer">Sterge</a>');
+    var $removeFormA = $('<a href="#" class="btn btn-danger top-buffer">Șterge</a>');
     $tagFormLi.append($removeFormA);
 
     $removeFormA.on('click', function(e) {

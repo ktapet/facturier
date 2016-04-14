@@ -8,7 +8,7 @@ id: Id
 Id: Id
 Alias: Alias
 Street: Stradă
-No: Număr
+Number: Număr
 City: Oraș
 Country: Țară
 Email: Email
@@ -17,6 +17,8 @@ Partner: Partener
 Actions: Acțiuni
 name: Nume
 Name: Nume
+nume: Nume
+Nume: Nume
 Bank: Bancă
 Addresses: Adrese
 Address: Adresă
@@ -74,6 +76,11 @@ Warehouse name: Nume depozit
 Warehouse address: Adresa depozitului
 Warehouse: Depozit
 Number must be positive: Numărul trebuie să fie pozitiv
+Is used: Folosit
+Isused: Folosit
+Yes: Da
+No: Nu
+Tip: Tip
 
 form:
     street: Stradă

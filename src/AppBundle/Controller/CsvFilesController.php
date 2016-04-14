@@ -45,7 +45,8 @@ class CsvFilesController extends Controller
             'label'=>'Create',
             'attr'=>array(
                 'class'=>'btn btn-primary'
-            )
+            ),
+            'translation_domain'=>'AppBundle',
         ));
         $form->handleRequest($request);
 
@@ -92,7 +93,8 @@ class CsvFilesController extends Controller
             'label'=>'Edit',
             'attr'=>array(
                 'class'=>'btn btn-success',
-            )
+            ),
+            'translation_domain'=>'AppBundle',
         ));
 
         $editForm->handleRequest($request);
@@ -147,7 +149,8 @@ class CsvFilesController extends Controller
                 'label'=>'Delete',
                 'attr'=>array(
                     'class'=>'btn btn-danger',
-                )
+                ),
+                'translation_domain'=>'AppBundle',
             ))
             ->getForm()
         ;

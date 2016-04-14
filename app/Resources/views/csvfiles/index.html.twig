@@ -16,12 +16,12 @@
     <table class="table table-hover records_list">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Tip</th>
-                <th>Isused</th>
-                <th>Datcre</th>
-                <th>Actions</th>
+                <th>{% trans %}Id{% endtrans %}</th>
+                <th>{% trans %}Name{% endtrans %}</th>
+                <th>{% trans %}Tip{% endtrans %}</th>
+                <th>{% trans %}Is used{% endtrans %}</th>
+                <th>{% trans %}Datcre{% endtrans %}</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
         </thead>
         <tbody>
@@ -30,17 +30,15 @@
                 <td><a href="{{ path('csvfiles_show', { 'id': csvFile.id }) }}">{{ csvFile.id }}</a></td>
                 <td>{{ csvFile.name }}</td>
                 <td>{{ csvFile.tip }}</td>
-                <td>{% if csvFile.isUsed %}Yes{% else %}No{% endif %}</td>
+                <td>{% if csvFile.isUsed %}{% trans %}Yes{% endtrans %}{% else %}{% trans %}No{% endtrans %}{% endif %}</td>
                 <td>{% if csvFile.datCre %}{{ csvFile.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('csvfiles_show', { 'id': csvFile.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('csvfiles_edit', { 'id': csvFile.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a class="btn btn-sm btn-info" href="{{ path('csvfiles_show', { 'id': csvFile.id }) }}">
+                        <span class="glyphicon glyphicon-share"></span> Show
+                    </a>
+                    <a class="btn btn-sm btn-default" href="{{ path('csvfiles_edit', { 'id': csvFile.id }) }}">
+                        <span class="glyphicon glyphicon-edit"></span> Edit
+                    </a>
                 </td>
             </tr>
         {% endfor %}
