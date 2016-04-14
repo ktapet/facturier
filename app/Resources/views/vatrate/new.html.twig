@@ -1,0 +1,37 @@
+{% extends 'product/product_layout.html.twig' %}
+
+{% block body %}
+    <h1>VatRate creation</h1>
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+       <div class="form-group">
+            {{ form_label(form.code, 'Code', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+
+            <div class="col-md-3 col-sm-4">
+                {{ form_widget(form.code, {'attr': {'class': 'form-control'}}) }}
+            </div>
+             {{ form_errors(form.code) }}
+        </div>  
+        <div class="form-group">
+            {{ form_label(form.description, 'Description', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+
+            <div class="col-md-3 col-sm-4">
+                {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+            </div>
+             {{ form_errors(form.description) }}
+        </div> 
+        <div class="form-group">
+            {{ form_label(form.rate, 'Rate', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+
+            <div class="col-md-3 col-sm-4">
+                {{ form_widget(form.rate, {'attr': {'class': 'form-control'}}) }}
+            </div>
+             {{ form_errors(form.rate) }}
+        </div> 
+        {{ form_widget(form) }}
+        <input type="submit" class="btn btn-success" value="Create" />
+    {{ form_end(form) }}
+
+            <a href="{{ path('vatrate_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
+
+{% endblock %}

@@ -1,3 +1,51 @@
+app_feature:
+    resource: "@AppBundle/Resources/config/routing/feature.yml"
+    prefix:   /feature
+    
+app_product:
+    resource: "@AppBundle/Resources/config/routing/product.yml"
+    prefix:   /product    
+
+app_doctype:
+    resource: "@AppBundle/Resources/config/routing/doctype.yml"
+    prefix:   /doctype
+
+app_docstatus:
+    resource: "@AppBundle/Resources/config/routing/docstatus.yml"
+    prefix:   /docstatus
+
+app_address:
+    resource: "@AppBundle/Resources/config/routing/address.yml"
+    prefix:   /address
+    
+app_documentline:
+    resource: "@AppBundle/Resources/config/routing/documentline.yml"
+    prefix:   /documentline   
+    
+app_document:
+    resource: "@AppBundle/Resources/config/routing/document.yml"
+    prefix:   /document   
+    
+app_partner:
+    resource: "@AppBundle/Resources/config/routing/partner.yml"
+    prefix:   /partner
+    
+app_featurename:
+    resource: "@AppBundle/Resources/config/routing/featurename.yml"
+    prefix:   /featurename    
+
+app_unitmeasure:
+    resource: "@AppBundle/Resources/config/routing/unitmeasure.yml"
+    prefix:   /unitmeasure   
+    
+app_category:
+    resource: "@AppBundle/Resources/config/routing/category.yml"
+    prefix:   /category    
+    
+app_warehouse:
+    resource: "@AppBundle/Resources/config/routing/warehouse.yml"
+    prefix:   /warehouse    
+    
 yaml_route_raspuns:
     path:     /raspuns/htmlmvc
     defaults: { _controller: AppBundle:Default:raspunsHtmlMvc }
@@ -5,3 +53,13 @@ yaml_route_raspuns:
 yaml_route_flasf:
     path:     /flash/{numar}
     defaults: { _controller: AppBundle:Default:flashMsgEx }
+    
+app_productimage:
+    resource: "@AppBundle/Resources/config/routing/productimage.yml"
+    prefix:   /productimage 
+    
+app_vatrate:
+        resource: "@AppBundle/Resources/config/routing/vatrate.yml"
+        prefix:   /vatrate
+
+

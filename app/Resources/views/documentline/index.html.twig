@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>DocumentLine list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantity</th>
+                <th>Saleprice</th>
+                <th>Datcre</th>
+                <th>Datupd</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for documentLine in documentLines %}
+            <tr>
+                <td><a href="{{ path('documentline_show', { 'id': documentLine.id }) }}">{{ documentLine.id }}</a></td>
+                <td>{{ documentLine.quantity }}</td>
+                <td>{{ documentLine.salePrice }}</td>
+                <td>{% if documentLine.datCre %}{{ documentLine.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if documentLine.datUpd %}{{ documentLine.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('documentline_show', { 'id': documentLine.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('documentline_edit', { 'id': documentLine.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('documentline_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

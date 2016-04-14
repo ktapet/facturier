@@ -1,19 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        
-        {% for flash_message in app.session.flashbag.get('notice') %}
-            <div style="color:red">
-                {{ flash_message }}
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    {# folosim o variabila kta_refresh, care daca este definita va reimprospata pagina dupa un interval de timp #}
+    {% if kta_refresh is defined %}
+    <meta http-equiv="refresh" content="{{ kta_refresh|e}}">
+    {% endif %} 
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <link rel="icon"  href="{{ asset('favicon.ico') }}" />
+
+    {% set name = 'Facturier' %} 
+
+    {% set mypath = 'images/logo_'~name~'.png' %}
+    {% if head_title is defined %}    
+        <title>{{name}} - {{ head_title }}</title>
+    {% else %}
+        <title>{{name}}</title>
+    {% endif %}
+ 
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />        
+        <link rel="stylesheet" href="{{ asset('css/facturier.css') }}" />
+ 
+    {% endblock %}    
+ 
+  </head>
+ 
+  <body>
+      {#TEST#}
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">              
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('index') }}">
+                    <img class="logo-img" alt="{{name}}" src="{{ asset(mypath|lower) }}" />
+
+                    {#<span class="logo-text">{{name}}</span>#}
+
+                </a>
             </div>
-        {% endfor %}        
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+ 
+            <div class="navbar-collapse collapse clear">
+                {% set d_links = {  
+                                'Partners':'partner',
+                                'Documents':'document',
+                                'Products':'product',
+                                
+                                }
+                %}
+                {% block dashboard_links %}
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="{{ path('index') }}">Home</a></li>
+                    {% for key,link in d_links %}
+                        {% if is_granted('ROLE_'~link|upper) %}
+                            <li><a href="{{ path(link~'_index') }}">{{ key }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                </ul>                    
+                {% endblock %}
+                
+                {% block user_links %}
+                <ul class="nav navbar-nav navbar-right">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            {#<li><a href="{{ path('admin') }}">Admin</a></li>                              #}
+                            <li><a href="{{ path('fos_user_profile_edit') }}">Edit</a></li>
+                            <li><a href="{{ path('fos_user_profile_show') }}">Show</a></li>
+                        {% else %}
+                            <li><a href="{{ path('fos_user_profile_edit') }}">Edit account</a></li>
+                            <li><a href="{{ path('fos_user_profile_show') }}">Account details</a></li>
+                            <li><a href="{{ path('fos_user_change_password') }}">Reset Password</a></li>
+                        {% endif %}
+                        <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                        <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+                {% endblock %}
+                
+            </div>
+        </div>
+    </div>
+                
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          
+        {% block submenu %}
+
+        {% endblock %}
+        
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            {% block body %}{% endblock %}
+       </div>
+      </div>
+    </div>
+    {% block javascript %}
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/logis.js') }}"></script>        
+    <script type="text/javascript" src="{{ asset('jquery-ui-1.11.4/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/facturier.js') }}"></script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="{{ asset('js/html5shiv-printshiv.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/respond.min.js') }}"></script>
+    <![endif]-->
+    {% endblock %}    
+  
+ 
+</body>
 </html>

@@ -1,0 +1,36 @@
+{% extends 'product/product_layout.html.twig' %}
+
+{% block body %}
+    <h1>Unit Measure list</h1>
+
+    <table class="table table-hover records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Unit Measure</th>
+                <th>Datcre</th>
+                <th>Datupd</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for unitMeasure in unitMeasures %}
+            <tr>
+                <td><a href="{{ path('unitmeasure_show', { 'id': unitMeasure.id }) }}">{{ unitMeasure.id }}</a></td>
+                <td>{{ unitMeasure.name }}</td>
+                <td>{% if unitMeasure.datCre %}{{ unitMeasure.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if unitMeasure.datUpd %}{{ unitMeasure.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <a class="btn btn-sm btn-info" href="{{ path('unitmeasure_show', { 'id': unitMeasure.id }) }}">
+                        <span class="glyphicon glyphicon-share"></span> Show 
+                    </a>
+                    <a class="btn btn-sm btn-default" href="{{ path('unitmeasure_edit', { 'id': unitMeasure.id }) }}">
+                        <span class="glyphicon glyphicon-edit"></span> Edit                                
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <a href="{{ path('unitmeasure_new') }}" class="btn btn-success">Create a new entry</a>
+{% endblock %}

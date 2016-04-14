@@ -1,0 +1,43 @@
+{% extends 'document/document_layout.html.twig' %}
+
+{% block body %}
+    <h1>Document</h1>
+<div class="col-lg-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover record_properties">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ document.id }}</td>
+                </tr>
+                <tr>
+                    <th>Docnumber</th>
+                    <td>{{ document.docNumber }}</td>
+                </tr>
+                <tr>
+                    <th>Document lines</th>
+                    <td>{% for documentLine in document.documentLines %}
+                        <p>{{documentLine.quantity}}</p>
+                        {%endfor%}
+                    
+                    </td>
+                </tr>
+                <tr>
+                    <th>Datcre</th>
+                    <td>{% if document.datCre %}{{ document.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Datupd</th>
+                    <td>{% if document.datUpd %}{{ document.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {{ form_start(delete_form) }}
+        <input type="submit" class="btn btn-danger" value="Delete">
+    {{ form_end(delete_form) }}
+    <div class="row top-buffer">
+        <a href="{{ path('document_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
+    </div>
+</div>
+{% endblock %}

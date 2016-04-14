@@ -1,0 +1,24 @@
+productimage_index:
+    path:     /
+    defaults: { _controller: "AppBundle:ProductImage:index" }
+    methods:  GET
+
+productimage_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:ProductImage:show" }
+    methods:  GET
+
+productimage_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:ProductImage:new" }
+    methods:  [GET, POST]
+
+productimage_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:ProductImage:edit" }
+    methods:  [GET, POST]
+
+productimage_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:ProductImage:delete" }
+    methods:  DELETE

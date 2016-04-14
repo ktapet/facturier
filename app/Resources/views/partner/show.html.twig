@@ -1,0 +1,57 @@
+{% extends 'partner/partner_layout.html.twig' %}
+{% block body %}
+    <h1>Partner</h1>
+    
+<div class="col-lg-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover record_properties">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ partner.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ partner.name }}</td>
+                </tr>
+                <tr>
+                    <th>Bank</th>
+                    <td>{{ partner.bank }}</td>
+                </tr>
+                <tr>
+                    <th>Iban</th>
+                    <td>{{ partner.iban }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>
+                        {%for address in partner.addresses%}
+                                <a href="{{ path('address_show', { 'id': address.id }) }}">{{address }}</a>
+                            {%endfor%}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Datcre</th>
+                    <td>{% if partner.datCre %}{{ partner.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Datupd</th>
+                    <td>{% if partner.datUpd %}{{ partner.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>           
+    
+    {{ form_start(delete_form) }}
+        <div class="row top-buffer">
+            <div class="col-md-4 col-sm-4">
+               {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-danger'}}) }}
+            </div>
+        </div>  
+    {{ form_end(delete_form) }}
+    <div class="row top-buffer">
+        <a href="{{ path('partner_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
+    </div>
+</div>
+
+{% endblock %}

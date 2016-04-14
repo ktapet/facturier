@@ -1,0 +1,43 @@
+{% extends 'product/product_layout.html.twig' %}
+
+{% block body %}
+    <h1>VatRate</h1>
+<div class="col-lg-4">
+    <div class="table-responsive">   
+        <table class="table table-bordered table-hover record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ vatRate.id }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ vatRate.code }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ vatRate.description }}</td>
+            </tr>
+            <tr>
+                <th>Rate</th>
+                <td>{{ vatRate.rate }}</td>
+            </tr>
+            <tr>
+                <th>Datcre</th>
+                <td>{% if vatRate.datCre %}{{ vatRate.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datupd</th>
+                <td>{% if vatRate.datUpd %}{{ vatRate.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-danger" value="Delete">
+            {{ form_end(delete_form) }}
+    <div class="row top-buffer">
+        <a href="{{ path('vatrate_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
+    </div>
+{% endblock %}

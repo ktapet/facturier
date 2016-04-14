@@ -1,0 +1,24 @@
+docstatus_index:
+    path:     /
+    defaults: { _controller: "AppBundle:DocStatus:index" }
+    methods:  GET
+
+docstatus_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:DocStatus:show" }
+    methods:  GET
+
+docstatus_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:DocStatus:new" }
+    methods:  [GET, POST]
+
+docstatus_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:DocStatus:edit" }
+    methods:  [GET, POST]
+
+docstatus_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:DocStatus:delete" }
+    methods:  DELETE
