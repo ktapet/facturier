@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * DocType
@@ -34,6 +35,12 @@ class DocType
     
     /**
      * @var integer
+     * @Assert\NotBlank()
+     * @Assert\Regex(
+     *     pattern="/^[-1]|[1]$/",
+     *     match=true,
+     *     message="Direction value allow 1 and -1"
+     * )
      *
      * @ORM\Column(name="direction", type="integer")
      */

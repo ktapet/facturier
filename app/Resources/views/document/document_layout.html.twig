@@ -1,4 +1,6 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
 {# setam linkurile #}
 {% set doc_links = {
         'PaymentType':'paymenttype',
@@ -8,11 +10,11 @@
 %}
 {# afisam linkurile #}
 {% block submenu %}
-    <ul class="nav navbar-nav navbar-left">
+    <ul class="nav nav-sidebar">
         {% for key,link in doc_links %}
-            <div class="row top-buffer">
-                <li><a href="{{ path(link~'_index') }}">{{ key }}</a></li>
-            </div>
+
+                <li><a href="{{ path(link~'_index') }}">{{ key|trans }}</a></li>
+
         {% endfor %}                       
     </ul>
 {% endblock %}

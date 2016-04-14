@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% form_theme delete_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('csvfiles_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('csvfiles_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('csvfiles_edit', {'id':csvFile.id}) }}">{% trans %}List{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>CsvFiles</h1>
+
+<div class="col-lg-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover record_properties">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ csvFile.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ csvFile.name }}</td>
+                </tr>
+                <tr>
+                    <th>Tip</th>
+                    <td>{{ csvFile.tip }}</td>
+                </tr>
+                <tr>
+                    <th>Isused</th>
+                    <td>{% if csvFile.isUsed %}Yes{% else %}No{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Datcre</th>
+                    <td>{% if csvFile.datCre %}{{ csvFile.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+            {{ form_start(delete_form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
+                {{ form_widget(delete_form) }}
+            {{ form_end(delete_form) }}
+</div>
+{% endblock %}

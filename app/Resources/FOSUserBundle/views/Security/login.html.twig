@@ -1,5 +1,6 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
+
 {% block fos_user_content %}
 {% if error %}
 
@@ -29,4 +30,5 @@
     <a style="color:#804034;text-decoration: underline;" href="{{ path('fos_user_resetting_request') }}">Am uitat parola!</a>
 </div>
 </form>
+
 {% endblock fos_user_content %}

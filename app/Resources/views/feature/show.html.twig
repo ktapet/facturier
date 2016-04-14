@@ -1,40 +1,39 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('feature_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('feature_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('feature_edit', {'id':feature.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>Feature</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ feature.id }}</td>
-            </tr>
-            <tr>
-                <th>Value</th>
-                <td>{{ feature.value }}</td>
-            </tr>
-            <tr>
-                <th>Datcre</th>
-                <td>{% if feature.datCre %}{{ feature.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Datupd</th>
-                <td>{% if feature.datUpd %}{{ feature.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="col-lg-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover record_properties">
+            <tbody>
+                <tr>
+                    <th>{% trans %}Id{% endtrans %}</th>
+                    <td>{{ feature.id }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Value{% endtrans %}</th>
+                    <td>{{ feature.value }}</td>
+                </tr>
 
-    <ul>
-        <li>
-            <a href="{{ path('feature_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('feature_edit', { 'id': feature.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            </tbody>
+        </table>
+    </div>
+            {{ form_start(delete_form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
+                {{ form_widget(delete_form) }}
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+</div>
+
+
 {% endblock %}

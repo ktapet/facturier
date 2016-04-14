@@ -1,41 +1,32 @@
 {% extends 'document/document_layout.html.twig' %}
+{% form_theme edit_form ':Form:fields.html.twig' %}
+{% form_theme delete_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('doctype_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('doctype_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('doctype_edit', {'id':docType.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>DocType edit</h1>
 
-    {{ form_start(edit_form, { 'attr': { 'role':'form', 'class':'form-horizontal' } }) }}
+    {{ form_start(edit_form, { 'attr': { 'role':'form', 'class':'form-horizontal' }}) }}
 
-    <div class="form-group">
-        {{ form_label(edit_form.name, 'Name', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+            {{ form_widget(edit_form) }}
 
-        <div class="col-md-3 col-sm-4">
-            {{ form_widget(edit_form.name, {'attr': {'class': 'form-control'}}) }}
-        </div>
-        {{ form_errors(edit_form.name) }}
-    </div>
-    <div class="form-group">
-        {{ form_label(edit_form.direction, 'Direction', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
-
-        <div class="col-md-3 col-sm-4">
-            {{ form_widget(edit_form.direction, {'attr': {'class': 'form-control'}}) }}
-        </div>
-        {{ form_errors(edit_form.direction) }}
-    </div>
-    <div class="form-group">
-        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
-            {{ form_widget(edit_form.submit, { 'label': 'Save', 'attr': {'class': 'btn btn-sm btn-success'}}) }}
-        </div>
-    </div>
     {{ form_end(edit_form) }}
 
-    {{ form_start(delete_form, {'attr': {'class': 'form-horizontal'}}) }}
-    <div class="form-group">
 
-        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
-            {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
-        </div>
 
+<<<<<<< HEAD
     </div>
     {{ form_end(delete_form) }}
         <a href="{{ path('doctype_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>   
+=======
+>>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
 {% endblock %}

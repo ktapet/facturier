@@ -1,0 +1,108 @@
+datCre: Data creării
+Datcre: Data creării
+Creation date: Data creării
+datUpd: Data actualizării
+Datupd: Data actualizării
+Update date: Data actualizării
+id: Id
+Id: Id
+Alias: Alias
+Street: Stradă
+No: Număr
+City: Oraș
+Country: Țară
+Email: Email
+Phone: Telefon
+Partner: Partener
+Actions: Acțiuni
+name: Nume
+Name: Nume
+Bank: Bancă
+Addresses: Adrese
+Address: Adresă
+Choose a partner: Selectează un partener
+Choose a document type: Selectează un document
+Choose a payment type: Selectează tipul plații
+Choose a document status: Selectează statusul documentului
+Choose a product: Selectează un produs
+Choose a VAT: Selectează TVA
+Choose Unit measure: Selectează unitatea de măsură
+Choose a value: Selecteaza valoarea
+Choose a warehouse: Selecteaza depozitul
+Save: Salvează
+Create: Adaugă
+Add new: Adaugă
+List: Vizualizează
+Iban: Iban
+Delete: Șterge
+Edit: Editează
+Category name value: Numele categoriei
+Document number: Numărul documentului
+Document type: Tipul documentului
+Payment type: Tipul pălții
+Document status: Statutul documentului
+Quantity: Cantitatea
+Saleprice: Preț de vânzare
+Sale price: Preț de vânzare
+salePrice: Preț de vânzare
+Product: Produs
+Vatrate: TVA
+Vat rate: TVA
+direction: Direcție
+Direction: Direcție
+Value: Valoare
+Feature value: Valoarea proprietății
+Fnvalue: Valoarea proprietății
+Feature name value: Numele proprietății
+Unit measure: Unitatea de măsură
+Manufacturer: Producător
+manufacturer: Producător
+Reference: Referințe
+reference: Referințe
+Categories: Categorii
+File: Fișier
+Ean: Număr european de articol
+ean: Număr european de articol
+Images: Imagine
+path: Extensie
+Path: Extensie
+Unit measure value: Valoarea unități de măsura
+Code: Cod
+Description: Descriere
+Rate: Rată
+Warehouse name: Nume depozit
+Warehouse address: Adresa depozitului
+Warehouse: Depozit
+Number must be positive: Numărul trebuie să fie pozitiv
+
+form:
+    street: Stradă
+    no: Număr
+    city: Oraș
+    country: Țară
+    email: Email
+    Bank: Bancă
+    Iban: Iban
+
+# FOSUserBundle
+Show: Arată
+Edit account: Editează contul
+Account details: Detalii cont
+Reset Password: Resetare parola
+Logout: Deconectare
+Login: Logare
+Register: Inregistrează-te
+
+# Meniu
+
+Partners: Parteneri
+Documents: Documente
+Products: Produse
+Home: Acasă
+Feature name: Lista proprietățiilor
+Vat rates: Cota de TVA
+Warehouses: Depozite
+PaymentType: Metoda de plată
+DocStatus: Starea documentului
+DocType: Tipul documentului
+Product warehouse: Depozit de produse

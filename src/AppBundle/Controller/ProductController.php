@@ -27,10 +27,15 @@ class ProductController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        /* numele coloanelor din baza de date */
+        $mapping = $this->getDoctrine()->getManager()->getClassMetadata('AppBundle:Product');
+        $columns = $mapping->getFieldNames();
+
         $products = $em->getRepository('AppBundle:Product')->findAll();
 
         return $this->render('product/index.html.twig', array(
             'products' => $products,
+            'columns'  => $columns,
         ));
     }
 
@@ -42,7 +47,13 @@ class ProductController extends Controller
     {
         $product = new Product();
         $form = $this->createForm('AppBundle\Form\ProductType', $product);
-        $form->add('submit', SubmitType::class);
+        $form->add('submit', SubmitType::class, array(
+            'label'=>'Create',
+            'attr'=>array(
+                'class'=>'btn btn-primary',
+            ),
+            'translation_domain'=>'AppBundle',
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -90,7 +101,13 @@ class ProductController extends Controller
     
         //$deleteForm = $this->createDeleteForm($product);
         $editForm = $this->createForm('AppBundle\Form\ProductType', $product);
-        $editForm->add('submit', SubmitType::class);
+        $editForm->add('submit', SubmitType::class, array(
+            'label'=>'Edit',
+            'attr'=>array(
+                'class'=>'btn btn-succes'
+            ),
+            'translation_domain'=>'AppBundle',
+        ));
         $editForm->handleRequest($request);
         
 
@@ -108,7 +125,7 @@ class ProductController extends Controller
             $em->persist($product);
             $em->flush();
 
-            return $this->redirectToRoute('product_edit', array('id' => $product->getId()));
+            return $this->redirectToRoute('product_show', array('id' => $product->getId()));
         }
 
         return $this->render('product/edit.html.twig', array(
@@ -154,6 +171,13 @@ class ProductController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('product_delete', array('id' => $product->getId())))
             ->setMethod('DELETE')
+            ->add('submit', SubmitType::class, array(
+                'label'=>'Delete',
+                'attr'=>array(
+                    'class'=>'btn btn-danger'
+                ),
+                'translation_domain'=>'AppBundle',
+            ))
             ->getForm()
         ;
     }

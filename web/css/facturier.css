@@ -123,6 +123,21 @@ body {
     margin-top:20px; 
 
 }
+hr{
+  border: 1px solid #0f0f0f;
+  width: 120%;
+  margin-left: -20px;
+
+}
+ul{
+  list-style: none;
+}
+
+button{
+  margin-bottom: 2px !important;
+}
+
+
 
 .form-group ul li{
     list-style-type: none;
@@ -151,5 +166,13 @@ label {
     -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
          -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
             transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+
+[for^=document_documentLines],
+[for^=product_features],
+[for^=product_images]
+{
+  margin-left: -20px !important;
 }
 

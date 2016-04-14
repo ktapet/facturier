@@ -47,7 +47,7 @@ class DocumentLine
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Document", inversedBy="documentLines",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Document", inversedBy="documentLines", cascade={"persist"})
      * 
      */
     private $document;    
@@ -73,6 +73,11 @@ class DocumentLine
      * @ORM\Column(name="dat_upd", type="datetime")
      */
     private $datUpd;    
+
+    public function __toString()
+    {
+        return $this->document;
+    }
 
     /**
      * @inheritDoc
@@ -147,7 +152,7 @@ class DocumentLine
      *
      * @return DocumentLine
      */
-    public function setDatCre($datCre)
+    public function setDatCre()
     {
         $this->datCre = new \DateTime();
 
@@ -172,7 +177,7 @@ class DocumentLine
      *
      * @return DocumentLine
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
         $this->datUpd = new \DateTime();
 

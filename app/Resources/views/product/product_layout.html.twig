@@ -1,4 +1,6 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
 {# setam linkurile #}
 {% set p_links = {
         'Feature name':'featurename',
@@ -6,17 +8,21 @@
         'Vat rates':'vatrate',
         'Unit measure':'unitmeasure',
         'Warehouses':'warehouse',
+        'Product warehouse':'productwarehouse'
     }
 %}
 {# afisam linkurile #}
 {% block submenu %}
-    <ul class="nav navbar-nav navbar-left">
+
+        <ul class="nav nav-sidebar">
         {% for key,link in p_links %}
-            <div class="row top-buffer">
-                <li><a href="{{ path(link~'_index') }}">{{ key }}</a></li>
-            </div>
+
+                <li><a href="{{ path(link~'_index') }}">{{ key|trans }}</a></li>
+
         {% endfor %}                       
-    </ul>
+        </ul>
+
+
 {% endblock %}
 {# blocul body urmeaza a fi rescris in subpagini(de exmeplu in app\Resources\views\product\edit.html.twig) #}
 {% block body %}{% endblock %}

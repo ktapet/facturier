@@ -8,7 +8,29 @@
             {{ form_widget(form, {'attr': {'class': 'form-control'}}) }}
             </div>
         </div>
-    </div>
 {% endspaceless %}
 {% endblock form_row %}
 
+{%- block form_widget_simple -%}
+{% spaceless %}
+    {%- set type = type|default('text') -%}
+    {% if type == 'file' %}
+    {% if attr.class is defined %}
+        {% set class = 'class=""' %}
+    {% endif %}
+
+           <input type="{{ type }}" {{ class }} {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+
+    {% else %}
+        <input onkeyup="processInputs(this.value, this.id)" {#size="3"#} type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    {% endif %}
+{% endspaceless %}
+{%- endblock form_widget_simple -%}
+
+
+{%- block submit_widget -%}
+    {%- set type = type|default('submit') -%}
+    <div class="col-md-offset-1 col-sm-offset-1">
+    {{ block('button_widget') }}
+    </div>
+{%- endblock submit_widget -%}

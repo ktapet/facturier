@@ -1,5 +1,16 @@
 {% extends 'product/product_layout.html.twig' %}
+{% form_theme delete_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('category_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('category_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('category_edit', {'id':category.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>Category Name</h1>
 
@@ -8,34 +19,38 @@
         <table class="table table-bordered table-hover record_properties">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{% trans %}Id{% endtrans %}</th>
                 <td>{{ category.id }}</td>
             </tr>
             <tr>
-                <th>Category name value</th>
+                <th>{% trans %}Category name value{% endtrans %}</th>
                 <td>{{ category.name }}</td>
             </tr>
             <tr>
-                <th>Creation date</th>
+                <th>{% trans %}Creation date{% endtrans %}</th>
                 <td>{% if category.datCre %}{{ category.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Update date</th>
+                <th>{% trans %}Update date{% endtrans %}</th>
                 <td>{% if category.datUpd %}{{ category.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>
     </div>
 
-    <div class="form-group">
+
         {{ form_start(delete_form) }}
-        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
-           {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
-        </div>
+
+           {{ form_widget(delete_form) }}
+
         {{ form_end(delete_form) }}
-    </div>  
+
 </div>            
+<<<<<<< HEAD
     <div class="row top-buffer">
         <a href="{{ path('category_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
     </div>
+=======
+
+>>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
 {% endblock %}

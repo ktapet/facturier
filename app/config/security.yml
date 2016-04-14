@@ -4,6 +4,7 @@ security:
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
+
     role_hierarchy:
         ROLE_SUPER_ADMIN:   ROLE_ADMIN        
         ROLE_ADMIN:         [ROLE_SUPERUSER]
@@ -15,6 +16,7 @@ security:
         fos_userbundle:
             id: fos_user.user_provider.username
             
+
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
@@ -31,6 +33,7 @@ security:
 
             logout:       true
             anonymous:    true
+
             
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -41,4 +44,5 @@ security:
         - { path: ^/profile/edit, role: ROLE_MEMBER }
         - { path: ^/.*/edit, role: ROLE_EDIT }
         - { path: ^/member/, role: ROLE_MEMBER }      
+
 

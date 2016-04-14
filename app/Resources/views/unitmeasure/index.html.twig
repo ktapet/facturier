@@ -1,16 +1,29 @@
+<<<<<<< HEAD
 {% extends 'product/product_layout.html.twig' %}
+=======
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+>>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
 
+{% block submenu %}
+    {{  parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('productimage_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('productimage_index') }}">{% trans %}List{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>Unit Measure list</h1>
 
     <table class="table table-hover records_list">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Unit Measure</th>
-                <th>Datcre</th>
-                <th>Datupd</th>
-                <th>Actions</th>
+                <th>{% trans %}Id{% endtrans %}</th>
+                <th>{% trans %}Unit measure{% endtrans %}</th>
+                <th>{% trans %}Datcre{% endtrans %}</th>
+                <th>{% trans %}Datupd{% endtrans %}</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
         </thead>
         <tbody>
@@ -32,5 +45,5 @@
         {% endfor %}
         </tbody>
     </table>
-        <a href="{{ path('unitmeasure_new') }}" class="btn btn-success">Create a new entry</a>
+
 {% endblock %}

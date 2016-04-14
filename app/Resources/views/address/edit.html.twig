@@ -1,13 +1,20 @@
 {% extends 'partner/partner_layout.html.twig' %}
 {% form_theme edit_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('address_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('address_index') }}">{% trans %}List{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>Address edit</h1>
 
     {{ form_start(edit_form, {'attr': {'class': 'form-horizontal'}}) }}
-    {{ form_widget(edit_form) }} 
+        {{ form_widget(edit_form) }}
     {{ form_end(edit_form) }}
-    <div class="row top-buffer">
-        <a href="{{ path('address_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
-    </div>
+
 {% endblock %}

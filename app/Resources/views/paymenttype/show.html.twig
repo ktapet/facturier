@@ -1,5 +1,16 @@
 {% extends 'document/document_layout.html.twig' %}
+{% form_theme delete_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('paymenttype_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('paymenttype_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('paymenttype_edit', {'id':paymenttype.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>PaymentType</h1>
 
@@ -8,33 +19,37 @@
             <table class="table table-bordered table-hover record_properties">
                 <tbody>
                 <tr>
-                    <th>Id</th>
+                    <th>{% trans %}Id{% endtrans %}</th>
                     <td>{{ paymenttype.id }}</td>
                 </tr>
                 <tr>
-                    <th>Payment Type</th>
+                    <th>{% trans %}Payment type{% endtrans %}</th>
                     <td>{{ paymenttype.name }}</td>
                 </tr>
                 <tr>
-                    <th>Creation date</th>
+                    <th>{% trans %}Creation date{% endtrans %}</th>
                     <td>{% if paymenttype.datCre %}{{ paymenttype.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                 </tr>
                 <tr>
-                    <th>Update date</th>
+                    <th>{% trans %}Update date{% endtrans %}</th>
                     <td>{% if paymenttype.datUpd %}{{ paymenttype.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
                 </tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="form-group">
-            {{ form_start(delete_form) }}
-            <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
-                {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
-            </div>
+
+            {{ form_start(delete_form, {'attr': {'role':'form' ,'class': 'form-horizontal'}}) }}
+
+                {{ form_widget(delete_form) }}
+
             {{ form_end(delete_form) }}
-        </div>
+
     </div>
+<<<<<<< HEAD
         <a href="{{ path('paymenttype_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
+=======
+
+>>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
 
 {% endblock %}

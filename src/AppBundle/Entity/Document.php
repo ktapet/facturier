@@ -1,7 +1,5 @@
 <?php
-
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -13,7 +11,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity("docNumber")
  * @ORM\HasLifecycleCallbacks()
  */
-
 class Document
 {
     /**
@@ -23,77 +20,74 @@ class Document
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;    
-    
+    private $id;
+
     /**
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Partner")
      * @ORM\JoinColumn(name="partner_id", referencedColumnName="id")
      */
-    private $partner;  
-    
+    private $partner;
+
     /**
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="DocType")
      * @ORM\JoinColumn(name="doctype_id", referencedColumnName="id")
      */
-    private $docType;     
-    
+    private $docType;
+
     /**
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="PaymentType")
      * @ORM\JoinColumn(name="paymenttype_id", referencedColumnName="id")
      */
-    private $paymentType;       
-    
+    private $paymentType;
+
     /**
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $user;     
-    
+    private $user;
+
     /**
      * @var integer
      *
      * @ORM\OneToMany(targetEntity="DocumentLine", mappedBy="document",cascade={"persist"})
-     * 
+     *
      */
-    private $documentLines;  
-    
-     /**
+    private $documentLines;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="doc_number", type="string")
      */
-    private $docNumber;   
-    
+    private $docNumber;
+
     /**
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="DocStatus")
-     * 
+     *
      */
-    private $docStatus;       
-
+    private $docStatus;
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
-    private $datUpd;    
-
+    private $datUpd;
     /**
      * @inheritDoc
      */
@@ -109,7 +103,6 @@ class Document
     {
         $this->documentLines = new ArrayCollection();
     }
-
     /**
      * Get id
      *
@@ -119,7 +112,6 @@ class Document
     {
         return $this->id;
     }
-
     /**
      * Set docNumber
      *
@@ -130,10 +122,8 @@ class Document
     public function setDocNumber($docNumber)
     {
         $this->docNumber = $docNumber;
-
         return $this;
     }
-
     /**
      * Get docNumber
      *
@@ -143,7 +133,6 @@ class Document
     {
         return $this->docNumber;
     }
-
     /**
      * Set datCre
      * @ORM\PrePersist
@@ -154,10 +143,8 @@ class Document
     public function setDatCre($datCre)
     {
         $this->datCre = new \DateTime();
-
         return $this;
     }
-
     /**
      * Get datCre
      *
@@ -167,7 +154,6 @@ class Document
     {
         return $this->datCre;
     }
-
     /**
      * Set datUpd
      * @ORM\PreUpdate
@@ -179,10 +165,8 @@ class Document
     public function setDatUpd($datUpd)
     {
         $this->datUpd = new \DateTime();
-
         return $this;
     }
-
     /**
      * Get datUpd
      *
@@ -192,7 +176,6 @@ class Document
     {
         return $this->datUpd;
     }
-
     /**
      * Set partner
      *
@@ -203,10 +186,8 @@ class Document
     public function setPartner(\AppBundle\Entity\Partner $partner = null)
     {
         $this->partner = $partner;
-
         return $this;
     }
-
     /**
      * Get partner
      *
@@ -216,7 +197,6 @@ class Document
     {
         return $this->partner;
     }
-
     /**
      * Set docType
      *
@@ -227,10 +207,8 @@ class Document
     public function setDocType(\AppBundle\Entity\DocType $docType = null)
     {
         $this->docType = $docType;
-
         return $this;
     }
-
     /**
      * Get docType
      *
@@ -240,9 +218,7 @@ class Document
     {
         return $this->docType;
     }
-
     /**
-
      * Set paymentType
      *
      * @param \AppBundle\Entity\PaymentType $paymentType
@@ -254,7 +230,6 @@ class Document
         $this->paymentType = $paymentType;
         return $this;
     }
-
     /**
      * Get paymentType
      *
@@ -264,7 +239,6 @@ class Document
     {
         return $this->paymentType;
     }
-
     /**
      * Set user
      *
@@ -277,7 +251,6 @@ class Document
         $this->user = $user;
         return $this;
     }
-
     /**
      * Get user
      *
@@ -287,7 +260,6 @@ class Document
     {
         return $this->user;
     }
-
     /**
      * Add documentLine
      *
@@ -298,11 +270,17 @@ class Document
     public function addDocumentLine(\AppBundle\Entity\DocumentLine $documentLine)
     {
         $documentLine->setDocument($this);
+<<<<<<< HEAD
         
         $this->documentLines->add($documentLine);
 
     }
+=======
 
+        $this->documentLines->add($documentLine);
+>>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
+
+    }
     /**
      * Remove documentLine
      *
@@ -312,7 +290,6 @@ class Document
     {
         $this->documentLines->removeElement($documentLine);
     }
-
     /**
      * Get documentLines
      *
@@ -322,7 +299,6 @@ class Document
     {
         return $this->documentLines;
     }
-
     /**
      * Set docStatus
      *
@@ -333,10 +309,8 @@ class Document
     public function setDocStatus(\AppBundle\Entity\DocStatus $docStatus = null)
     {
         $this->docStatus = $docStatus;
-
         return $this;
     }
-
     /**
      * Get docStatus
      *

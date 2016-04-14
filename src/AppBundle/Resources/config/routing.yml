@@ -1,3 +1,11 @@
+app_productwarehouse:
+        resource: "@AppBundle/Resources/config/routing/productwarehouse.yml"
+        prefix:   /productwarehouse
+
+app_csvfiles:
+    resource: "@AppBundle/Resources/config/routing/csvfiles.yml"
+    prefix:   /csvfiles
+
 app_feature:
     resource: "@AppBundle/Resources/config/routing/feature.yml"
     prefix:   /feature
@@ -29,7 +37,11 @@ app_document:
 app_partner:
     resource: "@AppBundle/Resources/config/routing/partner.yml"
     prefix:   /partner
-    
+
+app_paymenttype:
+    resource: "@AppBundle/Resources/config/routing/paymenttype.yml"
+    prefix: /paymenttype
+
 app_featurename:
     resource: "@AppBundle/Resources/config/routing/featurename.yml"
     prefix:   /featurename    
@@ -59,7 +71,6 @@ app_productimage:
     prefix:   /productimage 
     
 app_vatrate:
-        resource: "@AppBundle/Resources/config/routing/vatrate.yml"
-        prefix:   /vatrate
-
+    resource: "@AppBundle/Resources/config/routing/vatrate.yml"
+    prefix:   /vatrate
 

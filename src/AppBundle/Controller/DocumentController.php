@@ -2,11 +2,11 @@
 
 namespace AppBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Entity\Document;
-use Doctrine\Common\Collections\ArrayCollection;
 
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -39,7 +39,15 @@ class DocumentController extends Controller
     {
         $document = new Document();
         $form = $this->createForm('AppBundle\Form\DocumentType', $document);
-        $form->add('submit', SubmitType::class);
+
+        $form->add('submit', SubmitType::class, array(
+            'label'=>'Create',
+            'attr'=>array(
+                'class'=>'btn btn-primary',
+            ),
+            'translation_domain'=>'AppBundle'
+        ));
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -77,16 +85,17 @@ class DocumentController extends Controller
     public function editAction(Request $request, Document $document)
     {
         $origDocumentLines = new ArrayCollection();
-        
+
+
         // Create an ArrayCollection of the current Tag objects in the database
         foreach ($document->getDocumentLines() as $documentLine) {
-           $origDocumentLines->add($documentLine);
-        } 
-        
+            $origDocumentLines->add($documentLine);
+        }
+
+
         $deleteForm = $this->createDeleteForm($document);
         $editForm = $this->createForm('AppBundle\Form\DocumentType', $document);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             foreach ($origDocumentLines as $documentLine) {
@@ -97,16 +106,15 @@ class DocumentController extends Controller
             }
             $em->persist($document);
             $em->flush();
-
             return $this->redirectToRoute('document_edit', array('id' => $document->getId()));
         }
-
         return $this->render('document/edit.html.twig', array(
             'document' => $document,
             'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
 
     /**
      * Deletes a Document entity.
@@ -119,6 +127,12 @@ class DocumentController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            // Create an ArrayCollection of the current Tag objects in the database
+            if($document->getDocumentLines()){
+                foreach ($document->getDocumentLines() as $documentLine) {
+                    $em->remove($documentLine);
+                }
+            }
             $em->remove($document);
             $em->flush();
         }
@@ -138,6 +152,13 @@ class DocumentController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('document_delete', array('id' => $document->getId())))
             ->setMethod('DELETE')
+            ->add('submit', SubmitType::class, array(
+                'label'=>'Delete',
+                'attr'=>array(
+                    'class'=>'btn btn-danger'
+                ),
+                'translation_domain'=>'AppBundle'
+            ))
             ->getForm()
         ;
     }
