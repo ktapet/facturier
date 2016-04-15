@@ -52,10 +52,18 @@ class Document
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\Column(name="created_by", type="string")
+     * 
      */
-    private $user;     
+    private $createdBy;       
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="modified_by", type="string", nullable=true)
+     * 
+     */
+    private $modifiedBy;  
     
     /**
      * @var integer
@@ -345,5 +353,53 @@ class Document
     public function getDocStatus()
     {
         return $this->docStatus;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param string $createdBy
+     *
+     * @return Document
+     */
+    public function setCreatedBy($createdBy)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return string
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set modifiedBy
+     *
+     * @param string $modifiedBy
+     *
+     * @return Document
+     */
+    public function setModifiedBy($modifiedBy)
+    {
+        $this->modifiedBy = $modifiedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get modifiedBy
+     *
+     * @return string
+     */
+    public function getModifiedBy()
+    {
+        return $this->modifiedBy;
     }
 }
