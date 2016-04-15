@@ -104,3 +104,8 @@
 <a href="{{ path('product_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
 
 {% endblock %}
+ {% block javascript %}
+     {{ parent() }}
+     <script type="text/javascript" src="{{ asset('js/product.js') }}"></script>    
+     
+{% endblock %}   
