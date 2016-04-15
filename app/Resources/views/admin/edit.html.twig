@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% form_theme edit_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block body %}
+<h1>Edit user</h1>
+
+    {{ form_start(edit_form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
+
+        {{ form_widget(edit_form) }}
+
+    {{ form_end(edit_form) }}
+
+{% endblock %}
