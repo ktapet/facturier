@@ -1,0 +1,54 @@
+{% extends 'product/product_layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('product_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('product_index') }}">{% trans %}List{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>Product list</h1>
+
+        <div class="table-responsive">
+            <table class="table table-hover records_list">
+                <thead>
+                    <tr>
+                        {% for column in columns %}
+                            <th>{{ column|trans|capitalize }}</th>
+                        {% endfor %}
+                        <th>{% trans %}Actions{% endtrans %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                        <td>{{ product.nume }}</td>
+                        <td>{{ product.manufacturer }}</td>
+                        <td>{{ product.ean }}</td>
+                        <td>{{ product.reference }}</td>
+                        <td>{{ product.salePrice }}</td>
+                        <td>{% if product.datCre %}{{ product.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if product.datUpd %}{{ product.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>
+                            <a class="btn btn-sm btn-info" href="{{ path('product_show', { 'id': product.id }) }}">
+                            <span class="glyphicon glyphicon-share"></span> Show</a>
+
+                            <a class="btn btn-sm btn-default" href="{{ path('product_edit', { 'id': product.id }) }}">
+                                <span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+
+
+{% endblock %}

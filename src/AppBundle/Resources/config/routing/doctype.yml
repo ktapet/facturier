@@ -1,0 +1,24 @@
+doctype_index:
+    path:     /
+    defaults: { _controller: "AppBundle:DocType:index" }
+    methods:  GET
+
+doctype_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:DocType:show" }
+    methods:  GET
+
+doctype_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:DocType:new" }
+    methods:  [GET, POST]
+
+doctype_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:DocType:edit" }
+    methods:  [GET, POST]
+
+doctype_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:DocType:delete" }
+    methods:  DELETE

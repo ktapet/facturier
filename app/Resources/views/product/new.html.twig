@@ -1,0 +1,114 @@
+{% extends 'product/product_layout.html.twig' %}
+{% form_theme form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('product_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('product_index') }}">{% trans %}List{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body -%}   
+
+    <h3>Product creation</h3>
+
+{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    {{ form_errors(form) }}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {{ form_label(form.nume, 'Name', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_errors(form.nume) }}
+                <div class="col-lg-6">
+                    {{ form_widget(form.nume, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(form.unitMeasure, 'Unit measure', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_errors(form.unitMeasure) }}
+                <div class="col-lg-6">
+                    {{ form_widget(form.unitMeasure, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>     
+            <div class="form-group">
+                {{ form_label(form.manufacturer, 'Manufacturer', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_errors(form.manufacturer) }}
+                <div class="col-lg-6">
+                    {{ form_widget(form.manufacturer, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>  
+            <div class="form-group">
+                {{ form_label(form.ean, 'Ean', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_errors(form.ean) }}
+                <div class="col-lg-6">
+                    {{ form_widget(form.ean, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>              
+            <div class="form-group">
+                {{ form_label(form.reference, 'Reference', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_errors(form.reference) }}
+                <div class="col-lg-6">
+                    {{ form_widget(form.reference, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>              
+            <div class="form-group">
+                {{ form_label(form.salePrice, 'Sale price', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_errors(form.salePrice) }}
+                <div class="col-lg-6">
+                    {{ form_widget(form.salePrice, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>      
+            <div class="form-group">
+                {{ form_label(form.categories, 'Categories', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_errors(form.categories) }}
+                <div class="col-lg-6">
+                    {{ form_widget(form.categories, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>   
+        </div>   
+    </div>   
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <div class="wrap-playvideos">
+                    <h3>Product features</h3>
+                    <ul style="list-style: none" class="features" data-prototype="{{ form_widget(form.features.vars.prototype)|e }}">
+                        {% for feature in form.features %}
+                            <li >{{ form_widget(feature) }}</li>
+                        {% endfor %}
+                    </ul>           
+                </div>
+            </div>
+        </div> 
+    </div>   
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <div class="wrap-playvideos">
+                    <h3>Product images</h3>
+                    <ul style="list-style: none" class="images" data-prototype="{{ form_widget(form.images.vars.prototype)|e }}">
+                        {% for image in form.images %}
+                            <li>{{ form_widget(image) }}</li>
+                        {% endfor %}
+                    </ul>         
+                </div>
+            </div>
+        </div> 
+    </div>   
+       <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+                        {{ form_widget(form.submit, { 'label': 'Create', 'attr': {'class': 'btn btn-success'}}) }}
+                    </div>
+                </div>                       
+            </div>
+       </div>
+        {{ form_widget(form.features) }}
+        {{ form_widget(form.images) }}
+{{ form_end(form) }} 
+
+
+{% endblock %}

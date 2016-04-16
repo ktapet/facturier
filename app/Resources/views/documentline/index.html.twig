@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('documentline_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('documentline_index') }}">{% trans %}List{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>DocumentLine list</h1>
+
+<div class="table-responsive">
+    <table class="table table-hover records_list">
+        <thead>
+            <tr>
+                <th>{% trans %}Id{% endtrans %}</th>
+                <th>{% trans %}Quantity{% endtrans %}</th>
+                <th>{% trans %}Saleprice{% endtrans %}</th>
+                <th>{% trans %}Datcre{% endtrans %}</th>
+                <th>{% trans %}Datupd{% endtrans %}</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for documentLine in documentLines %}
+            <tr>
+                <td><a href="{{ path('documentline_show', { 'id': documentLine.id }) }}">{{ documentLine.id }}</a></td>
+                <td>{{ documentLine.quantity }}</td>
+                <td>{{ documentLine.salePrice }}</td>
+                <td>{% if documentLine.datCre %}{{ documentLine.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if documentLine.datUpd %}{{ documentLine.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <a class="btn btn-sm btn-info" href="{{ path('documentline_show', { 'id': documentLine.id }) }}">
+                        <span class="glyphicon glyphicon-share"></span> Show
+                    </a>
+
+                    <a class="btn btn-sm btn-default" href="{{ path('documentline_edit', { 'id': documentLine.id }) }}">
+                        <span class="glyphicon glyphicon-edit"></span>Edit
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+</div>
+{% endblock %}

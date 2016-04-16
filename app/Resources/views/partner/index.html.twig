@@ -1,0 +1,59 @@
+{% extends 'partner/partner_layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('partner_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('partner_index') }}">{% trans %}List{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>Partners list</h1>
+
+        <div class="table-responsive">
+            <table class="table table-hover records_list">
+                <thead>
+                    <tr>
+                        <th>{% trans %}Id{% endtrans %}</th>
+                        <th>{% trans %}Name{% endtrans %}</th>
+                        <th>{% trans %}Bank{% endtrans %}</th>
+                        <th>Iban</th>
+                        <th>{% trans %}Addresses{% endtrans %}</th>
+                        <th>{% trans %}Datcre{% endtrans %}</th>
+                        <th>{% trans %}Datupd{% endtrans %}</th>
+                        <th>{% trans %}Actions{% endtrans %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for partner in partners %}
+                    <tr>
+                        <td><a href="{{ path('partner_show', { 'id': partner.id }) }}">{{ partner.id }}</a></td>
+                        <td>{{ partner.name }}</td>
+                        <td>{{ partner.bank }}</td>
+                        <td>{{ partner.iban }}</td>
+                        <td>
+                            {%for address in partner.addresses%}
+                                <a href="{{ path('address_show', { 'id': address.id }) }}">{{address }}</a>
+                            {%endfor%}
+                        </td>
+                                               
+                        <td>{% if partner.datCre %}{{ partner.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if partner.datUpd %}{{ partner.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>
+
+                        <a class="btn btn-sm btn-info" href="{{ path('partner_show', { 'id': partner.id }) }}">
+                            <span class="glyphicon glyphicon-share"></span> Show</a>
+
+                        <a class="btn btn-sm btn-default" href="{{ path('partner_edit', { 'id': partner.id }) }}">
+                            <span class="glyphicon glyphicon-edit"></span> Edit</a>
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>            
+{% endblock %}

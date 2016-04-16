@@ -1,0 +1,23 @@
+{% extends 'document/document_layout.html.twig' %}
+{% form_theme form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('docstatus_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('docstatus_index') }}">{% trans %}List{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>DocStatus creation</h1>
+
+    {{ form_start(form, { 'attr': { 'role':'form', 'class':'form-horizontal' } }) }}
+
+            {{ form_widget(form) }}
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

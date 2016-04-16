@@ -1,0 +1,65 @@
+{% extends 'partner/partner_layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('address_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('address_index') }}">{% trans %}List{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>Address list</h1>
+
+<div class="table-responsive">
+    <table class="table table-hover records_list">
+        <thead>
+            <tr>
+                <th>{% trans %}Id{% endtrans %}</th>
+                <th>{% trans %}Alias{% endtrans %}</th>
+                <th>{% trans %}Street{% endtrans %}</th>
+                <th>{% trans %}Number{% endtrans %}</th>
+                <th>{% trans %}City{% endtrans %}</th>
+                <th>{% trans %}Country{% endtrans %}</th>
+                <th>{% trans %}Email{% endtrans %}</th>
+                <th>{% trans %}Phone{% endtrans %}</th>
+                <th>{% trans %}Partner{% endtrans %}</th>
+                <th>{% trans %}Datcre{% endtrans %}</th>
+                <th>{% trans %}Datupd{% endtrans %}</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for address in addresses %}
+            <tr>
+                <td><a href="{{ path('address_show', { 'id': address.id }) }}">{{ address.id }}</a></td>
+                <td>{{ address.alias }}</td>
+                <td>{{ address.street }}</td>
+                <td>{{ address.no }}</td>
+                <td>{{ address.city }}</td>
+                <td>{{ address.country }}</td>
+                <td>{{ address.email }}</td>
+                <td>{{ address.phone }}</td>                
+                <td>
+                    <a href="{% if address.partner.id is defined %} {{ path('partner_show', { 'id': address.partner.id }) }} {% endif %}">{{ address.partner }}</a>                          
+                </td>
+                <td>{% if address.datCre %}{{ address.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if address.datUpd %}{{ address.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <a class="btn btn-sm btn-info" href="{{ path('address_show', { 'id': address.id }) }}">
+                        <span class="glyphicon glyphicon-share"></span> Show
+                    </a>
+
+                    <a class="btn btn-sm btn-default" href="{{ path('address_edit', { 'id': address.id }) }}">
+                        <span class="glyphicon glyphicon-edit"></span>Edit
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

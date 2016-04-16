@@ -1,0 +1,52 @@
+{% extends 'product/product_layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{  parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('vatrate_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('vatrate_index') }}">{% trans %}List{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>VatRate list</h1>
+<div class="table-responsive">
+    <table class="table table-hover records_list">
+        <thead>
+            <tr>
+                <th>{% trans %}Id{% endtrans %}</th>
+                <th>{% trans %}Code{% endtrans %}</th>
+                <th>{% trans %}Description{% endtrans %}</th>
+                <th>{% trans %}Rate{% endtrans %}</th>
+                <th>{% trans %}Datcre{% endtrans %}</th>
+                <th>{% trans %}Datupd{% endtrans %}</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vatRate in vatRates %}
+            <tr>
+                <td><a href="{{ path('vatrate_show', { 'id': vatRate.id }) }}">{{ vatRate.id }}</a></td>
+                <td>{{ vatRate.code }}</td>
+                <td>{{ vatRate.description }}</td>
+                <td>{{ vatRate.rate }}</td>
+                <td>{% if vatRate.datCre %}{{ vatRate.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if vatRate.datUpd %}{{ vatRate.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+
+                    <a class="btn btn-sm btn-info" href="{{ path('vatrate_show', { 'id': vatRate.id }) }}">
+                        <span class="glyphicon glyphicon-share"></span> Show</a>
+
+                    <a class="btn btn-sm btn-default" href="{{ path('vatrate_edit', { 'id': vatRate.id }) }}">
+                        <span class="glyphicon glyphicon-edit"></span> Edit </a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

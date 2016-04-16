@@ -10,4 +10,5 @@
 /composer.phar
 /vendor/
 /web/bundles/
-/nbproject/*
+/.idea/*
+/web/uploads/*

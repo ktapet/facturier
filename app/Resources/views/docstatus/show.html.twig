@@ -1,0 +1,48 @@
+{% extends 'document/document_layout.html.twig' %}
+{% form_theme delete_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('docstatus_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('docstatus_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('docstatus_edit', {'id':docStatus.id}) }}">{% trans %}List{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>DocStatus</h1>
+
+<div class="col-lg-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover record_properties">
+        <tbody>
+            <tr>
+                <th>{% trans %}Id{% endtrans %}</th>
+                <td>{{ docStatus.id }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Name{% endtrans %}</th>
+                <td>{{ docStatus.name }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Datcre{% endtrans %}</th>
+                <td>{% if docStatus.datCre %}{{ docStatus.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Datupd{% endtrans %}</th>
+                <td>{% if docStatus.datUpd %}{{ docStatus.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+        {{ form_start(delete_form) }}
+
+            {{ form_widget(delete_form) }}
+
+        {{ form_end(delete_form) }}
+
+
+</div>
+{% endblock %}

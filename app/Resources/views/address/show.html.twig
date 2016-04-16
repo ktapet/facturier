@@ -1,0 +1,80 @@
+{% extends 'partner/partner_layout.html.twig' %}
+{% form_theme delete_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('address_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('address_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('address_edit', {'id':address.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>Address</h1>
+
+<div class="col-lg-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover record_properties">
+            <tbody>
+                <tr>
+                    <th>{% trans %}Id{% endtrans %}</th>
+                    <td>{{ address.id }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Alias{% endtrans %}</th>
+                    <td>{{ address.alias }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Street{% endtrans %}</th>
+                    <td>{{ address.street }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Number{% endtrans %}</th>
+                    <td>{{ address.no }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}City{% endtrans %}</th>
+                    <td>{{ address.city }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Country{% endtrans %}</th>
+                    <td>{{ address.country }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Email{% endtrans %}</th>
+                    <td>{{ address.email }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Phone{% endtrans %}</th>
+                    <td>{{ address.phone }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Partner{% endtrans %}</th>
+                    <td>
+                        <a href="{% if address.partner.id is defined %} {{ path('partner_show', { 'id': address.partner.id }) }} {% endif %}">{{ address.partner }}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Datcre</th>
+                    <td>{% if address.datCre %}{{ address.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Datupd</th>
+                    <td>{% if address.datUpd %}{{ address.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+                
+    {{ form_start(delete_form) }}
+
+            {{ form_widget(delete_form.submit) }}
+
+    {{ form_end(delete_form) }}
+</div>
+
+   
+{% endblock %}
+

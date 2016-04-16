@@ -1,0 +1,65 @@
+{% extends 'partner/partner_layout.html.twig' %}
+{% form_theme delete_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('partner_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('partner_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('partner_edit', {'id':partner.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>Partner</h1>
+    
+<div class="col-lg-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover record_properties">
+            <tbody>
+                <tr>
+                    <th>{% trans %}Id{% endtrans %}</th>
+                    <td>{{ partner.id }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Name{% endtrans %}</th>
+                    <td>{{ partner.name }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Bank{% endtrans %}</th>
+                    <td>{{ partner.bank }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Iban{% endtrans %}</th>
+                    <td>{{ partner.iban }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Address{% endtrans %}</th>
+                    <td>
+                        {%for address in partner.addresses%}
+                                <a href="{{ path('address_show', { 'id': address.id }) }}">{{address }}</a>
+                            {%endfor%}
+                    </td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Datcre{% endtrans %}</th>
+                    <td>{% if partner.datCre %}{{ partner.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Datupd{% endtrans %}</th>
+                    <td>{% if partner.datUpd %}{{ partner.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>           
+    
+    {{ form_start(delete_form) }}
+
+               {{ form_widget(delete_form) }}
+
+    {{ form_end(delete_form) }}
+
+</div>
+
+{% endblock %}

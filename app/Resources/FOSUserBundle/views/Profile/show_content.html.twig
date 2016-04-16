@@ -1,0 +1,20 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<h1>{% trans %}Account details{% endtrans %}</h1>
+
+<div class="col-lg-6">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover record_properties">
+            <tr>
+                <td>{{ 'profile.show.username'|trans }}</td>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'profile.show.email'|trans }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+

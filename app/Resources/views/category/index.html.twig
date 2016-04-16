@@ -1,0 +1,47 @@
+{% extends 'product/product_layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('category_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('category_index') }}">{% trans %}List{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>List of categories</h1>
+
+<div class="table-responsive">
+    <table class="table table-hover records_list">
+        <thead>
+            <tr>
+                {% for column in columns %}
+                    <th>{{ column|trans }}</th>
+                {% endfor %}
+
+                <th>{% trans %}Actions{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
+                <td>{{ category.name }}</td>
+                <td>{% if category.datCre %}{{ category.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if category.datUpd %}{{ category.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <a class="btn btn-sm btn-info" href="{{ path('category_show', { 'id': category.id }) }}">
+                        <span class="glyphicon glyphicon-share"></span> Show 
+                    </a>
+                    <a class="btn btn-sm btn-default" href="{{ path('category_edit', { 'id': category.id }) }}">
+                        <span class="glyphicon glyphicon-edit"></span> Edit                                
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

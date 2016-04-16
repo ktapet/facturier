@@ -1,7 +1,29 @@
 annotation_route:
     resource: "@AppBundle/Controller/"
     type:     annotation
+    
 
 yaml_route:
     resource: "@AppBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /member
+
+    
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    
+admin_index:
+    path: /admin
+    defaults: { _controller: "AppBundle:Admin:index" }
+
+admin_show:
+    path: /{id}/show
+    defaults: { _controller: "AppBundle:Admin:show" }
+
+admin_edit:
+    path: /{id}/edit
+    defaults: { _controller: "AppBundle:Admin:edit" }
+
+admin_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Admin:delete" }
+    methods:  DELETE
