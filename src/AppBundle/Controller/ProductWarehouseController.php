@@ -50,10 +50,26 @@ class ProductWarehouseController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($productWarehouse);
-            $em->flush();
+            
+            $data = $form->getData();
+            $dataProductId = $data->getProduct();
+            $dataWarehouseId = $data->getWarehouse();
+            
+            if($pd = $em->getRepository('AppBundle:ProductWarehouse')->findOneBy(
+                array('product' => $dataProductId, 'warehouse' => $dataWarehouseId)
+            )){
+                $pd->setQuantity($pd->getQuantity() + $data->getQuantity());
+                $id = $pd->getId();
+                $em->flush();
+            }else{
+                $em->persist($productWarehouse);
+                $em->flush();
+                $id = $productWarehouse->getId();
+            }
+                      
+            
 
-            return $this->redirectToRoute('productwarehouse_show', array('id' => $productWarehouse->getId()));
+            return $this->redirectToRoute('productwarehouse_show', array('id' => $id));
         }
 
         return $this->render('productwarehouse/new.html.twig', array(

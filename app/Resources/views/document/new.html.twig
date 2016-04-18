@@ -1,5 +1,5 @@
 {% extends 'document/document_layout.html.twig' %}
-{% form_theme form ':Form:fields.html.twig' %}
+{% form_theme form ':Form:custom_end.html.twig' %}
 {% trans_default_domain 'AppBundle' %}
 
 {% block submenu %}
@@ -15,75 +15,127 @@
 
     <h1>Document creation</h1>
 
-    {{ form_start(form, {'attr': {'role':'form', 'class': 'form-horizontal'}}) }}
-
-    <div class="form-group">
-        {{ form_label(form.docNumber, 'Document number', {'label_attr': {'class': 'col-md-2 col-sm-2 control-label'}}) }}
-
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+      <div class="col-lg-12">  
+   <div class="form-group">
+        {{ form_label(form.docNumber, 'Document number', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
         <div class="col-md-3 col-sm-4">
             {{ form_widget(form.docNumber, {'attr': {'class': 'form-control'}}) }}
         </div>
-        {{ form_errors(form.docNumber) }}
-    </div>
-    <div class="form-group">
-        {{ form_label(form.partner, 'Partner', {'label_attr': {'class': 'col-md-2 col-sm-2 control-label'}}) }}
-
+         {{ form_errors(form.docNumber) }}
+    </div>  
+   <div class="form-group">
+        {{ form_label(form.partner, 'Partner', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
         <div class="col-md-3 col-sm-4">
             {{ form_widget(form.partner, {'attr': {'class': 'form-control'}}) }}
         </div>
-        {{ form_errors(form.partner) }}
-    </div>
-    <div class="form-group">
-        {{ form_label(form.docType, 'Document type', {'label_attr': {'class': 'col-md-2 col-sm-2 control-label'}}) }}
-
+         {{ form_errors(form.partner) }}
+    </div>  
+   <div class="form-group">
+        {{ form_label(form.docType, 'Document type', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
         <div class="col-md-3 col-sm-4">
             {{ form_widget(form.docType, {'attr': {'class': 'form-control'}}) }}
         </div>
-        {{ form_errors(form.docType) }}
-    </div>
-    <div class="form-group">
-        {{ form_label(form.paymentType, 'Payment type', {'label_attr': {'class': 'col-md-2 col-sm-2 control-label'}}) }}
-
+         {{ form_errors(form.docType) }}
+    </div>    
+   <div class="form-group">
+        {{ form_label(form.paymentType, 'Payment type', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
         <div class="col-md-3 col-sm-4">
             {{ form_widget(form.paymentType, {'attr': {'class': 'form-control'}}) }}
         </div>
-        {{ form_errors(form.paymentType) }}
-    </div>
+         {{ form_errors(form.paymentType) }}
+    </div>      
     <div class="form-group">
-        {{ form_label(form.docStatus, 'Document status', {'label_attr': {'class': 'col-md-2 col-sm-2 control-label'}}) }}
-
+        {{ form_label(form.docStatus, 'Document status', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
         <div class="col-md-3 col-sm-4">
             {{ form_widget(form.docStatus, {'attr': {'class': 'form-control'}}) }}
         </div>
-        {{ form_errors(form.docStatus) }}
-    </div>
+         {{ form_errors(form.docStatus) }}
+    </div> 
+      </div> 
+<div class="col-lg-12">
+                <h3>Document items</h3>
+                <table class="documentLines table table-hover records_list" data-prototype="
+                        {% filter escape %}
+                            {{ include('::prototype.html.twig', { 'form': form.documentLines.vars.prototype }) }}
+                        {% endfilter %}">                       
+                <thead>
+                        <tr class="kta_documentline">
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Sale price</th>
+                            <th>Vat rate</th>
+                            <th>Total</th>
+                            <th>Actions</th>
+                        </tr>
+                </thead>
+                <tfoot>
+                        <tr class="kta_documentline">
+                            <th colspan="3"></th>
+ 
+                            <th colspan="3">
+                            <div class="col-lg-6">
+                                Tax base:
+                            </div>  
+                            <div class="col-lg-6 ktap_taxbase">0</div>  
+                            <div class="col-lg-6">
+                                Vat:
+                            </div>  
+                            <div class="col-lg-6 ktap_vat">0</div>
+                            <div class="col-lg-6">
+                                Payment amount:
+                            </div>  
+                            <div class="col-lg-6 ktap_paymentamount">0</div>  
+                            </th>
+                        </tr>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="form-group">
-                <div class="wrap-playvideos">
-                    <h3>Document Lines</h3>
-                    <ul class="documentLines" data-prototype="{{ form_widget(form.documentLines.vars.prototype)|e }}">
-                        {% for documentLine in form.documentLines %}
-                            <li>{{ form_widget(documentLine) }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="form-group">
-                <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
-                    {{ form_widget(form.submit) }}
-                </div>
-            </div>
-        </div>
-    </div>
-    {{ form_widget(form.documentLines) }}
-    {{ form_end(form) }}
+                </tfoot>                
+                <tbody>
 
+                    {% for line in form.documentLines %}
+                        <tr>
+                        <td>
+                            <!-- customize as you wish -->
+                            {{ form_widget(line.product) }}
+                        </td>
+                        <td>
+                            <!-- customize as you wish -->
+                            {{ form_widget(line.quantity) }}
+                        </td>
+                        <td>
+                            <!-- customize as you wish -->
+                            {{ form_widget(line.salePrice) }}
+                        </td>
+                        <td>
+                            <!-- customize as you wish -->
+                            {{ form_widget(line.vatRate) }}
+                        </td>
+                        <td>
+                        </td>
+                        </tr>
+                    {% endfor %}
+                   
+                     
+                </tbody>
+                
+                </table>
+                  
+                {{ form_end(form) }}  
+                         
+</div>
+                </form>
+<a href="{{ path('document_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
     {# ... #}
 
 {% endblock %}
+
+ {% block javascript %}
+     {{ parent() }}
+     <script type="text/javascript" src="{{ asset('js/document.js') }}"></script>    
+     
+{% endblock %}   

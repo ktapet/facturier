@@ -49,6 +49,12 @@ class DocumentType extends AbstractType
                 'translation_domain'=>'AppBundle',
                 'placeholder'=>'Choose a document status',
             ))
+            ->add('warehouse', EntityType::class, array(
+                'class'=>'AppBundle:Warehouse',
+                'mapped' => false,
+                'translation_domain'=>'AppBundle',
+                
+            ))
             ->add('documentLines', CollectionType::class, array(
                 'entry_type'   => DocumentLineType::class,
                 'allow_add'    => true,
@@ -58,7 +64,7 @@ class DocumentType extends AbstractType
                 'translation_domain'=>'AppBundle',
 
 
-        ))                
+            ))                
         ;
     }
     

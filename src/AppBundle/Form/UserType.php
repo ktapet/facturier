@@ -24,7 +24,8 @@ class UserType extends AbstractType
                         'ROLE_USER'=>'ROLE_USER',
                         'ROLE_SUPER_ADMIN'=>'ROLE_SUPER_ADMIN'
                     ),
-                    'multiple'=>true
+                    'multiple'=>true,
+                    'translation_domain' => 'FOSUserBundle'
                 ));
     }
 
