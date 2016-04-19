@@ -62,8 +62,6 @@ class DocumentType extends AbstractType
                 'label'        => false,
                 'by_reference' => false,
                 'translation_domain'=>'AppBundle',
-
-
             ))                
         ;
     }

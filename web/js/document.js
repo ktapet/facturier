@@ -12,7 +12,6 @@ function addTagForm($collectionHolder, $newLinkLi) {
 
     // get the new index
     var index = $collectionHolder.data('index');
-
     // Replace '__name__' in the prototype's HTML to
     // instead be a number based on how many items we have
     var newForm = prototype.replace(/__name__/g, index);
@@ -54,7 +53,7 @@ function getTaxBase(){
 }
 
 $(document).ready(function(){
-    
+
     // add active class to 'clicked' links from sidebar
     $(".sidebar table > tr").click(function () {
        $('table > tr').removeClass('active'); 
@@ -62,6 +61,7 @@ $(document).ready(function(){
 
     });
     //end 
+
 
     // Get the ul that holds the collection of tags
     $collectionHolder = $('table.documentLines');
