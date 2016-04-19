@@ -104,7 +104,7 @@ class DocumentController extends Controller
                     
                 );             
             }
-                            $addr = [];
+                $addr = [];
                 foreach ($form->get('partner')->getData()->getAddresses() as $key => $address){
                     $addr[$key] = $address;
                                 }
@@ -123,7 +123,7 @@ class DocumentController extends Controller
 				'numarul'	=> $data->getDocNumber(),
 				'data'		=> date('Y-m-d'),
 				'aviz'		=> $data->getDocType()->getName(),
-				'scadenta'	=> date('Y-m-d'),
+				'scadenta'	=> date('Y-m-d', strtotime('+10 days')),
                                                 );
             $today = new \DateTime("now");   
             $document->setDatCre($today);  

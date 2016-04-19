@@ -57,6 +57,14 @@
         </div>
          {{ form_errors(form.docStatus) }}
     </div> 
+    <div class="form-group">
+        {{ form_label(form.warehouse, 'Warehouse', {'label_attr': {'class': 'col-md-1 col-sm-2 control-label'}}) }}
+       
+        <div class="col-md-3 col-sm-4">
+            {{ form_widget(form.warehouse, {'attr': {'class': 'form-control'}}) }}
+        </div>
+         {{ form_errors(form.warehouse) }}
+    </div> 
       </div> 
 <div class="col-lg-12">
                 <h3>Document items</h3>
@@ -115,7 +123,7 @@
                             <!-- customize as you wish -->
                             {{ form_widget(line.vatRate) }}
                         </td>
-                        <td>
+                        <td id="total">
                         </td>
                         </tr>
                     {% endfor %}

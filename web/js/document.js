@@ -54,7 +54,7 @@ function getTaxBase(){
 }
 
 $(document).ready(function(){
-
+    
     // add active class to 'clicked' links from sidebar
     $(".sidebar table > tr").click(function () {
        $('table > tr').removeClass('active'); 
@@ -62,7 +62,6 @@ $(document).ready(function(){
 
     });
     //end 
-
 
     // Get the ul that holds the collection of tags
     $collectionHolder = $('table.documentLines');
@@ -73,7 +72,7 @@ $(document).ready(function(){
     // count the current form inputs we have (e.g. 2), use that as the new
     // index when inserting a new item (e.g. 2)
     $collectionHolder.data('index', $collectionHolder.find(':input').length);
-    
+
     //console.log($collectionHolder.find(':input').length);
     $addTagLink.on('click', function(e) {
     // prevent the link from creating a "#" on the URL
