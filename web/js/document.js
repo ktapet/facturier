@@ -68,7 +68,7 @@ function getVat(){
     vat = sum * vatr - sum;
     $(".ktap_vat").html(vat);
     $(".ktap_paymentamount").html(vat + sum);
-    $("#totalact").html(vat + sum);
+    $("input[id$=_" + index + "_total").val(vat + sum);
     
     
 }
