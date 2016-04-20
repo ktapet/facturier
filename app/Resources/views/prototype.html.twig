@@ -4,16 +4,17 @@
 </td>
 <td>
     <!-- customize as you wish -->
-    {{ form_widget(form.quantity, {'attr': {'class': 'form-control quantity'}}) }}
+    {{ form_widget(form.quantity, {'attr': {'class': 'form-control', 'onchange':'getQuantity()'}}) }}
 </td>
 <td>
     <!-- customize as you wish -->
-    {{ form_widget(form.salePrice, {'attr': {'class': 'form-control salePrice'}}) }}
+    {{ form_widget(form.salePrice, {'attr': {'class': 'form-control', 'onchange':'getSalePrice()'}}) }}
 </td>
 <td>
     <!-- customize as you wish -->
-    {{ form_widget(form.vatRate, {'attr': {'class': 'form-control vatRate'}}) }}
+    {{ form_widget(form.vatRate, {'attr': {'class': 'form-control', 'onchange':'getVat()'}}) }}
 </td>
+
 <td>
 </td>
 
