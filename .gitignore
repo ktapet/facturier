@@ -12,3 +12,6 @@
 /web/bundles/
 /.idea/*
 /web/uploads/*
+/invoices/
+/nbproject/*
+/web/uploads/*
