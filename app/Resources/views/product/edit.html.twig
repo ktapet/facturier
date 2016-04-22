@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="form-group">
-                {{ form_label(form.unitMeasure, 'Unit measure', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
+                {{ form_label(form.unitMeasure, 'Unitate de masura', {'label_attr': {'class': 'col-lg-4 control-label'}}) }}
                 {{ form_errors(form.unitMeasure) }}
                 <div class="col-lg-8">
                     {{ form_widget(form.unitMeasure, {'attr': {'class': 'form-control'}}) }}
@@ -72,7 +72,7 @@
         </div>   
     </div>   
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-4">
             <div class="form-group">
                 <div class="wrap-playvideos">
                     <h3>Product features</h3>
@@ -86,11 +86,14 @@
         </div> 
     </div>   
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-4">
             <div class="form-group">
+
                 <div class="wrap-playvideos">
+
                     <h3>Product images</h3>
                     <ul class="images" data-prototype="{{ form_widget(form.images.vars.prototype)|e }}">
+
                         {% for image in form.images %}
                             <li>{{ form_widget(image) }}</li>
                         {% endfor %}
@@ -102,14 +105,19 @@
        <div class="row">
             <div class="col-lg-4">                 
                 <div class="form-group">
-                    <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
-                        {{ form_widget(form.submit, { 'label': 'Edit', 'attr': {'class': 'btn btn-success'}}) }}
-                    </div>
+                            <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
+                                {{ form_widget(form.submit, { 'label': 'Add', 'attr': {'class': 'btn btn-sm btn-success'}}) }}
+                            </div>
                 </div>                       
             </div>
        </div>
 
 {{ form_end(form) }} 
-
+<a href="{{ path('product_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
 
 {% endblock %}
+ {% block javascript %}
+     {{ parent() }}
+     <script type="text/javascript" src="{{ asset('js/product.js') }}"></script>    
+     
+{% endblock %}   

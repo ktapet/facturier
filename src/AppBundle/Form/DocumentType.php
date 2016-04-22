@@ -43,6 +43,12 @@ class DocumentType extends AbstractType
                 'translation_domain'=>'AppBundle',
                 'placeholder'=>'Choose a payment type',
             ))
+            ->add('warehouse', EntityType::class, array(
+                'class'=>'AppBundle:Warehouse',
+                'mapped' => false,
+                'translation_domain'=>'AppBundle',
+                
+            ))
             //->add('user')
             ->add('docStatus', EntityType::class, array(
                 'class'=>'AppBundle:DocStatus',
@@ -56,9 +62,7 @@ class DocumentType extends AbstractType
                 'label'        => false,
                 'by_reference' => false,
                 'translation_domain'=>'AppBundle',
-
-
-        ))                
+            ))                
         ;
     }
     
