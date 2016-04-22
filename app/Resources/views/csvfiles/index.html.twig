@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_layout.html.twig' %}
 {% trans_default_domain 'AppBundle' %}
 
 {% block submenu %}
@@ -10,6 +10,11 @@
     </ul>
 {% endblock %}
 {% block body %}
+     {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}   
     <h1>CsvFiles list</h1>
 
 <div class="table-responsive">
@@ -27,17 +32,17 @@
         <tbody>
         {% for csvFile in csvFiles %}
             <tr>
-                <td><a href="{{ path('csvfiles_show', { 'id': csvFile.id }) }}">{{ csvFile.id }}</a></td>
+                <td>{{ csvFile.id }}</td>
                 <td>{{ csvFile.name }}</td>
                 <td>{{ csvFile.tip }}</td>
                 <td>{% if csvFile.isUsed %}{% trans %}Yes{% endtrans %}{% else %}{% trans %}No{% endtrans %}{% endif %}</td>
                 <td>{% if csvFile.datCre %}{{ csvFile.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
-                    <a class="btn btn-sm btn-info" href="{{ path('csvfiles_show', { 'id': csvFile.id }) }}">
-                        <span class="glyphicon glyphicon-share"></span> Show
-                    </a>
-                    <a class="btn btn-sm btn-default" href="{{ path('csvfiles_edit', { 'id': csvFile.id }) }}">
-                        <span class="glyphicon glyphicon-edit"></span> Edit
+                    <a class="btn btn-sm btn-success" href="{{ path('csvfiles_importa', { 'id': csvFile.id, 'tip': csvFile.tip }) }}">
+                        Regenereaza cu acest fisier
+                    </a>                         
+                    <a class="btn btn-sm btn-danger" href="{{ path('csvfiles_delete', { 'id': csvFile.id }) }}">
+                        Sterge fisier
                     </a>
                 </td>
             </tr>

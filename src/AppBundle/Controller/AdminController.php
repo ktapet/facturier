@@ -4,9 +4,11 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\User;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AdminController extends Controller
 {
@@ -34,17 +36,35 @@ class AdminController extends Controller
     }
 
     public function editAction(Request $request, User $user)
-    {
+    {        
+        $em = $this->getDoctrine()->getManager();
+        
+        $rol = $em ->getRepository('AppBundle:Role')->findAll(); 
+        $roles = $user->getRoles();
+        $selRoles =array();
 
+        foreach($em ->getRepository('AppBundle:Role')->findAll() as $k=>$rol){   
+            $allRoles[$rol->getRole()] = $rol->getRole();
+        }
+        
+        // build form
         $editForm = $this->createForm('AppBundle\Form\UserType', $user);
+        $editForm->add('roles', ChoiceType::class, array(
+                'choices'       => $allRoles,
+                'expanded'      =>false,
+                'multiple'      =>true,
+                'required'      => false,
+                'label'         => 'Roles',
+            ));      
+        
         $editForm->add('submit', SubmitType::class, array(
             'label'=>'Edit',
             'attr'=>array(
                 'class'=>'btn btn-primary',
             ),
             'translation_domain'=>'AppBundle',
-        ));
-
+        )); 
+        
         $editForm->handleRequest($request);
 
         if($editForm->isSubmitted() && $editForm->isValid()){
@@ -52,15 +72,13 @@ class AdminController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('admin_show', array('id'=>$user->getId()));
+            return $this->redirectToRoute('admin_user_index', array('id'=>$user->getId()));
         }
 
         return $this->render('admin/edit.html.twig', array(
             'edit_form'=>$editForm->createView(),
         ));
     }
-
-
 
     public function deleteAction(Request $request, User $user){
 

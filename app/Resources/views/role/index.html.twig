@@ -1,0 +1,43 @@
+{% extends 'admin_layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{ parent() }}
+
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('admin_role_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>Roles list</h1>
+
+<div class="table-responsive">
+    <table class="table table-hover records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for role in roles %}
+            <tr>
+                <td><a href="{{ path('admin_role_show', { 'id': role.id }) }}">{{ role.id }}</a></td>
+                <td>{{ role.name }}</td>
+                <td>{{ role.role }}</td>
+                <td>
+                    <a class="btn btn-sm btn-info" href="{{ path('admin_role_show', { 'id': role.id }) }}">
+                        <span class="glyphicon glyphicon-share"></span> Show
+                    </a>
+                    <a class="btn btn-sm btn-default" href="{{ path('admin_role_edit', { 'id': role.id }) }}">
+                        <span class="glyphicon glyphicon-edit"></span> Edit
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

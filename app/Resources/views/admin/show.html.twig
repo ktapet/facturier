@@ -1,16 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_layout.html.twig' %}
 {% form_theme delete_form ':Form:fields.html.twig' %}
-{% trans_default_domain 'FOSUserBundle' %}
+{% trans_default_domain 'AppBundle' %}
 
-{% block submenu %}
-    {{ parent() }}
-    <hr />
-    <ul class="nav nav-sidebar">
-        <li><a href="{{ path('fos_user_registration_register') }}">{% trans %}Add new{% endtrans %}</a></li>
-        <li><a href="{{ path('admin_index') }}">{% trans %}List{% endtrans %}</a></li>
-        <li><a href="{{ path('admin_edit', {'id':user.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
-    </ul>
-{% endblock %}
 {% block body %}
 
 <h1>Show user</h1>

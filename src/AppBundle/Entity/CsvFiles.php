@@ -50,13 +50,14 @@ class CsvFiles
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * 
      */
     public $path;
 
     /**
      * @Assert\File(maxSize="6000000",
      *     mimeTypes= {"text/plain", "text/csv", "application/csv", "text/excel", "application/excel"},
-     *     mimeTypesMessage = "Please upload a valid CSV | exel file")
+     *     mimeTypesMessage = "Please upload a valid CSV | excel file")
      */
     private $file;
 
@@ -98,11 +99,10 @@ class CsvFiles
     public function preUpload()
     {
         if (null !== $this->getFile()) {
-            $filename = sha1(uniqid(mt_rand(), true));
 
-            // do whatever you want to generate a unique name
-            $this->path = $filename.'.'.$this->getFile()->guessExtension();
+            //  $this->getFile()->getClientOriginalName() is not clean so first: CLEAN IT!
 
+            $this->setPath($this->getDatCre()->format('Y-m-d_H-i-s').'_'.$this->getFile()->getClientOriginalName());
         }
     }
 
@@ -129,7 +129,7 @@ class CsvFiles
         // which the UploadedFile move() method does
         $this->getFile()->move(
             $this->getUploadRootDir(),
-            $this->id.'.'.$this->getFile()->guessExtension()
+            $this->path
         );
 
         $this->setFile(null);
@@ -168,21 +168,21 @@ class CsvFiles
     {
         return null === $this->path
             ? null
-            : $this->getUploadRootDir().'/'.$this->id.'.'.$this->path;
+            : $this->getUploadRootDir().'/'.$this->path;
     }
 
     public function getWebPath()
     {
         return null === $this->path
             ? null
-            : $this->getUploadDir().'/'.$this->id.'.'.$this->path;
+            : $this->getUploadDir().'/'.$this->path;
     }
 
     protected function getUploadRootDir()
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../web/'.$this->getUploadDir();
+        return __DIR__.'/../../../docs/'.$this->getUploadDir();
     }
 
     protected function getUploadDir()
@@ -293,11 +293,6 @@ class CsvFiles
         $this->datCre = new \DateTime();
         return $this;
     }
-
-
-
-
-
 
 
 

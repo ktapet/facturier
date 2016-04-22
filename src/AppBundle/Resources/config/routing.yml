@@ -1,10 +1,10 @@
 app_productwarehouse:
         resource: "@AppBundle/Resources/config/routing/productwarehouse.yml"
         prefix:   /productwarehouse
-
-app_csvfiles:
-    resource: "@AppBundle/Resources/config/routing/csvfiles.yml"
-    prefix:   /csvfiles
+        
+app_productlang:
+       resource: "@AppBundle/Resources/config/routing/productlang.yml"
+       prefix:   /productlang  
 
 app_feature:
     resource: "@AppBundle/Resources/config/routing/feature.yml"

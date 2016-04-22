@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{# setam linkurile #}
+{% set doc_links = {
+        'Users list':'admin_user',
+        'Roles list':'admin_role',
+        'CSV files list':'csvfiles',
+    }
+%}
+{# afisam linkurile #}
+{% block submenu %}
+    <ul class="nav nav-sidebar">
+        {% for key,link in doc_links %}
+
+                <li><a href="{{ path(link~'_index') }}">{{ key|trans }}</a></li>
+
+        {% endfor %}                       
+    </ul>
+{% endblock %}
+{# blocul body urmeaza a fi rescris in subpagini(de exmeplu in app\Resources\views\product\edit.html.twig) #}
+{% block body %}{% endblock %}

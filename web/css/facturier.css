@@ -123,11 +123,10 @@ body {
     margin-top:20px;
 
 }
-hr{
-  border: 1px solid #0f0f0f;
-  width: 120%;
-  margin-left: -20px;
-
+.sidebar>hr{
+  background-color: #e0e0e0;
+  height:1px;
+  border:none;
 }
 ul{
   list-style: none;
@@ -154,3 +153,6 @@ label {
   margin-left: -20px !important;
 }
 
+.content-main {
+    font-size: 12px;
+}

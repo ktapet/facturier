@@ -3,22 +3,20 @@ csvfiles_index:
     defaults: { _controller: "AppBundle:CsvFiles:index" }
     methods:  GET
 
-csvfiles_show:
-    path:     /{id}/show
-    defaults: { _controller: "AppBundle:CsvFiles:show" }
-    methods:  GET
-
 csvfiles_new:
     path:     /new
     defaults: { _controller: "AppBundle:CsvFiles:new" }
     methods:  [GET, POST]
-
-csvfiles_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "AppBundle:CsvFiles:edit" }
-    methods:  [GET, POST]
+    
+csvfiles_create:
+    path:     /create
+    defaults: { _controller: "AppBundle:CsvFiles:create" }
+    requirements: { _method: post }    
 
 csvfiles_delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:CsvFiles:delete" }
-    methods:  DELETE
+    
+csvfiles_importa:
+    path:     /{id}/{tip}/importa
+    defaults: { _controller: "AppBundle:CsvFiles:importa" }       
