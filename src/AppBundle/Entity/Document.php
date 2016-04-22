@@ -20,62 +20,70 @@ class Document
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
+    private $id;    
+    
     /**
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Partner")
-     * @ORM\JoinColumn(name="partner_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="partner_id", referencedColumnName="id", onDelete="SET NULL")
      */
-    private $partner;
-
+    private $partner;  
+    
     /**
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="DocType")
      * @ORM\JoinColumn(name="doctype_id", referencedColumnName="id")
      */
-    private $docType;
-
+    private $docType;     
+    
     /**
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="PaymentType")
      * @ORM\JoinColumn(name="paymenttype_id", referencedColumnName="id")
      */
-    private $paymentType;
-
+    private $paymentType;       
+    
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\Column(name="created_by", type="string")
+     * 
      */
-    private $user;
-
+    private $createdBy;       
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="modified_by", type="string", nullable=true)
+     * 
+     */
+    private $modifiedBy;  
+    
     /**
      * @var integer
      *
      * @ORM\OneToMany(targetEntity="DocumentLine", mappedBy="document",cascade={"persist"})
-     *
+     * 
      */
-    private $documentLines;
-
-    /**
+    private $documentLines;  
+    
+     /**
      * @var string
      *
      * @ORM\Column(name="doc_number", type="string")
      */
-    private $docNumber;
-
+    private $docNumber;   
+    
     /**
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="DocStatus")
-     *
+     * 
      */
-    private $docStatus;
+    private $docStatus;       
     /**
      * @var \DateTime
      *
@@ -87,7 +95,7 @@ class Document
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
-    private $datUpd;
+    private $datUpd;    
     /**
      * @inheritDoc
      */
@@ -162,7 +170,7 @@ class Document
      *
      * @return Document
      */
-    public function setDatUpd()
+    public function setDatUpd($datUpd)
     {
         $this->datUpd = new \DateTime();
         return $this;
@@ -269,11 +277,9 @@ class Document
      */
     public function addDocumentLine(\AppBundle\Entity\DocumentLine $documentLine)
     {
+        $documentLine->setDocument($this);
         
         $this->documentLines->add($documentLine);
-
-        $this->documentLines->add($documentLine);
-
     }
     /**
      * Remove documentLine
@@ -313,5 +319,47 @@ class Document
     public function getDocStatus()
     {
         return $this->docStatus;
+    }
+    /**
+     * Set createdBy
+     *
+     * @param string $createdBy
+     *
+     * @return Document
+     */
+    public function setCreatedBy($createdBy)
+    {
+        $this->createdBy = $createdBy;
+        return $this;
+    }
+    /**
+     * Get createdBy
+     *
+     * @return string
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+    /**
+     * Set modifiedBy
+     *
+     * @param string $modifiedBy
+     *
+     * @return Document
+     */
+    public function setModifiedBy($modifiedBy)
+    {
+        $this->modifiedBy = $modifiedBy;
+        return $this;
+    }
+    /**
+     * Get modifiedBy
+     *
+     * @return string
+     */
+    public function getModifiedBy()
+    {
+        return $this->modifiedBy;
     }
 }

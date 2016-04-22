@@ -17,6 +17,8 @@
         <thead>
             <tr>
                 <th>{% trans %}Id{% endtrans %}</th>
+                <th>{% trans %}Product{% endtrans %}</th>
+                <th>{% trans %}Warehouse{% endtrans %}</th>
                 <th>{% trans %}Quantity{% endtrans %}</th>
                 <th>{% trans %}Datcre{% endtrans %}</th>
                 <th>{% trans %}Datupd{% endtrans %}</th>
@@ -27,6 +29,12 @@
         {% for productWarehouse in productWarehouses %}
             <tr>
                 <td><a href="{{ path('productwarehouse_show', { 'id': productWarehouse.id }) }}">{{ productWarehouse.id }}</a></td>
+                <td>
+                    {{ productWarehouse.product }}
+                </td>
+                <td>
+                    {{ productWarehouse.warehouse }}
+                </td>
                 <td>{{ productWarehouse.quantity }}</td>
                 <td>{% if productWarehouse.datCre %}{{ productWarehouse.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if productWarehouse.datUpd %}{{ productWarehouse.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
