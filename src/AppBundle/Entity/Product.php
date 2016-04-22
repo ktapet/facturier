@@ -31,20 +31,20 @@ class Product
     private $id;    
     
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nume", type="string")
-     * 
-     */
-    private $nume; 
-    
-    /**
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="UnitMeasure")
      * 
      */ 
     private $unitMeasure;    
+    
+    /**
+     * 
+     * @ORM\OneToMany(targetEntity="ProductLang", mappedBy="product", cascade={"persist"})
+     * 
+     * 
+     */
+    private $productLangs;         
     
     /**
      * 
@@ -133,6 +133,7 @@ class Product
     public function __construct()
     {
         $this->features = new ArrayCollection();
+        $this->productLangs = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->productWarehouses = new ArrayCollection();
@@ -148,29 +149,6 @@ class Product
         return $this->id;
     }
 
-    /**
-     * Set nume
-     *
-     * @param string $nume
-     *
-     * @return Product
-     */
-    public function setNume($nume)
-    {
-        $this->nume = $nume;
-        return $this;
-    }
-    
-    /**
-     * Get nume
-     *
-     * @return string
-     */
-    public function getNume()
-    {
-        return $this->nume;
-    }
-    
     /**
      * Set manufacturer
      *
@@ -474,5 +452,39 @@ class Product
     public function getProductWarehouses()
     {
         return $this->productWarehouses;
+    }
+
+    /**
+     * Add productLang
+     *
+     * @param \AppBundle\Entity\ProductLang $productLang
+     *
+     * @return Product
+     */
+    public function addProductLang(\AppBundle\Entity\ProductLang $productLang)
+    {
+        $productLang->setProduct($this);
+        
+        $this->productLangs->add($productLang);
+    }
+
+    /**
+     * Remove productLang
+     *
+     * @param \AppBundle\Entity\ProductLang $productLang
+     */
+    public function removeProductLang(\AppBundle\Entity\ProductLang $productLang)
+    {
+        $this->productLangs->removeElement($productLang);
+    }
+
+    /**
+     * Get productLangs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProductLangs()
+    {
+        return $this->productLangs;
     }
 }

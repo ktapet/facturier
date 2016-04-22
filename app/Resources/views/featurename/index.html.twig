@@ -17,7 +17,9 @@
         <thead>
             <tr>
                 <th>{% trans %}Id{% endtrans %}</th>
-                <th>{% trans %}Feature value{% endtrans %}</th>
+                <th>EN</th>
+                <th>RO</th>
+                <th>BG</th>
                 <th>{% trans %}Datcre{% endtrans %}</th>
                 <th>{% trans %}Datupd{% endtrans %}</th>
                 <th>{% trans %}Actions{% endtrans %}</th>
@@ -27,7 +29,9 @@
         {% for featureName in featureNames %}
             <tr>
                 <td><a href="{{ path('featurename_show', { 'id': featureName.id }) }}">{{ featureName.id }}</a></td>
-                <td>{{ featureName.fnValue }}</td>
+                <td>{{ featureName.en }}</td>
+                <td>{{ featureName.ro }}</td>
+                <td>{{ featureName.bg }}</td>
                 <td>{% if featureName.datCre %}{{ featureName.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if featureName.datUpd %}{{ featureName.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>

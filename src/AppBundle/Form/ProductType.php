@@ -20,9 +20,6 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nume', TextType::class, array(
-                'translation_domain'=>'AppBundle',
-            ))
             ->add('manufacturer', TextType::class, array(
                 'translation_domain'=>'AppBundle',
             ))
@@ -57,6 +54,14 @@ class ProductType extends AbstractType
                 'expanded'       => false,
                 'translation_domain'=>'AppBundle',
             ))
+            ->add('productLangs', CollectionType::class, array(
+                    'entry_type'   => ProductLangType::class,
+                    'label'        => false,
+                    'allow_add'    => true,
+                    'by_reference' => false,
+                    'allow_delete' => true,
+                    'translation_domain'=>'AppBundle',
+                ))                        
             ->add('features', CollectionType::class, array(
                     'entry_type'   => FeatureType::class,
                     'label'        => false,

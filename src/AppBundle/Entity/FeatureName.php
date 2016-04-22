@@ -29,10 +29,24 @@ class FeatureName
     /**
      * @var string
      *
-     * @ORM\Column(name="fn_value", type="string", nullable=true)
+     * @ORM\Column(name="en", type="string", nullable=true)
      */
-    private $fnValue;           
+    private $en;         
     
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ro", type="string", nullable=true)
+     */
+    private $ro;       
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="bg", type="string", nullable=true)
+     */
+    private $bg;        
+
     /**
      * @var \DateTime
      *
@@ -48,7 +62,7 @@ class FeatureName
     private $datUpd;     
    
    public function __toString(){
-       return $this->fnValue;
+        return (string)$this->getEn();
    }
 
     /**
@@ -59,29 +73,6 @@ class FeatureName
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set fnValue
-     *
-     * @param string $fnValue
-     *
-     * @return FeatureName
-     */
-    public function setFnValue($fnValue)
-    {
-        $this->fnValue = $fnValue;
-        return $this;
-    }
-
-    /**
-     * Get fnValue
-     *
-     * @return string
-     */
-    public function getFnValue()
-    {
-        return $this->fnValue;
     }
 
     /**
@@ -114,6 +105,7 @@ class FeatureName
      * @param \DateTime $datUpd
      *
      * @return FeatureName
+     * 
      */
     public function setDatUpd()
     {
@@ -129,5 +121,77 @@ class FeatureName
     public function getDatUpd()
     {
         return $this->datUpd;
+    }
+
+    /**
+     * Set en
+     *
+     * @param string $en
+     *
+     * @return FeatureName
+     */
+    public function setEn($en)
+    {
+        $this->en = $en;
+
+        return $this;
+    }
+
+    /**
+     * Get en
+     *
+     * @return string
+     */
+    public function getEn()
+    {
+        return $this->en;
+    }
+
+    /**
+     * Set ro
+     *
+     * @param string $ro
+     *
+     * @return FeatureName
+     */
+    public function setRo($ro)
+    {
+        $this->ro = $ro;
+
+        return $this;
+    }
+
+    /**
+     * Get ro
+     *
+     * @return string
+     */
+    public function getRo()
+    {
+        return $this->ro;
+    }
+
+    /**
+     * Set bg
+     *
+     * @param string $bg
+     *
+     * @return FeatureName
+     */
+    public function setBg($bg)
+    {
+        $this->bg = $bg;
+
+        return $this;
+    }
+
+    /**
+     * Get bg
+     *
+     * @return string
+     */
+    public function getBg()
+    {
+        return $this->bg;
     }
 }

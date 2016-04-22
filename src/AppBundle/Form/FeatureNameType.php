@@ -16,11 +16,9 @@ class FeatureNameType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fnValue', TextType::class, array(
-                'translation_domain'=>'AppBundle',
-            ))
-            //->add('datCre', 'datetime')
-            //->add('datUpd', 'datetime')
+            ->add('en')
+            ->add('ro')
+            ->add('bg')
         ;
     }
     

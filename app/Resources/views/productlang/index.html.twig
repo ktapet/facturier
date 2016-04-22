@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ProductLang list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Lang</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for productLang in productLangs %}
+            <tr>
+                <td><a href="{{ path('productlang_show', { 'id': productLang.id }) }}">{{ productLang.id }}</a></td>
+                <td>{{ productLang.name }}</td>
+                <td>{{ productLang.lang }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('productlang_show', { 'id': productLang.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('productlang_edit', { 'id': productLang.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('productlang_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

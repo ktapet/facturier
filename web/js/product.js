@@ -1,12 +1,15 @@
 var $collectionHolder;
 var $collectionHolder_image;
+var $collectionHolder_productlang;
 
 // setup an "adauga o proba" link
-var $addTagLink = $('<a href="#" class="btn btn-default add_tag_link">Adaugă proprietate</a>');
-var $addTagLink_image = $('<a href="#" class="btn btn-default add_tag_link">Adaugă imagine</a>');
+var $addTagLink = $('<a href="#" class="btn btn-default add_tag_link">Add features</a>');
+var $addTagLink_image = $('<a href="#" class="btn btn-default add_tag_link">Add images</a>');
+var $addTagLink_productlang = $('<a href="#" class="btn btn-default add_tag_link">Add name</a>');
 
 var $newLinkLi = $('<li class="kta_feature"></li>').append($addTagLink);
 var $newLinkLi_image = $('<li class="kta_image"></li>').append($addTagLink_image);
+var $newLinkLi_productlang = $('<li class="kta_productlang"></li>').append($addTagLink_productlang);
 
 function addTagForm($collectionHolder, $newLinkLi) {
     // Get the data-prototype explained earlier
@@ -31,7 +34,7 @@ function addTagForm($collectionHolder, $newLinkLi) {
 }
 
 function addTagFormDeleteLink($tagFormLi) {
-    var $removeFormA = $('<a href="#" class="btn btn-danger top-buffer">Șterge</a>');
+    var $removeFormA = $('<a href="#" class="btn btn-danger top-buffer">Delete</a>');
     $tagFormLi.append($removeFormA);
 
     $removeFormA.on('click', function(e) {
@@ -58,15 +61,18 @@ $(document).ready(function(){
     // Get the ul that holds the collection of tags
     $collectionHolder = $('ul.features');
     $collectionHolder_image = $('ul.images');
+    $collectionHolder_productlang = $('ul.productlangs');
 
     // add the "add a tag" anchor and li to the tags ul
     $collectionHolder.append($newLinkLi);
     $collectionHolder_image.append($newLinkLi_image);
+    $collectionHolder_productlang.append($newLinkLi_productlang);
 
     // count the current form inputs we have (e.g. 2), use that as the new
     // index when inserting a new item (e.g. 2)
     $collectionHolder.data('index', $collectionHolder.find(':input').length);
     $collectionHolder_image.data('index', $collectionHolder_image.find(':input').length);
+    $collectionHolder_productlang.data('index', $collectionHolder_productlang.find(':input').length);
 
     $addTagLink.on('click', function(e) {
         // prevent the link from creating a "#" on the URL
@@ -84,6 +90,15 @@ $(document).ready(function(){
         addTagForm($collectionHolder_image, $newLinkLi_image);
     });
 
+    $addTagLink_productlang.on('click', function(e) {
+        // prevent the link from creating a "#" on the URL
+        e.preventDefault();
+
+        // add a new tag form (see next code block)
+        addTagForm($collectionHolder_productlang, $newLinkLi_productlang);
+    });
+
+
     // add a delete link to all of the existing tag form li elements
     $collectionHolder.find('li:not(.kta_feature)').each(function() {
         addTagFormDeleteLink($(this));
@@ -92,7 +107,10 @@ $(document).ready(function(){
 
         addTagFormDeleteLink($(this));
     });
+    $collectionHolder_productlang.find('li:not(.kta_productlang)').each(function() {
+        addTagFormDeleteLink($(this));
 
+    });
     //////// end of code used to Embed a Collection of Forms Playlists emdeb with Playvideos
 
 });

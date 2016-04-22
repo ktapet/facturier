@@ -17,7 +17,9 @@
         <thead>
             <tr>
                 <th>{% trans %}Id{% endtrans %}</th>
-                <th>{% trans %}Value{% endtrans %}</th>
+                <th>EN</th>
+                <th>RO</th>
+                <th>BG</th>
                 <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
         </thead>
@@ -25,7 +27,9 @@
         {% for feature in features %}
             <tr>
                 <td><a href="{{ path('feature_show', { 'id': feature.id }) }}">{{ feature.id }}</a></td>
-                <td>{{ feature.value }}</td>
+                <td>{{ feature.en }}</td>
+                <td>{{ feature.ro }}</td>
+                <td>{{ feature.bg }}</td>
                 <td>
                     <a class="btn btn-sm btn-info" href="{{ path('feature_show', { 'id': feature.id }) }}">
                         <span class="glyphicon glyphicon-share"></span> Show

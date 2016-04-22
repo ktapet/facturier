@@ -23,9 +23,17 @@
                 <td>{{ featureName.id }}</td>
             </tr>
             <tr>
-                <th>{% trans %}Feature name value{% endtrans %}</th>
-                <td>{{ featureName.fnValue }}</td>
+                <th>{% trans %}Feature name en{% endtrans %}</th>
+                <td>{{ featureName.en }}</td>
             </tr>
+            <tr>
+                <th>{% trans %}Feature name ro{% endtrans %}</th>
+                <td>{{ featureName.ro }}</td>
+            </tr>      
+            <tr>
+                <th>{% trans %}Feature name bg{% endtrans %}</th>
+                <td>{{ featureName.bg }}</td>
+            </tr>            
             <tr>
                 <th>{% trans %}Creation date{% endtrans %}</th>
                 <td>{% if featureName.datCre %}{{ featureName.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
@@ -46,10 +54,6 @@
         {{ form_end(delete_form) }}
 
 </div> 
-<<<<<<< HEAD
-    <a href="{{ path('featurename_index') }}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back to the list</a>
-=======
 
->>>>>>> fd2f5087e64739813bfd0d1abce55183b408d6a1
 
 {% endblock %}

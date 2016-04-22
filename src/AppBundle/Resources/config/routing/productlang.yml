@@ -1,0 +1,24 @@
+productlang_index:
+    path:     /
+    defaults: { _controller: "AppBundle:ProductLang:index" }
+    methods:  GET
+
+productlang_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:ProductLang:show" }
+    methods:  GET
+
+productlang_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:ProductLang:new" }
+    methods:  [GET, POST]
+
+productlang_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:ProductLang:edit" }
+    methods:  [GET, POST]
+
+productlang_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:ProductLang:delete" }
+    methods:  DELETE

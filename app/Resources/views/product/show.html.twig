@@ -22,9 +22,25 @@
                     <td>{{ product.id }}</td>
                 </tr>
                 <tr>
-                    <th>{% trans %}Nume{% endtrans %}</th>
-                    <td>{{ product.nume }}</td>
-                </tr>
+                    <th>{% trans %}Name{% endtrans %}</th>
+                    <td>
+                        <ul>
+                        {% for prodname in product.productLangs %}
+                            <li>{{ prodname.lang ~ ' - ' ~ prodname.name}}</li>
+                        {% endfor %}
+                        </ul>
+                    </td>
+                </tr>                
+                <tr>
+                    <th>{% trans %}Features{% endtrans %}</th>
+                    <td>
+                        <ul>
+                        {% for feature in product.features %}
+                            <li>{{ feature.name ~ ' - ' ~ feature.en}}</li>
+                        {% endfor %}
+                        </ul>
+                    </td>
+                </tr>                
                 <tr>
                     <th>{% trans %}Manufacturer{% endtrans %}</th>
                     <td>{{ product.manufacturer }}</td>
