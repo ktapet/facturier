@@ -4,7 +4,7 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    ktap.synch:
+        class:  AppBundle\Services\Syncronize
+        arguments:  ['@doctrine.orm.entity_manager']     
   
