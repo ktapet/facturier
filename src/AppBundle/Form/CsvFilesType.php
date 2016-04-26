@@ -27,9 +27,6 @@ class CsvFilesType extends AbstractType
             ->add('file', FileType::class, array(
                 'translation_domain'=>'AppBundle',
             ))
-            ->add('isUsed', CheckboxType::class, array(
-                'translation_domain'=>'AppBundle',
-            ))
            // ->add('datCre', 'datetime')
         ;
     }

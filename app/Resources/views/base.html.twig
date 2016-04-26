@@ -77,7 +77,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         {% if is_granted('ROLE_ADMIN') %}
-                            {#<li><a href="{{ path('admin') }}">Admin</a></li>                              #}
+                            <li><a href="{{ path('admin_user_index') }}">Admin</a></li> 
                             <li><a href="{{ path('fos_user_profile_edit') }}">{% trans %}Edit account{% endtrans %}</a></li>
                             <li><a href="{{ path('fos_user_profile_show') }}">{% trans %}Account details{% endtrans %}</a></li>
                         {% else %}
@@ -97,7 +97,7 @@
     </div>
 </div>
 
-<div class="container-fluid">
+<div class="content-main">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
 
