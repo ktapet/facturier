@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Entity\Feature;
 use AppBundle\Form\FeatureType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * Feature controller.
@@ -37,6 +38,14 @@ class FeatureController extends Controller
     {
         $feature = new Feature();
         $form = $this->createForm('AppBundle\Form\FeatureType', $feature);
+        $form->add('submit', SubmitType::class, array(
+            'label'=>'Create',
+            'attr'=>array(
+                'class'=>'btn btn-primary'
+            ),
+            'translation_domain'=>'AppBundle',
+        ));
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -75,6 +84,13 @@ class FeatureController extends Controller
     {
         $deleteForm = $this->createDeleteForm($feature);
         $editForm = $this->createForm('AppBundle\Form\FeatureType', $feature);
+        $editForm->add('submit', SubmitType::class, array(
+            'label'=>'Save',
+            'attr'=>array(
+                'class'=>'btn btn-success'
+            ),
+            'translation_domain'=>'AppBundle',
+        ));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -82,7 +98,7 @@ class FeatureController extends Controller
             $em->persist($feature);
             $em->flush();
 
-            return $this->redirectToRoute('feature_edit', array('id' => $feature->getId()));
+            return $this->redirectToRoute('feature_show', array('id' => $feature->getId()));
         }
 
         return $this->render('feature/edit.html.twig', array(
@@ -122,6 +138,13 @@ class FeatureController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('feature_delete', array('id' => $feature->getId())))
             ->setMethod('DELETE')
+            ->add('submit', SubmitType::class, array(
+                'label'=>'Delete',
+                'attr'=>array(
+                    'class'=>'btn btn-danger'
+                ),
+                'translation_domain'=>'AppBundle',
+            ))
             ->getForm()
         ;
     }

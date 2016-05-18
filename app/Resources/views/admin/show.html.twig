@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% form_theme delete_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('fos_user_registration_register') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('admin_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('admin_edit', {'id':user.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+
+<h1>Show user</h1>
+<div class="col-lg-6">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover record_properties">
+            <tbody>
+                <tr>
+                    <th>{% trans %}Id{% endtrans %}</th>
+                    <td>{{ user.id }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}User name{% endtrans %}</th>
+                    <td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Email{% endtrans %}</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Role{% endtrans %}</th>
+                    <td>
+                        {% for role in user.roles %}
+                            {{ role }}
+                        {% endfor %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    {{ form_start(delete_form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
+
+        {{ form_widget(delete_form) }}
+
+    {{ form_end(delete_form) }}
+
+</div>
+{% endblock %}

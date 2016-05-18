@@ -1,56 +1,71 @@
 {% extends 'product/product_layout.html.twig' %}
+{% form_theme delete_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('product_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('product_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('product_edit', {'id':product.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>Product</h1>
-<div class="col-lg-4">
+<div class="col-lg-5">
     <div class="table-responsive">
         <table class="table table-bordered table-hover record_properties">
             <tbody>
                 <tr>
-                    <th>Id</th>
+                    <th>{% trans %}Id{% endtrans %}</th>
                     <td>{{ product.id }}</td>
                 </tr>
                 <tr>
-                    <th>Nume</th>
+                    <th>{% trans %}Nume{% endtrans %}</th>
                     <td>{{ product.nume }}</td>
                 </tr>
                 <tr>
-                    <th>Manufacturer</th>
+                    <th>{% trans %}Manufacturer{% endtrans %}</th>
                     <td>{{ product.manufacturer }}</td>
                 </tr>
                 <tr>
-                    <th>Ean</th>
+                    <th>{% trans %}Images{% endtrans %}</th>
+                    <td>
+                        {% for image in product.images %}
+                            <a href="{{ asset(image.getWebPath) }}">
+                                <img src="{{ asset(image.getWebPath) }}" class="img-responsive" alt="{{ image.getName }}" width="150" />
+                            </a>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Ean{% endtrans %}</th>
                     <td>{{ product.ean }}</td>
                 </tr>
                 <tr>
-                    <th>Reference</th>
+                    <th>{% trans %}Reference{% endtrans %}</th>
                     <td>{{ product.reference }}</td>
                 </tr>
                 <tr>
-                    <th>Saleprice</th>
+                    <th>{% trans %}Saleprice{% endtrans %}</th>
                     <td>{{ product.salePrice }}</td>
                 </tr>
                 <tr>
-                    <th>Datcre</th>
+                    <th>{% trans %}Datcre{% endtrans %}</th>
                     <td>{% if product.datCre %}{{ product.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
                 </tr>
                 <tr>
-                    <th>Datupd</th>
+                    <th>{% trans %}Datupd{% endtrans %}</th>
                     <td>{% if product.datUpd %}{{ product.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    {{ form_start(delete_form) }}
-        <div class="row top-buffer">
-            <div class="col-md-4 col-sm-4">
-                <input type="submit" class="btn btn-danger" value="Delete">
-            </div>
-        </div> 
+    {{ form_start(delete_form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
+       {{ form_widget(delete_form) }}
     {{ form_end(delete_form) }}
-    <div class="row top-buffer">
-        <a href="{{ path('product_index') }}">Back to the list</a>
-    </div>
+
 </div>
 {% endblock %}

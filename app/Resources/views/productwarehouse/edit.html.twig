@@ -1,0 +1,24 @@
+{% extends 'productimage/productimage_layout.html.twig' %}
+{% form_theme  edit_form   ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{  parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('productwarehouse_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('productwarehouse_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('productwarehouse_edit', {'id':productWarehouse.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>ProductWarehouse edit</h1>
+
+    {{ form_start(edit_form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
+
+        {{ form_widget(edit_form) }}
+
+    {{ form_end(edit_form) }}
+
+
+{% endblock %}

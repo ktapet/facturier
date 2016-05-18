@@ -1,40 +1,48 @@
-{% extends 'base.html.twig' %}
+{% extends 'product/product_layout.html.twig' %}
+{% form_theme delete_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
+
+{% block submenu %}
+    {{  parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('unitmeasure_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('unitmeasure_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('unitmeasure_edit', {'id':unitMeasure.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>Unit Measure</h1>
 
-<div class="col-lg-4">
+<div class="col-lg-5">
     <div class="table-responsive">   
         <table class="table table-bordered table-hover record_properties">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{% trans %}Id{% endtrans %}</th>
                 <td>{{ unitMeasure.id }}</td>
             </tr>
             <tr>
-                <th>Unit measure value</th>
+                <th>{% trans %}Unit measure value{% endtrans %}</th>
                 <td>{{ unitMeasure.name }}</td>
             </tr>
             <tr>
-                <th>Creation date</th>
+                <th>{% trans %}Creation date{% endtrans %}</th>
                 <td>{% if unitMeasure.datCre %}{{ unitMeasure.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Update date</th>
+                <th>{% trans %}Update date{% endtrans %}</th>
                 <td>{% if unitMeasure.datUpd %}{{ unitMeasure.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>
     </div>
 
-    <div class="form-group">
-        {{ form_start(delete_form) }}
-        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-2">
-           {{ form_widget(delete_form.submit, { 'label': 'Delete', 'attr': {'class': 'btn btn-sm btn-danger'}}) }}
-        </div>
-        {{ form_end(delete_form) }}
-    </div>        
+    {{ form_start(delete_form) }}
+        {{ form_widget(delete_form) }}
+    {{ form_end(delete_form) }}
 </div>  
-    <a href="{{ path('unitmeasure_index') }}">Back to the list</a>
+
 
 {% endblock %}

@@ -1,18 +1,27 @@
 {% extends 'product/product_layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
+{% block submenu %}
+    {{  parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('vatrate_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('vatrate_index') }}">{% trans %}List{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>VatRate list</h1>
 <div class="table-responsive">
     <table class="table table-hover records_list">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Code</th>
-                <th>Description</th>
-                <th>Rate</th>
-                <th>Datcre</th>
-                <th>Datupd</th>
-                <th>Actions</th>
+                <th>{% trans %}Id{% endtrans %}</th>
+                <th>{% trans %}Code{% endtrans %}</th>
+                <th>{% trans %}Description{% endtrans %}</th>
+                <th>{% trans %}Rate{% endtrans %}</th>
+                <th>{% trans %}Datcre{% endtrans %}</th>
+                <th>{% trans %}Datupd{% endtrans %}</th>
+                <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
         </thead>
         <tbody>
@@ -38,6 +47,6 @@
         </tbody>
     </table>
 </div>
-    <a href="{{ path('vatrate_new') }}" class="btn btn-success">Create a new entry</a>
+
 
 {% endblock %}

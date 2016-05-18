@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\ProductImage;
 use AppBundle\Form\ProductImageType;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 /**
  * ProductImage controller.
  *
@@ -21,11 +23,14 @@ class ProductImageController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $mapping = $this->getDoctrine()->getManager()->getClassMetadata('AppBundle:ProductImage');
+        $columns = $mapping->getFieldNames();
 
         $productImages = $em->getRepository('AppBundle:ProductImage')->findAll();
 
         return $this->render('productimage/index.html.twig', array(
             'productImages' => $productImages,
+            'columns'       => $columns,
         ));
     }
 
@@ -37,6 +42,13 @@ class ProductImageController extends Controller
     {
         $productImage = new ProductImage();
         $form = $this->createForm('AppBundle\Form\ProductImageType', $productImage);
+        $form->add('submit', SubmitType::class, array(
+            'label' => 'Create',
+            'attr'=>array(
+                'class'=>'btn btn-primary'
+            ),
+            'translation_domain'=>'AppBundle',
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -75,6 +87,14 @@ class ProductImageController extends Controller
     {
         $deleteForm = $this->createDeleteForm($productImage);
         $editForm = $this->createForm('AppBundle\Form\ProductImageType', $productImage);
+        $editForm->add('submit', SubmitType::class, array(
+            'label'=>'Edit',
+            'attr'=>array(
+                'class'=>'btn btn-primary',
+            ),
+            'translation_domain'=>'AppBundle',
+        ));
+
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -82,7 +102,7 @@ class ProductImageController extends Controller
             $em->persist($productImage);
             $em->flush();
 
-            return $this->redirectToRoute('productimage_edit', array('id' => $productImage->getId()));
+            return $this->redirectToRoute('productimage_show', array('id' => $productImage->getId()));
         }
 
         return $this->render('productimage/edit.html.twig', array(
@@ -122,6 +142,13 @@ class ProductImageController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('productimage_delete', array('id' => $productImage->getId())))
             ->setMethod('DELETE')
+            ->add('submit', SubmitType::class, [
+                'label'=>'Delete',
+                'attr'=>[
+                    'class'=>'btn btn-danger'
+                ],
+                'translation_domain'=>'AppBundle',
+            ])
             ->getForm()
         ;
     }

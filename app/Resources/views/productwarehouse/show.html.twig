@@ -1,0 +1,54 @@
+{% extends 'productimage/productimage_layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block submenu %}
+    {{  parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('productwarehouse_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('productwarehouse_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('productwarehouse_edit', {'id':productWarehouse.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>ProductWarehouse</h1>
+
+<div class="col-lg-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover record_properties">
+        <tbody>
+            <tr>
+                <th>{% trans %}Id{% endtrans %}</th>
+                <td>{{ productWarehouse.id }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Quantity{% endtrans %}</th>
+                <td>{{ productWarehouse.quantity }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Product{% endtrans %}</th>
+                <td>{{ productWarehouse.product }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Warehouse{% endtrans %}</th>
+                <td>{{ productWarehouse.warehouse }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Datcre{% endtrans %}</th>
+                <td>{% if productWarehouse.datCre %}{{ productWarehouse.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Datupd{% endtrans %}</th>
+                <td>{% if productWarehouse.datUpd %}{{ productWarehouse.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+    {{ form_start(delete_form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
+        {{ form_widget(delete_form) }}
+    {{ form_end(delete_form) }}
+
+</div>
+
+{% endblock %}

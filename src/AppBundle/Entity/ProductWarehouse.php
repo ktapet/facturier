@@ -4,12 +4,13 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * ProductWarehouse
  *
- * @ORM\Table()
+ * @ORM\Table(name="product_warehouse")
  * @ORM\Entity
+ * 
  *  
  * @ORM\HasLifecycleCallbacks()
  */
@@ -30,7 +31,7 @@ class ProductWarehouse
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Product", inversedBy="productWarehouses")
-     * 
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="SET NULL")
      * 
      */ 
     private $product;   
@@ -39,7 +40,7 @@ class ProductWarehouse
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Warehouse")
-     * @ORM\JoinColumn(name="warehouse_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="warehouse_id", referencedColumnName="id", onDelete="SET NULL")
      * 
      */ 
     private $warehouse;   
@@ -47,8 +48,12 @@ class ProductWarehouse
     /**
      * @var integer
      *
-     *  @ORM\Column(name="quantity", type="integer")
-     * 
+     * @ORM\Column(name="quantity", type="integer")
+     * @Assert\Regex(
+     *     pattern="/^[\d+]+$/",
+     *     match=true,
+     *     message="Number must be positive"
+     * )
      */ 
     private $quantity;     
 

@@ -1,21 +1,28 @@
 {% extends 'base.html.twig' %}
+{% form_theme edit_form ':Form:fields.html.twig' %}
+{% form_theme delete_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('documentline_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('documentline_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('documentline_edit', {'id':documentLine.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
+
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>DocumentLine edit</h1>
 
-    {{ form_start(edit_form) }}
+    {{ form_start(edit_form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
+
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('documentline_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+
+
 {% endblock %}

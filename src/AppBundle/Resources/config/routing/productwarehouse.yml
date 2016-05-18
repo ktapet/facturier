@@ -1,0 +1,24 @@
+productwarehouse_index:
+    path:     /
+    defaults: { _controller: "AppBundle:ProductWarehouse:index" }
+    methods:  GET
+
+productwarehouse_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:ProductWarehouse:show" }
+    methods:  GET
+
+productwarehouse_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:ProductWarehouse:new" }
+    methods:  [GET, POST]
+
+productwarehouse_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:ProductWarehouse:edit" }
+    methods:  [GET, POST]
+
+productwarehouse_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:ProductWarehouse:delete" }
+    methods:  DELETE

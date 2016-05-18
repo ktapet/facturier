@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Entity\DocumentLine;
 use AppBundle\Form\DocumentLineType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * DocumentLine controller.
@@ -37,6 +38,13 @@ class DocumentLineController extends Controller
     {
         $documentLine = new DocumentLine();
         $form = $this->createForm('AppBundle\Form\DocumentLineType', $documentLine);
+        $form->add('submit', SubmitType::class, [
+            'label'=>'Create',
+            'attr'=>[
+                'class'=>'btn btn-primary'
+            ],
+            'translation_domain'=>'AppBundle',
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -75,6 +83,13 @@ class DocumentLineController extends Controller
     {
         $deleteForm = $this->createDeleteForm($documentLine);
         $editForm = $this->createForm('AppBundle\Form\DocumentLineType', $documentLine);
+        $editForm->add('submit', SubmitType::class, [
+            'label'=>'Save',
+            'attr'=>[
+                'class'=>'btn btn-success'
+            ],
+            'translation_domain'=>'AppBundle',
+        ]);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -82,7 +97,7 @@ class DocumentLineController extends Controller
             $em->persist($documentLine);
             $em->flush();
 
-            return $this->redirectToRoute('documentline_edit', array('id' => $documentLine->getId()));
+            return $this->redirectToRoute('documentline_show', array('id' => $documentLine->getId()));
         }
 
         return $this->render('documentline/edit.html.twig', array(
@@ -122,6 +137,13 @@ class DocumentLineController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('documentline_delete', array('id' => $documentLine->getId())))
             ->setMethod('DELETE')
+            ->add('submit', SubmitType::class, [
+                'label'=>'Delete',
+                'attr'=>[
+                    'class'=>'btn btn-danger'
+                ],
+                'translation_domain'=>'AppBundle',
+            ])
             ->getForm()
         ;
     }

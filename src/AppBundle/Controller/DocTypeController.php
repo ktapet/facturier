@@ -23,11 +23,14 @@ class DocTypeController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $mapping = $this->getDoctrine()->getManager()->getClassMetadata('AppBundle:DocType');
+        $columns = $mapping->getFieldNames();
 
         $docTypes = $em->getRepository('AppBundle:DocType')->findAll();
 
         return $this->render('doctype/index.html.twig', array(
             'docTypes' => $docTypes,
+            'columns'  => $columns,
         ));
     }
 
@@ -39,7 +42,13 @@ class DocTypeController extends Controller
     {
         $docType = new DocType();
         $form = $this->createForm('AppBundle\Form\DocTypeType', $docType);
-        $form->add('submit', SubmitType::class);
+        $form->add('submit', SubmitType::class, array(
+            'label'=>'Create',
+            'attr'=>array(
+                'class'=>'btn btn-primary',
+            ),
+            'translation_domain'=>'AppBundle'
+        ));
 
         $form->handleRequest($request);
 
@@ -79,7 +88,13 @@ class DocTypeController extends Controller
     {
         $deleteForm = $this->createDeleteForm($docType);
         $editForm = $this->createForm('AppBundle\Form\DocTypeType', $docType);
-        $editForm->add('submit', SubmitType::class, ['label'=>'Trimite', 'attr'=>['class'=>'btn btn-primary']]);
+        $editForm->add('submit', SubmitType::class, [
+            'label'=>'Save',
+            'attr'=>[
+                'class'=>'btn btn-success'
+            ],
+            'translation_domain'=>'AppBundle'
+        ]);
 
         $editForm->handleRequest($request);
 
@@ -128,7 +143,13 @@ class DocTypeController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('doctype_delete', array('id' => $docType->getId())))
             ->setMethod('DELETE')
-            ->add('submit', SubmitType::class, ['label'=>'Trimite', 'attr'=>['class'=>'btn btn-primary']])
+            ->add('submit', SubmitType::class, [
+                'label'=>'Delete',
+                'attr'=>[
+                    'class'=>'btn btn-danger'
+                ],
+                'translation_domain'=>'AppBundle'
+            ])
             ->getForm()
         ;
     }

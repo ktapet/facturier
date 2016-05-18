@@ -26,7 +26,7 @@ class DocumentLine
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Product")
-     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $product;       
     
@@ -47,7 +47,7 @@ class DocumentLine
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Document", inversedBy="documentLines",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Document", inversedBy="documentLines", cascade={"persist"})
      * 
      */
     private $document;    
@@ -74,6 +74,13 @@ class DocumentLine
      */
     private $datUpd;    
 
+    public function __toString()
+    {
+        return $this->document;
+    }
+
+
+    
     /**
      * Get id
      *
@@ -139,7 +146,7 @@ class DocumentLine
      *
      * @return DocumentLine
      */
-    public function setDatCre($datCre)
+    public function setDatCre()
     {
         $this->datCre = new \DateTime();
 
@@ -164,7 +171,7 @@ class DocumentLine
      *
      * @return DocumentLine
      */
-    public function setDatUpd($datUpd)
+    public function setDatUpd()
     {
         $this->datUpd = new \DateTime();
 

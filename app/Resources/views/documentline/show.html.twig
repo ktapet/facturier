@@ -1,44 +1,50 @@
 {% extends 'base.html.twig' %}
+{% form_theme delete_form ':Form:fields.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
 
+{% block submenu %}
+    {{ parent() }}
+    <hr />
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('documentline_new') }}">{% trans %}Add new{% endtrans %}</a></li>
+        <li><a href="{{ path('documentline_index') }}">{% trans %}List{% endtrans %}</a></li>
+        <li><a href="{{ path('documentline_edit', {'id':documentLine.id}) }}">{% trans %}Edit{% endtrans %}</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <h1>DocumentLine</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ documentLine.id }}</td>
-            </tr>
-            <tr>
-                <th>Quantity</th>
-                <td>{{ documentLine.quantity }}</td>
-            </tr>
-            <tr>
-                <th>Saleprice</th>
-                <td>{{ documentLine.salePrice }}</td>
-            </tr>
-            <tr>
-                <th>Datcre</th>
-                <td>{% if documentLine.datCre %}{{ documentLine.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Datupd</th>
-                <td>{% if documentLine.datUpd %}{{ documentLine.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="col-lg-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover record_properties">
+            <tbody>
+                <tr>
+                    <th>{% trans %}Id{% endtrans %}</th>
+                    <td>{{ documentLine.id }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Quantity{% endtrans %}</th>
+                    <td>{{ documentLine.quantity }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Saleprice{% endtrans %}</th>
+                    <td>{{ documentLine.salePrice }}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Datcre{% endtrans %}</th>
+                    <td>{% if documentLine.datCre %}{{ documentLine.datCre|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>{% trans %}Datupd{% endtrans %}</th>
+                    <td>{% if documentLine.datUpd %}{{ documentLine.datUpd|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('documentline_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('documentline_edit', { 'id': documentLine.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            {{ form_start(delete_form, {'attr': {'role':'form', 'class':'form-horizontal'}}) }}
+                {{ form_widget(delete_form) }}
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+</div>
 {% endblock %}

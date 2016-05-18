@@ -1,7 +1,5 @@
 <?php
-
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -13,7 +11,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity("docNumber")
  * @ORM\HasLifecycleCallbacks()
  */
-
 class Document
 {
     /**
@@ -29,7 +26,7 @@ class Document
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Partner")
-     * @ORM\JoinColumn(name="partner_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="partner_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $partner;  
     
@@ -52,10 +49,18 @@ class Document
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\Column(name="created_by", type="string")
+     * 
      */
-    private $user;     
+    private $createdBy;       
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="modified_by", type="string", nullable=true)
+     * 
+     */
+    private $modifiedBy;  
     
     /**
      * @var integer
@@ -79,29 +84,33 @@ class Document
      * 
      */
     private $docStatus;       
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_cre", type="datetime")
      */
     private $datCre;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dat_upd", type="datetime")
      */
     private $datUpd;    
-
+    /**
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        return $this->docNumber;
+    }
+    
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->documentLines = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->documentLines = new ArrayCollection();
     }
-
     /**
      * Get id
      *
@@ -111,7 +120,6 @@ class Document
     {
         return $this->id;
     }
-
     /**
      * Set docNumber
      *
@@ -122,10 +130,8 @@ class Document
     public function setDocNumber($docNumber)
     {
         $this->docNumber = $docNumber;
-
         return $this;
     }
-
     /**
      * Get docNumber
      *
@@ -135,7 +141,6 @@ class Document
     {
         return $this->docNumber;
     }
-
     /**
      * Set datCre
      * @ORM\PrePersist
@@ -146,10 +151,8 @@ class Document
     public function setDatCre($datCre)
     {
         $this->datCre = new \DateTime();
-
         return $this;
     }
-
     /**
      * Get datCre
      *
@@ -159,7 +162,6 @@ class Document
     {
         return $this->datCre;
     }
-
     /**
      * Set datUpd
      * @ORM\PreUpdate
@@ -171,10 +173,8 @@ class Document
     public function setDatUpd($datUpd)
     {
         $this->datUpd = new \DateTime();
-
         return $this;
     }
-
     /**
      * Get datUpd
      *
@@ -184,7 +184,6 @@ class Document
     {
         return $this->datUpd;
     }
-
     /**
      * Set partner
      *
@@ -195,10 +194,8 @@ class Document
     public function setPartner(\AppBundle\Entity\Partner $partner = null)
     {
         $this->partner = $partner;
-
         return $this;
     }
-
     /**
      * Get partner
      *
@@ -208,7 +205,6 @@ class Document
     {
         return $this->partner;
     }
-
     /**
      * Set docType
      *
@@ -219,10 +215,8 @@ class Document
     public function setDocType(\AppBundle\Entity\DocType $docType = null)
     {
         $this->docType = $docType;
-
         return $this;
     }
-
     /**
      * Get docType
      *
@@ -232,9 +226,7 @@ class Document
     {
         return $this->docType;
     }
-
     /**
-
      * Set paymentType
      *
      * @param \AppBundle\Entity\PaymentType $paymentType
@@ -246,7 +238,6 @@ class Document
         $this->paymentType = $paymentType;
         return $this;
     }
-
     /**
      * Get paymentType
      *
@@ -256,7 +247,6 @@ class Document
     {
         return $this->paymentType;
     }
-
     /**
      * Set user
      *
@@ -269,7 +259,6 @@ class Document
         $this->user = $user;
         return $this;
     }
-
     /**
      * Get user
      *
@@ -279,7 +268,6 @@ class Document
     {
         return $this->user;
     }
-
     /**
      * Add documentLine
      *
@@ -289,11 +277,10 @@ class Document
      */
     public function addDocumentLine(\AppBundle\Entity\DocumentLine $documentLine)
     {
-        $this->documentLines[] = $documentLine;
-
-        return $this;
+        $documentLine->setDocument($this);
+        
+        $this->documentLines->add($documentLine);
     }
-
     /**
      * Remove documentLine
      *
@@ -303,7 +290,6 @@ class Document
     {
         $this->documentLines->removeElement($documentLine);
     }
-
     /**
      * Get documentLines
      *
@@ -313,7 +299,6 @@ class Document
     {
         return $this->documentLines;
     }
-
     /**
      * Set docStatus
      *
@@ -324,10 +309,8 @@ class Document
     public function setDocStatus(\AppBundle\Entity\DocStatus $docStatus = null)
     {
         $this->docStatus = $docStatus;
-
         return $this;
     }
-
     /**
      * Get docStatus
      *
@@ -336,5 +319,47 @@ class Document
     public function getDocStatus()
     {
         return $this->docStatus;
+    }
+    /**
+     * Set createdBy
+     *
+     * @param string $createdBy
+     *
+     * @return Document
+     */
+    public function setCreatedBy($createdBy)
+    {
+        $this->createdBy = $createdBy;
+        return $this;
+    }
+    /**
+     * Get createdBy
+     *
+     * @return string
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+    /**
+     * Set modifiedBy
+     *
+     * @param string $modifiedBy
+     *
+     * @return Document
+     */
+    public function setModifiedBy($modifiedBy)
+    {
+        $this->modifiedBy = $modifiedBy;
+        return $this;
+    }
+    /**
+     * Get modifiedBy
+     *
+     * @return string
+     */
+    public function getModifiedBy()
+    {
+        return $this->modifiedBy;
     }
 }
