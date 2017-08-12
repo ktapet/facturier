@@ -1,6 +1,6 @@
        
 var $collectionHolder;
-
+var index;
 // setup an "adauga o proba" link
 var $addTagLink = $('<td colspan="6"><a href="#" class="btn btn-sm btn-primary add_tag_link">Add new item</a></td>');
 var $newLinkLi = $('<tr class="kta_documentline"></tr>').append($addTagLink);
@@ -11,7 +11,7 @@ function addTagForm($collectionHolder, $newLinkLi) {
 
 
     // get the new index
-    var index = $collectionHolder.data('index');
+    index = $collectionHolder.data('index');
     // Replace '__name__' in the prototype's HTML to
     // instead be a number based on how many items we have
     var newForm = prototype.replace(/__name__/g, index);
@@ -42,11 +42,38 @@ function addTagFormDeleteLink($tagFormLi) {
     });
 }
 
+var quant = 0;
+function getQuantity(){
+    var txt = parseInt($("input[id$=_"+ index + "_quantity]").val());
+    quant = txt;
+    //$(".ktap_taxbase").html(quant);
+}
+
+var price = 0;
+var sum = 0;
+function getSalePrice(){
+    var txt = parseInt($("input[id$=_"+ index + "_salePrice]").val());
+    price = txt;
+    sum += price * quant;
+    $(".ktap_taxbase").html(sum);
+}
+
+var vat = 0;
 function getVat(){
+    var rate = parseInt($("select[id$=_" + index + "_vatRate] option:selected").text());
+    var vatr = 1 + "." + rate;
+    if(rate < 10){
+        vatr = 1 + ".0" + rate;
+    }
+    vat = sum * vatr - sum;
+    $(".ktap_vat").html(vat);
+    $(".ktap_paymentamount").html(vat + sum);
+    $("input[id$=_" + index + "_total").val(vat + sum);
+    
     
 }
 function getPaymentAmount(){
-    
+    //$(".ktap_taxbase").html(sum);
 }
 function getTaxBase(){
     

@@ -36,6 +36,7 @@ class DocumentLineType extends AbstractType
                 'translation_domain'=>'AppBundle',
                 'placeholder'=>'Choose a VAT'
             ))
+            ->add('total')
         ;
     }
     
